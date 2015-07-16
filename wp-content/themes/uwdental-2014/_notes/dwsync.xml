@@ -13,8 +13,6 @@
 <file name="searchform.php" server="ovid.u.washington.edu/public_html/wordpress/" local="130781795288732167" remote="130781795320000000" Dst="2" />
 <file name="header.php" server="ovid.u.washington.edu/public_html/wordpress/" local="130784186033459079" remote="130784186090000000" Dst="2" />
 <file name="search.php" server="ovid.u.washington.edu/public_html/wordpress/" local="130781798137847050" remote="130781798170000000" Dst="2" />
-<file name=".gitattributes" server="ovid.u.washington.edu/public_html/wordpress/" local="130634386487196491" remote="130781601120000000" Dst="2" />
-<file name=".gitignore" server="ovid.u.washington.edu/public_html/wordpress/" local="130752415062148697" remote="130781601120000000" Dst="2" />
 <file name="template-no-hero.php" server="ovid.u.washington.edu/public_html/wordpress/" local="130783443913291898" remote="130783444590000000" Dst="2" />
 <file name="no-hero.php" server="ovid.u.washington.edu/public_html/wordpress/" local="130783503371674442" remote="130783503400000000" Dst="2" />
 <file name="home-no-title.php" server="uwsod.wpengine.com:2222" local="130808455264930518" remote="130808455390000000" Dst="2" />
@@ -34,7 +32,5 @@
 <file name="no-hero.php" server="uwsod.wpengine.com:2222" local="130783503371674442" remote="130796565520000000" Dst="2" />
 <file name="thinstrip.php" server="uwsod.wpengine.com:2222" local="130806852992405198" remote="130806853030000000" Dst="2" />
 <file name="template-no-hero.php" server="uwsod.wpengine.com:2222" local="130783443913291898" remote="130796565540000000" Dst="2" />
-<file name=".gitattributes" server="uwsod.wpengine.com:2222" local="130634386487196491" remote="130796564460000000" Dst="2" />
-<file name=".gitignore" server="uwsod.wpengine.com:2222" local="130752415062148697" remote="130796564470000000" Dst="2" />
 <file name="thinstrip.sav" server="uwsod.wpengine.com:2222" local="130782555043452204" remote="130796565540000000" Dst="2" />
 </dwsync>
