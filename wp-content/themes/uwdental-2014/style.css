@@ -8,6 +8,17 @@ Version: 0.1
 */
 
 @import url("../uw-2014/style.css");
+.alumni-form .fui-radio-unchecked:before,
+.alumni-form .fui-radio-checked:before {
+  background: none;
+  content: "";
+  width: 22px;
+  height: 22px;
+  top: 2px;
+  left: 0;
+  position: absolute;
+}
+
 body {
 	
 	font-size: 16px;
