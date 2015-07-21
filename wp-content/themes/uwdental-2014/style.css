@@ -25,12 +25,7 @@ Version: 0.1
 	opacity: 1;
   filter: alpha(opacity=100);
 }
-.alumni-form .radio.disabled .first-icon, .alumni-form .radio.disabled.checked .second-icon {
-	display:inline;
 
-	opacity: 0;
-  filter: alpha(opacity=0);
-}
 body {
 	
 	font-size: 16px;
