@@ -8,11 +8,7 @@ Version: 0.1
 */
 
 @import url("../uw-2014/style.css");
-.alumni-form .fui-radio-unchecked:before,
-.alumni-form .fui-radio-checked:before {
-  background: none;
- 
-}
+.wpcf7 span:before { display:none } 
 
 
 body {
