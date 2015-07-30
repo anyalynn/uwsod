@@ -4,26 +4,8 @@
 					<div class="row">
 						<div class="box-outer">
 							<div class="box three">
-								<div class="tile">
-                                 <?php $hometilesone =  get_post(13866);
-								 $meta = get_post_meta($hometilesone->ID);
-								 $thecontentone = $hometilesone->post_content; 
-								 $posttitleone = $hometilesone->post_title;
-								 $hometilesone_pic = get_post_meta($hometilesone->ID, 'hometile_pic', true);
-								 $readmoreone = get_post_meta($hometilesone->ID, 'readmore', true);
- 
-								 ?>
-								<div><img class="attachment-homepage_tile wp-post-image" src='<?= $hometilesone_pic ?>' alt='<?= $readmoreone ?>' width="379" height="160" /></div>
-								<h2><?= $posttitleone ?></h2>
-								<p class="null">
-								<?= $thecontentone ?></p>
-								<?php if(!empty($readmoreone))
-										{ ?>
-										<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmoreone ?>">Watch the video</a></p>
-                                        <? } ?>
-								</div>
-								<div class="tile">
-                                 <?php $hometilestwo =  get_post(13597);
+                            <div class="tile">
+                                 <?php $hometilestwo =  get_post(14059);
 								 $metatwo = get_post_meta($hometilestwo->ID);
 								 $thecontenttwo = $hometilestwo->post_content; 
 								 $posttitletwo = $hometilestwo->post_title;
@@ -44,6 +26,25 @@
                                         <? } ?>
 
 									</div>
+								<div class="tile">
+                                 <?php $hometilesone =  get_post(13866);
+								 $meta = get_post_meta($hometilesone->ID);
+								 $thecontentone = $hometilesone->post_content; 
+								 $posttitleone = $hometilesone->post_title;
+								 $hometilesone_pic = get_post_meta($hometilesone->ID, 'hometile_pic', true);
+								 $readmoreone = get_post_meta($hometilesone->ID, 'readmore', true);
+ 
+								 ?>
+								<div><img class="attachment-homepage_tile wp-post-image" src='<?= $hometilesone_pic ?>' alt='<?= $readmoreone ?>' width="379" height="160" /></div>
+								<h2><?= $posttitleone ?></h2>
+								<p class="null">
+								<?= $thecontentone ?></p>
+								<?php if(!empty($readmoreone))
+										{ ?>
+										<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmoreone ?>">Watch the video</a></p>
+                                        <? } ?>
+								</div>
+								
 									<div class="tile">
   <?php $hometilesthree =  get_post(12790);
 								 $metathree = get_post_meta($hometilesthree->ID);
