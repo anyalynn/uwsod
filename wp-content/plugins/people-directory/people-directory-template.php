@@ -137,7 +137,7 @@ include 'template_functions.php';
                        
                           <div class='pic'><img width='75' height='100' <?php if (empty($main_pic)) { ?> class='no-pic'<?php } ?> src='<?= $main_pic ?>' alt='<?= $name ?>' /></div>
                             <div class='info'>
-                                <?php if (($name_link) & !empty($content)){
+                                <?php if (($name_link)){
                                     ?><a href="<?= get_permalink($personID) ?>"><?php
                                 } ?>
                                 <p class='name search-this'><?= $name ?></p>
