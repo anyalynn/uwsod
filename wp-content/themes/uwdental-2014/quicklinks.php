@@ -17,7 +17,7 @@
 				<span>Appointments</span></a> </li>
                 
 				<li><a href="http://dental.washington.edu/about-us/location-directions/" title="Maps"><svg enable-background="new 0 0 33 46" height="50px" id="Layer_2" version="1.1" viewBox="0 0 33 46" width="33px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><path d="M16.5,10.693c-3.165,0-5.741,2.558-5.741,5.705c0,3.143,2.576,5.701,5.741,5.701 c3.166,0,5.74-2.558,5.74-5.701C22.24,13.251,19.663,10.693,16.5,10.693z M16.5,19.247c-1.582,0-2.871-1.277-2.871-2.849c0-1.574,1.289-2.853,2.871-2.853c1.583,0,2.87,1.279,2.87,2.853C19.368,17.97,18.083,19.247,16.5,19.247z M16.5,0C7.401,0,0,7.366,0,16.421c0,11.127,14.768,28.005,15.396,28.717c0.271,0.309,0.643,0.477,1.079,0.486c0.412,0,0.803-0.174,1.075-0.482c0.633-0.713,15.5-17.595,15.45-28.729C32.958,7.364,25.556,0,16.5,0z M16.478,41.988 C13.089,37.897,2.868,24.86,2.868,16.421c0-7.482,6.115-13.57,13.631-13.57c7.482,0,13.595,6.091,13.63,13.578 C30.168,24.857,19.884,37.9,16.478,41.988z" fill="#A3A2A3"></path></svg><span>Directions</span></a> </li>
-                 <li><a href="http://dental.washington.edu/faculty-dir/" title="Faculty Directory">
+                 <li><a href="http://dental.washington.edu/people-directory/" title="People Directory">
 
 <svg version="1.1" id="Layer_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
