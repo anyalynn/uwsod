@@ -54,6 +54,9 @@ include 'template_functions.php';
 		<div id="options">
       	<ul id="filters" class="option-set clearfix" data-option-key="filter">
         <li><a href="#filter" data-option-value="*" class="selected">show all</a></li>
+         <li><a href="#filter" data-option-value=".faculty">Faculty</a></li>
+          <li><a href="#filter" data-option-value=".staff">Staff</a></li>
+            <li><a href="#filter" data-option-value=".affiliate">Affiliate Faculty</a></li>
   		<li><a href="#filter" data-option-value=".endo">Endodontics</a></li>
   		<li><a href="#filter" data-option-value=".ohs">Oral Health Sciences</a></li>
 		<li><a href="#filter" data-option-value=".oms">Oral and Maxillofacial Surgery</a></li>
@@ -86,6 +89,15 @@ include 'template_functions.php';
                         if (!empty($person_teams_arr)) {
 							$count = 0;
                             foreach ($person_teams_arr as $person_teams_item) {
+								if ($person_teams_item->name == 'Faculty') {
+									$team_class  .= ' faculty ';
+								}
+								if ($person_teams_item->name == 'Staff') {
+									$team_class  .= ' staff ';
+								}
+								if ($person_teams_item->name == 'Affiliate Faculty') {
+									$team_class  .= ' affiliate ';
+								}
 								if ($person_teams_item->name == 'Endodontics') {
 									$team_class  .= ' endo ';
 								}
