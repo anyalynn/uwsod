@@ -31,6 +31,7 @@ include 'template_functions.php';
 							
 						<div class="entry-content">
                          <?php $title = get_the_title();
+						 	$degrees = $meta['degrees'][0];
                              $main_pic = $meta['main_pic'][0];
                             if (!empty($main_pic)) { ?>
 							    <img class='people-image' src=<?= $main_pic ?> alt=<?= $title ?> />
@@ -45,8 +46,10 @@ include 'template_functions.php';
                                 
                                 <?php 
 							if (!empty($title)): ?>
-							<h1><?= $title ?> , <?= $meta['degrees'][0] ?></h1>
-							<?php endif; ?>
+							<h1><?= $title ?> <?php endif; ?>
+                             <?php if (!empty($degrees)) : ?> ,  
+                            <?php $degrees ?> <?php endif; ?> </h1>
+							
 					
                                 
 								<p class="title"><?= $meta['position'][0] ?>                            
