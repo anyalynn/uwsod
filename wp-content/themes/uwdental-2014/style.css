@@ -267,8 +267,8 @@ a.more:after {
 .uw-links ul li a span{display:block;margin-top:10px}
 .uw-links ul li a:focus{text-decoration:none}
 .uw-links ul li:last-child a{border:none}
-.uw-links ul li a{border:none}
-.uw-links ul li a:hover {border:none}
+.uw-links ul li a{}
+.uw-links ul li a:hover {}
 .home #uw-container div#uw-container-inner{background-color:#F0EDE3}
 .on-campus{position:relative;padding:20px 0 0;background:url(assets/images/quad.jpg) no-repeat center center fixed #6b6b6b;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;z-index:200;}
 .on-campus .tile{background-color:#ECE9E2;overflow:hidden;vertical-align:top}
