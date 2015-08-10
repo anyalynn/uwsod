@@ -5,7 +5,7 @@
 						<div class="box-outer">
 							<div class="box three">
                             <div class="tile">
-                                 <?php $hometilestwo =  get_post(14059);
+                                 <?php $hometilestwo =  get_post(14267);
 								 $metatwo = get_post_meta($hometilestwo->ID);
 								 $thecontenttwo = $hometilestwo->post_content; 
 								 $posttitletwo = $hometilestwo->post_title;
