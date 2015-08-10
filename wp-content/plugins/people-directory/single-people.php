@@ -48,7 +48,7 @@ include 'template_functions.php';
 							if (!empty($title)): ?>
 							<h1><?= $title ?> <?php endif; ?>
                              <?php if (!empty($degrees)) : ?> ,  
-                            <?php $degrees ?> <?php endif; ?> </h1>
+                            <?= $degrees ?> <?php endif; ?> </h1>
 							
 					
                                 
