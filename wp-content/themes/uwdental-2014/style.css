@@ -413,7 +413,7 @@ h2.uw-site-title {
 }
 
 .metaslider .caption a:after {
-	content: " READ MORE//";
+	content: " READ MORE" + " \00BB";
 	text-transform:uppercase;
 	font-weight:bold;
 	color: #b7a57a;
