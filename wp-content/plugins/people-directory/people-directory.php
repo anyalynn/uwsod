@@ -410,32 +410,35 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
 						}
                         if($thisPerson == true) {
 							 
-                       		$short_content .= "<div class='profile-list searchable element'><div class='pic'>" ;
+                       		$short_content .= "<div class='profile-list searchable element'>" ;
 						  
 					    	if(!empty($main_pic)) { 
-								$short_content .= "<img width='75' height='100'  src='".$main_pic."' alt='".$name."' /></div><div class='info'>";
+								$short_content .= "<div class='pic'><img width='75' height='100'  src='".$main_pic."' alt='".$name."' /></div>";
 							}
                        		if (($name_link) & !empty($content)) {
-                                    $short_content .= "<a href=" .get_permalink($personID).">";
-                            } 
-                            $short_content .=  "<p class='name search-this'> ".$name."</p>";
-                            if(($name_link) & !empty($content)) {
-                                    
-                               $short_content .= "</a>";
+                                    $short_content .= "<div class='info'><p class='name search-this'><a href=" .get_permalink($personID).">";
+                             
+                            		$short_content .= $name;
+                            	                                    
+                               		$short_content .= "</a></p>";
                                    
-                            }
-                            $short_content .= "<p class='title search-this'>".$position."</p>
-                                								                                                        
-                                <p>".$phone."</p><p> <a href='mailto:".$email."'>".$email."</a></p>
-                            </div>
-                        </div>";
+                                    $short_content .= "<p class='title search-this'>".$position."</p>";
+									if(!empty($phone)) {                                	                                           
+		                                $short_content .= "<p>".$phone."</p>";
+									}
+									if(!empty($email)) {
+										$short_content .= "<p><a href='mailto:".$email."'>".$email."</a></p>";
+									}
+                           			$short_content .= "</div>";
+							}
+                       $short_content.= "</div>";
                     }  endforeach;
 				$short_content.= "</div>";
                 } 
 				endif; 
             endforeach;
-			 wp_reset_postdata(); 
-			 return $short_content;
+			wp_reset_postdata(); 
+			return $short_content;
   }
  
 endif;
