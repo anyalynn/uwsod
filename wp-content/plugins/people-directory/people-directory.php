@@ -378,9 +378,9 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
 	   
                foreach($teams as $team => $people):
                   if (count($people) != 0): 	//just in case there are zero people in a manually specified team (or Team No-Team) 
-                  { ?>
-     <div id='isotope' class='searchable-container clearfix'>
-                    <?php foreach ($people as $person):
+                  { 
+     				$short_content .= "<div id='isotope' class='searchable-container clearfix'>";
+                    foreach ($people as $person):
 					   $thisPerson = false;
                        $personID = $person->ID;
                        $name = $person->post_title;
@@ -409,32 +409,35 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
                            	 }
 						}
                         if($thisPerson == true) {
-							 ?>
-                <div class='profile-list searchable element'>     
-                          <div class='pic'><img width='75' height='100' <?php if (empty($main_pic)) { ?> class='no-pic'<?php } ?> src='<?= $main_pic ?>' alt='<?= $name ?>' /></div>
-                            <div class='info'>
-                                <?php if (($name_link) & !empty($content)) {
-                                    ?><a href="<?= get_permalink($personID) ?>"><?php
-                                } ?>
-                                <p class='name search-this'><?= $name ?></p>
-                                <?php if (($name_link) & !empty($content)) {
-                                    ?>
-                                    </a>
-                                    <?php
-                                }
-                                ?>
-                                <p class='title search-this'><?= $position  ?></p>
+							 
+                       		$short_content .= "<div class='profile-list searchable element'><div class='pic'>" ;
+						  
+					    	if(!empty($main_pic)) { 
+								$short_content .= "<img width='75' height='100'  src='".$main_pic."' alt='".$name."' /></div><div class='info'>";
+							}
+                       		if (($name_link) & !empty($content)) {
+                                    $short_content .= "<a href=" .get_permalink($personID).">";
+                            } 
+                            $short_content .=  "<p class='name search-this'> ".$name."</p>";
+                            if(($name_link) & !empty($content)) {
+                                    
+                               $short_content .= "</a>";
+                                   
+                            }
+                            $short_content .= "<p class='title search-this'>".$position."</p>
                                 								                                                        
-                                <p> <?= $phone ?></p>
-                                <p> <a href="mailto:<?= $email ?> "><?= $email ?></a></p>
+                                <p>".$phone."</p><p> <a href='mailto:".$email."'>".$email."</a></p>
                             </div>
-                        </div>
-                    <?php }  endforeach;?> 
-				 </div>
-                <?php } 
-							endif; 
-            endforeach; 
+                        </div>";
+                    }  endforeach;
+				$short_content.= "</div>";
+                } 
+				endif; 
+            endforeach;
+			 wp_reset_postdata(); 
+			 return $short_content;
   }
+ 
 endif;
 add_shortcode( 'deptfacultydir', 'deptfacultydir_shortcode' );
 
