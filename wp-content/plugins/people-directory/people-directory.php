@@ -415,7 +415,7 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
 					    	if(!empty($main_pic)) { 
 								$short_content .= "<div class='pic'><img width='75' height='100'  src='".$main_pic."' alt='".$name."' /></div>";
 							}
-                       		if (($name_link) & !empty($content)) {
+                       		
                                     $short_content .= "<div class='info'><p class='name search-this'><a href=" .get_permalink($personID).">";
                              
                             		$short_content .= $name;
@@ -430,7 +430,7 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
 										$short_content .= "<p><a href='mailto:".$email."'>".$email."</a></p>";
 									}
                            			$short_content .= "</div>";
-							}
+							
                        $short_content.= "</div>";
                     }  endforeach;
 				$short_content.= "</div>";
