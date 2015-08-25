@@ -175,9 +175,9 @@ a.more:after {
     margin-top:10px;
 }
 
-#soliloquy-container-14466 .soliloquy-prev{display:block;width:32px;height:32px;position:absolute;margin-top:-16px;left:10px;z-index:1320;background:#b7a57a url('https://uwsod.staging.wpengine.com/wp-content/plugins/soliloquy/assets/css/images/left.png') no-repeat scroll 50% 50%}
+#soliloquy-container-14466 .soliloquy-prev{display:block;width:32px;height:32px;position:absolute;margin-top:-16px;left:10px;z-index:1320;background:#b7a57a url('assets/css/images/left.png') no-repeat scroll 50% 50%}
 
-#soliloquy-container-14466 .soliloquy-next{display:block;width:32px;height:32px;position:absolute;margin-top:-16px;right:10px;z-index:1320;background:#b7a57a url('https://uwsod.staging.wpengine.com/wp-content/plugins/soliloquy/assets/css/images/right.png') no-repeat scroll 50% 50%}
+#soliloquy-container-14466 .soliloquy-next{display:block;width:32px;height:32px;position:absolute;margin-top:-16px;right:10px;z-index:1320;background:#b7a57a url('assets/css/images/right.png') no-repeat scroll 50% 50%}
 
 #soliloquy-container-14466 .soliloquy-fc-content, #soliloquy-container-14466 .soliloquy-fc-content p {
 /*text-shadow: 0 1px 0 rgba(0,0,0,0);*/
