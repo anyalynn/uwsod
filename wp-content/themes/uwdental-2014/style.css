@@ -164,6 +164,46 @@ a.more:after {
 	transform: rotate(90deg);
 }
 
+/****Added Soliloquy styles 8/25/2015 ***/
+#soliloquy-container-14466  .soliloquy-caption h2 {
+  color: #fff;
+  font-weight: 900;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 7px;
+  text-align:left;
+    margin-top:10px;
+}
+
+#soliloquy-container-14466 .soliloquy-prev{display:block;width:32px;height:32px;position:absolute;margin-top:-16px;left:10px;z-index:1320;background:#b7a57a url('https://uwsod.staging.wpengine.com/wp-content/plugins/soliloquy/assets/css/images/left.png') no-repeat scroll 50% 50%}
+
+#soliloquy-container-14466 .soliloquy-next{display:block;width:32px;height:32px;position:absolute;margin-top:-16px;right:10px;z-index:1320;background:#b7a57a url('https://uwsod.staging.wpengine.com/wp-content/plugins/soliloquy/assets/css/images/right.png') no-repeat scroll 50% 50%}
+
+#soliloquy-container-14466 .soliloquy-fc-content, #soliloquy-container-14466 .soliloquy-fc-content p {
+/*text-shadow: 0 1px 0 rgba(0,0,0,0);*/
+}
+
+#soliloquy-container-14466 .soliloquy-caption {
+   
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: auto;
+	text-align:left;
+	
+}
+#soliloquy-container-14466  .soliloquy-caption p {
+color: #fff;
+text-align:left;
+
+line-height:1.2;
+
+
+}
+
+#soliloquy-container-14466  .soliloquy-caption p:after {
+content:" \00BB";
+}
 @media only screen and (min-width:768px)
 {
 
@@ -182,6 +222,26 @@ a.more:after {
  
 		min-width:240px;
 	}
+	
+	#soliloquy-container-14466 { top:-10px;}
+#soliloquy-container-14466  .soliloquy-caption h2 {
+  
+  font-size: 30px;
+  margin-left:20px;
+}
+
+
+.udub-slant span{-webkit-transform:skew(-25deg,0);-ms-transform:skewX(-25deg) skewY(0);transform:skew(-25deg,0);display:block;height:8px;width:290px;background-color:#b7a57a;}
+.udub-slant{overflow:hidden;display:block;margin:5px 0 5px 20px}
+
+#soliloquy-container-14466  .soliloquy-caption p {
+
+    font-size: 20px;
+	margin-bottom:10px;
+	margin-left:20px;
+	margin-top:10px;
+
+}
 }
 
 @media screen and  (max-width:767px) {
@@ -198,6 +258,26 @@ a.more:after {
 	margin:right:0;
 	padding:25px;
 	}
+	soliloquy-container-14466  .soliloquy-caption h2 {
+  
+  font-size: 22px;
+  border-bottom: #b7a57a 1px solid;
+  margin-left:5px;
+  margin-bottom:0;
+}
+.udub-slant{display:none;}
+.udub-slant span{display:none;}
+
+#soliloquy-container-15566  .soliloquy-caption p {
+
+    font-size: 14px;
+	margin-bottom:20px;
+	margin-left:5px;
+		margin-top:0;
+}
+#soliloquy-container-14466 .soliloquy-prev, #soliloquy-container-14466 .soliloquy-next {
+	top:20px;
+}
 
 }
 
