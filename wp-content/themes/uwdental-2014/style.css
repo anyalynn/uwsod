@@ -207,7 +207,7 @@ content:" \00BB";
 @media only screen and (min-width:768px)
 {
 
-	.uw-links{margin-top:-30px;}
+	.uw-links{margin-top:-40px;}
 	.on-campus {margin-top:-58px;}
 	.info-box {
 		width: 300px;
@@ -278,7 +278,9 @@ content:" \00BB";
 #soliloquy-container-14466 .soliloquy-prev, #soliloquy-container-14466 .soliloquy-next {
 	top:20px;
 }
-
+.soliloquy-container { max-height: none !important; }
+.soliloquy-viewport { height: auto !important; }
+.soliloquy-container .soliloquy-caption { position: relative !important; }
 }
 
 
