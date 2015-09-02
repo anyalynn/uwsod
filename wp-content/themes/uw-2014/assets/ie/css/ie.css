@@ -49,3 +49,13 @@ body.search-open #uwsearcharea .no-height{
 #uw-container.open div#uw-container-inner{
     left: -270px;
 }
+
+#soliloquy-container-14466  .soliloquy-caption h2 {
+  color: #fff;
+  font-weight: 900;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 7px;
+  text-align:left;
+    margin-top:10px;
+}
