@@ -41,7 +41,7 @@
 								<?= $thecontentone ?></p>
 								<?php if(!empty($readmoreone))
 										{ ?>
-										<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmoreone ?>">Watch the video</a></p>
+										<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmoreone ?>">Read more</a></p>
                                         <? } ?>
 								</div>
 								
