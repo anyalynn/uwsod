@@ -844,7 +844,7 @@ img.faculty
 		clear:both;
 		background:#000000;
 		padding: 10px 40px 5px 40px; 
-		width:580px;
+		width:570px;
 	}
 	#wt-bottom h1 {
 		color: #ffffff;
@@ -906,7 +906,7 @@ img.faculty
 	#top-story-text-top, #top-story-text-very-top {
     	padding: 10px 0 10px 10px; }
 	#top-story-text-bottom {
-    	padding: 10px 0 10px 10px; }
+    	padding: 10px 10px 10px 20px; }
 }
 @media (max-width: 767px) {
 	#wisdom-teeth {
