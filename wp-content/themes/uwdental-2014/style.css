@@ -631,7 +631,7 @@ table.alum-giving td {
 #wisdom-teeth {
 	background: #39275b;
 	padding: 15px 20px; 
-	width:280px; 
+	height:399px; 
 	float:left
 }
 #wisdom-teeth h1 {
@@ -663,7 +663,7 @@ table.alum-giving td {
 	clear:both;
 	background:#000000;
 	padding: 10px 40px 5px 40px; 
-	width:530px;
+	width:550px;
 }
 
 #wt-bottom h1 {
@@ -697,7 +697,7 @@ table.alum-giving td {
     background: #d7a900;
     overflow: hidden;
     padding: 10px 30px 10px 30px; 
-	width:550px;}
+	width:570px;}
 
 #top-story-text-top h1 {
     color: #FFFFFF;
