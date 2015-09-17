@@ -11,10 +11,11 @@
 								 $posttitletwo = $hometilestwo->post_title;
 								 $hometilestwo_pic = get_post_meta($hometilestwo->ID, 'hometile_pic', true);
 								 $readmoretwo = get_post_meta($hometilestwo->ID, 'readmore', true);
+								 $alttwo = get_post_meta($hometilestwo->ID, 'hometile_pic_alt', true);
  
 								 ?>
                                    
-								<div><img class="attachment-homepage_tile wp-post-image" src='<?= $hometilestwo_pic ?>' alt='<?= $readmoretwo ?>' width="379" height="160" /></div>
+								<div><img class="attachment-homepage_tile wp-post-image" src='<?= $hometilestwo_pic ?>' alt='<?= $alttwo ?>' width="379" height="160" /></div>
 										<h2><?= $posttitletwo ?></h2>
 										<p class="null">
 										<?= $thecontenttwo ?></p>
@@ -33,9 +34,10 @@
 								 $posttitleone = $hometilesone->post_title;
 								 $hometilesone_pic = get_post_meta($hometilesone->ID, 'hometile_pic', true);
 								 $readmoreone = get_post_meta($hometilesone->ID, 'readmore', true);
+								  $altone = get_post_meta($hometilesone->ID, 'hometile_pic_alt', true);
  
 								 ?>
-								<div><img class="attachment-homepage_tile wp-post-image" src='<?= $hometilesone_pic ?>' alt='<?= $readmoreone ?>' width="379" height="160" /></div>
+								<div><img class="attachment-homepage_tile wp-post-image" src='<?= $hometilesone_pic ?>' alt='<?= $altone ?>' width="379" height="160" /></div>
 								<h2><?= $posttitleone ?></h2>
 								<p class="null">
 								<?= $thecontentone ?></p>
@@ -52,10 +54,11 @@
 								 $posttitlethree = $hometilesthree->post_title;
 								 $hometilesthree_pic = get_post_meta($hometilesthree->ID, 'hometile_pic', true);
 								 $readmorethree = get_post_meta($hometilesthree->ID, 'readmore', true);
+								  $altthree = get_post_meta($hometilesthree->ID, 'hometile_pic_alt', true);
  
 								 ?>
                                    
-								<div><img class="attachment-homepage_tile wp-post-image" src='<?= $hometilesthree_pic ?>' alt='<?= $readmorethree ?>' width="379" height="160" /></div>
+								<div><img class="attachment-homepage_tile wp-post-image" src='<?= $hometilesthree_pic ?>' alt='<?= $althree ?>' width="379" height="160" /></div>
 										<h2><?= $posttitlethree ?></h2>
 										<p class="null">
 										<?= $thecontentthree ?></p>
