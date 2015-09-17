@@ -51,6 +51,7 @@ if ( ! post_type_exists( 'hometiles' ) ):
 
 	function hometiles_admin_init(){
 		add_meta_box('hometile_pic', 'Hometile Picture', 'hometile_pic_callback', 'hometiles', 'normal', 'low');
+		add_meta_box('hometile_pic_alt', 'Hometile Picture Alt Tag', 'hometile_pic_alt_callback', 'hometiles', 'normal', 'low');
 		add_meta_box('readmore', 'Read more', 'readmore_callback', 'hometiles', 'normal', 'low');
 		
 	}
@@ -62,6 +63,14 @@ if ( ! post_type_exists( 'hometiles' ) ):
 		$readmore = $custom['readmore'][0];
 		?><textarea rows="2" cols="50" name="readmore"><?= $readmore ?></textarea><?php
 	}
+	function hometile_pic_alt_callback() {
+		global $post;
+		$custom = get_post_custom($post->ID);
+		$hometile_pic_alt = $custom['hometile_pic_alt'][0];
+		
+		?><input style='width:99%' name="hometile_pic_alt" value="<?= $hometile_pic_alt ?>" /><?php
+	}
+	
 	function hometile_pic_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
@@ -83,6 +92,7 @@ if ( ! post_type_exists( 'hometiles' ) ):
 		if (get_post_type($post) == 'hometiles') {
 			
 			update_post_meta($post->ID, 'readmore', $_POST['readmore']);
+			update_post_meta($post->ID, 'hometile_pic_alt', $_POST['hometile_pic_alt']);
 			update_post_meta($post->ID, 'hometile_pic', $_POST['hometile_pic']);
 		}
 	}
