@@ -58,7 +58,7 @@
  
 								 ?>
                                    
-								<div><img class="attachment-homepage_tile wp-post-image" src='<?= $hometilesthree_pic ?>' alt='<?= $althree ?>' width="379" height="160" /></div>
+								<div><img class="attachment-homepage_tile wp-post-image" src='<?= $hometilesthree_pic ?>' alt='<?= $altthree ?>' width="379" height="160" /></div>
 										<h2><?= $posttitlethree ?></h2>
 										<p class="null">
 										<?= $thecontentthree ?></p>
