@@ -11,6 +11,7 @@ Version: 0.1
 .wpcf7 span:before { display:none } 
 .gfield .gfield_radio span:before { display:none } 
 .gfield .gfield_checkbox span:before { display:none } 
+.gfield .gfield_checkbox {display:inline;}
 
 
 
@@ -531,7 +532,7 @@ input[type="radio"] {margin-bottom:7px;margin-right:7px;}
 
 .red { color:#C00;}
 
-.gfield_checkbox label { display:inline;margin-top -10px;}
+.gfield .gfield_checkbox label { display:inline;margin-top: -10px;}
 
 label {
 	display: inline;
