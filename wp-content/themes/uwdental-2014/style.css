@@ -527,13 +527,13 @@ h2.uw-site-title {
 }
 
 /** Alumni renewal **/
-/*input[type="radio"] {margin-bottom:7px;margin-right:7px;}*/
+input[type="radio"] {margin-bottom:7px;margin-right:7px;}
 
 .red { color:#C00;}
-label {
+/*label {
 	display: inline;
 	margin-bottom: 5px;
-}
+}*/
 legend {
 	font-size: 14px;
 	font-weight: normal;
