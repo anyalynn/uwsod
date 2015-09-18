@@ -530,10 +530,10 @@ h2.uw-site-title {
 input[type="radio"] {margin-bottom:7px;margin-right:7px;}
 
 .red { color:#C00;}
-/*label {
+label {
 	display: inline;
 	margin-bottom: 5px;
-}*/
+}
 legend {
 	font-size: 14px;
 	font-weight: normal;
