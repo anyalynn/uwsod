@@ -9,8 +9,8 @@ Version: 0.1
 
 @import url("../uw-2014/style.css");
 .wpcf7 span:before { display:none } 
-.gfield_radio span:before { display:none } 
-.gfield_checkbox span:before { display:none } 
+.gfield .gfield_radio span:before { display:none } 
+.gfield .gfield_checkbox span:before { display:none } 
 
 
 
