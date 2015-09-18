@@ -11,12 +11,7 @@ Version: 0.1
 .wpcf7 span:before { display:none } 
 .gfield .gfield_radio span:before { display:none } 
 .gfield .gfield_checkbox span:before { display:none } 
-.gfield .gfield_checkbox input {display:inline;}
-.gfield .gfield_checkbox .icons {display:inline;}
-.gfield .gfield_checkbox label {display:inline;padding-bottom:20px;}
-.gfield .gfield_checkbox span {display:inline;}
-
-
+.gfield .gfield_checkbox li input[type=checkbox]  {display:inline;}
 
 body {
 	
