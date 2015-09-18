@@ -530,6 +530,9 @@ h2.uw-site-title {
 input[type="radio"] {margin-bottom:7px;margin-right:7px;}
 
 .red { color:#C00;}
+
+.gfield_checkbox label { display:inline;margin-top -10px;}
+
 label {
 	display: inline;
 	margin-bottom: 5px;
