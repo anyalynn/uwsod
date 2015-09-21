@@ -9,12 +9,16 @@ Version: 0.1
 
 @import url("../uw-2014/style.css");
 .wpcf7 span:before { display:none } 
+.gfield .gfield_checkbox span { display:inline;}
+
 .gfield .gfield_radio span:before { display:none;} 
 .gfield .gfield_checkbox span:before { display:none; } 
-.gfield .gfield_checkbox li span { display:inline; } 
-.gfield .gfield_checkbox li .icons { display:inline; }
-.gfield .gfield_checkbox li input[type=checkbox]  {display:inline;}
 
+.gfield_checkbox li input[type=checkbox] { display:inline;position:relative; }
+.gfield .gfield_checkbox label {position:relative;line-height:auto;top:-19px;}
+.gfield .gf_left_half {text-align:right;}
+.gform_wrapper .gform_body ul.gform_fields > li.gf_left_half, .gform_wrapper .gform_body ul.gform_fields > li.gf_right_half { height:20px;}
+.gform_wrapper .gform_body ul.gform_fields > li.gf_left_half { text-align:right;}
 body {
 	
 	font-size: 16px;
