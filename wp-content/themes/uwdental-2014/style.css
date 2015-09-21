@@ -35,9 +35,9 @@ p {
   max-width: 270px;
  
 }
-.uw-breadcrumbs li:after { top:18px;}
+.uw-breadcrumbs li:after { top:14px;}
 .uw-breadcrumbs li:first-child  { top:inherit;}
-.uw-breadcrumbs li { top:5px;}
+.uw-breadcrumbs li { top:3px;}
 
 a.uw-btn {
   
