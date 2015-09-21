@@ -39,6 +39,10 @@ p {
 .uw-breadcrumbs li:first-child  { top:inherit;}
 .uw-breadcrumbs li { top:3px;}
 
+@media only screen and (max-width: 767px) {
+	.uw-breadcrumbs li:after { top:8px;}
+}
+
 a.uw-btn {
   
   z-index: 0;
