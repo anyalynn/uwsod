@@ -1,19 +1,15 @@
 .wpcf7 span:before { display:none } 
 
-body .gform_wrapper form .gform_body ul,
-body .gform_wrapper form .gform_body ul li { 
-	list-style-type: none !important; 
-	list-style-image: none !important;
-	list-style: none !important; 
-	background-image: none !important;
-	background: none !important;
-	padding: 0 !important;
-	margin: 0 !important;
-	border: none !important
-}
-body .gform_wrapper form .gform_body ul > li:before {
-	content: "";
-}
+.gfield .gfield_checkbox span { display:inline;}
+
+.gfield .gfield_radio span:before { display:none;} 
+.gfield .gfield_checkbox span:before { display:none; } 
+
+.gfield_checkbox li input[type=checkbox] { display:inline;position:relative; }
+.gfield .gfield_checkbox label {position:relative;line-height:auto;top:-19px;}
+.gfield .gf_left_half {text-align:right;}
+.gform_wrapper .gform_body ul.gform_fields > li.gf_left_half.tooth-chart, .gform_wrapper .gform_body ul.gform_fields > li.gf_right_half.tooth-chart { height:20px;}
+.gform_wrapper .gform_body ul.gform_fields > li.gf_left_half.tooth-chart { text-align:right;}
 
 body {
 	
