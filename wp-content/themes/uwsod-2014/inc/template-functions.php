@@ -195,8 +195,8 @@ if ( ! function_exists('get_uw_breadcrumbs') ) :
 
     global $post;
     $ancestors = array_reverse( get_post_ancestors( $post->ID ) );
-    $html = '<li><a href="http://uw.edu" title="University of Washington">Home</a></li>';
-    $html .= '<li' . (is_front_page() ? ' class="current"' : '') . '><a href="' . home_url('/') . '" title="' . get_bloginfo('title') . '">' . get_bloginfo('title') . '</a><li>';
+    $html = '<li><a href="//dental.washington.edu" title="UW School of Dentistry">Home</a></li>';
+   
 
     if ( is_404() )
     {
@@ -233,16 +233,16 @@ if ( ! function_exists('get_uw_breadcrumbs') ) :
       {
         $category = get_category( get_query_var( 'cat' ) );
         //$html .=  '<li class="current"><a href="'  . get_category_link( $category->term_id ) .'" title="'. get_cat_name( $category->term_id ).'">'. get_cat_name($category->term_id ) . '</a>';
-        $html .=  '<li class="current"><span>'. get_cat_name($category->term_id ) . '</span>';
+//        $html .=  '<li class="current"><span>'. get_cat_name($category->term_id ) . '</span>';
       }
 
       if ( is_single() )
       {
-        if ( has_category() )
-        {
-          $category = array_shift( get_the_category( $post->ID  ) ) ;
-          $html .=  '<li><a href="'  . get_category_link( $category->term_id ) .'" title="'. get_cat_name( $category->term_id ).'">'. get_cat_name($category->term_id ) . '</a>';
-        }
+    //    if ( has_category() )
+    //    {
+    //      $category = array_shift( get_the_category( $post->ID  ) ) ;
+     //    $html .=  '<li><a href="'  . get_category_link( $category->term_id ) .'" title="'. get_cat_name( $category->term_id ).'">'. get_cat_name($category->term_id ) . '</a>';
+   //     }
         if ( uw_is_custom_post_type() )
         {
           $posttype = get_post_type_object( get_post_type() );
