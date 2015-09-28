@@ -16,7 +16,7 @@ if ( ! function_exists( 'get_uw_breadcrumbs') ) :
 
 function get_uw_breadcrumbs()
   {
-
+  
     global $post;
 
     $ancestors = array_reverse( get_post_ancestors( $post->ID ) );
