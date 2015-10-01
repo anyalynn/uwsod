@@ -28,7 +28,7 @@
 
 									</div>
 								<div class="tile">
-                                 <?php $hometilesone =  get_post(14608);
+                                 <?php $hometilesone =  get_post(14792);
 								 $meta = get_post_meta($hometilesone->ID);
 								 $thecontentone = $hometilesone->post_content; 
 								 $posttitleone = $hometilesone->post_title;
