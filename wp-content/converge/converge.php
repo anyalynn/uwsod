@@ -22,14 +22,9 @@ $captcha;
    exit;
         }
 $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfbQg4TAAAAAFE-DzhekhONvtYR62gGmvb6rHJu&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
-if($response.success==false)
- {
-    echo '<h2>You are spammer ! Get the @$%K out</h2>';
-  }
-else
- {
-  
-
+if($response.success==true)
+{
+   
 //Declares base URL in the event that you are using the VMpayment form.
 if($ssl_show_form == 'true')
 {
