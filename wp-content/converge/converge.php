@@ -25,10 +25,10 @@ $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?sec
 if($response.success==false)
  {
     echo '<h2>You are spammer ! Get the @$%K out</h2>';
-  }else
+  }
+else
  {
-  echo '<h2>Thanks for posting comment.</h2>';
-}
+  
 
 //Declares base URL in the event that you are using the VMpayment form.
 if($ssl_show_form == 'true')
@@ -60,4 +60,5 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 curl_setopt($ch, CURLOPT_VERBOSE, true);
 $result = curl_exec($ch);
 curl_close($ch);
+}
 ?>
