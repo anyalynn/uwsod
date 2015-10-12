@@ -6,7 +6,7 @@ $url ='https://www.myvirtualmerchant.com/VirtualMerchant/process.do';
 //$url ='https://demo.myvirtualmerchant.com/VirtualMerchantDemo/process.do';
 //Configuration parameters.
 $ssl_merchant_id = '629595';    /*'629595';*/
-$ssl_user_id = 'uwweb';   /*'webpayuw629';*/
+$ssl_user_id = 'UWWEB';   /*'webpayuw629';*/
 $ssl_pin = 'MZ6HFFXDT1LG2O29VU5RIZC21S5Q2YHZ3ZQ0CMZRSVMU56HEROPQBVVNRB7HDECW';  /*  '275013';*/
 $ssl_show_form = 'true';
 $ssl_transaction_type = 'CCSALE';
