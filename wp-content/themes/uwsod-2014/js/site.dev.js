@@ -11434,12 +11434,12 @@ UW.QuickLinks.Collection = Backbone.Collection.extend({
        "url": "https:\/\/dental.washington.edu\/calendar",
        "classes": ["icon-calendar"]
    }, {
-       "title": "Directories",
-       "url": "http:\/\/dental.washington.edu\/faculty-dir\/",
+       "title": "UW Directories",
+       "url": "http:\/\/www.washington.edu\/home\/peopledir\/",
        "classes": ["icon-directories"]
    }, {
-       "title": "Maps",
-       "url": "http:\/\/dental.washington.edu\/about-us\/location-directions",
+       "title": "UW Campus Maps",
+       "url": "http:\/\/www.washington.edu\/maps\/",
        "classes": ["icon-maps"]
    }, {
        "title": "News & Events",
