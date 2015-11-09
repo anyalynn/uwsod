@@ -14,7 +14,7 @@ module.exports = function(grunt) {
           "js/libraries/imagesloaded.pkgd.js",
           "js/libraries/jetpack.carousel.js",
           "js/libraries/prettify.js",
-		  "js/uw.dental.js",
+		 
         ],
         theme : [
           "js/uw.core.js",
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         components : [
           // todo: put just external components here for the uw.js we will give out
         ],
-        src: [ 'js/uw.intro.js', '<%= concat.dist.libraries %>', '<%= concat.dist.theme %>', 'js/uw.outro.js' ],
+        src: [ 'js/uw.intro.js', '<%= concat.dist.libraries %>', '<%= concat.dist.theme %>', 'js/uw.outro.js', 'js/uw.dental.js' ],
         dest: 'js/site.dev.js'
       }
     },
