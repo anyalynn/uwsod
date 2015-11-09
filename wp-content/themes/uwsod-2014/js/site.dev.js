@@ -13067,7 +13067,7 @@ UW.Social = Backbone.View.extend({
 })
 ;}).call(this)
 ;function Mem1(event){
-$("#ItemCost1").val("95.00");
+$("#ItemCost1").val("120.00");
 $("#userMemType").val("Regular Member");
 }
 function Mem2(event){
@@ -13075,7 +13075,7 @@ $("#ItemCost1").val("50.00");
 $("#userMemType").val("New Member");
 }
 function Mem3(event){
-$("#ItemCost1").val("95.00");
+$("#ItemCost1").val("120.00");
 $("#userMemType").val("Associate Member");
 }
 
