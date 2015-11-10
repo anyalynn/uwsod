@@ -8446,7 +8446,8 @@ label.screen-reader {
 .hero-blank:after {
   display: none;
 }
-.wpcf7 span:before {
+.wpcf7 span:before,
+.alum-renew span:before {
   display: none;
 }
 body {
