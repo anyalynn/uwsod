@@ -9541,9 +9541,8 @@ img.faculty {
   }
 }
 /****  Alumni Events   *****/
-.table .alumni-events td.col-md-2 {
-  width: 47%;
-  padding-left: 20px;
+.table td p.small {
+  font-size: 80%;
 }
 /*==========  Non-Mobile First Method  ==========*/
 /* Large Devices, Wide Screens */
