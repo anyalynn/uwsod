@@ -8,7 +8,7 @@
       <nav class="uw-thin-strip-nav" role='navigation' aria-label='audience based'>
           <ul class="uw-thin-links">
              <li><a href="//dental.washington.edu/about-us/contact-us/" title="Contact">Contact Us</a></li>
-             <li><a href="//dental.washington.edu/alumni-friends/support-the-school/" title="Support the School">Make a Gift</a></li>
+             <li><a href="//dental.washington.edu/alumni-friends/give/make-a-gift/" title="Make a Gift">Make a Gift</a></li>
           </ul>
       </nav>
       <nav id='search-quicklinks' role='navigation' aria-label='search and quick links'>
