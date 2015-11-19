@@ -4,7 +4,7 @@ if (is_single() || is_home()){
 }
 ?>
 <h1>
-  <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title() ?></a>
+<?php the_title() ?>
 </h1>
 <?php
 if ((is_single() || is_home()) && get_option('show_byline_on_posts')) :
