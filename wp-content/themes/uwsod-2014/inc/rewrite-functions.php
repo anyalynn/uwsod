@@ -74,6 +74,7 @@ function my_insert_rewrite_rules( $wp_rewrite )
 'oral-and-maxillofacial-surgery/oms-patient-care/business-office' => 'index.php?pagename=/oralsurgery/patient/business',
 'oral-and-maxillofacial-surgery/oms-residency-program' => 'index.php?pagename=/oralsurgery/residency',
 'oral-and-maxillofacial-surgery/oms-externship-program' => 'index.php?pagename=/oralsurgery/externship',
+'patient/uw-dentists-faculty-practice/oral-maxillofacial-radiology' => 'index.php?pagename=/dental-radiology-service',
 
 	
 		) + $wp_rewrite->rules;
