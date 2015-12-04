@@ -8447,8 +8447,12 @@ label.screen-reader {
   display: none;
 }
 .wpcf7 span:before,
-.alum-renew span:before {
+.alum-renew span:before,
+#mc-embedded-subscribe-form span:before {
   display: none;
+}
+.mc-field-group {
+  margin-top: 20px;
 }
 body {
   font-size: 16px;
