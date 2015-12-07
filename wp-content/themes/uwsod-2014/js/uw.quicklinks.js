@@ -144,7 +144,7 @@ UW.QuickLinks.Collection = Backbone.Collection.extend({
     },
 
     defaults : [{
-       "title": "MyDental",
+       "title": "SOD Intranet",
        "url": "https:\/\/uwnetid.sharepoint.com\/sites\/sod",
        "classes": ["icon-myuw"]
    }, {
