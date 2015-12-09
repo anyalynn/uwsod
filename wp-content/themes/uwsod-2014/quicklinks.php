@@ -15,9 +15,20 @@
 	h2.518V27.388z"/>
 </svg>
 				<span>Appointments</span></a> </li>
-                
-				<li><a href="http://dental.washington.edu/about-us/location-directions/" title="Maps"><svg enable-background="new 0 0 33 46" height="50px" id="Layer_2" version="1.1" viewBox="0 0 33 46" width="33px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><path d="M16.5,10.693c-3.165,0-5.741,2.558-5.741,5.705c0,3.143,2.576,5.701,5.741,5.701 c3.166,0,5.74-2.558,5.74-5.701C22.24,13.251,19.663,10.693,16.5,10.693z M16.5,19.247c-1.582,0-2.871-1.277-2.871-2.849c0-1.574,1.289-2.853,2.871-2.853c1.583,0,2.87,1.279,2.87,2.853C19.368,17.97,18.083,19.247,16.5,19.247z M16.5,0C7.401,0,0,7.366,0,16.421c0,11.127,14.768,28.005,15.396,28.717c0.271,0.309,0.643,0.477,1.079,0.486c0.412,0,0.803-0.174,1.075-0.482c0.633-0.713,15.5-17.595,15.45-28.729C32.958,7.364,25.556,0,16.5,0z M16.478,41.988 C13.089,37.897,2.868,24.86,2.868,16.421c0-7.482,6.115-13.57,13.631-13.57c7.482,0,13.595,6.091,13.63,13.578 C30.168,24.857,19.884,37.9,16.478,41.988z" fill="#A3A2A3"></path></svg><span>Directions</span></a> </li>
-                 <li><a href="http://dental.washington.edu/people-directory/" title="People Directory">
+              
+				<li><a href="http://dental.washington.edu/about-us/location-directions/" title="Directions"><svg enable-background="new 0 0 33 46" height="50px" id="Layer_2" version="1.1" viewBox="0 0 33 46" width="33px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><path d="M16.5,10.693c-3.165,0-5.741,2.558-5.741,5.705c0,3.143,2.576,5.701,5.741,5.701 c3.166,0,5.74-2.558,5.74-5.701C22.24,13.251,19.663,10.693,16.5,10.693z M16.5,19.247c-1.582,0-2.871-1.277-2.871-2.849c0-1.574,1.289-2.853,2.871-2.853c1.583,0,2.87,1.279,2.87,2.853C19.368,17.97,18.083,19.247,16.5,19.247z M16.5,0C7.401,0,0,7.366,0,16.421c0,11.127,14.768,28.005,15.396,28.717c0.271,0.309,0.643,0.477,1.079,0.486c0.412,0,0.803-0.174,1.075-0.482c0.633-0.713,15.5-17.595,15.45-28.729C32.958,7.364,25.556,0,16.5,0z M16.478,41.988 C13.089,37.897,2.868,24.86,2.868,16.421c0-7.482,6.115-13.57,13.631-13.57c7.482,0,13.595,6.091,13.63,13.578 C30.168,24.857,19.884,37.9,16.478,41.988z" fill="#A3A2A3"></path></svg><span>Directions</span></a> </li>
+                <li><a href="http://dental.washington.edu/patient/pay-your-dental-bill/" title="Pay your dental bill">
+				
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/199/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	  width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+<path fill="#A3A2A3" d="M5.358,5C2.979,5,1.04,6.922,1.04,9.286H1V39.77c0,2.366,1.936,4.289,4.319,4.289h37.6v-4.615h5.456V5H5.358
+	z M5.319,41.267c-0.844,0-1.532-0.67-1.532-1.497V13.063c0.066,0.019,0.15,0.014,0.217,0.033c0.398,0.117,0.816,0.19,1.263,0.198
+	c0.019,0,0.032,0.008,0.051,0.008h34.816v8.458h-7.969c-2.399,0-4.354,1.876-4.354,4.18v2.785c0,2.307,1.955,4.182,4.354,4.182
+	h7.969v8.36H5.319z M32.166,30.119c-0.868,0-1.57-0.622-1.57-1.395v-2.785c0-0.768,0.705-1.395,1.57-1.395h13.423v5.574H32.166z
+	 M45.589,36.656h-2.67v-3.75h2.67V36.656z M42.919,21.76V10.515H5.358c-0.761,0-1.532-0.382-1.532-1.229
+	c0.003-0.827,0.691-1.499,1.532-1.499h40.23V21.76H42.919z"/></svg>
+				<span>Pay a bill</span></a> </li>
+                 <li><a href="http://dental.washington.edu/people-directory" title="Get a dental school people directory">
 
 <svg version="1.1" id="Layer_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
