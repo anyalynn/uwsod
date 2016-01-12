@@ -9546,6 +9546,11 @@ img.faculty {
     margin-right: 0px;
   }
 }
+table.small th,
+table.small td,
+table.small td p {
+  font-size: 80%;
+}
 /****  Alumni Events   *****/
 .table td p.small {
   font-size: 80%;
