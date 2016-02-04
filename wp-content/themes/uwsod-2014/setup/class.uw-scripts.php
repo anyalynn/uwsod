@@ -18,9 +18,9 @@ class UW_Scripts
 
       'jquery' => array (
         'id'      => 'jquery',
-        'url'     => 'https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+        'url'     => 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js',
         'deps'    => array(),
-        'version' => '1.9.1',
+        'version' => '1.12.0',
         'admin'   => false
       ),
 	  
@@ -31,7 +31,8 @@ class UW_Scripts
         'version' => '1.0',
         'admin'   => false
       ),
-
+	 
+	  
       'site'   => array (
         'id'        => 'site',
         'url'       => get_bloginfo('template_directory') . '/js/site' . $this->dev_script() . '.js',
