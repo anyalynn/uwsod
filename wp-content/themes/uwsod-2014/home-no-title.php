@@ -13,16 +13,11 @@
 
     <div role='main' class="uw-content" >
    
-      <a href="//dental.washington.edu" title="<?php echo esc_attr( get_bloginfo() ) ?>"><h2 class="uw-site-title"><?php bloginfo(); ?></h2></a>
-
+         <?php uw_site_title(); ?>
+         <?php if (is_front_page()) { get_template_part( 'menu', 'mobile' ); }?>
       <div id='main_content' class="uw-body-copy" tabindex="-1">
-      <h1 class="no-title"><?php the_title() ?></h1>
-      <div style="margin-right:40px;">
- <?php if (is_front_page()) { get_template_part( 'menu', 'mobile' ); }?>
-</div>
-    
-
-        <?php
+      
+            <?php
           // Start the Loop.
           while ( have_posts() ) : the_post();
 
