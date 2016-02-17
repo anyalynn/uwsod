@@ -13,6 +13,7 @@ function my_insert_rewrite_rules( $wp_rewrite )
 {
 	 $wp_rewrite->rules = array(
 'conted' => 'index.php?pagename=continuing-dental-education',
+'oral-medicine/faculty-directory/dr-drangsholt/'  => 'index.php?pagename=people/mark-drangsholt/',
 'departments/oral-medicine/special-needs-fact-sheets.html' => 'index.php?pagename=oral-medicine/special-needs/patients-with-special-needs',
 'departments/oral-medicine/dental-urgent-care-clinic-ducc.html' => 'index.php?pagename=oral-medicine/patient-care/dental-urgent-care-clinic-ducc',
 'departments/oral-medicine/patients-with-special-needs.html' => 'index.php?pagename=oral-medicine/special-needs/patients-with-special-needs',
