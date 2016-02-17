@@ -132,7 +132,7 @@ UW.Search = Backbone.View.extend({
 
       case this.searchFeatures.site :
 	  this.$el.find('input' ).attr( 'name', 'q' )
-	  this.$el.find('form').attr('action','https://dental.washington.edu/wp-content/themes/uwdental-2014/search.php/')
+	  this.$el.find('form').attr('action','https://dental.washington.edu/wp-content/themes/uwsod-2014/search.php/')
         return true;
 
       default:
