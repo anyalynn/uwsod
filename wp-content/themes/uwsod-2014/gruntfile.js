@@ -41,6 +41,7 @@ module.exports = function(grunt) {
           "js/uw.images.js",
           "js/uw.player.js",
           "js/uw.social.js",
+		   "js/uw.themecustomizer.js",
 		
         ],
         components : [
