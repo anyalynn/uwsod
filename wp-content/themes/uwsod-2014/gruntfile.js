@@ -16,8 +16,14 @@ module.exports = function(grunt) {
           "js/libraries/prettify.js",
 		 
         ],
+		 plugins: [
+          "js/plugins/button.js",
+          "js/plugins/grid.html",
+          "js/plugins/grid.js",
+          "js/plugins/tilebox.js",
+       ],
         theme : [
-          "js/uw.core.js",
+		  "js/uw.core.js",
           "js/uw.init.js",
           "js/uw.alert.js",
           "js/uw.searchtoggle.js",
@@ -30,6 +36,7 @@ module.exports = function(grunt) {
           "js/uw.dropdowns.js",
           "js/uw.mobile-menu.js",
           "js/uw.accordion.js",
+		  "js/uw.accordionmodule.js",
           "js/uw.select.js",
           "js/uw.images.js",
           "js/uw.player.js",
