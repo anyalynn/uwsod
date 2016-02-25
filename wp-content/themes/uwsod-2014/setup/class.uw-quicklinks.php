@@ -18,8 +18,8 @@ class UW_QuickLinks
     if ( ! $this->MULTISITE || $this->MULTISITE && get_current_blog_id() === self::ALLOWED_BLOG )
       add_action( 'after_setup_theme', array( $this, 'register_quick_links_menu') );
 
-    add_action( 'wp_ajax_quicklinks', array( $this, 'uw_quicklinks_feed') );
-    add_action( 'wp_ajax_nopriv_quicklinks', array( $this, 'uw_quicklinks_feed') );
+ //   add_action( 'wp_ajax_quicklinks', array( $this, 'uw_quicklinks_feed') );
+ //   add_action( 'wp_ajax_nopriv_quicklinks', array( $this, 'uw_quicklinks_feed') );
   }
 
   function register_quick_links_menu()
