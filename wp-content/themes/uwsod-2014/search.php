@@ -16,25 +16,27 @@ input[type="search"] {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+td.gsc-input {
+	font-size:15px;
+}
 input.gsc-input {
 	line-height: 45px;
 	font-size:15px;
-	 border: none;
-     display: block;
+	display: block;
   height: 54px;
   outline: 2px solid #808080;
-  background: url(assets/svg/search.svg) no-repeat center center #808080;
+  background: url(https://dental.washington.edu/wp-content/themes/uwsod-2014/assets/svg/search.svg) no-repeat center center #808080;
   position: relative;
   -webkit-background-size: 22px;
   -moz-background-size: 22px;
   -o-background-size: 22px;
   background-size: 22px;
-  padding: 0px 60px 0px 0px;
+  padding: 0px 60px 10px 0px;
 }
 body {
 	font-size:15px;
 }
-button.gsc-search-button {
+input.gsc-search-button {
 	height:54px;
 	font-size:15px;
 }
