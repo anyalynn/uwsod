@@ -10977,7 +10977,7 @@ UW.getBaseUrl = function() {
 }
 
 UW.sources = {
-  quicklinks : UW.getBaseUrl() + 'wp-admin/admin-ajax.php?action=quicklinks',
+  quicklinks : UW.getBaseUrl() + '/wp-admin/admin-ajax.php?action=quicklinks',
   search     : UW.getBaseUrl() + 'wp-admin/admin-ajax.php'
 }
 
