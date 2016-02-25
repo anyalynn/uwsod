@@ -16,7 +16,7 @@ input[type="search"] {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-td.gsc-input {
+.gsc-search-box td.gsc-input {
 	font-size:15px;
 }
 input.gsc-input {
@@ -37,8 +37,20 @@ body {
 	font-size:15px;
 }
 input.gsc-search-button {
-	height:54px;
-	font-size:15px;
+	padding-right: 78px;
+  border: 2px solid white;
+  background-color: #777;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  width: 45px;
+  padding: 0;
+  height: 45px;
+  margin: 0 15px;
+  overflow: hidden;
 }
 </style>
 </head>
