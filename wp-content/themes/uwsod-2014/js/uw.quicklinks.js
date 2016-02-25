@@ -47,7 +47,7 @@ UW.QuickLinks = Backbone.View.extend({
 
         this.links = new UW.QuickLinks.Collection( this.options )
 
-        this.links.on( 'sync', this.render )
+        this.links.on( 'sync', this.renderDefault )
 
         this.links.on( 'error', this.renderDefault )
 
