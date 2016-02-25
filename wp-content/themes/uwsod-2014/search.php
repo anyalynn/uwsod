@@ -1,26 +1,32 @@
-<html>
-<head>
+<?php get_header(); ?>
 <script>
-(function() {
-  var cx = '013161175624235233741:pwunvv-3nuo'; // Insert your own Custom Search engine ID here
-  var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
-  gcse.src =
-      'https://www.google.com/cse/cse.js?cx=' + cx;
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
-})();
+  (function() {
+    var cx = '013161175624235233741:pwunvv-3nuo';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
 </script>
-<script type="text/javascript">$(window).load(function() {setTimeout(function() { $('[name=search]').first().focus();}, 200)}) //hmm... </script>
+<?php get_template_part( 'header', 'image' ); ?>
 
-</head>
+<div class="container uw-body">
 
-<body>
+	<div class="row">
 
+    	<div class="col-md-12 uw-content" role='main'>
 
-<p><!-- Place this tag where you want both of the search box and the search results to render --><br />
-<gcse:search></gcse:search></p>
+     		 <?php uw_site_title(); ?>
+		     <?php if (is_front_page()) { get_template_part( 'menu', 'mobile' ); }?>
+    	     <div id='main_content' class="uw-body-copy" tabindex="-1">
+    		   	<gcse:search></gcse:search>
+	 		</div>
+ 		</div>
+	</div>
+</div>
 
-
-
-</body>
-</html>
+<?php get_footer(); ?>
 
