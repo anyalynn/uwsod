@@ -14,8 +14,10 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
+<div class="gcse-searchbox" data-resultsUrl="https://dental.washington.edu/wp-content/themes/uwsod-2014/search.php"
+data-newWindow="false" data-queryParameterName="search" >
 <gcse:search></gcse:search>
-	 
+</div>	 
 </body>
 </html>
 
