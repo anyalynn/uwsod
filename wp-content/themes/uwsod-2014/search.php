@@ -1,5 +1,5 @@
-<?php get_header(); ?>
-<?php get_template_part( 'header', 'image' ); ?>
+<html>
+<body>
 
 <div class="container uw-body">
 
@@ -28,5 +28,6 @@
 	</div>
 </div>
 
-<?php get_footer(); ?>
+</body>
+</html>
 
