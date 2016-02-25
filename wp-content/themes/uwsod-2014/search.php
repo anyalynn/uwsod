@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<head>
+<style>
+input.gsc-input {
+	height:25px;
+	width:300px;
+}
+</style>
+</head>
 <body>
 
 
