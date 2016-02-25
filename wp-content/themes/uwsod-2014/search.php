@@ -1,9 +1,42 @@
 <!DOCTYPE html>
 <head>
 <style>
+input[type="search"].gsc-input {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"].gsc-input::-webkit-search-cancel-button,
+input[type="search"].gsc-input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+input[type="search"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 input.gsc-input {
-	height:25px;
-	width:300px;
+	line-height: 45px;
+	font-size:15px;
+	 border: none;
+     display: block;
+  height: 54px;
+  outline: 2px solid #808080;
+  background: url(assets/svg/search.svg) no-repeat center center #808080;
+  position: relative;
+  -webkit-background-size: 22px;
+  -moz-background-size: 22px;
+  -o-background-size: 22px;
+  background-size: 22px;
+  padding: 0px 60px 0px 0px;
+}
+body {
+	font-size:15px;
+}
+button.gsc-search-button {
+	height:54px;
+	font-size:15px;
 }
 </style>
 </head>
