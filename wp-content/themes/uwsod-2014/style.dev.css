@@ -8779,6 +8779,33 @@ a.uw-btn {
 .uw-accordion {
   margin-bottom: 20px;
 }
+.uw-accordion-shortcode__header {
+  display: block;
+  background: #e8e8e8;
+  font-family: Encode Sans Compressed, sans-serif;
+  font-size: 19px;
+  text-align: left;
+  width: 100%;
+  border-radius: 0px;
+  font-weight: 700;
+  border: 0;
+  padding: 10px 15px 10px 15px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #DEDEDE;
+  color: #565656;
+  -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.uw-accordion-shortcode__panel .uw-accordion-shortcode__header {
+  color: #595959;
+  padding-left: 20px;
+}
+.js-accordion__panel {
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+}
 table th,
 table th p,
 table td,
