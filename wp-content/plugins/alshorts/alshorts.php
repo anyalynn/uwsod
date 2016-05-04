@@ -416,4 +416,3 @@ if ( ! function_exists('coursedept_shortcode') ):
 endif;
 add_shortcode( 'coursedept', 'coursedept_shortcode' );
 ?>
-
