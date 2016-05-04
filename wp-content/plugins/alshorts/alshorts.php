@@ -284,6 +284,7 @@ function coursetitle_sort($a, $b) {
 	 $titleorder[11]="perio";
 	 $titleorder[12]="resd";
 	  $titleorder[13]="os";
+	    $titleorder[14]="ortho";
 	
 		
 	$first = strtolower($a->post_title);

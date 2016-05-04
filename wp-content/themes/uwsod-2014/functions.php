@@ -1,5 +1,4 @@
 <?php
-
 // allows child them overwriting of either whole UW object or just parts
 if (!function_exists('setup_uw_object')){
     function setup_uw_object() {
@@ -76,6 +75,5 @@ if ( ! function_exists( 'dental_enqueue_default_scripts' ) ):
 
  
   }
-
 endif;
 require( get_stylesheet_directory() . '/inc/rewrite-functions.php' );
