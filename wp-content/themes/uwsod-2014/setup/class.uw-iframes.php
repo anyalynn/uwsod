@@ -59,6 +59,7 @@ class UW_Iframes
       'payroll.gifts.washington.edu',
       'helperapps.gifts.washington.edu',
       'uwfoundation.org',
+	  'vimeo.com',
       'www.uwfoundation.org',
       'www.surveygizmo.com',
       'www.google.com',
