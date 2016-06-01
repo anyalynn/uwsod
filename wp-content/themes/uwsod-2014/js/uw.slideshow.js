@@ -50,11 +50,12 @@ UW.Slideshow = Backbone.View.extend({
 
   // When the view is initialized the controls are added to the dom, the number of slides is gathered,
   // and the z-index of the slides is reversed to keep the first image in the markup on top.
+  
   initialize : function( options )
   {
     this.options = _.extend( {}, this.settings, options )
     _.bindAll( this, 'animateIn', 'animateOut', 'addControls', 'zIndex', 'moveDots', 'goFullscreen' )
-    this.controls = _.template( this.controls, { classname: this.options.controlclasses.base } )
+    this.controls = _.template( this.controls )( { classname: this.options.controlclasses.base } )
     this.numberOfSlides = this.$el.find('.slide').length - 1
     this.photoSlider = this.$el.hasClass('photo-slider')
     this.organizeSlideshow()
@@ -115,16 +116,16 @@ UW.Slideshow = Backbone.View.extend({
 
     // Add if photo slider exists
     if ( this.photoSlider ) {
-
-      $( ".photo-slider" ).append('<ul class="slider-dots"></ul>', '<a tabIndex="-1" class="fullscreen" href="#">Fullscreen</a>') 
+      
+      $( "." + this.el.classList[2] ).append('<ul class="slider-dots slider-dots-' + this.el.classList[2] + '"></ul>', '<a tabIndex="-1" class="fullscreen" href="#">Fullscreen</a>') 
 
       // Add LIs to ul
       for (i = 0; i < this.numberOfSlides + 1; i++) { 
-        $( ".slider-dots" ).append('<li></li>');
+        $( ".slider-dots-" + this.el.classList[2] ).append('<li></li>');
       }
       
       // Add initial dot     
-      $(".slider-dots li:nth-child(1)").addClass("select-dot")
+      $(".slider-dots-" + this.el.classList[2] + " li:nth-child(1)").addClass("select-dot")
 
     }
 
@@ -163,8 +164,8 @@ UW.Slideshow = Backbone.View.extend({
 
       // Moves the dots around according to this.current
 
-      $('.slider-dots li').removeClass('select-dot')
-      $(".slider-dots li:nth-child(" + (this.current + 1) + ")").addClass("select-dot")
+      $(".slider-dots-" + this.el.classList[2] + " li").removeClass('select-dot')
+      $(".slider-dots-" + this.el.classList[2] + " li:nth-child(" + (this.current + 1) + ")").addClass("select-dot")
 
 
   },
@@ -174,7 +175,7 @@ UW.Slideshow = Backbone.View.extend({
   dotsAnimate : function(e){
 
         // Store which dot has been click
-        var slideNumber = $('.slider-dots li').index(e.target)
+        var slideNumber = $(".slider-dots-" + this.el.classList[2] + " li").index(e.target)
 
         this.moveDots()
 
@@ -310,11 +311,10 @@ UW.Slideshow = Backbone.View.extend({
 
       // focus controls
       function keyPress(e) {
-
-        if( e.keyCode == 39 || e.keyCode == 9 ){
-          if (e.keyCode == 9 && !el.nextSlideExists() ){
-            return true;
-          }
+        if ( e.keyCode == 9 ) {
+          return true;
+        }
+        if( e.keyCode == 39 ) {
           el.animateOut(e);
           return false;
         }

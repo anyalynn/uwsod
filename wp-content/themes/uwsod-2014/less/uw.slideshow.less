@@ -88,7 +88,7 @@ div.uw-slideshow
 
     &.next {
       z-index:101;
-      right: 125px;
+      left: 77.5%;
       .box-shadow(-1px 0px 5px 0 rgba(0, 0, 0, .4));
       &:after {
 
@@ -98,7 +98,8 @@ div.uw-slideshow
 
     &.previous {
       z-index:100;
-      right: 170px;
+      left: 77.5%;
+      margin-left: -45px;
       .box-shadow(-1px 0px 5px 0 rgba(0, 0, 0, .4));
       .rotate(180deg);
       // background: white url('@{local-image-path}/slideshow-arrow-left.png') center no-repeat;
@@ -136,9 +137,9 @@ div.uw-slideshow
   // For the simple photo slider
 
   &.photo-slider {
-      
 
-      height: 555px;
+
+      height: 510px;
       padding-bottom: 51px;
 
       // For class switching on dots
@@ -154,7 +155,7 @@ div.uw-slideshow
          width: 45px;
          height: 75px;
          position: absolute;
-         bottom: 9.3%;     
+         bottom: 10%;     
          right: 65px;
          z-index: 20;
          opacity: .8;
@@ -179,9 +180,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
       }
       & > div.slide {
         overflow: hidden;
-        height: 90.8%;     
-        text-align: center;
-        background-color: #000;
+        height: 90%;
         &.no-text div {
           display: none;
         }
@@ -190,16 +189,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
             bottom: 0;
           }
         }
-        img {
-          width: auto;
-          height: 100%;
-       }
         div {
           background-color: rgba(0, 0, 0, 0.7);
           width: 100%;
           padding: 10px 30px;
           bottom: -300px;
-          text-align: left;
           .transition(bottom ease-in-out 0.1s);
           h3 {
             font-size: 18px;
@@ -214,7 +208,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 
       .has-text:after {   
         font-family: @font-family-headline;
-        font-weight: @ultra-font-weight;  
+        font-weight: @ultra;  
         content: "i";
         font-size: 13px;
         text-align: center;
@@ -235,7 +229,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 
       .uw-slideshow-controls {
         background-color: transparent;
-        bottom: 9.3%;
+        bottom: 10%;
         width: 75px;
         &.next, 
         &.previous {
@@ -246,13 +240,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
           }
         }
         &.previous {
+          left: auto;
           right: 90px;
           &:hover,
           &:focus {
             right: 95px;
           }
         }
-        &.next {
+        &.next {          
+          left: auto;
           right: 5px;
           &:hover,
           &:focus {
@@ -273,7 +269,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
       bottom: 0;  
       z-index: 9999;
       text-align: center;
-      margin-top: 510px;
+      margin-top: 465px;
       padding: 0;
       li {
         list-style: none;
@@ -425,9 +421,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
     bottom: 0;
     &.next {
       right: 0;
+      left: auto;
     }
     &.previous {
       right: 45px;
+      left: auto;
+      margin-left: 0;
     }
     &.next:after,
     &.previous:after {

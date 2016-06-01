@@ -3,10 +3,8 @@
 .uw-hero-image,
 .no-uw-hero-image  {
 	height: 170px;
-	// background: url('assets/temp/ima.jpg') center center;
 	.background-size(cover);
 	position: relative;
-	// z-index: -1;
 	&:after {
 		position:absolute;
 		bottom: 0;
@@ -58,7 +56,7 @@
   			padding: 0;
 		}
 		.udub-slant span {
-		  background-color: #E8E3D3;
+		  background-color: @lightgold;
 		}
 	}
 }
@@ -124,6 +122,39 @@
 	.uw-hero-image {
 		display: none;
 
+		&.hero-mobile-image.hero-height ,
+		&.hero-mobile-image.hero-height2 {
+			height: 480px;
+
+			.mobile-image {
+		      display: block;
+		      top: 0;
+		      left: 0;
+		      height: 480px;
+		      position: absolute;
+		      right: 0;
+		      background-position: center bottom;
+		      -webkit-background-size: cover;
+		      -moz-background-size: cover;
+		      -o-background-size: cover;
+		      background-size: cover;
+		    }
+
+		    #hero-bg #hero-container h1.uw-site-title ,
+		    div.container h1.uw-site-title2 {
+				padding-top: 40px;
+			    &:after{
+			    	background: none;
+			    }
+			}
+
+			.container {
+				position: absolute;
+    			top: 0;
+			}
+		}
+
+
 		// Larger hero
 		&.hero-height {
 			padding: 50px 20px 20px;
@@ -143,6 +174,34 @@
 		  		}
 		  	}
 		}
+		// Smaller hero
+		&.hero-height2 {
+			padding: 5px;
+			display: block;
+		  	height: auto;
+		  	.container { 
+		  		#hashtag {
+			  		font-size: 16px;
+			  		span {
+			  		    padding: 2px 5px 3px 18px;
+			  		}
+			  		&.mask {
+			  			min-height: auto;
+			  		}
+			  	}
+		  	}
+		  	h1 {
+		  		font-size: 35px;
+		  		padding: 0;
+		  		&:after {
+		  			background-size: 80%;
+		  			-moz-background-size: 80%;
+		  			-webkit-background-size: 80%;
+					top: -60px;
+					left: -270px;
+		  		}
+		  	}
+		}
 		&.hero-blank {
 			display: block;
 			.uw-site-title-blank {
@@ -157,5 +216,24 @@
             height: 8px;
             margin: 0 0 0 -145px;
         }
+    }
+    .page-template-small-hero .uw-body .uw-site-title {
+        visibility: hidden;
+        height: 60px;
+    }
+
+    div.container.uw-body {
+    	padding-top: 0;
+    }
+    div.container.uw-body {
+	   	div.uw-site-title { 
+			margin-top: 0;
+	    }
+	}
+    button.uw-mobile-menu-toggle {
+    	bottom: 10px;
+    }
+    div.hero-content.col-md-12.uw-content {
+    	margin-top: 0;
     }
 }

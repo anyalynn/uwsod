@@ -12,8 +12,25 @@ UW.Image = Backbone.View.extend({
                    '</div>' +
                  '</div>',
 
+  templateVideo : '<div class="uw-overlay">' +
+                    '<div></div>' +
+                    '<div class="wrapper" style="width:<%= width %>px; margin-top:-<%= height/2 %>px; margin-left:-<%= width/2 %>px;">' +
+                     '<span class="close"> Close</span>' +
+                     '<iframe width="<%= width %>" height="<%= height %>" src="<%= src %>" frameborder="0" allowfullscreen></iframe>' +
+                     '<p><%= caption %></p>' +
+                     '<p><%= credit %></p>' +
+                   '</div>' +
+                 '</div>',
+
   events : {
-    'click' : 'fetchImage'
+    'click' : function(e){      
+      this.attrs = this.getAttributes( e );
+      // This just checks to see if the anchor has a source (some slideshows and plugins use blank anchors to do their work)
+      if( this.attrs.src ){
+        this.fetchImage();
+        return false;
+      }
+    }
   },
 
   initialize : function()
@@ -23,7 +40,6 @@ UW.Image = Backbone.View.extend({
 
   fetchImage : function( e )
   {
-    this.attrs = this.getAttributes( e )
     $('<img src="'+ this.attrs.src +'"/>').imagesLoaded( this.overlay )
     return false;
   },
@@ -31,16 +47,30 @@ UW.Image = Backbone.View.extend({
   overlay : function( images )
   {
 
+    var videoLightbox = this.attrs.rel.indexOf("uw-lightbox-video") > -1 ? true : false;
+
+
+
     // todo make this quicker
-    if ( images.hasAnyBroken ) {
-      window.location = this.attrs.src;
+    if ( !videoLightbox && images.hasAnyBroken ) {
+      if ( this.attrs.src ) {
+        window.location = this.attrs.src;
+      }
       return
     }
 
+    var aspect_ratio;
+
     this.image = _.first( images.images )
-    var aspect_ratio = this.image.img.width / this.image.img.height;
+    aspect_ratio = this.image.img.width / this.image.img.height;
     this.attrs.height = this.image.img.height
     this.attrs.width  = this.image.img.width
+
+    if ( videoLightbox ) {
+      aspect_ratio = 560 / 315;
+      this.attrs.height = 630;
+      this.attrs.width  = 1120;
+    } 
 
     if ( this.attrs.height > (this.RATIO * UW.$window.height())){
         this.attrs.height = this.RATIO * UW.$window.height();
@@ -58,7 +88,10 @@ UW.Image = Backbone.View.extend({
   render : function()
   {
     UW.$body.one( 'click', this.remove )
-    return  UW.$body.append( _.template( this.template, this.attrs ) )
+    if ( this.attrs.rel == "uw-lightbox-video" ) {
+      return  UW.$body.append( _.template( this.templateVideo )( this.attrs ) )
+    }
+    return  UW.$body.append( _.template( this.template )( this.attrs ) )
   },
 
   remove : function()
@@ -78,9 +111,11 @@ UW.Image = Backbone.View.extend({
           caption = gallery_parent.siblings('.wp-caption-text').text();
         }
       }
+
       return {
-        src : target.parent('a').attr('href'),
+        src : target.parent('a').attr('href') ? target.parent('a').attr('href') : '',
         alt : target.attr('alt'),
+        rel : target.parent('a').attr('rel') ? target.parent('a').attr('rel') : '',
         caption : caption,
         credit : target.parent('a').siblings('.wp-caption-text').find('.wp-media-credit').text()
       }

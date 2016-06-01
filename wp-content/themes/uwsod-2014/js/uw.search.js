@@ -13,7 +13,7 @@ UW.Search = Backbone.View.extend({
 
   // This is the HTML for the search bar that is preprended to the body tag.
   searchbar :
-               '<div class="container no-height">'+
+                '<div class="container no-height">'+
                   '<div class="center-block uw-search-wrapper">'+
                     '<form class="uw-search" action="<%= UW.baseUrl %>">'+
                       '<label class="screen-reader" for="uw-search-bar">Enter search text</label>' +
@@ -76,7 +76,7 @@ UW.Search = Backbone.View.extend({
   // since most events take place within that view.
   render : function()
   {
-    this.$el.html( _.template( this.searchbar, this.settings ))
+    this.$el.html( _.template( this.searchbar )( this.settings ))
   },
 
   // todo: cleanup this function
@@ -94,6 +94,11 @@ UW.Search = Backbone.View.extend({
   {
     switch ( event.keyCode )
     {
+      case UW.KEYCODES.TAB :
+        if ($( event.target)[0] == $('input.search')[0] && ! $(event)[0].shiftKey) $('#search-labels').addClass('focused')
+        if (($( event.target)[0] != $('input.search')[0]) && $('#search-labels').hasClass('focused')) $('#search-labels').removeClass('focused')
+        if ($( event.target)[0] == $('input.radiobtn')[0] && ! $(event)[0].shiftKey){ this.toggle.$el.focus(); return false }
+        return true
 
       case UW.KEYCODES.ESC :
         event.stopPropagation()
@@ -130,10 +135,11 @@ UW.Search = Backbone.View.extend({
         this.$el.find( 'form' ).attr( 'action', Backbone.history.location.protocol + '//uw.edu/search/' )
         return true;
 
-      case this.searchFeatures.site :
+     case this.searchFeatures.site :
 	  this.$el.find('input' ).attr( 'name', 'q' )
 	  this.$el.find('form').attr('action','https://dental.washington.edu/wp-content/themes/uwsod-2014/search.php/')
         return true;
+
 
       default:
         return false;

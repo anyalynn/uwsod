@@ -47,7 +47,7 @@ UW.QuickLinks = Backbone.View.extend({
 
         this.links = new UW.QuickLinks.Collection( this.options )
 
-        this.links.on( 'sync', this.renderDefault )
+        this.links.on( 'sync', this.render )
 
         this.links.on( 'error', this.renderDefault )
 
@@ -62,7 +62,7 @@ UW.QuickLinks = Backbone.View.extend({
 
     render : function(  )
     {
-        this.quicklinks = $ ( _.template( this.template, { links : this.defaultLinks ? this.defaultLinks : this.links.toJSON() }) )
+        this.quicklinks = $( _.template( this.template )({ links : this.defaultLinks ? this.defaultLinks : this.links.toJSON() }) );
         this.$container = $(this.container);
         this.$container.prepend( this.quicklinks )
         this.$el.attr( 'aria-controls', 'quicklinks' ).attr( 'aria-owns', 'quicklinks' )
@@ -143,7 +143,7 @@ UW.QuickLinks.Collection = Backbone.Collection.extend({
         this.url = options.url;
     },
 
-    defaults : [{
+   defaults : [{
        "title": "SOD Intranet",
        "url": "https:\/\/uwnetid.sharepoint.com\/sites\/sod",
        "classes": ["icon-myuw"]

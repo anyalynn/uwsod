@@ -10951,11 +10951,11 @@ UW.KEYCODES = {
 ;// List out the classes that each component searches for
 UW.elements = {
 
-  alert : '.uw-thinstrip',
+  alert      : '.uw-thinstrip',
   accordion  : '.uw-accordion',
   dropdowns  : '#dawgdrops',
-  images : 'a > img',
-  mobilemenu : '.uw-mobile-menu-toggle',
+  images     : 'a > img',
+  mobilemenu : '#mobile-relative',
   radio      : ':radio',
   checkbox   : ':checkbox',
   search     : '#uwsearcharea',
@@ -10969,15 +10969,30 @@ UW.elements = {
 }
 
 UW.getBaseUrl = function() {
-    if (UW.is_multisite == 1) {
-      var site = _.first( _.compact( Backbone.history.location.pathname.split('/') ) )
-      return Backbone.history.location.origin + ( site ? '/' + site : '' ) + '/'
-    } 
-      return Backbone.history.location.origin
+  var site = _.first( _.compact( Backbone.history.location.pathname.split('/') ) )
+  var url = ''
+
+  if (!Backbone.history.location.origin) {
+    Backbone.history.location.origin = Backbone.history.location.protocol + "//" + Backbone.history.location.hostname + (Backbone.history.location.port ? ':' + Backbone.history.location.port: '');
+  }
+
+  if (Backbone.history.location.origin.indexOf('www.washington.edu') != -1) {
+    url = Backbone.history.location.origin + ( site ? '/' + site : '' ) + '/';
+  } else if (Backbone.history.location.origin.indexOf('depts.washington.edu') != -1) {
+    url = Backbone.history.location.origin + ( site ? '/' + site : '' ) + '/';
+  } else {
+    url = Backbone.history.location.origin + '/';
+  } 
+  return url
+}
+
+UW.wpinstance = function(){
+  return Backbone.history.location.pathname ? Backbone.history.location.pathname : "";
 }
 
 UW.sources = {
-  quicklinks : UW.getBaseUrl() + '/wp-admin/admin-ajax.php?action=quicklinks',
+  // Note: style_dir is a variable created by the Wordpress' wp_localize_script in class.uw-scripts.php
+  quicklinks : typeof(style_dir) !== 'undefined' ? style_dir + '/wp-admin/admin-ajax.php?action=quicklinks' : UW.getBaseUrl() + 'wp-admin/admin-ajax.php?action=quicklinks',
   search     : UW.getBaseUrl() + 'wp-admin/admin-ajax.php'
 }
 
@@ -10985,16 +11000,16 @@ UW.sources = {
 UW.initialize = function( $ )
 {
   // Cache common elements that each javascript module calls
-  UW.$body       = $('body');
-  UW.$window   = $( window );
-  UW.baseUrl = UW.getBaseUrl()
+  UW.$body      = $('body');
+  UW.$window    = $( window );
+  UW.baseUrl    = UW.getBaseUrl()
 
   // UW Utilities
   UW.dropdowns  = _.map( $( UW.elements.dropdowns ),     function( element ) { return new UW.Dropdowns({ el : element }) } )
   UW.mobilemenu = _.map( $( UW.elements.mobilemenu ),     function( element ) { return new UW.MobileMenu({ el : element }) } )
   UW.quicklinks = _.map( $( UW.elements.quicklinks ),    function( element ) { return new UW.QuickLinks( { el : element, url : UW.sources.quicklinks }) } )
   UW.search     = _.map( $( UW.elements.search ),    function( element ) { return new UW.Search( { el : element } ) } )
-  UW.images   = _.map( $( UW.elements.images ),    function( element ) { return new UW.Image({ el : element }) } )
+  UW.images     = _.map( $( UW.elements.images ),    function( element ) { return new UW.Image({ el : element }) } )
 
   // UW Modules
   UW.slideshows = _.map( $( UW.elements.slideshow ), function( element ) { return new UW.Slideshow( { el : element }) } )
@@ -11004,7 +11019,7 @@ UW.initialize = function( $ )
 
 
   // UW Components - These need to render after all other javascript elements are rendered on page
-  UW.accordion   = _.map( $( UW.elements.accordion ), function( element ) { return new UW.Accordion( { el : element }) } )
+  UW.accordion  = _.map( $( UW.elements.accordion ), function( element ) { return new UW.Accordion( { el : element }) } )
   UW.radio      = _.map( $( UW.elements.radio ),     function( element ) { return new UW.Radio({ el : element }) } )
   UW.checkbox   = _.map( $( UW.elements.checkbox ),     function( element ) { return new UW.Radio({ el : element }) } )
   UW.select     = _.map( $( UW.elements.select ),    function( element ) { return new UW.Select({ el : element }) } )
@@ -11049,7 +11064,7 @@ jQuery(document).ready(function(){
   {
     if ( this.model.get('title'))
      {
-      $(this.options.after).after( _.template( this.template, this.model.toJSON() ) )
+      $(this.options.after).after( _.template( this.template )( this.model.toJSON() ) )
       this.setElement( $( this.alert ) )
     }
   },
@@ -11145,7 +11160,7 @@ UW.Search = Backbone.View.extend({
 
   // This is the HTML for the search bar that is preprended to the body tag.
   searchbar :
-               '<div class="container no-height">'+
+                '<div class="container no-height">'+
                   '<div class="center-block uw-search-wrapper">'+
                     '<form class="uw-search" action="<%= UW.baseUrl %>">'+
                       '<label class="screen-reader" for="uw-search-bar">Enter search text</label>' +
@@ -11208,7 +11223,7 @@ UW.Search = Backbone.View.extend({
   // since most events take place within that view.
   render : function()
   {
-    this.$el.html( _.template( this.searchbar, this.settings ))
+    this.$el.html( _.template( this.searchbar )( this.settings ))
   },
 
   // todo: cleanup this function
@@ -11226,6 +11241,11 @@ UW.Search = Backbone.View.extend({
   {
     switch ( event.keyCode )
     {
+      case UW.KEYCODES.TAB :
+        if ($( event.target)[0] == $('input.search')[0] && ! $(event)[0].shiftKey) $('#search-labels').addClass('focused')
+        if (($( event.target)[0] != $('input.search')[0]) && $('#search-labels').hasClass('focused')) $('#search-labels').removeClass('focused')
+        if ($( event.target)[0] == $('input.radiobtn')[0] && ! $(event)[0].shiftKey){ this.toggle.$el.focus(); return false }
+        return true
 
       case UW.KEYCODES.ESC :
         event.stopPropagation()
@@ -11262,10 +11282,11 @@ UW.Search = Backbone.View.extend({
         this.$el.find( 'form' ).attr( 'action', Backbone.history.location.protocol + '//uw.edu/search/' )
         return true;
 
-      case this.searchFeatures.site :
+     case this.searchFeatures.site :
 	  this.$el.find('input' ).attr( 'name', 'q' )
 	  this.$el.find('form').attr('action','https://dental.washington.edu/wp-content/themes/uwsod-2014/search.php/')
         return true;
+
 
       default:
         return false;
@@ -11329,7 +11350,7 @@ UW.QuickLinks = Backbone.View.extend({
 
         this.links = new UW.QuickLinks.Collection( this.options )
 
-        this.links.on( 'sync', this.renderDefault )
+        this.links.on( 'sync', this.render )
 
         this.links.on( 'error', this.renderDefault )
 
@@ -11344,7 +11365,7 @@ UW.QuickLinks = Backbone.View.extend({
 
     render : function(  )
     {
-        this.quicklinks = $ ( _.template( this.template, { links : this.defaultLinks ? this.defaultLinks : this.links.toJSON() }) )
+        this.quicklinks = $( _.template( this.template )({ links : this.defaultLinks ? this.defaultLinks : this.links.toJSON() }) );
         this.$container = $(this.container);
         this.$container.prepend( this.quicklinks )
         this.$el.attr( 'aria-controls', 'quicklinks' ).attr( 'aria-owns', 'quicklinks' )
@@ -11425,7 +11446,7 @@ UW.QuickLinks.Collection = Backbone.Collection.extend({
         this.url = options.url;
     },
 
-    defaults : [{
+   defaults : [{
        "title": "SOD Intranet",
        "url": "https:\/\/uwnetid.sharepoint.com\/sites\/sod",
        "classes": ["icon-myuw"]
@@ -11524,11 +11545,12 @@ UW.Slideshow = Backbone.View.extend({
 
   // When the view is initialized the controls are added to the dom, the number of slides is gathered,
   // and the z-index of the slides is reversed to keep the first image in the markup on top.
+  
   initialize : function( options )
   {
     this.options = _.extend( {}, this.settings, options )
     _.bindAll( this, 'animateIn', 'animateOut', 'addControls', 'zIndex', 'moveDots', 'goFullscreen' )
-    this.controls = _.template( this.controls, { classname: this.options.controlclasses.base } )
+    this.controls = _.template( this.controls )( { classname: this.options.controlclasses.base } )
     this.numberOfSlides = this.$el.find('.slide').length - 1
     this.photoSlider = this.$el.hasClass('photo-slider')
     this.organizeSlideshow()
@@ -11589,16 +11611,16 @@ UW.Slideshow = Backbone.View.extend({
 
     // Add if photo slider exists
     if ( this.photoSlider ) {
-
-      $( ".photo-slider" ).append('<ul class="slider-dots"></ul>', '<a tabIndex="-1" class="fullscreen" href="#">Fullscreen</a>') 
+      
+      $( "." + this.el.classList[2] ).append('<ul class="slider-dots slider-dots-' + this.el.classList[2] + '"></ul>', '<a tabIndex="-1" class="fullscreen" href="#">Fullscreen</a>') 
 
       // Add LIs to ul
       for (i = 0; i < this.numberOfSlides + 1; i++) { 
-        $( ".slider-dots" ).append('<li></li>');
+        $( ".slider-dots-" + this.el.classList[2] ).append('<li></li>');
       }
       
       // Add initial dot     
-      $(".slider-dots li:nth-child(1)").addClass("select-dot")
+      $(".slider-dots-" + this.el.classList[2] + " li:nth-child(1)").addClass("select-dot")
 
     }
 
@@ -11637,8 +11659,8 @@ UW.Slideshow = Backbone.View.extend({
 
       // Moves the dots around according to this.current
 
-      $('.slider-dots li').removeClass('select-dot')
-      $(".slider-dots li:nth-child(" + (this.current + 1) + ")").addClass("select-dot")
+      $(".slider-dots-" + this.el.classList[2] + " li").removeClass('select-dot')
+      $(".slider-dots-" + this.el.classList[2] + " li:nth-child(" + (this.current + 1) + ")").addClass("select-dot")
 
 
   },
@@ -11648,7 +11670,7 @@ UW.Slideshow = Backbone.View.extend({
   dotsAnimate : function(e){
 
         // Store which dot has been click
-        var slideNumber = $('.slider-dots li').index(e.target)
+        var slideNumber = $(".slider-dots-" + this.el.classList[2] + " li").index(e.target)
 
         this.moveDots()
 
@@ -11784,11 +11806,10 @@ UW.Slideshow = Backbone.View.extend({
 
       // focus controls
       function keyPress(e) {
-
-        if( e.keyCode == 39 || e.keyCode == 9 ){
-          if (e.keyCode == 9 && !el.nextSlideExists() ){
-            return true;
-          }
+        if ( e.keyCode == 9 ) {
+          return true;
+        }
+        if( e.keyCode == 39 ) {
           el.animateOut(e);
           return false;
         }
@@ -12131,7 +12152,7 @@ UW.YouTube.PlaylistItemView = Backbone.View.extend({
     // gets the data ready, templates it, then appends to the playlist section
     render: function () {
         var item = this.model.toJSON();
-        var small_vid = _.template(this.template, item);
+        var small_vid = _.template(this.template)( item );
         this.$el.append(small_vid);
     },
 });
@@ -12218,7 +12239,7 @@ UW.Vimeo = Backbone.View.extend({
   // This loads the single video template and puts it into the DOM
   single : function()
   {
-    this.player = _.template( this.templates.video, this.options )
+    this.player = _.template( this.templates.video )( this.options )
     this.$el.html( this.player )
   },
 
@@ -12227,9 +12248,9 @@ UW.Vimeo = Backbone.View.extend({
   {
 
     _.extend( this.options, { video : this.videos.first().get('id') } )
-    this.player = _.template( this.templates.video, this.options )
+    this.player = _.template( this.templates.video )( this.options ) 
 
-    this.videoList = _.template( this.templates.playlist, { videos : this.videos.toJSON() })
+    this.videoList = _.template( this.templates.playlist)( { videos : this.videos.toJSON() } )
 
     this.$el.html( this.player )
     this.$el.append( this.videoList )
@@ -12567,21 +12588,53 @@ UW.Dropdowns = Backbone.View.extend({
 UW.MobileMenu = Backbone.View.extend({
 
   events: {
-    'click' : 'toggle'
+    'click button' : 'toggle',
+    'click a' : 'openmenu'
   },
 
   initialize : function( options )
   {
-    _.bindAll(this, 'toggle','reset_li');
+    _.bindAll(this, 'toggle','reset_li','openmenu','cloneMenuAnchors');
     this.settings = _.extend( {}, this.defaults , this.$el.data() , options )
-    this.$mobilemenu = this.$el.parent('nav');
-    this.$mobilemenu_ul = this.$mobilemenu.find('ul.uw-mobile-menu');
+    this.$mobilemenu_ul = this.$el.find('ul.uw-mobile-menu');
   },
 
-  toggle: function()
+  // Clone the first item in the menu if it has a flyout, as it can't be used as both an anchor and button
+  cloneMenuAnchors : _.once( function(){
+    this.$el.find('.menu-item-has-children > a').each(function(){
+      var $target   = $(this),
+          $targetUl = $target.next('ul')
+
+      $target.next('ul').first().prepend('<li>' + $target[0].outerHTML + '</li>');
+
+      // Initial ARIA tags
+      $target.attr('aria-expanded', false);
+      $targetUl.attr('aria-hidden', true)
+    }) 
+  }),
+
+  openmenu : function(event){    
+    var $target = $(event.target),
+        $targeUl = $target.next();
+
+    if( $targeUl.length > 0 ){
+      event.preventDefault();  
+      // Toggle ARIA tags 
+      $targeUl.attr('aria-hidden', function(index, attr){
+        return attr === 'true' ? 'false' : 'true';
+      });  
+      $target.attr('aria-expanded', function(index, attr){
+        return attr === 'true' ? 'false' : 'true';
+      });
+      $target.parent().toggleClass('active-menu');
+    }     
+  },
+
+  toggle: function(event)
   {
-    this.$mobilemenu.find('li').width(this.$mobilemenu.width());
-    this.$mobilemenu_ul.toggle({'duration': 400, 'easing':'easeInOutQuart', 'done': this.reset_li });
+    this.$mobilemenu_ul.toggle();
+    this.$el.addClass('active_nav');
+    this.cloneMenuAnchors();
   },
 
   reset_li: function()
@@ -12589,8 +12642,7 @@ UW.MobileMenu = Backbone.View.extend({
     this.$mobilemenu.find('li').removeAttr('style');
   }
 
-})
-;// ### UW Accordion
+});// ### UW Accordion
 
 // This creates a UW Accordion
 // For usage, refer to the [UW Web Components webpage](http://uw.edu/brand/web#accordion)
@@ -13000,7 +13052,7 @@ UW.Select = Backbone.View.extend({
   // This also keeps a cached version of the select menu with the `this.$select` property.
   render : function()
   {
-    this.html = _.template( this.template, { lis : this.LIs } )
+    this.html = _.template( this.template )( { lis : this.LIs }  )
     this.$el.hide().after( this.html )
     this.$select = this.$el
     this.setElement( this.$el.next() )
@@ -13149,8 +13201,25 @@ UW.Select = Backbone.View.extend({
                    '</div>' +
                  '</div>',
 
+  templateVideo : '<div class="uw-overlay">' +
+                    '<div></div>' +
+                    '<div class="wrapper" style="width:<%= width %>px; margin-top:-<%= height/2 %>px; margin-left:-<%= width/2 %>px;">' +
+                     '<span class="close"> Close</span>' +
+                     '<iframe width="<%= width %>" height="<%= height %>" src="<%= src %>" frameborder="0" allowfullscreen></iframe>' +
+                     '<p><%= caption %></p>' +
+                     '<p><%= credit %></p>' +
+                   '</div>' +
+                 '</div>',
+
   events : {
-    'click' : 'fetchImage'
+    'click' : function(e){      
+      this.attrs = this.getAttributes( e );
+      // This just checks to see if the anchor has a source (some slideshows and plugins use blank anchors to do their work)
+      if( this.attrs.src ){
+        this.fetchImage();
+        return false;
+      }
+    }
   },
 
   initialize : function()
@@ -13160,7 +13229,6 @@ UW.Select = Backbone.View.extend({
 
   fetchImage : function( e )
   {
-    this.attrs = this.getAttributes( e )
     $('<img src="'+ this.attrs.src +'"/>').imagesLoaded( this.overlay )
     return false;
   },
@@ -13168,16 +13236,30 @@ UW.Select = Backbone.View.extend({
   overlay : function( images )
   {
 
+    var videoLightbox = this.attrs.rel.indexOf("uw-lightbox-video") > -1 ? true : false;
+
+
+
     // todo make this quicker
-    if ( images.hasAnyBroken ) {
-      window.location = this.attrs.src;
+    if ( !videoLightbox && images.hasAnyBroken ) {
+      if ( this.attrs.src ) {
+        window.location = this.attrs.src;
+      }
       return
     }
 
+    var aspect_ratio;
+
     this.image = _.first( images.images )
-    var aspect_ratio = this.image.img.width / this.image.img.height;
+    aspect_ratio = this.image.img.width / this.image.img.height;
     this.attrs.height = this.image.img.height
     this.attrs.width  = this.image.img.width
+
+    if ( videoLightbox ) {
+      aspect_ratio = 560 / 315;
+      this.attrs.height = 630;
+      this.attrs.width  = 1120;
+    } 
 
     if ( this.attrs.height > (this.RATIO * UW.$window.height())){
         this.attrs.height = this.RATIO * UW.$window.height();
@@ -13195,7 +13277,10 @@ UW.Select = Backbone.View.extend({
   render : function()
   {
     UW.$body.one( 'click', this.remove )
-    return  UW.$body.append( _.template( this.template, this.attrs ) )
+    if ( this.attrs.rel == "uw-lightbox-video" ) {
+      return  UW.$body.append( _.template( this.templateVideo )( this.attrs ) )
+    }
+    return  UW.$body.append( _.template( this.template )( this.attrs ) )
   },
 
   remove : function()
@@ -13215,9 +13300,11 @@ UW.Select = Backbone.View.extend({
           caption = gallery_parent.siblings('.wp-caption-text').text();
         }
       }
+
       return {
-        src : target.parent('a').attr('href'),
+        src : target.parent('a').attr('href') ? target.parent('a').attr('href') : '',
         alt : target.attr('alt'),
+        rel : target.parent('a').attr('rel') ? target.parent('a').attr('rel') : '',
         caption : caption,
         credit : target.parent('a').siblings('.wp-caption-text').find('.wp-media-credit').text()
       }
@@ -13284,12 +13371,26 @@ UW.Social = Backbone.View.extend({
   initialize : function( options )
   {
     this.options = _.extend( {}, this.settings, this.$el.data() , options )
-    this.buttons = _.template( this.template, this.options )
+    this.buttons = _.template( this.template )( this.options )
     this.$el.html( this.buttons )
   },
 
 })
-;}).call(this)
+;// This file edits the Live Theme Customizer's control menu
+//
+
+
+jQuery( document ).ready( function($) {
+	
+	// HEADERS TO HTTPS
+	$( "#accordion-section-header_image img" ).each(function() { 
+		if (!this.src.includes("https:") && window.location.href.includes(".edu")) {
+			this.src = this.src.replace( "http:" , "https:" );
+		}
+	});
+
+	
+} );;}).call(this)
 ;function Mem1(event){
 $("#ItemCost1").val("120.00");
 $("#userMemType").val("Regular Member");

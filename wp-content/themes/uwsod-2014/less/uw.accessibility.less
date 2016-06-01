@@ -10,9 +10,9 @@ a.screen-reader-shortcut {
         left: 6px;
         top: -99px;
         &:focus {
-            z-index: 5;
+            z-index: 999;
             font-size: 14px;
-            font-weight: 700;
+            font-weight: @bold;
             top: 6px;
             padding: 15px 23px 14px;
             background-color: #f1f1f1;
@@ -98,6 +98,19 @@ label.screen-reader {
     .form-control {
         color: #303030;
     }
+    // 
+    div.wp-caption > a > img {
+        &:hover {
+                outline: 7px solid #C3C3C3;
+        }
+    }
+
+    div.wp-caption > a {
+        &:focus > img {
+                outline: 7px solid #C3C3C3;
+        }
+    }
+
 }
 
 

@@ -26,18 +26,55 @@
 	h1 {
 		font-family: @font-family-headline;
 		text-transform: uppercase;
-		font-weight: 900;
+		font-weight: @ultra;
 		font-size: 75px;
 		color: #fff;
 	}
 
 	p {
 		color: #fff;
-		font-weight: 600;
+		font-weight: @bold;
 		font-size: 1.1em;
 		line-height: 23px;
 		margin: 0 0 30px;
 		width: 70%;
+	}
+	#hashtag {
+		position: absolute;
+	    font-family: "Encode Sans Compressed" , sans-serif;
+	    font-weight: 900;
+	    color: #4B2E83;
+	    font-size: 21px;
+	    overflow: hidden;
+	    z-index: 1;
+	    span {
+	    	background-color: rgba(255,255,255,.9);
+		    -webkit-transform: skew(-15deg,0);
+		    -ms-transform: skewX(-15deg) skewY(0);
+		    transform: skew(-15deg,0);
+		    padding: 2px 25px 3px 28px;
+		    display: block;
+		    margin: 0 10px 0 -10px;
+		    span {
+		    	transform: skew(15deg,0);
+    			display: block;
+    			background-color: transparent;
+    			big {
+    				font-size: xx-large;
+    			}
+    			small {
+    				font-family: 'Uni Sans', sans-serif;
+    				font-weight: 300;
+    			}
+		    }
+	    }
+	}
+	a.uw-btn {
+		background-color: #fff;
+		color: #4B2E83;
+		&:before {
+			background-color: @lightgold;
+		}
 	}
 }
 
@@ -56,6 +93,9 @@
 
 .hero-content {
 	margin-top: 20px;
+	.uw-site-title {
+		display: none; 
+	}
 }
 
 
@@ -64,14 +104,54 @@
 .hero-height2 {
 	height: 245px;
 	.container {
-    	height: 145px;
-    	line-height: 145px;
+    	#hashtag.mask {
+    		position: inherit;
+    		visibility: hidden;
+    		min-height: 70px;
+    	}
+    	#hashtag {
+			position: absolute;
+			top: 0px;
+		    font-family: "Encode Sans Compressed" , sans-serif;
+		    font-weight: 900;
+		    color: #4B2E83;
+		    font-size: 21px;
+		    overflow: hidden;
+		    span {
+		    	background-color: rgba(255,255,255,.9);
+			    -webkit-transform: skew(-15deg,0);
+			    -ms-transform: skewX(-15deg) skewY(0);
+			    transform: skew(-15deg,0);
+			    padding: 2px 25px 3px 28px;
+			    display: block;
+			    margin: 0 10px 0 -10px;
+			    span {
+			    	transform: skew(15deg,0);
+	    			display: block;
+	    			background-color: transparent;
+	    			big {
+	    				font-size: xx-large;
+	    			}
+	    			small {
+	    				font-family: 'Uni Sans', sans-serif;
+	    				font-weight: 300;
+	    			}
+			    }
+		    }
+		}
+		a.uw-btn {
+			background-color: #fff;
+			color: #4B2E83;
+			&:before {
+				background-color: #b7a57a;
+			}
+		}
 	}
 	h1 {
 		font-family: @font-family-headline;
 		text-transform: uppercase;
     	color: #FFF !important;
-    	font-weight: 900;
+    	font-weight: @ultra;
     	font-size: 60px;
     	margin: 0;
     	line-height: 1;
@@ -91,13 +171,15 @@
 		  	z-index: 0;
 		}
 	}
-	&:after {
+	&:before {
+		display: none;
+	}&:after {
 		display: none;
 	}
 	.udub-slant {
-		margin-top: 22px;
+		//margin-top: 22px;
 		span {
-			background-color: @ultralightgold;
+			background-color: @lightgold;
 		}
 	}
 }
@@ -111,4 +193,32 @@
 	}
 }
 
+@media only screen and (max-width : 767px) {
+	.hero-content {
+		.uw-site-title {
+			display: block; 
+		}
+	}
+	
+	#hero-container #hashtag {
+		margin-top: -50px;
+		font-size: 18px;
+		span {
+			padding: 2px 5px 3px 18px;
+			span big {
+				font-size: 18px;
+			}
+		}
+	}
 
+	div.uw-hero-image.hero-height2 div.container #hashtag {
+		//margin-top: -50px;
+		font-size: 18px;
+		span span big {
+			font-size: 18px;
+		}
+		&.mask {
+			position: relative;
+		} 
+	}
+}
