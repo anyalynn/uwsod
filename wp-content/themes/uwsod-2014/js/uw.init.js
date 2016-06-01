@@ -19,7 +19,7 @@ UW.elements = {
 }
 
 UW.getBaseUrl = function() {
-  var site = _.first( _.compact( Backbone.history.location.pathname.split('/') ) )
+ /* var site = _.first( _.compact( Backbone.history.location.pathname.split('/') ) )
   var url = ''
 
   if (!Backbone.history.location.origin) {
@@ -30,10 +30,11 @@ UW.getBaseUrl = function() {
     url = Backbone.history.location.origin + ( site ? '/' + site : '' ) + '/';
   } else if (Backbone.history.location.origin.indexOf('depts.washington.edu') != -1) {
     url = Backbone.history.location.origin + ( site ? '/' + site : '' ) + '/';
-  } else { */
+  } else {
     url = Backbone.history.location.origin + '/';
-/*  } */
-  return url
+ } 
+  return url */
+  return Backbone.history.location.origin;
 }
 
 UW.wpinstance = function(){
