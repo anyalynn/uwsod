@@ -35,6 +35,7 @@
                 <li><a href="//dental.washington.edu/oral-medicine/special-needs/patients-with-special-needs/">Special Needs Fact Sheets</a></li>
               <li><a href="//dental.washington.edu/about-us/news-events/">News &amp; Events</a></li>
              <li><a href="//dental.washington.edu/departments/">Departments</a></li>
+             <li><a href="https://dental.washington.edu/sitemap/">View our sitemap</a></li>
                 </ul>
               </div>
             </div>
