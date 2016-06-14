@@ -9135,18 +9135,22 @@ h2,
 h3,
 .h3 {
   font-size: 23px;
+  font-weight: 700;
 }
 h4,
 .h4 {
   font-size: 19px;
+  font-weight: 700;
 }
 h5,
 .h5 {
   font-size: 18px;
+  font-weight: 700;
 }
 h6,
 .h6 {
   font-size: 17px;
+  font-weight: 700;
 }
 hr {
   border-top: 1px solid #b7a57a;
@@ -9160,7 +9164,7 @@ hr {
 .info-box h4 {
   font-size: 18px;
   font-family: "Encode Sans Compressed", sans-serif;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.2;
   color: inherit;
 }
