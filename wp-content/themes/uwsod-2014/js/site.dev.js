@@ -13408,7 +13408,7 @@ $("#userMemType").val("Associate Member");
 function Ann(event){
 $("#ItemQty2").val(event);
 }
-
+   
 function formVal()
 {
 	$("#ItemDesc1").val($("#userMemType").val() + "-" + $("#userAlumMemName").val() + "-" + $("#userGradYr").val());
