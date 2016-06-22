@@ -9070,6 +9070,13 @@ p {
 a.uw-btn {
   z-index: 0;
 }
+.intro {
+  font-family: "Encode Sans Compressed", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
 #accordion h3 {
   font-size: 19px;
 }
