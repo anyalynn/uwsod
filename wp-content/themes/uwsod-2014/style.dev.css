@@ -9070,7 +9070,7 @@ p {
 a.uw-btn {
   z-index: 0;
 }
-blockquote p {
+.uw-body blockquote p {
   font-size: 19px;
 }
 #accordion h3 {
