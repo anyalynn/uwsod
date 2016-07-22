@@ -50,7 +50,7 @@ function condented_post_type() {
 			'not_found' => 'No CDE Courses found',
 			'not_found_in_trash' => 'No CDE Courses found in trash',
 			'parent_item_colon' => '',
-			'menu_name' => 'CDE Course'
+			'menu_name' => 'CDE Courses'
 		);
 
 		$args = array(
@@ -70,9 +70,11 @@ add_action('admin_init', 'condented_admin_init');
    
    function condented_admin_init(){
 		
-		add_meta_box('cdeStartdate', 'Course Date', 'cdeStartdate_callback', 'condented', 'normal', 'high');
-		add_meta_box('cdeEnddate', 'Course Date', 'cdeEnddate_callback', 'condented', 'normal', 'high');
-		add_meta_box('cdetitle', 'Long title (not #)', 'cdetitle_callback', 'condented', 'normal', 'high');
+		add_meta_box('cdeStartdate', 'Course Start Date', 'cdeStartdate_callback', 'condented', 'normal', 'high');
+		add_meta_box('cdeEnddate', 'Course End Date', 'cdeEnddate_callback', 'condented', 'normal', 'high');
+		add_meta_box('cdeNumber', 'CDE Number', 'cdeNumber_callback', 'condented', 'normal', 'high');
+		add_meta_box('cdeprimarytitle', 'Primary title', 'cdeprimarytitle_callback', 'condented', 'normal', 'high');
+		add_meta_box('cdesecondarytitle', 'Secondary title', 'cdesecondarytitle_callback', 'condented', 'normal', 'high');
 		add_meta_box('instructor', 'Instructor', 'instructor_callback', 'condented', 'normal', 'high');
 		add_meta_box('cdenotes', 'Notes', 'cdenotes_callback', 'condented', 'normal', 'high');
 		add_meta_box('cdealert', 'Alerts', 'cdealert_callback', 'condented', 'normal', 'high');
@@ -92,11 +94,23 @@ add_action('admin_init', 'condented_admin_init');
 		$cdeEnddate = $custom['cdeEnddate'][0];
 		?><textarea rows="2" cols="20" name="cdeEnddate"><?= $cdeEnddate ?></textarea><?php
 	}
-	function cdetitle_callback() {
+	function cdeNumber_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$cdetitle = $custom['cdetitle'][0];
-		?><textarea rows="2" cols="50" name="cdetitle"><?= $cdetitle ?></textarea><?php
+		$cdeNumber = $custom['cdeNumber'][0];
+		?><textarea rows="2" cols="50" name="cdeNumber"><?= $cdeNumber ?></textarea><?php
+	}
+	function cdeprimarytitle_callback() {
+		global $post;
+		$custom = get_post_custom($post->ID);
+		$cdeprimarytitle = $custom['cdeprimarytitle'][0];
+		?><textarea rows="2" cols="50" name="cdeprimarytitle"><?= $cdeprimarytitle ?></textarea><?php
+	}
+	function cdesecondarytitle_callback() {
+		global $post;
+		$custom = get_post_custom($post->ID);
+		$cdesecondarytitle = $custom['cdesecondarytitle'][0];
+		?><textarea rows="2" cols="50" name="cdesecondarytitle"><?= $cdesecondarytitle ?></textarea><?php
 	}
 	
 	
@@ -127,7 +141,9 @@ add_action('admin_init', 'condented_admin_init');
 		if (get_post_type($post) == 'condented') {
 			update_post_meta($post->ID, 'cdeStartdate', $_POST['cdeStartdate']);
 			update_post_meta($post->ID, 'cdeEnddate', $_POST['cdeEnddate']);
-			update_post_meta($post->ID, 'cdetitle', $_POST['cdetitle']);
+			update_post_meta($post->ID, 'cdeNumber', $_POST['cdeNumber']);
+			update_post_meta($post->ID, 'cdeprimarytitle', $_POST['cdeprimarytitle']);
+			update_post_meta($post->ID, 'cdesecondarytitle', $_POST['cdesecondarytitle']);
 			update_post_meta($post->ID, 'instructor', $_POST['instructor']);
 			update_post_meta($post->ID, 'cdenotes', $_POST['cdenotes']);
 			update_post_meta($post->ID, 'cdealert', $_POST['cdealert']);
@@ -171,30 +187,33 @@ function checkIsAValidDate($myDateString){
 	   $query = new WP_Query( array( 'post_type' => 'condented' ) ); 
    		$courses = $query->get_posts();
 		usort($courses,'date_compare');
-		$content= "<table><tbody>";
+		$content= '<table><thead><tr><th style="width:150px">Date</th><th>Course</th></tr></thead><tbody>';
 	    foreach ($courses as $course):
 			$courseID = $course->ID;
     		$title = $course->post_title;
      		$cdeStartdate = get_post_meta($courseID, 'cdeStartdate', true);
 			$cdeEnddate = get_post_meta($courseID, 'cdeEnddate', true);
-			$cdetitle = get_post_meta($courseID, 'cdetitle', true);
+			$cdeNumber = get_post_meta($courseID, 'cdeNumber', true);
+			$cdeprimarytitle = get_post_meta($courseID, 'cdeprimarytitle', true);
+			$cdesecondarytitle = get_post_meta($courseID, 'cdesecondarytitle', true);
 	   		$instructor = get_post_meta($courseID, 'instructor', true);
 			$cdenotes = get_post_meta($courseID, 'cdenotes', true);
 			$cdealert = get_post_meta($courseID, 'cdealert', true);
 			$permalink = rtrim(get_permalink($courseID));
-			$today = date('m-d-Y');
+			$today = date('Y-m-d');
 			
 		    if(checkIsAValidDate($cdeStartdate)) {  
 			$courseStartdate = date_create($cdeStartdate);
-			if(date_format($courseStartdate,'m-d-Y') > $today) { 
-				$content.="<tr><td>".date_format($courseStartdate,'l, M j, Y');
+			if($cdeStartdate > $today) { 
+				$content.="<tr><td>".date_format($courseStartdate,'D, M j, Y');
 				if(($cdeEnddate != '') && (checkIsAValidDate($cdeEnddate)))
 				{
 					$courseEnddate = date_create($cdeEnddate);
-					$content.="<br />-".date_format($courseEnddate,'l, M j, Y');
+					$content.="<br />-".date_format($courseEnddate,'D, M j, Y');
 				}
 				$content .="</td><td><a style='padding-left:0' href=".$permalink.">";
-				$content.=$title.": ".$cdetitle."</a><ul><li>".$instructor."</li></ul>";
+				if($cdeNumber) { $content.=$cdeNumber.": "; }
+				$content.= $cdeprimarytitle." ".$cdesecondarytitle."</a><br/><ul><li>".$instructor."</li></ul>";
 				if($cdealert != ' ') 
 				{	$content .= "<span class='wronganswer'>".$cdealert."</span>";
 				}
@@ -226,16 +245,18 @@ add_shortcode( 'cdecurrent', 'cdecurrent_shortcode' );
     		$title = $course->post_title;
      		$cdeStartdate = get_post_meta($courseID, 'cdeStartdate', true);
 			$cdeEnddate = get_post_meta($courseID, 'cdeEnddate', true);
-			$cdetitle = get_post_meta($courseID, 'cdetitle', true);
+			$cdeNumber = get_post_meta($courseID, 'cdeNumber', true);
+			$cdeprimarytitle = get_post_meta($courseID, 'cdeprimarytitle', true);
+			$cdesecondarytitle = get_post_meta($courseID, 'cdesecondarytitle', true);
 	   		$instructor = get_post_meta($courseID, 'instructor', true);
 			$cdenotes = get_post_meta($courseID, 'cdenotes', true);
 			$cdealert = get_post_meta($courseID, 'cdealert', true);
 			$permalink = rtrim(get_permalink($courseID));
-			$today = date('m-d-Y');
+			$today = date('Y-m-d');
 			
 		    if(checkIsAValidDate($cdeStartdate)) {  
 			$courseStartdate = date_create($cdeStartdate);
-			if(date_format($courseStartdate,'m-d-Y') < $today) { 
+			if($cdeStartdate < $today) { 
 				$content.="<tr><td>".date_format($courseStartdate,'l, M j, Y');
 				if(($cdeEnddate != '') && (checkIsAValidDate($cdeEnddate)))
 				{
@@ -243,7 +264,7 @@ add_shortcode( 'cdecurrent', 'cdecurrent_shortcode' );
 					$content.="<br />-".date_format($courseEnddate,'l, M j, Y');
 				}
 				$content .="</td><td><a style='padding-left:0' href=".$permalink.">";
-				$content.=$title.": ".$cdetitle."</a><ul><li>".$instructor."</li></ul>";
+				$content.=$cdeNumber.": ".$cdeprimarytitle."</a><ul><li>".$instructor."</li></ul>";
 				if($cdealert != ' ') 
 				{	$content .= "<span class='wronganswer'>".$cdealert."</span>";
 				}
@@ -402,7 +423,7 @@ if ( ! function_exists('coursedept_shortcode') ):
                              
                             		$short_content .= $num;
                             	                                    
-                               		$short_content .= ": ";
+                               		$short_content .= " ";
                                    
                                     $short_content .= $excerpt."</a></p>";
 									
