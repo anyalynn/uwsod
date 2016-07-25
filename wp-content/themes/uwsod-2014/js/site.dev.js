@@ -12619,7 +12619,7 @@ UW.MobileMenu = Backbone.View.extend({
         $targeUl = $target.next();
 
     if( $targeUl.length > 0 ){
-      event.preventDefault();  
+    //  event.preventDefault();  
       // Toggle ARIA tags 
       $targeUl.attr('aria-hidden', function(index, attr){
         return attr === 'true' ? 'false' : 'true';
