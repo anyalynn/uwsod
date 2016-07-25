@@ -6837,6 +6837,9 @@ body.home .uw-sidebar-menu {
   #mobile-relative.frontpage ul.uw-mobile-menu > div > ul .active-menu ul.sub-menu {
     display: block;
   }
+  #mobile-relative.frontpage ul.uw-mobile-menu > div > ul .active-menu.menu-item-has-children > a:after {
+    background-position: -284px -25px;
+  }
   #mobile-relative.frontpage ul.uw-mobile-menu > div > ul ul.sub-menu {
     display: none;
   }
@@ -6861,7 +6864,6 @@ body.home .uw-sidebar-menu {
     right: 11px;
     width: 26px;
     height: 23px;
-    background: url(assets/svg/uw-sprite.svg) -284px 0 no-repeat rgba(0, 0, 0, 0);
     opacity: .8;
     margin-top: 0;
   }
