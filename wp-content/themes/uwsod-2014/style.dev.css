@@ -10219,6 +10219,40 @@ table.small td p {
 .table td p.small {
   font-size: 80%;
 }
+/* Contact Widget */
+.contact-widget-inner {
+  padding: 40px 20px;
+  margin-top: 20px;
+  background: url('assets/images/stripes-dark-tile.svg') 0 -58px repeat-x #ffffff;
+}
+.contact-widget-inner * {
+  margin: 0;
+  font-size: 16px;
+}
+.contact-widget-inner h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 35px;
+  margin-bottom: 5px;
+}
+.contact-widget-inner p.person-phone,
+.contact-widget-inner a.person-email {
+  padding: 1px 0 1px 35px;
+  background-image: url(assets/svg/widgets-sprite.svg);
+}
+.contact-widget-inner p.person-phone {
+  background-position: 0 -30px;
+}
+.contact-widget-inner a.person-email {
+  color: inherit;
+  background-position: 0 1px;
+}
+.uw-sidebar .contact-widget-inner .widgettitle {
+  margin-bottom: 30px;
+}
+.uw-sidebar .contact-widget-inner .widgettitle:after {
+  background-color: #ffffff;
+}
 /*==========  Non-Mobile First Method  ==========*/
 /* Large Devices, Wide Screens */
 /* Medium Devices, Desktops */
