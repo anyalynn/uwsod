@@ -10702,7 +10702,7 @@ ul.shortcode-blogroll-mini {
 .contact-widget-inner p.person-phone,
 .contact-widget-inner a.person-email {
   padding: 1px 0 1px 35px;
-  background-image: url(assets/svg/widgets-sprite.svg);
+  background-image: url(assets/svg/widgets-sprite.svg) no-repeat;
 }
 .contact-widget-inner p.person-phone {
   background-position: 0 -30px;
