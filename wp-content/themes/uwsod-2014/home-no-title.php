@@ -14,8 +14,15 @@
     <div role='main' class="uw-content" >
    
          <?php uw_site_title(); ?>
-         <?php if (is_front_page()) { get_template_part( 'menu', 'mobile' ); }?>
+         <?php if (is_front_page()) { get_template_part( 'menu', 'mobile' ); }   ?>    
+                  
       <div id='main_content' class="uw-body-copy" tabindex="-1">
+   <?php  if ( function_exists( 'soliloquy' ) ) { soliloquy( '14466' ); }  ?>    
+         
+         <div class="row">
+			
+<?php get_template_part( 'quicklinks' ); ?>
+            </div>
       
             <?php
           // Start the Loop.
@@ -36,13 +43,10 @@
           endwhile;
         ?>
        </div>
-        <div class="row">
-			
-<?php get_template_part( 'quicklinks' ); ?>
-            </div>
+        
              
 
-		<?php	get_template_part('on-campus');?>
+		
 	    </div>
   </div>
 
