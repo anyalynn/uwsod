@@ -9278,10 +9278,6 @@ a.more:after {
   z-index: 1320;
   background: #b7a57a url('assets/images/right.png') no-repeat scroll 50% 50%;
 }
-#soliloquy-container-14466 .soliloquy-fc-content,
-#soliloquy-container-14466 .soliloquy-fc-content p {
-  /*text-shadow: 0 1px 0 rgba(0,0,0,0);*/
-}
 #soliloquy-container-14466 .soliloquy-caption {
   right: 0;
   left: 0;
@@ -9299,7 +9295,7 @@ a.more:after {
 }
 @media only screen and (min-width: 768px) {
   .uw-links {
-    margin-top: -40px;
+    margin-top: -15px;
   }
   .on-campus {
     margin-top: -58px;
@@ -9322,7 +9318,7 @@ a.more:after {
     font-size: 30px;
     margin-left: 20px;
   }
-  .udub-slant span {
+  #soliloquy-container-14466 .soliloquy-caption .udub-slant span {
     -webkit-transform: skew(-25deg, 0);
     -ms-transform: skewX(-25deg) skewY(0);
     transform: skew(-25deg, 0);
@@ -9331,7 +9327,7 @@ a.more:after {
     width: 290px;
     background-color: #b7a57a;
   }
-  .udub-slant {
+  #soliloquy-container-14466 .soliloquy-caption .udub-slant {
     overflow: hidden;
     display: block;
     margin: 5px 0 5px 20px;
@@ -9352,7 +9348,7 @@ a.more:after {
     -webkit-box-shadow: 0 0 4px rgba(164, 164, 164, 0.5);
     box-shadow: 0 0 4px rgba(164, 164, 164, 0.5);
     width: 100%;
-    margin: -50px 10px 50px 10px;
+    margin: -10px 10px 50px 10px;
   }
   .uw-links ul li {
     padding: 0 0;
@@ -9382,17 +9378,17 @@ a.more:after {
     margin-left: 5px;
     margin-bottom: 0;
   }
-  .udub-slant {
+  #soliloquy-container-14466 .soliloquy-caption .udub-slant {
     display: none;
   }
-  .udub-slant span {
+  #soliloquy-container-14466 .soliloquy-caption .udub-slant span {
     display: none;
   }
   #soliloquy-container-14466 .soliloquy-caption p {
     font-size: 14px;
     margin-bottom: 20px;
     margin-left: 5px;
-    margin-top: 0;
+    margin-top: 10px;
   }
   #soliloquy-container-14466 .soliloquy-prev,
   #soliloquy-container-14466 .soliloquy-next {
