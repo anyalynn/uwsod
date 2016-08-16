@@ -72,6 +72,7 @@ add_action('admin_init', 'condented_admin_init');
 		
 		add_meta_box('cdeStartdate', 'Course Start Date', 'cdeStartdate_callback', 'condented', 'normal', 'high');
 		add_meta_box('cdeEnddate', 'Course End Date', 'cdeEnddate_callback', 'condented', 'normal', 'high');
+		add_meta_box('cdeThumb', 'CDE Thumbnail', 'cdeThumb_callback', 'condented', 'normal', 'high');
 		add_meta_box('cdeNumber', 'CDE Number', 'cdeNumber_callback', 'condented', 'normal', 'high');
 		add_meta_box('cdeprimarytitle', 'Primary title', 'cdeprimarytitle_callback', 'condented', 'normal', 'high');
 		add_meta_box('cdesecondarytitle', 'Secondary title', 'cdesecondarytitle_callback', 'condented', 'normal', 'high');
@@ -99,6 +100,12 @@ add_action('admin_init', 'condented_admin_init');
 		$custom = get_post_custom($post->ID);
 		$cdeNumber = $custom['cdeNumber'][0];
 		?><textarea rows="2" cols="50" name="cdeNumber"><?= $cdeNumber ?></textarea><?php
+	}
+	function cdeThumb_callback() {
+		global $post;
+		$custom = get_post_custom($post->ID);
+		$cdeThumb = $custom['cdeThumb'][0];
+		?><textarea rows="2" cols="50" name="cdeThumb"><?= $cdeThumb ?></textarea><?php
 	}
 	function cdeprimarytitle_callback() {
 		global $post;
@@ -142,6 +149,7 @@ add_action('admin_init', 'condented_admin_init');
 			update_post_meta($post->ID, 'cdeStartdate', $_POST['cdeStartdate']);
 			update_post_meta($post->ID, 'cdeEnddate', $_POST['cdeEnddate']);
 			update_post_meta($post->ID, 'cdeNumber', $_POST['cdeNumber']);
+			update_post_meta($post->ID, 'cdeThumb', $_POST['cdeThumb']);
 			update_post_meta($post->ID, 'cdeprimarytitle', $_POST['cdeprimarytitle']);
 			update_post_meta($post->ID, 'cdesecondarytitle', $_POST['cdesecondarytitle']);
 			update_post_meta($post->ID, 'instructor', $_POST['instructor']);
@@ -194,6 +202,9 @@ function checkIsAValidDate($myDateString){
      		$cdeStartdate = get_post_meta($courseID, 'cdeStartdate', true);
 			$cdeEnddate = get_post_meta($courseID, 'cdeEnddate', true);
 			$cdeNumber = get_post_meta($courseID, 'cdeNumber', true);
+			$cdeThumb='';
+			$cdeThumb = get_post_meta($courseID, 'cdeThumb', true);
+			
 			$cdeprimarytitle = get_post_meta($courseID, 'cdeprimarytitle', true);
 			$cdesecondarytitle = get_post_meta($courseID, 'cdesecondarytitle', true);
 	   		$instructor = get_post_meta($courseID, 'instructor', true);
@@ -211,7 +222,11 @@ function checkIsAValidDate($myDateString){
 					$courseEnddate = date_create($cdeEnddate);
 					$content.="<br />-".date_format($courseEnddate,'D, M j, Y');
 				}
+				if($cdeThumb != '')
+				{	$content .= '<img src="'.$cdeThumb.'" height="100" width="100" alt="course thumbnail" />';
+				}
 				$content .="</td><td><a style='padding-left:0' href=".$permalink.">";
+				
 				if($cdeNumber) { $content.=$cdeNumber.": "; }
 				$content.= $cdeprimarytitle." ".$cdesecondarytitle."</a><br/><ul><li>".$instructor."</li></ul>";
 				if($cdealert != ' ') 
