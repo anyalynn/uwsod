@@ -225,7 +225,7 @@ function checkIsAValidDate($myDateString){
 				if($cdeThumb != '')
 				{	$content .= '<img src="'.$cdeThumb.'" height="100" width="100" alt="course thumbnail" />';
 				}
-				$content .="</td><td><a style='padding-left:0' href=".$permalink.">";
+				$content .="</td><td><a style='padding-left:0' id=".$cdeNumber." href=".$permalink.">";
 				
 				if($cdeNumber) { $content.=$cdeNumber.": "; }
 				$content.= $cdeprimarytitle." ".$cdesecondarytitle."</a><br/><ul><li>".$instructor."</li></ul>";
