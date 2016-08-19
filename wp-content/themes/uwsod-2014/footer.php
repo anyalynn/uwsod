@@ -19,7 +19,7 @@
                 <li><a href="//dental.washington.edu/about-us/contact-us/">Contact Us</a></li>
                   <li><a href="http://www.washington.edu/safety">Campus Safety</a></li>
                 <li><a href="https://uwnetid.sharepoint.com/sites/sod/">SOD Intranet</a></li>
-                <li><a href="http://www.washington.edu/admin/rules/wac/rulesindex.html">Rules Docket</a></li>
+                <li><a href="http://www.washington.edu/rules/wac/">Rules Docket</a></li>
                 <li><a href="http://www.washington.edu/online/privacy/">Privacy</a></li>
                 <li><a href="http://www.washington.edu/online/terms/">Terms</a></li>
             </ul>
