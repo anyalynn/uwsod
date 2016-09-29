@@ -4,8 +4,7 @@
  */
 ?>
 
-<?php get_header(); 
-?>
+<?php get_header(); ?>
 <div class="container uw-body">
 
   <div class="row">

@@ -1,5 +1,5 @@
-<?php get_header(); 
-   $sidebar = get_post_meta($post->ID, "sidebar"); ?>
+<?php get_header(); ?>
+ <?php  $sidebar = get_post_meta($post->ID, "sidebar"); ?>
 
 <?php get_template_part( 'header', 'image' ); ?>
 

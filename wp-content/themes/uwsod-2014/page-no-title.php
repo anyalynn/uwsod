@@ -3,8 +3,7 @@
  * Template Name: No Title
  */
 ?>
-<?php get_header(); 
-?>
+<?php get_header(); ?>
 
 <div class="uw-body">
 

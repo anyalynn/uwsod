@@ -4,9 +4,9 @@
  */
 ?>
 
-<?php get_header(); 
-      $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-      $sidebar = get_post_meta($post->ID, "sidebar");   ?>
+<?php get_header(); ?>
+<?php    $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );?>
+<?php    $sidebar = get_post_meta($post->ID, "sidebar");   ?>
 
 <div class="uw-hero-image hero-blank">
 	<h1 class="container uw-site-title-blank"><?php the_title(); ?></h1>

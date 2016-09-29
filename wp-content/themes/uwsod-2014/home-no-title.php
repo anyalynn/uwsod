@@ -3,10 +3,7 @@
  * Template Name: Home No Title
  */
 ?>
-<?php get_header(); 
-?>
-
-
+<?php get_header(); ?>
 <div class="home uw-body">
 
   <div class="row">
