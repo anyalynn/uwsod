@@ -1070,3 +1070,81 @@ table.small th, table.small td, table.small td p { font-size:80%;}
 	font-size:80%;
 	
 }
+/*** Contact add-ons  **/
+.contact-widget-inner * {
+  margin: 0;
+  font-size: 15px;
+  
+}
+.contact-widget-inner p.person-fax
+ {
+  padding: 1px 0 1px 35px;
+  background-image: url(assets/svg/widgets-sprite.svg);
+}
+.contact-widget-inner p.person-fax {
+  background-position: 0 -129px;
+}
+
+/**Tool Tips  **/
+a.tooltips {
+  position: relative;
+  display: inline;
+  text-decoration:none;
+}
+a:hover.tooltips, a:focus.tooltips {
+ text-decoration:none;
+}
+a:hover.tooltips img {border:none;text-decoration:none;outline:none;}
+
+a.tooltips span {
+  position: absolute;
+  width:376px;
+  color: #555;
+  background: #FFFFFF;
+  border: 1px solid #777;
+  height: 50px;
+  line-height: 17px;
+  text-align: center;
+  visibility: hidden;
+  border-radius: 6px;
+  font-size:12px;
+  font-family:"Open Sans";
+  font-weight:normal;
+  padding:5px 4px;
+  text-decoration:none;
+}
+a.tooltips span:before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -12px;
+  width: 0; height: 0;
+  border-top: 12px solid #999;
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+  text-decoration:none;
+}
+a.tooltips span:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -10px;
+  width: 0; height: 0;
+  border-top: 9px solid #FFFFFF;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+   text-decoration:none;
+   outline:none;
+}
+a:hover.tooltips span {
+  visibility: visible;
+  bottom: 15px;
+  left: 50%;
+  margin-left: -185px;
+  z-index: 999;
+  text-decoration:none;
+  outline:none;
+}
+
