@@ -41,9 +41,7 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu
 */
   function start_el(&$output, $item, $depth = 0, $args = array() , $id=0)
   {
-    if ( $depth > 1 )
-      return;
-
+    
     $this->CURRENT = $item->post_name;
     $title = ! empty( $item->title ) ? $item->title : $item->post_title;
 
