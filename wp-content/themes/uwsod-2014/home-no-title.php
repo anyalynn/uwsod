@@ -4,6 +4,8 @@
  */
 ?>
 <?php get_header(); ?>
+
+
 <div class="home uw-body">
 
   <div class="row">
@@ -11,8 +13,7 @@
     <div role='main' class="uw-content" >
    
          <?php uw_site_title(); ?>
-         <?php if (is_front_page()) { get_template_part( 'menu', 'mobile' ); }   ?>    
-                  
+                         
       <div id='main_content' class="uw-body-copy" tabindex="-1">
    <?php  if ( function_exists( 'soliloquy' ) ) { soliloquy( '14466' ); }  ?>    
          

@@ -121,3 +121,4 @@ wp-content/plugins/akismet/*
 *.asf
 *.wmv
 *.avi
+*.log

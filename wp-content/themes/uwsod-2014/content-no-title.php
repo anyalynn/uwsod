@@ -1,4 +1,3 @@
-<h1 class="no-title"><?php the_title() ?></h1>
-<?php get_template_part( 'menu', 'mobile' ); ?>
+<h1><?php the_title() ?></h1>
 
 <?php the_content(); ?>

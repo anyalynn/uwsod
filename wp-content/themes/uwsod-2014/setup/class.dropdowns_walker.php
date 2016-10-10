@@ -23,38 +23,34 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu
 
   function start_lvl( &$output, $depth = 0, $args = array() )
   {
-    if ( $depth > 0 ) return;
-		$output .= "<ul role=\"group\" id=\"menu-{$this->CURRENT}\" aria-labelledby='{$this->CURRENT}' aria-expanded=\"false\" class=\"dawgdrops-menu\">\n";
+    
+	$output .= "<ul role=\"group\" id=\"menu-{$this->CURRENT}\" aria-labelledby='{$this->CURRENT}' aria-expanded=\"false\" class=\"\">\n";
 	}
 
   function end_lvl( &$output, $depth = 0, $args = array() )
   {
-    if ( $depth > 0 )
-      return;
-
-		$indent = str_repeat("\t", $depth);
+    	$indent = str_repeat("\t", $depth);
 		$output .= "$indent</ul>\n";
 	}
 
-  function display_element ($element, &$children_elements, $max_depth, $depth = 0, $args, &$output)
+ /* function display_element ($element, &$children_elements, $max_depth, $depth = 0, $args, &$output)
   {
       $element->has_children = isset($children_elements[$element->ID]) && !empty($children_elements[$element->ID]);
       return parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
   }
-
+*/
   function start_el(&$output, $item, $depth = 0, $args = array() , $id=0)
   {
-    if ( $depth > 1 )
-      return;
+    
 
     $this->CURRENT = $item->post_name;
     $title = ! empty( $item->title ) ? $item->title : $item->post_title;
 
-    $controls = $depth == 0 && $item->has_children ? 'aria-controls="menu-'.$item->post_name.'" aria-expanded="false" aria-haspopup="true"' : '';
+    $controls =  '';
 
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
-		$classes     = $depth == 0 ? array( 'dawgdrops-item', $item->classes[0] ) : array();
+		$classes     =  array();
 		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
 
     $li_classnames = ! empty($classes) ? 'class="'. $class_names .'"' : '';
@@ -68,7 +64,7 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu
 		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
 		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 
-		$attributes .= $depth == 0 && $item->has_children ? ' class="dropdown-toggle"' : '';
+		$attributes .= $item->has_children ? ' class="has-submenu"' : '';
 
 		$attributes .= $depth == 1                ? ' tabindex="-1" '                                : '';
 		$attributes .= ' title="'. $title .'" ';

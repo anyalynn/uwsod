@@ -4,6 +4,7 @@
  */
 ?>
 <?php get_header(); ?>
+<div style="margin-top:15px"></div> 
 
 <div class="container uw-body">
 
@@ -13,7 +14,7 @@
 
       <?php uw_site_title(); ?>
 
-      <?php if (is_front_page()) { get_template_part( 'menu', 'mobile' ); }?>
+     
 
       <?php get_template_part( 'breadcrumbs' ); ?>
 

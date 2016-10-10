@@ -5,15 +5,15 @@
 ?>
 
 <?php get_header(); ?>
-<div class="container uw-body">
+<?php   $sidebar = get_post_meta($post->ID, "sidebar"); ?>
+ 
+<div class="container uw-body smartmenu">
 
   <div class="row">
 
-     <div class="col-md-8 uw-content" role='main'>
+     <div class="col-md-<?php echo ((!isset($sidebar[0]) || $sidebar[0]!="on") ? "8" : "12" ) ?> uw-content" role='main'>
 
       <?php uw_site_title(); ?>
-
-      <?php if (is_front_page()) { get_template_part( 'menu', 'mobile' ); }?>
 
       <?php get_template_part( 'breadcrumbs' ); ?>
 
@@ -28,7 +28,7 @@
              * use this in a child theme, then include a file called called content-___.php
              * (where ___ is the post format) and that will be used instead.
              */
-         get_template_part( 'content', 'title' );
+         get_template_part( 'content', 'page' );
 
             // If comments are open or we have at least one comment, load up the comment template.
             if ( comments_open() || get_comments_number() ) {
@@ -37,12 +37,16 @@
 
           endwhile;
         ?>
- </div>
+  </div>
 
     </div>
-<div style="margin-top:70px">
-    <?php get_sidebar() ?>
-    </div>
+
+    <div id="sidebar" class="smartmenu"><?php 
+      if(!isset($sidebar[0]) || $sidebar[0]!="on"){
+		  
+        get_sidebar();
+      }
+    ?></div>
 
   </div>
 

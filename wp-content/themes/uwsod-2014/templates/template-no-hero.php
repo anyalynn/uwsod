@@ -5,8 +5,8 @@
 ?>
 
 <?php get_header(); ?>
-<?php    $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );?>
-<?php    $sidebar = get_post_meta($post->ID, "sidebar");   ?>
+    
+ <?php     $sidebar = get_post_meta($post->ID, "sidebar");   ?>
 
 <div class="uw-hero-image hero-blank">
 	<h1 class="container uw-site-title-blank"><?php the_title(); ?></h1>
@@ -18,7 +18,6 @@
 
     <div class="col-md-<?php echo (($sidebar[0]!="on") ? "8" : "12" ) ?> uw-content" role='main'>
 
-      <?php get_template_part( 'menu', 'mobile' ); ?>
       <?php get_template_part( 'breadcrumbs' ); ?>
 
       <div id='main_content' class="uw-body-copy" tabindex="-1">
