@@ -42,19 +42,20 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu
   function start_el(&$output, $item, $depth = 0, $args = array() , $id=0)
   {
     
+
     $this->CURRENT = $item->post_name;
     $title = ! empty( $item->title ) ? $item->title : $item->post_title;
 
-    $controls = $item->has_children ? 'aria-controls="menu-'.$item->post_name.'" aria-expanded="false" aria-haspopup="true"' : '';
+    $controls =  '';
 
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
-		$classes     = $item->classes;
+		$classes     =  array();
 		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
 
     $li_classnames = ! empty($classes) ? 'class="'. $class_names .'"' : '';
     //$li_attributes = $depth == 0 ? ' role="presentation" ' : '';
-    $li_attributes =  ' ' ;
+    $li_attributes = $depth == 0 ? ' ' : '';
 
 		$output .= $indent . '<li' . $li_attributes . $li_classnames .'>';
 
