@@ -45,16 +45,16 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu
     $this->CURRENT = $item->post_name;
     $title = ! empty( $item->title ) ? $item->title : $item->post_title;
 
-    $controls = $depth == 0 && $item->has_children ? 'aria-controls="menu-'.$item->post_name.'" aria-expanded="false" aria-haspopup="true"' : '';
+    $controls = $item->has_children ? 'aria-controls="menu-'.$item->post_name.'" aria-expanded="false" aria-haspopup="true"' : '';
 
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
-		$classes     = $depth == 0 ? array( ' ', $item->classes[0] ) : array();
+		$classes     = $item->classes;
 		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
 
     $li_classnames = ! empty($classes) ? 'class="'. $class_names .'"' : '';
     //$li_attributes = $depth == 0 ? ' role="presentation" ' : '';
-    $li_attributes = $depth == 0 ? ' ' : '';
+    $li_attributes =  ' ' ;
 
 		$output .= $indent . '<li' . $li_attributes . $li_classnames .'>';
 
