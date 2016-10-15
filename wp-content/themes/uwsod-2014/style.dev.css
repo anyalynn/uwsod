@@ -10828,7 +10828,8 @@ a:hover.tooltips span {
   }
 }
 table.services img {
-  width: 100px;
+  width: 120px;
+  margin-right: 10px;
 }
 table.services p {
   margin-top: 7px;
