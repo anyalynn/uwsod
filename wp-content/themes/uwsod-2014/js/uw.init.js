@@ -83,6 +83,12 @@ UW.initialize = function( $ )
   $('pre').addClass('prettyprint')
 
   if ( window.prettyPrint ) prettyPrint()
+ 
+  $('#main-menu').smartmenus({
+	subMenusSubOffsetX: 1,
+	subMenusSubOffsetY: -8
+  });
+	
 
 }
 

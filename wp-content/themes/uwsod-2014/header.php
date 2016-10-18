@@ -26,15 +26,7 @@
   ga('send', 'pageview');
 
 </script>
-<!-- SmartMenus jQuery init -->
-<script type="text/javascript">
-	$(function() {
-		$('#main-menu').smartmenus({
-			subMenusSubOffsetX: 1,
-			subMenusSubOffsetY: -8
-		});
-	});
-	</script>
+
     </head>
     <!--[if lt IE 9]> <body <?php body_class('lt-ie9'); ?>> <![endif]-->
     <!--[if gt IE 8]><!-->
