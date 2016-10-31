@@ -5,8 +5,9 @@
 <div class="container uw-body">
 
     <div class="row">
+    <div class="col-md-4"></div>
   
-        <div class="col-md-12 uw-content" role='main'>
+        <div class="col-md-8 uw-content" role='main'>
         <?php uw_site_title(); ?>
         <?php get_template_part( 'breadcrumbs' ); ?>
 
@@ -17,7 +18,7 @@
                 <ul>
                    <li><a href="//dental.washington.edu">UW School of Dentistry home page</a></li>
                    <li><a href="//dental.washington.edu/patient/">Patient Care</a></li>
-                   <li><a href="//dental.washington.edu/students/dds-admissions/">Admissions</a></li>
+                   <li><a href="https://dental.washington.edu/students/dds-programs/admissions/">DDS Admissions</a></li>
                    <li><a href="//dental.washington.edu/course-catalog/">Course Catalog</a></li>
                    <li><a href="//dental.washington.edu/continuing-dental-education/">Continuing Dental Education</a></li>
                    <li><a href="//dental.washington.edu/about-us/location-directions/">Location and Directions</a></li>
