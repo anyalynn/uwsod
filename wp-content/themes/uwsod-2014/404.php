@@ -5,7 +5,7 @@
 <div class="container uw-body">
 
     <div class="row">
-    <div class="col-md-4"></div>
+   
   
         <div class="col-md-8 uw-content" role='main'>
         <?php uw_site_title(); ?>
@@ -30,6 +30,7 @@
             </ul>
          </div>
       </div>
+       <div class="col-md-4"></div>
    </div>
 </div>    
 
