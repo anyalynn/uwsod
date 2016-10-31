@@ -12,7 +12,7 @@
         <?php get_template_part( 'breadcrumbs' ); ?>
 
         <div id='main_content' class="uw-body-copy" tabindex="-1">
-            <?php get_search_form(); ?>
+            <?php get_search(); ?>
             <h3>Not what you were expecting?</h3>
               
                 <ul>
