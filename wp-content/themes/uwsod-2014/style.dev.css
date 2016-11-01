@@ -11023,6 +11023,37 @@ table.services a {
     background: url(assets/svg/widgets-sprite.svg) no-repeat 0 -160px;
   }
 }
+.alignleft-small {
+  margin: 20px 50px 50px 0;
+}
+.alignleft-small.size-large {
+  height: auto;
+}
+.alignleft-small {
+  float: left;
+}
+.alignright-small {
+  float: right;
+  margin: 20px 20px 50px 60px;
+}
+.alignnone-small {
+  margin: 20px 0 50px;
+}
+@media only screen and (max-width: 1400px) {
+  .alignleft-small {
+    margin: 20px 50px 50px 0px;
+  }
+  .alignleft-small {
+    float: left;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .alignright-small,
+  .alignleft-small,
+  .alignnone-small {
+    height: auto;
+  }
+}
 /*==========  Non-Mobile First Method  ==========*/
 /* Large Devices, Wide Screens */
 /* Medium Devices, Desktops */
