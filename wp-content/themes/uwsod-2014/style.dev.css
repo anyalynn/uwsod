@@ -11051,7 +11051,7 @@ table.services a {
   .alignright-small,
   .alignleft-small,
   .alignnone-small {
-    height: 60%;
+    width: 60% !important;
     margin: 10px;
   }
 }
