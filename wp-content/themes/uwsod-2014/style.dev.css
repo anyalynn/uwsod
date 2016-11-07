@@ -9069,10 +9069,10 @@ a.uw-btn {
 .uw-body blockquote p {
   font-size: 19px;
 }
-.uw-hero-image.hero-blank.container.uw-breadcrumbs {
+.uw-container-inner.uw-hero-image.hero-blank.container.uw-breadcrumbs {
   margin-top: 20px;
 }
-.uw-hero-image.hero-blank.h1.container.uw-site-title-blank {
+.uw-container-inner.uw-hero-image.hero-blank.h1.container.uw-site-title-blank {
   margin-top: -10px;
 }
 #accordion h3 {
