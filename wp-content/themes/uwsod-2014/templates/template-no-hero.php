@@ -9,7 +9,7 @@
  <?php     $sidebar = get_post_meta($post->ID, "sidebar");   ?>
 
 <div class="uw-hero-image hero-blank">
-<div class="container" style="margin-top:10px"> <?php get_template_part( 'breadcrumbs' ); ?></div>
+<div class="container" style="margin-top:40px"> <?php get_template_part( 'breadcrumbs' ); ?></div>
 	<h1 class="container uw-site-title-blank"><?php the_title(); ?></h1>
 </div>
 
