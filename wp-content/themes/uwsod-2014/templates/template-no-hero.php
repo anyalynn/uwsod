@@ -9,6 +9,7 @@
  <?php     $sidebar = get_post_meta($post->ID, "sidebar");   ?>
 
 <div class="uw-hero-image hero-blank">
+<div class="container  <?php get_template_part( 'breadcrumbs' ); ?></div>
 	<h1 class="container uw-site-title-blank"><?php the_title(); ?></h1>
 </div>
 
@@ -18,7 +19,7 @@
 
     <div class="col-md-<?php echo (($sidebar[0]!="on") ? "8" : "12" ) ?> uw-content" role='main'>
 
-      <?php get_template_part( 'breadcrumbs' ); ?>
+    
 
       <div id='main_content' class="uw-body-copy" tabindex="-1">
 
