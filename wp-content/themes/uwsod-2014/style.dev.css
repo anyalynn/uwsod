@@ -9071,9 +9071,9 @@ a.uw-btn {
 }
 .uw-hero-image.hero-blank .uw-breadcrumbs {
   display: block;
-  margin-top: 25px;
+  margin-top: 15px;
 }
-.uw-hero-image.hero-blank h1 .uw-site-title-blank {
+.uw-hero-image.hero-blank h1.uw-site-title-blank {
   margin-top: -10px;
 }
 #accordion h3 {
