@@ -256,7 +256,7 @@ add_shortcode( 'cdecurrent', 'cdecurrent_shortcode' );
 	   $query = new WP_Query( array( 'post_type' => 'condented' ) ); 
    		$courses = $query->get_posts();
 		usort($courses,'date_compare');
-		$content= "<table><tbody>";
+		$content= '<table><thead><tr><th style="width:150px">Date</th><th>Course</th></tr></thead><tbody>';
 	    foreach ($courses as $course):
 			$courseID = $course->ID;
     		$title = $course->post_title;
