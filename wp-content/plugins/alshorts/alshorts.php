@@ -274,11 +274,11 @@ add_shortcode( 'cdecurrent', 'cdecurrent_shortcode' );
 		    if(checkIsAValidDate($cdeStartdate)) {  
 			$courseStartdate = date_create($cdeStartdate);
 			if($cdeStartdate < $today) { 
-				$content.="<tr><td>".date_format($courseStartdate,'l, M j, Y');
+				$content.="<tr><td>".date_format($courseStartdate,'D, M j, Y');
 				if(($cdeEnddate != '') && (checkIsAValidDate($cdeEnddate)))
 				{
 					$courseEnddate = date_create($cdeEnddate);
-					$content.="<br />-".date_format($courseEnddate,'l, M j, Y');
+					$content.="<br />-".date_format($courseEnddate,'D, M j, Y');
 				}
 				$content .="</td><td><a style='padding-left:0' href=".$permalink.">";
 				$content.=$cdeNumber.": ".$cdeprimarytitle."</a><ul><li>".$instructor."</li></ul>";
