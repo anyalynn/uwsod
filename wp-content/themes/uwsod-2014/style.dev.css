@@ -217,7 +217,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #0088dd;
+  color: #0074bb;
   text-decoration: none;
 }
 a:hover,
@@ -2446,7 +2446,7 @@ fieldset[disabled] .btn-danger.active {
   background-color: #ffffff;
 }
 .btn-link {
-  color: #0088dd;
+  color: #0074bb;
   font-weight: normal;
   cursor: pointer;
   border-radius: 0;
@@ -2952,7 +2952,7 @@ body {
   background-color: #ffffff;
 }
 a {
-  color: #0088dd;
+  color: #0074bb;
   text-decoration: none;
   -o-transition: 0.25s;
   -webkit-transition: 0.25s;
@@ -10211,22 +10211,22 @@ a:hover.tooltips span {
 .main-menu-btn-icon:before,
 .main-menu-btn-icon:after {
   position: absolute;
-  top: 70%;
+  top: 60%;
   right: 2px;
-  height: 2px;
-  width: 24px;
-  background: #aaa;
+  height: 3px;
+  width: 26px;
+  background: #777;
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
 }
 .main-menu-btn-icon:before {
   content: '';
-  top: -7px;
+  top: -8px;
   right: 0;
 }
 .main-menu-btn-icon:after {
   content: '';
-  top: 7px;
+  top: 8px;
   right: 0;
 }
 /* x icon */
