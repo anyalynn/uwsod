@@ -9005,6 +9005,15 @@ div[id*='trumba'] iframe {
 .ic-right-arrow:before {
   content: "\e92a";
 }
+.ic-checkmark:before {
+  content: "\e938";
+}
+.ic-simple-arrow:before {
+  content: "\e939";
+}
+.ic-external:before {
+  content: "\e93a";
+}
 .icon-menu {
   text-align: center;
   margin: 40px 0;
