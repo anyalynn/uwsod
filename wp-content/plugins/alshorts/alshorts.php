@@ -208,6 +208,10 @@ function checkIsAValidDate($myDateString){
 			$cdeprimarytitle = get_post_meta($courseID, 'cdeprimarytitle', true);
 			$cdesecondarytitle = get_post_meta($courseID, 'cdesecondarytitle', true);
 	   		$instructor = get_post_meta($courseID, 'instructor', true);
+	  		$instructtype=get_field('instruction_type', $courseID);
+	  		$lectureimg="//dental.washington.edu/wp-content/media/lecture.png";
+	   		$handsonimg="//dental.washington.edu/wp-content/media/tools.png";
+	   		$bothimg="//dental.washington.edu/wp-content/media/lecture-tools.png";
 			$cdenotes = get_post_meta($courseID, 'cdenotes', true);
 			$cdealert = get_post_meta($courseID, 'cdealert', true);
 			$permalink = rtrim(get_permalink($courseID));
@@ -230,7 +234,16 @@ function checkIsAValidDate($myDateString){
 				 $content.='href="'.$permalink.'">';
 				
 				if($cdeNumber) { $content.=$cdeNumber.": "; }
-				$content.= $cdeprimarytitle." ".$cdesecondarytitle."</a><br/><ul><li>".$instructor."</li></ul>";
+				$content.= $cdeprimarytitle." ".$cdesecondarytitle."</a><p>".$instructor."</p>";
+				if($instructtype=='lecture')
+				{ 	$content .='<img src="'.$lectureimg.'" height="25"  alt="lecture icon"  />';
+				}
+				if($instructtype=='handson')
+				{ $content .='<img src="'.$handsonimg.'" height="25"  alt="tools icon"  />';
+				}
+				if($instructtype=='both')
+				{ $content .='<img src="'.$bothimg.'" height="25" alt="lecture & tools icon"   />';
+				}
 				if($cdealert != ' ') 
 				{	$content .= "<span class='wronganswer'>".$cdealert."</span>";
 				}
