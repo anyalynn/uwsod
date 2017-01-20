@@ -234,7 +234,7 @@ function checkIsAValidDate($myDateString){
 				 $content.='href="'.$permalink.'">';
 				
 				if($cdeNumber) { $content.=$cdeNumber.": "; }
-				$content.= $cdeprimarytitle." ".$cdesecondarytitle."</a><p>".$instructor."</p>";
+				$content.= $cdeprimarytitle." ".$cdesecondarytitle."</a><br />";
 				if($instructtype=='lecture')
 				{ 	$content .='<img src="'.$lectureimg.'" height="25"  alt="lecture icon"  />';
 				}
@@ -244,6 +244,8 @@ function checkIsAValidDate($myDateString){
 				if($instructtype=='both')
 				{ $content .='<img src="'.$bothimg.'" height="25" alt="lecture & tools icon"   />';
 				}
+				$content .="<p>".$instructor."</p>";
+				
 				if($cdealert != ' ') 
 				{	$content .= "<span class='wronganswer'>".$cdealert."</span>";
 				}
