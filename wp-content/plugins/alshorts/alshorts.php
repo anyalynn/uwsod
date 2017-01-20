@@ -244,7 +244,7 @@ function checkIsAValidDate($myDateString){
 				if($instructtype=='both')
 				{ $content .='<img src="'.$bothimg.'" height="25" alt="lecture & tools icon"   />';
 				}
-				$content .="<p>".$instructor."</p>";
+				$content .="<p><strong>".$instructor."</strong></p>";
 				
 				if($cdealert != ' ') 
 				{	$content .= "<span class='wronganswer'>".$cdealert."</span>";
