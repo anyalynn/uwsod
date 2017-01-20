@@ -176,6 +176,10 @@ UW.QuickLinks.Collection = Backbone.Collection.extend({
        "url": "http:\/\/dental.washington.edu\/policies",
        "classes": false
    }, {
+       "title": "Health & Safety",
+       "url": "http:\/\/dental.washington.edu\/health-and-safety",
+       "classes": false
+   },{
        "title": "Northwest Center for Oral and Facial Surgery",
        "url": "http:\/\/dental.washington.edu\/patient\/clinics\/nw-oral-facial-surgery",
        "classes": false
