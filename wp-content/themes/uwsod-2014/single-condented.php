@@ -16,6 +16,7 @@
 
   			<?php
   				// Start the Loop.
+		  		global $post;
   				while ( have_posts() ) : the_post();
 				/*
 				* Include the post format-specific template for the content. If you want to
