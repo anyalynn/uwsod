@@ -44,7 +44,7 @@
  				else if(($instructiontype) == 'both') 
   				{	echo('<img src="//dental.washington.edu/wp-content/media/lecture-tools.png" height="25" alt="lecture and dental tools icon" /><strong> Lecture & Hands-on</strong>');
 				}
-    
+    print $newtitle;
     			the_content();
    				endwhile;
   			?>
