@@ -31,7 +31,7 @@
 				<?php
 	 			$current_id = get_the_ID();
 				echo('$current_id');
-				echo('get_post_meta($current_id, 'cdesecondarytitle', true)');
+				echo('get_post_meta($current_id, "cdesecondarytitle", true)');
  				$instructiontype = get_field('instruction_type');
 				if(($instructiontype) == 'lecture') 
 				{   echo('<img src="//dental.washington.edu/wp-content/media/lecture.png" height="25" alt="lecture icon" /><strong> Lecture</strong>');
