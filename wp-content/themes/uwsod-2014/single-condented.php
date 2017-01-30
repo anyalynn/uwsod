@@ -33,7 +33,9 @@
 				$theID = the_ID();
 		$newtitle = get_post_meta($theID, 'instructor', true);
 				echo($theID);
-				echo($newtitle);
+				
+				$primarytitle=get_field('primary_title');
+				echo($primarytitle);
  				$instructiontype = get_field('instruction_type');
 				if(($instructiontype) == 'lecture') 
 				{   echo('<img src="//dental.washington.edu/wp-content/media/lecture.png" height="25" alt="lecture icon" /><strong> Lecture</strong>');
@@ -44,8 +46,7 @@
  				else if(($instructiontype) == 'both') 
   				{	echo('<img src="//dental.washington.edu/wp-content/media/lecture-tools.png" height="25" alt="lecture and dental tools icon" /><strong> Lecture & Hands-on</strong>');
 				}
-    print $newtitle;
-    			the_content();
+       			the_content();
    				endwhile;
   			?>
 
