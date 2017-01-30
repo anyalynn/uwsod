@@ -28,7 +28,7 @@
 				<h1><?php the_title() ?></h1>
 
 				<?php
-				get_post_meta($post->ID, 'cdesecondarytitle');
+				get_post_meta($post->ID, 'cdeprimarytitle');
  				$instructiontype = get_field('instruction_type');
 				if(($instructiontype) == 'lecture') 
 				{   echo('<img src="//dental.washington.edu/wp-content/media/lecture.png" height="25" alt="lecture icon" /><strong> Lecture</strong>');
