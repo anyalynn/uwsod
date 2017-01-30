@@ -16,7 +16,7 @@
 
   			<?php
   				// Start the Loop.
-		  		global $post;
+		  		
   				while ( have_posts() ) : the_post();
 				/*
 				* Include the post format-specific template for the content. If you want to
@@ -29,7 +29,8 @@
 				<h1><?php the_title() ?></h1>
 
 				<?php
-				get_post_meta($post->ID, 'cdeprimarytitle');
+	 			$current_id = get_the_ID();
+				get_post_meta($current_id, 'cdesecondarytitle');
  				$instructiontype = get_field('instruction_type');
 				if(($instructiontype) == 'lecture') 
 				{   echo('<img src="//dental.washington.edu/wp-content/media/lecture.png" height="25" alt="lecture icon" /><strong> Lecture</strong>');
