@@ -31,7 +31,7 @@
 				<?php
 	 			
 				$theID = the_ID();
-				$newtitle = get_post_meta($theID, 'instructor', true);
+				$newtitle = get_post_meta(the_ID(), 'instructor', true);
 				echo($theID);
 				echo($newtitle);
  				$instructiontype = get_field('instruction_type');
