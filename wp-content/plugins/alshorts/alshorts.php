@@ -68,8 +68,7 @@ function condented_post_type() {
 
 add_action('admin_init', 'condented_admin_init');
    
-   function condented_admin_init(){
-		
+   function condented_admin_init(){		
 		add_meta_box('cdeStartdate', 'Course Start Date', 'cdeStartdate_callback', 'condented', 'normal', 'high');
 		add_meta_box('cdeEnddate', 'Course End Date', 'cdeEnddate_callback', 'condented', 'normal', 'high');
 		add_meta_box('cdeThumb', 'CDE Thumbnail', 'cdeThumb_callback', 'condented', 'normal', 'high');
@@ -79,9 +78,17 @@ add_action('admin_init', 'condented_admin_init');
 		add_meta_box('instructor', 'Instructor', 'instructor_callback', 'condented', 'normal', 'high');
 		add_meta_box('cdenotes', 'Notes', 'cdenotes_callback', 'condented', 'normal', 'high');
 		add_meta_box('cdealert', 'Alerts', 'cdealert_callback', 'condented', 'normal', 'high');
-		
+		add_meta_box('cdeInstructionType', 'Instruction Type', 'cdeInstructionType_callback', 'condented', 'normal', 'high');		
 	}
-
+	function cdeInstructionType_callback() {
+		global $post;
+		$custom = get_post_custom($post->ID);
+		$cdeInstrType = $custom['rb_cdeInstructionType'][0];		
+		?>
+		<input type="radio" <?php checked($cdeInstrType, 'lecture');?> name="rb_cdeInstructionType" value="lecture"/> Lecture 
+		<input type="radio" <?php checked($cdeInstrType, 'handson');?> name="rb_cdeInstructionType" value="handson"/> Hands-on
+		<input type="radio" <?php checked($cdeInstrType, 'both');?> name="rb_cdeInstructionType" value="both"/> Both <?php 
+	}
 
 	function cdeStartdate_callback() {
 		global $post;
@@ -155,8 +162,7 @@ add_action('admin_init', 'condented_admin_init');
 			update_post_meta($post->ID, 'instructor', $_POST['instructor']);
 			update_post_meta($post->ID, 'cdenotes', $_POST['cdenotes']);
 			update_post_meta($post->ID, 'cdealert', $_POST['cdealert']);
-			
-		
+			update_post_meta($post->ID, 'rb_cdeInstructionType', $_POST['rb_cdeInstructionType']);			
 		}
 	}
 	function add_single_condented_template($template) {
@@ -208,7 +214,8 @@ function checkIsAValidDate($myDateString){
 			$cdeprimarytitle = get_post_meta($courseID, 'cdeprimarytitle', true);
 			$cdesecondarytitle = get_post_meta($courseID, 'cdesecondarytitle', true);
 	   		$instructor = get_post_meta($courseID, 'instructor', true);
-	  		$instructtype=get_field('instruction_type', $courseID);
+	  		//$instructtype=get_field('instruction_type', $courseID);
+			$instructtype = get_post_meta($courseID, 'rb_cdeInstructionType', true);
 	  		$lectureimg="//dental.washington.edu/wp-content/media/lecture.png";
 	   		$handsonimg="//dental.washington.edu/wp-content/media/tools.png";
 	   		$bothimg="//dental.washington.edu/wp-content/media/lecture-tools.png";
@@ -236,13 +243,13 @@ function checkIsAValidDate($myDateString){
 				if($cdeNumber) { $content.=$cdeNumber.": "; }
 				$content.= $cdeprimarytitle." ".$cdesecondarytitle."</a><br />";
 				if($instructtype=='lecture')
-				{ 	$content .='<img src="'.$lectureimg.'" height="25"  alt="lecture icon"  />';
+				{ 	$content .='<img src="'.$lectureimg.'" height="25"  alt="lecture icon" title="Lecture"  />';
 				}
 				if($instructtype=='handson')
-				{ $content .='<img src="'.$handsonimg.'" height="25"  alt="tools icon"  />';
+				{ $content .='<img src="'.$handsonimg.'" height="25"  alt="tools icon" title="Hands-on"  />';
 				}
 				if($instructtype=='both')
-				{ $content .='<img src="'.$bothimg.'" height="25" alt="lecture & tools icon"   />';
+				{ $content .='<img src="'.$bothimg.'" height="25" alt="lecture & tools icon" title="Lecture & Hands-on"   />';
 				}
 				$content .="<p><strong>".$instructor."</strong></p>";
 				
@@ -264,7 +271,7 @@ function checkIsAValidDate($myDateString){
 endif;
 add_shortcode( 'cdecurrent', 'cdecurrent_shortcode' );
 
-   if ( ! function_exists('cdeclast_shortcode') ):
+   if ( ! function_exists('cdelast_shortcode') ):
   function cdelast_shortcode( $atts) 
   {
 	  
@@ -281,6 +288,9 @@ add_shortcode( 'cdecurrent', 'cdecurrent_shortcode' );
 			$cdeprimarytitle = get_post_meta($courseID, 'cdeprimarytitle', true);
 			$cdesecondarytitle = get_post_meta($courseID, 'cdesecondarytitle', true);
 	   		$instructor = get_post_meta($courseID, 'instructor', true);
+
+			$instrtype = get_post_meta($courseID, 'rb_cdeInstructionType', true);
+
 			$cdenotes = get_post_meta($courseID, 'cdenotes', true);
 			$cdealert = get_post_meta($courseID, 'cdealert', true);
 			$permalink = rtrim(get_permalink($courseID));
@@ -296,7 +306,19 @@ add_shortcode( 'cdecurrent', 'cdecurrent_shortcode' );
 					$content.="<br />-".date_format($courseEnddate,'D, M j, Y');
 				}
 				$content .="</td><td><a style='padding-left:0' href=".$permalink.">";
-				$content.=$cdeNumber.": ".$cdeprimarytitle."</a><ul><li>".$instructor."</li></ul>";
+				$content.=$cdeNumber.": ".$cdeprimarytitle."</a>";
+				if(($instrtype) == 'lecture') 
+				{   $content .= '<img src="//dental.washington.edu/wp-content/media/lecture.png" height="25" alt="lecture icon" /><strong> Lecture</strong>';
+				}
+ 				else if(($instrtype) == 'handson') 
+  				{	$content .= '<img src="//dental.washington.edu/wp-content/media/tools.png" height="25" alt="dental tools icon" /><strong> Hands-on</strong>';
+				}
+ 				else if(($instrtype) == 'both') 
+  				{	$content .= '<img src="//dental.washington.edu/wp-content/media/lecture-tools.png" height="25" alt="lecture and dental tools icon" /><strong> Lecture & Hands-on</strong>';
+				}
+
+				$content .= "<ul><li>".$instructor."</li></ul>";
+
 				if($cdealert != ' ') 
 				{	$content .= "<span class='wronganswer'>".$cdealert."</span>";
 				}
