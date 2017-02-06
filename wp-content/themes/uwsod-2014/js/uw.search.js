@@ -27,7 +27,7 @@ UW.Search = Backbone.View.extend({
 
                     '<input type="submit" value="search" class="search" tabindex="0"/>'+
 
-                    '<div class="labels hidden-xs">'+
+                    '<div class="labels hidden-xs" id="search-labels">'+
                     //  '<label class="radio">'+
                      //   '<input type="radio" name="search" value="uw" data-toggle="radio"  />'+
                      //   'All the UW'+
@@ -129,6 +129,7 @@ UW.Search = Backbone.View.extend({
   // Determine if the client wants to search current site or the entire UW
   submitSearch : function( e )
   {
+	this.$el.find( 'input.radiobtn' ).attr('disabled', 'disabled')
     switch ( this.searchFeature )
     {
       case this.searchFeatures.uw :
