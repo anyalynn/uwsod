@@ -16,9 +16,9 @@ UW.Search = Backbone.View.extend({
                 '<div class="container no-height" role="search">'+
                   '<div class="center-block uw-search-wrapper">'+
                     '<div class="search-form-wrapper">'+
- +                        '<label class="screen-reader" for="uw-search-bar">Enter search text</label>' +
- +                        '<input id="uw-search-bar" type="search" name="s" value="" autocomplete="off" />'+
- +                      '</div>'+
+                         '<label class="screen-reader" for="uw-search-bar">Enter search text</label>' +
+                         '<input id="uw-search-bar" type="search" name="s" value="" autocomplete="off" />'+
+                       '</div>'+
 
                     '<select id="mobile-search-select" class="visible-xs" aria-label="Search Scope">' +
                       '<option value="uw" >All the UW</option>' +
