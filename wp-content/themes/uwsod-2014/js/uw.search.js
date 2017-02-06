@@ -13,19 +13,19 @@ UW.Search = Backbone.View.extend({
 
   // This is the HTML for the search bar that is preprended to the body tag.
   searchbar :
-                '<div class="container no-height">'+
+                '<div class="container no-height" role="search">'+
                   '<div class="center-block uw-search-wrapper">'+
-                    '<form class="uw-search" action="<%= UW.baseUrl %>">'+
-                      '<label class="screen-reader" for="uw-search-bar">Enter search text</label>' +
-                      '<input id="uw-search-bar" type="search" name="s" value="" autocomplete="off" />'+
-                    '</form>'+
+                    '<div class="search-form-wrapper">'+
+ +                        '<label class="screen-reader" for="uw-search-bar">Enter search text</label>' +
+ +                        '<input id="uw-search-bar" type="search" name="s" value="" autocomplete="off" />'+
+ +                      '</div>'+
 
-                    '<select id="mobile-search-select" class="visible-xs">' +
+                    '<select id="mobile-search-select" class="visible-xs" aria-label="Search Scope">' +
                       '<option value="uw" >All the UW</option>' +
                       '<option value="site" selected>Current site</option>' +
                     '</select>' +
 
-                    '<input type="submit" value="search" class="search" tabindex="-1"/>'+
+                    '<input type="submit" value="search" class="search" tabindex="0"/>'+
 
                     '<div class="labels hidden-xs">'+
                     //  '<label class="radio">'+
@@ -34,11 +34,12 @@ UW.Search = Backbone.View.extend({
                      // '</label>'+
 
                       '<label class="radio">'+
-                        '<input type="radio" name="search" value="site" data-toggle="radio" checked />'+
+                        '<input type="radio" name="search" value="site" class="radiobtn" data-toggle="radio" checked />'+
                         'Current site'+
                       '</label>'+
-
+					'</form>'+
                 '</div>'+
+				'</div>'+
               '</div>',
 
   // Default values
@@ -131,12 +132,12 @@ UW.Search = Backbone.View.extend({
     switch ( this.searchFeature )
     {
       case this.searchFeatures.uw :
-        this.$el.find( 'input' ).attr( 'name', 'q' )
+        this.$el.find( '#uw-search-bar' ).attr( 'name', 'q' )
         this.$el.find( 'form' ).attr( 'action', Backbone.history.location.protocol + '//uw.edu/search/' )
         return true;
 
      case this.searchFeatures.site :
-	  this.$el.find('input' ).attr( 'name', 'q' )
+	  this.$el.find('#uw-search-bar' ).attr( 'name', 'q' )
 	  this.$el.find('form').attr('action','https://dental.washington.edu/wp-content/themes/uwsod-2014/search.php/')
         return true;
 

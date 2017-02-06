@@ -40,7 +40,7 @@ endif;
 if ( ! function_exists( 'uw_dropdowns') ) :
   function uw_dropdowns()
   {
-	   echo '<nav id="main-nav" aria-label="Main menu" role="navigation"><div class="container">';
+	   echo '<nav id="main-nav" aria-label="Main menu"><div class="container">';
 echo '<input id="main-menu-state" type="checkbox" />
 <label class="main-menu-btn" for="main-menu-state">
   <span class="main-menu-btn-icon"></span> Toggle main menu visibility
@@ -66,7 +66,7 @@ if ( ! function_exists('uw_sidebar_menu') ) :
 
   function uw_sidebar_menu()
   {
-    echo sprintf( '<nav id="desktop-relative" role="navigation" aria-label="relative">%s</nav>', uw_list_pages() ) ;
+    echo sprintf( '<nav id="desktop-relative" aria-label="relative">%s</nav>', uw_list_pages() ) ;
   }
 
 endif;
@@ -75,7 +75,7 @@ if ( ! function_exists( 'uw_mobile_menu' ) ) :
 
   function uw_mobile_menu()
   {
-    echo sprintf( '<nav id="mobile-relative" role="navigation" aria-label="relative">%s</nav>', uw_list_mobile_pages() ) ;
+    echo sprintf( '<nav id="mobile-relative" aria-label="relative">%s</nav>', uw_list_mobile_pages() ) ;
   }
 
 endif;
@@ -90,7 +90,7 @@ if ( ! function_exists( 'uw_mobile_front_page_menu' ) ) :
         $spacer = '<div id="spacer"></div>';
 
     }
-    echo sprintf( '<nav id="mobile-relative" class="frontpage%s" role="navigation" aria-label="relative">%s%s</nav>', $class, $spacer, uw_list_front_page_menu_items() ) ;
+    echo sprintf( '<nav id="mobile-relative" class="frontpage%s"  aria-label="relative">%s%s</nav>', $class, $spacer, uw_list_front_page_menu_items() ) ;
   }
 
 endif;
@@ -287,7 +287,7 @@ if ( ! function_exists('get_uw_breadcrumbs') ) :
 
     }
 
-    return "<nav class='uw-breadcrumbs' role='navigation' aria-label='breadcrumbs'><ul>$html</ul></nav>";
+    return "<nav class='uw-breadcrumbs' aria-label='breadcrumbs'><ul>$html</ul></nav>";
   }
 
 endif;
