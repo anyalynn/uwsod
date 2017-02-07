@@ -12,7 +12,9 @@
 
     <div role='main' class="uw-content" >
    
-        <h1 class="uw-site-title-blank"><?php uw_site_title(); ?></h1>
+      <div class="uw-hero-image hero-blank no-title">
+  <h1 class="container uw-site-title-blank"><?php the_title(); ?></h1>
+</div>
                          
       <div id='main_content' class="uw-body-copy" tabindex="-1">
    <?php  if ( function_exists( 'soliloquy' ) ) { soliloquy( '14466' ); }  ?>    
