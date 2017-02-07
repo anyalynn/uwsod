@@ -12,7 +12,7 @@
 
     <div role='main' class="uw-content" >
    
-         <?php uw_site_title(); ?>
+        <h1 class="uw-site-title-blank"><?php uw_site_title(); ?></h1>
                          
       <div id='main_content' class="uw-body-copy" tabindex="-1">
    <?php  if ( function_exists( 'soliloquy' ) ) { soliloquy( '14466' ); }  ?>    
