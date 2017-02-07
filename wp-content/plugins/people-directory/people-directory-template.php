@@ -12,14 +12,16 @@ include 'template_functions.php';
 <?php get_template_part( 'header', 'image' ); ?>
 
 <div class="container uw-body" >
+  <h1 class="container uw-site-title-blank"><?php uw_site_title(); ?></h1>
 
   <div class="row">
 
     <div class="col-md-12 uw-content" role='main' id="main_content">
-     <?php uw_site_title(); ?>
+	
      <?php uw_breadcrumbs(); ?>
 
      <div class="uw-body-copy">
+     
 
         <?php
           // Start the Loop.
