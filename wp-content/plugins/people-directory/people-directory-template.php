@@ -9,33 +9,24 @@ include 'template_functions.php';
 
 <?php get_header(); ?>
 
-		<?php get_template_part( 'header', 'image' ); ?>
+<?php get_template_part( 'header', 'image' ); ?>
 
 <div class="container uw-body" >
 
   <div class="row">
 
     <div class="col-md-12 uw-content" role='main' id="main_content">
+     <?php uw_site_title(); ?>
+     <?php uw_breadcrumbs(); ?>
 
-      <a href=" <?php echo home_url('/'); ?> " title="<?php echo esc_attr( get_bloginfo() ) ?>"><h2 class="uw-site-title"><?php bloginfo(); ?></h2></a>
-
-     
-
-      <div class="uw-body-copy">
-
+     <div class="uw-body-copy">
 
         <?php
           // Start the Loop.
           while ( have_posts() ) : the_post();
           ?>
-          
-				
-      <?php uw_breadcrumbs(); ?>
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <header class="entry-header">
-                    <h1 class="hide"><?php echo apply_filters('italics', get_the_title()); ?></h1>
-                </header><!-- .entry-header -->
-
+          		
+         
            <!--    <div id="filter">
                     <input id='livesearch' type="search" name="filter" value="Search" />
                 </div> -->
@@ -160,8 +151,7 @@ include 'template_functions.php';
                 
                 <?php } endif; 
             endforeach; ?>
-            
-        </article>
+               
         <?php
         endwhile;
         ?>
