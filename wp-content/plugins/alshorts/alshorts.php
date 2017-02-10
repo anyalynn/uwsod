@@ -301,7 +301,7 @@ add_shortcode( 'cdecurrent', 'cdecurrent_shortcode' );
 		    if(checkIsAValidDate($cdeStartdate)) {  
 			$courseStartdate = date_create($cdeStartdate);
 			//$courseEnddate = date_create($cdeEnddate);
-			if($cdeStartdate < $today) { 
+			if($cdeStartdate <= $today) { 
 				$content.="<tr><td>".date_format($courseStartdate,'D, M j, Y');
 				if(($cdeEnddate != '') && (checkIsAValidDate($cdeEnddate)) && ($cdeEnddate < today))
 				{
