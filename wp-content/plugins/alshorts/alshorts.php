@@ -223,15 +223,13 @@ function checkIsAValidDate($myDateString){
 			$cdealert = get_post_meta($courseID, 'cdealert', true);
 			$permalink = rtrim(get_permalink($courseID));
 			$today = date('Y-m-d');
-			
+			$todayPlusOne = date('Y-m-d', strtotime("+1 day"));
 		    if(checkIsAValidDate($cdeStartdate)) 
 			{  
 				$courseStartdate = date_create($cdeStartdate);
-				//$courseEnddate = date_create($cdeEnddate);
-				if($cdeStartdate > $today || (checkIsAValidDate($cdeEnddate) && $cdeEnddate > today)) 
-				{ 
+				if($cdeStartdate >= $today) { 
 					$content.="<tr><td>".date_format($courseStartdate,'D, M j, Y');
-					if(($cdeEnddate != ''))
+					if(($cdeEnddate != '') && (checkIsAValidDate($cdeEnddate)) && ($cdeEnddate > $todayPlusOne))
 					{
 						$courseEnddate = date_create($cdeEnddate);
 						$content.="<br />-".date_format($courseEnddate,'D, M j, Y');
@@ -244,15 +242,15 @@ function checkIsAValidDate($myDateString){
 					 $content.='href="'.$permalink.'">';
 					
 					if($cdeNumber) { $content.=$cdeNumber.": "; }
-					$content.= $cdeprimarytitle." ".$cdesecondarytitle."</a><br>";
+					$content.= $cdeprimarytitle." ".$cdesecondarytitle."</a><br />";
 					if($instructtype=='lecture')
-					{ 	$content .='<img src="'.$lectureimg.'" height="25"  alt="lecture icon" title="Lecture" />';
+					{ 	$content .='<img src="'.$lectureimg.'" height="25"  alt="lecture icon"  />';
 					}
 					if($instructtype=='handson')
-					{ $content .='<img src="'.$handsonimg.'" height="25"  alt="tools icon" title="Hands-on" />';
+					{ $content .='<img src="'.$handsonimg.'" height="25"  alt="tools icon"  />';
 					}
 					if($instructtype=='both')
-					{ $content .='<img src="'.$bothimg.'" height="25" alt="lecture & tools icon" title="Lecture & Hands-on" />';
+					{ $content .='<img src="'.$bothimg.'" height="25" alt="lecture & tools icon"   />';
 					}
 					$content .="<p><strong>".$instructor."</strong></p>";
 					
@@ -263,7 +261,49 @@ function checkIsAValidDate($myDateString){
 					if($cdenotes != ' ') 
 					{	$content .= $cdenotes;
 					}
+					
 					$content.="</td></tr>";
+				}
+				if(($cdeStartdate < $today) && ($cdeEnddate != '') && (checkIsAValidDate($cdeEnddate)) && ($cdeEnddate > $todayPlusOne)) { 
+					$content.="<tr><td>".date_format($courseStartdate,'D, M j, Y');
+					$courseEnddate = date_create($cdeEnddate);
+					$content.="<br />-".date_format($courseEnddate,'D, M j, Y');
+					
+					if($cdeThumb != '')
+					{	$content .= '<img src="'.$cdeThumb.'" height="100" width="100" alt="course thumbnail" />';
+					}
+					$content .="</td><td><a style='padding-left:0' ";
+					
+					if($cdeNumber) { $content.='id="'.$cdeNumber.'" '; }
+					 $content.='href="'.$permalink.'">';
+					
+					if($cdeNumber) { $content.=$cdeNumber.": "; }
+					$content.= $cdeprimarytitle." ".$cdesecondarytitle."</a><br />";
+					
+					if($instructtype=='lecture')
+					{ 	$content .='<img src="'.$lectureimg.'" height="25"  alt="lecture icon"  />';
+					}
+					
+					if($instructtype=='handson')
+					{ $content .='<img src="'.$handsonimg.'" height="25"  alt="tools icon"  />';
+					}
+					
+					if($instructtype=='both')
+					{ $content .='<img src="'.$bothimg.'" height="25" alt="lecture & tools icon"   />';
+					}
+					
+					$content .="<p><strong>".$instructor."</strong></p>";
+					
+					if($cdealert != ' ') 
+					{	$content .= "<span class='wronganswer'>".$cdealert."</span>";
+					}
+					
+					if($cdenotes != ' ') 
+					{	$content .= $cdenotes;
+					}
+					
+					$content.="</td></tr>";					
+
 				}
 			}
 		 endforeach; 
@@ -299,39 +339,39 @@ add_shortcode( 'cdecurrent', 'cdecurrent_shortcode' );
 			$today = date('Y-m-d');
 			
 		    if(checkIsAValidDate($cdeStartdate)) {  
-			$courseStartdate = date_create($cdeStartdate);
-			//$courseEnddate = date_create($cdeEnddate);
-			if($cdeStartdate <= $today) { 
-				$content.="<tr><td>".date_format($courseStartdate,'D, M j, Y');
-				if(($cdeEnddate != '') && (checkIsAValidDate($cdeEnddate)) && ($cdeEnddate < today))
-				{
-					$courseEnddate = date_create($cdeEnddate);
-					$content.="<br />-".date_format($courseEnddate,'D, M j, Y');
-				}
-				$content .="</td><td><a style='padding-left:0' href=".$permalink.">";
-				$content.=$cdeNumber.": ".$cdeprimarytitle."</a><br>";
-				if(($instrtype) == 'lecture') 
-				{   $content .= '<img src="//dental.washington.edu/wp-content/media/lecture.png" height="25" alt="lecture icon" title="Lecture" />';
-				}
- 				else if(($instrtype) == 'handson') 
-  				{	$content .= '<img src="//dental.washington.edu/wp-content/media/tools.png" height="25" alt="dental tools icon" title="Hands-on" />';
-				}
- 				else if(($instrtype) == 'both') 
-  				{	$content .= '<img src="//dental.washington.edu/wp-content/media/lecture-tools.png" height="25" alt="lecture and dental tools icon" title="Lecture & Hands-on" />';
-				}
+				$courseStartdate = date_create($cdeStartdate);
+				//$courseEnddate = date_create($cdeEnddate);
+				if($cdeStartdate < $today) { 
+					$content.="<tr><td>".date_format($courseStartdate,'D, M j, Y');
+					if(($cdeEnddate != '') && (checkIsAValidDate($cdeEnddate)) && ($cdeEnddate < $today))
+					{
+						$courseEnddate = date_create($cdeEnddate);
+						$content.="<br />-".date_format($courseEnddate,'D, M j, Y');
+					}
+					$content .="</td><td><a style='padding-left:0' href=".$permalink.">";
+					$content.=$cdeNumber.": ".$cdeprimarytitle."</a><br>";
+					if(($instrtype) == 'lecture') 
+					{   $content .= '<img src="//dental.washington.edu/wp-content/media/lecture.png" height="25" alt="lecture icon" title="Lecture" />';
+					}
+					else if(($instrtype) == 'handson') 
+					{	$content .= '<img src="//dental.washington.edu/wp-content/media/tools.png" height="25" alt="dental tools icon" title="Hands-on" />';
+					}
+					else if(($instrtype) == 'both') 
+					{	$content .= '<img src="//dental.washington.edu/wp-content/media/lecture-tools.png" height="25" alt="lecture and dental tools icon" title="Lecture & Hands-on" />';
+					}
 
-				$content .= "<ul><li>".$instructor."</li></ul>";
+					$content .= "<ul><li>".$instructor."</li></ul>";
 
-				if($cdealert != ' ') 
-				{	$content .= "<span class='wronganswer'>".$cdealert."</span>";
+					if($cdealert != ' ') 
+					{	$content .= "<span class='wronganswer'>".$cdealert."</span>";
+					}
+					
+					if($cdenotes != ' ') 
+					{	$content .= $cdenotes;
+					}
+					
+					$content.="</td></tr>";
 				}
-				
-				if($cdenotes != ' ') 
-				{	$content .= $cdenotes;
-				}
-				
-				$content.="</td></tr>";
-			}
 			}
 		 endforeach; 
   	  	 $content .=  "</tbody></table>";
