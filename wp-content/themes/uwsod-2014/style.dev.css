@@ -9089,7 +9089,10 @@ a.uw-btn {
 .uw-hero-image.hero-blank h1.uw-site-title-blank {
   margin-top: -10px;
 }
-#accordion h3 {
+#uw-accordion-shortcode > h3 {
+  display: none;
+}
+#uw-accordion h3 {
   font-size: 19px;
 }
 .uw-accordion h3 {
