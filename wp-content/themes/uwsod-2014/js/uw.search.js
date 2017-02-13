@@ -34,7 +34,7 @@ UW.Search = Backbone.View.extend({
                      //   'All the UW'+
                      // '</label>'+
 
-                      '<label class="radio">'+
+                      '<label class="radio" style="display:none">'+
                         '<input type="radio" name="search" value="site" class="radiobtn" data-toggle="radio" checked />'+
                         'Current site'+
                       '</label>'+
