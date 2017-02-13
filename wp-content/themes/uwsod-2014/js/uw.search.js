@@ -21,7 +21,7 @@ UW.Search = Backbone.View.extend({
                          '<input id="uw-search-bar" type="search" name="s" value="" autocomplete="off" />'+
                        '</div>'+
 
-                    '<select id="mobile-search-select" class="visible-xs" aria-label="Search Scope">' +
+                    '<select id="mobile-search-select" class="visible-xs" aria-label="Search Scope" style="display:none">' +
                       '<option value="uw" >All the UW</option>' +
                       '<option value="site" selected>Current site</option>' +
                     '</select>' +
