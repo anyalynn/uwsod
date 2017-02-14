@@ -6326,12 +6326,16 @@ body.search-open #uw-container {
     width: 100%;
     margin: 0 0 15px;
   }
+  .uw-search-bar-container input {
+    width: 100%;
+  }
   .uw-search-bar-container form {
     width: 100%;
     margin-bottom: 15px;
   }
   .uw-search-bar-container form input {
     border-radius: 0;
+    width: 100%;
   }
   .uw-search-bar-container .uw-results h4 {
     padding: 15px 60px 15px 14px;
