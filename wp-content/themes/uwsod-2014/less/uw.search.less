@@ -68,7 +68,7 @@ body.search-open #uwsearcharea {
   {
 
     float:left;
-    width:calc(~"100% - 240px");
+    /*width:calc(~"100% - 240px");*/
     outline: 2px solid #ADADAD;
 
     input
@@ -244,6 +244,12 @@ body {
                     transform: matrix(1,0,0,1,0,192);
         }
     }
+}
+@media only screen and (min-width : 768px)
+{	div.search-form-wrapper
+  {
+    width:calc(~"100% - 240px");
+  }
 }
 
 @media only screen and (min-width : 768px) and (max-width : 991px) {
