@@ -19,28 +19,10 @@ UW.Search = Backbone.View.extend({
                     '<div class="search-form-wrapper">'+
                          '<label class="screen-reader" for="uw-search-bar">Enter search text</label>' +
                          '<input id="uw-search-bar" type="search" name="s" value="" autocomplete="off" />'+
-                       '</div>'+
-
-                    '<select id="mobile-search-select" class="visible-xs" aria-label="Search Scope" >' +
-                      '<option style="display:none" value="uw" >All the UW</option>' +
-                      '<option style="display:none" value="site" selected >Current site</option>' +
-                    '</select>' +
-
-                    '<input type="submit" value="search" class="search" tabindex="0"/>'+
-
-                    '<div class="labels hidden-xs" id="search-labels">'+
-                    //  '<label class="radio">'+
-                     //   '<input type="radio" name="search" value="uw" data-toggle="radio"  />'+
-                     //   'All the UW'+
-                     // '</label>'+
-
-                      '<label class="radio" style="display:none">'+
-                        '<input type="radio" name="search" value="site" class="radiobtn" data-toggle="radio" checked />'+
-                        'Current site'+
-                      '</label>'+
+                     '</div>'+
+                	'<input type="submit" value="search" class="search" tabindex="0"/>'+
 					'</form>'+
-                '</div>'+
-				'</div>'+
+             	'</div>'+
               '</div>',
 
   // Default values
@@ -130,23 +112,9 @@ UW.Search = Backbone.View.extend({
   // Determine if the client wants to search current site or the entire UW
   submitSearch : function( e )
   {
-	this.$el.find( 'input.radiobtn' ).attr('disabled', 'disabled')
-    switch ( this.searchFeature )
-    {
-      case this.searchFeatures.uw :
-        this.$el.find( '#uw-search-bar' ).attr( 'name', 'q' )
-        this.$el.find( 'form' ).attr( 'action', Backbone.history.location.protocol + '//uw.edu/search/' )
-        return true;
-
-     case this.searchFeatures.site :
-	  this.$el.find('#uw-search-bar' ).attr( 'name', 'q' )
-	  this.$el.find('form').attr('action','https://dental.washington.edu/wp-content/themes/uwsod-2014/search.php/')
-        return true;
-
-
-      default:
-        return false;
-    }
+	this.$el.find('#uw-search-bar' ).attr( 'name', 'q' )
+	this.$el.find('form').attr('action','https://dental.washington.edu/wp-content/themes/uwsod-2014/search.php/')
+	return true;
   },
 
   submitForm : function()
