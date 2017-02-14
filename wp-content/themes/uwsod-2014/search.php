@@ -3,7 +3,7 @@
 <style>
 
 #___gcse_0 .gsc-control-wrapper-cse  {
-    width: 50%; /* make sure you don't use inline width */
+    width: 80%; /* make sure you don't use inline width */
    
 	
 }
