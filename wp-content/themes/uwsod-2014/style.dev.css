@@ -6287,7 +6287,7 @@ body.search-open #uw-container {
   -o-transform: matrix(1, 0, 0, 1, 0, 192);
   transform: matrix(1, 0, 0, 1, 0, 192);
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 400px) {
   div.search-form-wrapper {
     width: calc(100% - 240px);
   }
