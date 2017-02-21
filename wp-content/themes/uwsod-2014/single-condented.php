@@ -10,37 +10,48 @@
 
       <?php uw_site_title(); ?>
 
-      <?php get_template_part('menu', 'mobile'); ?>
-
       <?php get_template_part( 'breadcrumbs' ); ?>
 
       <div id='main_content' class="uw-body-copy" tabindex="-1">
 
   			<?php
   				// Start the Loop.
+		  		
   				while ( have_posts() ) : the_post();
-
-  					/*
-  					 * Include the post format-specific template for the content. If you want to
-  					 * use this in a child theme, then include a file called called content-___.php
-  					 * (where ___ is the post format) and that will be used instead.
-  					 */
+				/*
+				* Include the post format-specific template for the content. If you want to
+				 * use this in a child theme, then include a file called called content-___.php
+				 * (where ___ is the post format) and that will be used instead.
+  				 */
 			
 
-?>
-<h1>
-<?php the_title() ?>
-</h1>
+		  		?>
+				<h1><?php the_title() ?></h1>
 
-<?php
+				<?php
+				$theID = get_the_ID();
+				$cdeNumber = get_post_meta($theID, 'cdeNumber', true);		
+				echo "<h2>" . get_post_meta($theID, 'cdesecondarytitle', true) . "</h2>";
+				echo "<p><strong>" . get_post_meta($theID, 'instructor', true) ."</strong></p>";	
 
-    
-    the_content();
-    //comments_template(true);
-
-			
-
-  				endwhile;
+				$instrtype = get_post_meta( $post->ID, 'rb_cdeInstructionType', true);
+				if(($instrtype) == 'lecture') 
+				{   echo('<img src="//dental.washington.edu/wp-content/media/lecture.png" height="25" alt="lecture icon" /><strong> Lecture</strong>');
+				}
+ 				else if(($instrtype) == 'handson') 
+  				{	echo('<img src="//dental.washington.edu/wp-content/media/tools.png" height="25" alt="dental tools icon" /><strong> Hands-on</strong>');
+				}
+ 				else if(($instrtype) == 'both') 
+  				{	echo('<img src="//dental.washington.edu/wp-content/media/lecture-tools.png" height="25" alt="lecture and dental tools icon" /><strong> Lecture & Hands-on</strong>');
+				}
+	
+				echo "<p>" . get_post_meta($theID, 'cdenotes', true) . "</p>";
+				//echo get_post_meta($theID, 'cdealert', true);
+				$cdealert = get_post_meta($theID, 'cdealert', true);
+				echo "<span class='wronganswer'>".$cdealert."</span>";
+	
+       			the_content();
+   				endwhile;
   			?>
 
           
