@@ -295,7 +295,7 @@ function checkIsAValidDate($myDateString){
 					$content .="<p><strong>".$instructor."</strong></p>";
 					
 					if($cdealert != ' ') 
-					{	$content .= "<span class='wronganswer'>".$cdealert."</span>";
+					{	$content .= "<span class='wronganswer'>".$cdealert." "."</span>";
 					}
 					
 					if($cdenotes != ' ') 
