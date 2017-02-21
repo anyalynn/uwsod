@@ -31,7 +31,7 @@
 				<?php
 				$theID = get_the_ID();
 				$cdeNumber = get_post_meta($theID, 'cdeNumber', true);		
-				echo "<h2>" . get_post_meta($theID, 'cdesecondarytitle', true) . "</h2>";
+				echo '<h2 class="cdesecondtitle">' . get_post_meta($theID, 'cdesecondarytitle', true) . "</h2>";
 				echo "<p><strong>" . get_post_meta($theID, 'instructor', true) ."</strong></p>";	
 
 				$instrtype = get_post_meta( $post->ID, 'rb_cdeInstructionType', true);
