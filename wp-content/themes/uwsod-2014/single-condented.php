@@ -48,7 +48,7 @@
 				echo "<p>" . get_post_meta($theID, 'cdenotes', true) . "</p>";
 				//echo get_post_meta($theID, 'cdealert', true);
 				$cdealert = get_post_meta($theID, 'cdealert', true);
-				echo "<span class='wronganswer'>".$cdealert."</span>";
+				echo "<p class='wronganswer'>".$cdealert."</p>";
 	
        			the_content();
    				endwhile;
