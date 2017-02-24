@@ -39,7 +39,8 @@ class UW_Scripts
         'deps'      => array( 'backbone' ),
         'version'   => '1.0.3',
         'admin'     => false,
-        'variables' => array( 'is_multisite' => ( is_multisite() ) )
+    //    'variables' => array( 'is_multisite' => ( is_multisite() ) )
+		'style_dir' => site_url()
       ),
 
       'admin' => array (
