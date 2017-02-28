@@ -31,7 +31,7 @@
 				<?php
 				$theID = get_the_ID();
 				$cdeNumber = get_post_meta($theID, 'cdeNumber', true);
-				$cdesecondarytitle = get_post_meta($courseID, 'cdesecondarytitle', true);	
+				$cdesecondarytitle = get_post_meta($theID, 'cdesecondarytitle', true);	
 				if ($cdesecondarytitle) { echo '<h2 class="cdesecondtitle">' . get_post_meta($theID, 'cdesecondarytitle', true) . "</h2>"; }
 				echo "<p><strong>" . get_post_meta($theID, 'instructor', true) ."</strong></p>";	
 
