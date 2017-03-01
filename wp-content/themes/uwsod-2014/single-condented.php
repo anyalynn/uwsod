@@ -32,7 +32,7 @@
 				$theID = get_the_ID();
 				$cdeNumber = get_post_meta($theID, 'cdeNumber', true);	
 				$cdesecondarytitle = get_post_meta($theID, 'cdesecondarytitle', true);	
-				if ($cdesecondarytitle( { echo '<h2 class="cdesecondtitle">' . $cdesecondarytitle . "</h2>"; }
+				if ($cdesecondarytitle) { echo '<h2 class="cdesecondtitle">' . $cdesecondarytitle . "</h2>"; }
 				echo "<p><strong>" . get_post_meta($theID, 'instructor', true) ."</strong></p>";	
 
 				$instrtype = get_post_meta( $post->ID, 'rb_cdeInstructionType', true);
