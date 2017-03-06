@@ -8,9 +8,7 @@
 
     <div <?php if(function_exists('uw_content_class')){uw_content_class();} ?> role='main'>
 
-      <?php uw_site_title(); ?>
-
-      <?php get_template_part('menu', 'mobile'); ?>
+     <?php get_template_part('menu', 'mobile'); ?>
 
       <?php get_template_part( 'breadcrumbs' ); ?>
 
