@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" class="no-js">
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title> Search </title>
+        <title>Search - UW School of Dentistry </title>
         <meta charset="utf-8">
  
         <meta name="viewport" content="width=device-width, initial-scale=1">
