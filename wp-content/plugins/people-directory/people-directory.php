@@ -374,30 +374,46 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
                 $people[0]->post_title;
 			    $name_link = true;
         
-    	   	    $teams = dont_group_by_team($people); 
-	   
+    	   	    $teams = group_by_faculty_type($people); 
+				$short_content .= "<div id='livesearchdiv'><label for='livesearch' hidden>Name:</label><input id='livesearch' class='form-control' type='search' placeholder='Enter a Name...' name='filter' /></div>";
+				$modified = false;
+				$modified2 = false;
                foreach($teams as $team => $people):
                   if (count($people) != 0): 	//just in case there are zero people in a manually specified team (or Team No-Team) 
-                  { 
-     				$short_content .= "<div id='isotope' class='searchable-container clearfix'>";
-                    foreach ($people as $person):
+                  {
+     				$short_content .= "<div class='searchable-container'>";					
+
+                    foreach ($people as $person):   
 					   $thisPerson = false;
                        $personID = $person->ID;
                        $name = $person->post_title;
                        $main_pic = get_post_meta($personID, 'main_pic', true);
                        $position = get_post_meta($personID, 'position', true);
+					   $position2 = get_post_meta($personID, 'position2', true);
+					   $research = get_post_meta($personID, 'research', true);
                        $phone = get_post_meta($personID, 'phone', true);
                        $email = get_post_meta($personID, 'email', true);
 					   $content=$person->post_content;
                        $person_teams_arr = get_the_terms($personID, 'teams');
+
+
 					   $person_teams = '';
                         if (!empty($person_teams_arr)) {
+
 							$count = 0;
 							 foreach ($person_teams_arr as $person_teams_item) {
-								
+							
 								if($person_teams_item->name == $a['dept'])
 								{	$thisPerson = true;
 								}
+								
+								if ($person_teams_item->name == 'Faculty' && $modified == false) {
+									$short_content .= "<h2>Core Faculty</h2>";
+									$modified = true;								
+								}
+
+
+
     							if($count == 0)
 								{	
                              		 $person_teams = $person_teams . ' ' . $person_teams_item->name;
@@ -409,20 +425,42 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
                            	 }
 						}
                         if($thisPerson == true) {
-							 
-                       		$short_content .= "<div class='profile-list searchable element'>" ;
-						  
-					    	if(!empty($main_pic)) { 
-								$short_content .= "<div class='pic'><img width='75' height='100'  src='".$main_pic."' alt='".$name."' /></div>";
+
+							foreach ($person_teams_arr as $person_teams_item) {
+								if ($person_teams_item->name == 'Affiliate Faculty' && $modified2 == false) {
+									$short_content .= "<h2>Affiliate Faculty</h2>";
+									$modified2 = true;																		
+
+								}								
 							}
-                       		
-                                    $short_content .= "<div class='info'><p class='name search-this'><a href=" .get_permalink($personID).">";
+							
+                       		$short_content .= "<div class='profile-list searchable element'>" ;
+						    $short_content .= "<div class='info-wrapper'>";
+							
+
+
+							//$key = array_search('<h2>Affiliate Faculty</h2>', $short_content);
+							//if ($key !== false) {
+							//		unset($short_content[$key]);
+							//}
+						
+					    	if(!empty($main_pic)) { 
+								$short_content .= "<div class='pic'><img width='140' height='180'  src='".$main_pic."' alt='".$name."' /></div>";
+							}
+									
+                                    $short_content .= "<div class='info'>";
                              
-                            		$short_content .= $name;
+                            		
                             	                                    
-                               		$short_content .= "</a></p>";
+                               		$short_content .= "<h3 class='name search-this'>";
+									
+									$short_content .= "<a href=" .get_permalink($personID).">" .$name;
+									
+									$short_content .= "</a></h3>";
+									
+									//$short_content .= "<p><a href=" .get_permalink($personID)."></a></p>";
                                    
-                                    $short_content .= "<p class='title search-this'>".$position."</p>";
+                                    $short_content .= "<p class='title search-this'>" . $position . "\n" . $position2 . "</p>";
 									if(!empty($phone)) {                                	                                           
 		                                $short_content .= "<p>".$phone."</p>";
 									}
@@ -430,7 +468,12 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
 										$short_content .= "<p><a href='mailto:".$email."'>".$email."</a></p>";
 									}
                            			$short_content .= "</div>";
-							
+
+					    if (!empty($research)){
+							$short_content .= "<div class='research'>";
+							$short_content .= "<h3 class='name research-header'>Research Interests</h3><p class='research-interests'>" . $research . "</p></div>"; 	
+					    }
+					   $short_content .= "</div>";
                        $short_content.= "</div>";
                     }  endforeach;
 				$short_content.= "</div>";
@@ -450,15 +493,50 @@ add_shortcode( 'deptfacultydir', 'deptfacultydir_shortcode' );
 add_action('init', 'load_other_resources');
 
 function load_other_resources() {
-	
+	wp_register_script('jquery', 'https://code.jquery.com/jquery-3.1.1.min.js', array(), false, true);
 	wp_enqueue_script('jquery');
-	wp_register_script('isotope', plugins_url('js/jquery.isotope.min.js', __FILE__));
-	wp_enqueue_script('isotope');
-	wp_enqueue_script('jquery');
-	wp_register_script('dental', plugins_url('js/dental.js', __FILE__));
-	wp_enqueue_script('dental');
+	//wp_register_script('isotope', plugins_url('js/jquery.isotope.min.js', __FILE__));
+	//wp_enqueue_script('isotope');
+	//wp_register_script('dental', plugins_url('js/dental.js', __FILE__));
+	//wp_enqueue_script('dental');
+	wp_register_script('live-search', plugins_url('js/live-search.js', __FILE__));
 	wp_enqueue_script('live-search');
 	wp_register_style('directory-style', plugins_url('css/people-directory.css', __FILE__));
 	wp_enqueue_style('directory-style');
+	
+
+	
+	wp_register_script('bootstrapscript', plugins_url('js/bootstrap.min.js', __FILE__));
+	wp_enqueue_script('bootstrapscript');
+
+	wp_register_script('bootstrap-selectjs', plugins_url('js/bootstrap-select.min.js', __FILE__));
+	wp_enqueue_script('bootstrap-selectjs');
+
+	
+	wp_register_style('bootstrap', plugins_url('css/bootstrap.min.css', __FILE__));
+	wp_enqueue_style('bootstrap');	
+
+	wp_register_style('bootstrap-select', plugins_url('css/bootstrap-select.min.css', __FILE__));
+	wp_enqueue_style('bootstrap-select');	
+	
+	//wp_register_style('bootstrap-theme', plugins_url('css/bootstrap-theme.min.css', __FILE__));
+	//wp_enqueue_style('bootstrap-theme');
+	
+
+	
+	
+	/*
+	wp_register_style('kendo-common-material-min', plugins_url('css/kendo.common-material.min.css', __FILE__));
+	wp_enqueue_style('kendo-common-material-min');
+
+	wp_register_style('kendo-material-min', plugins_url('css/kendo.material.min.css', __FILE__));
+	wp_enqueue_style('kendo-material-min');
+	
+	wp_register_style('kendo-material-mobile-min', plugins_url('css/kendo.material.mobile.min.css', __FILE__));
+	wp_enqueue_style('kendo-material-mobile-min');
+	
+	wp_register_style('directory-style', plugins_url('css/people-directory.css', __FILE__));
+	wp_enqueue_style('directory-style'); 
+	*/
 }
 ?>
