@@ -22,28 +22,10 @@
 *   give the section a class of "searchable-container"						*
 ****************************************************************************/
 
-function onChangeSearch() {
-	var select_box = document.getElementById("ddselect");
-	var selected_value = select_box.options[select_box.selectedIndex].value;
-	if (selected_value == "Faculty" || selected_value == "Staff" || 
-		selected_value == "Affiliate") {
-		executeRoleSearch(selected_value.toLowerCase());	
-	} else if (selected_value == "All") {
-		executeDeptSearch("");
-	} else {
-		executeDeptSearch(selected_value.toLowerCase());
-	}
-};	
-
-/*$(document).ready(function(e) {
-  $('#ddselect').selectpicker();
-});
-*/
-
 jQuery(document).ready(function($) {
 	var initial_text = $("#livesearch").val();
 	$("#livesearch").keyup(function () {
-		executeDeptSearch($(this).val().toLowerCase());
+		executeSearch($(this).val().toLowerCase());
 	}).focus(function () {
 		if ($(this).val() == initial_text) {
 			$(this).val("");
@@ -55,23 +37,7 @@ jQuery(document).ready(function($) {
 	});
 });
 
-function executeRoleSearch(term) {
-	var searchables = $('.searchable'), $this, classes;
-	for (var i = 0, slength = searchables.length; i < slength; i++) {
-		$this = $(searchables[i]);
-		var classes = $this[0].className;
-		if (classes.indexOf(term) == -1) {
-			$this.fadeOut();
-			$this.addClass("no-match");			
-		}
-		else if ($this.hasClass("no-match")) {
-			$this.fadeIn();
-			$this.removeClass("no-match");
-		}
-	}
-}
-
-function executeDeptSearch(term) { // Search by department or person name
+function executeSearch(term) {
 	var searchables = $('.searchable'), holder, $this, found;
 	for (var i = 0, slength = searchables.length; i < slength; i++) {
 		$this = $(searchables[i]);

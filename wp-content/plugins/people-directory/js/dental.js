@@ -29,7 +29,6 @@
         var options = {},
             key = $optionSet.attr('data-option-key'),
             value = $this.attr('data-option-value');
-			alert(value);
         // parse 'false' as false boolean
         value = value === 'false' ? false : value;
         options[ key ] = value;
@@ -47,22 +46,3 @@
     
  })
 
-jQuery('document').ready(function() {
-    function filter_portfolio() {
-        var target = '';
-      
-     var optionSelected = $(this).find("option:selected");
-     target  = optionSelected.val();
-     
-        
-        if(target == '') target = '.all';
-        var $items_container = jQuery("#isotope");      
-        $items_container.isotope({
-            itemSelector : ".element",
-			filter: target
-        });
-    }
-    jQuery('#filters').on('change', function() {
-        filter_portfolio();
-    });
-}) 

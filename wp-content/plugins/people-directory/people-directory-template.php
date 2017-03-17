@@ -11,7 +11,6 @@ include 'template_functions.php';
 
 		<?php get_template_part( 'header', 'image' ); ?>
 
-
 <div class="container uw-body" >
 
   <div class="row">
@@ -31,47 +30,44 @@ include 'template_functions.php';
           ?>
           
 				
-		<?php uw_breadcrumbs(); ?>
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<header class="entry-header">
-				<h1 class="hide"><?php echo apply_filters('italics', get_the_title()); ?></h1>
-			</header><!-- .entry-header -->        
-			<?php
-				$args = array('post_type' => 'people', 'posts_per_page' => -1);
-				$query = new WP_Query($args);
-				$people = $query->get_posts();
-				usort($people, 'last_name_sort');
-				$people[0]->post_title;
+      <?php uw_breadcrumbs(); ?>
+            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                <header class="entry-header">
+                    <h1 class="hide"><?php echo apply_filters('italics', get_the_title()); ?></h1>
+                </header><!-- .entry-header -->
+
+           <!--    <div id="filter">
+                    <input id='livesearch' type="search" name="filter" value="Search" />
+                </div> -->
+                
+                <?php
+                $args = array('post_type' => 'people', 'posts_per_page' => -1);
+                $query = new WP_Query($args);
+                $people = $query->get_posts();
+                usort($people, 'last_name_sort');
+                $people[0]->post_title;
 				  $name_link = true;
-			?>  
-		<div>
-		<div id="dropdowndiv">
-			<div>Select department/role:</div>
-			<select id="ddselect" class="selectpicker" onchange="onChangeSearch();">
-			
-				<option value="All">All</option>
-				<optgroup label="Role">
-					<option value="Faculty">Faculty</option>
-					<option value="Staff">Staff</option>
-					<option value="Affiliate">Affiliate Faculty</option>
-				</optgroup>
-				<optgroup label="Department">
-					<option value="Endodontics">Endodontics</option>
-					<option value="Oral Health Sciences">Oral Health Sciences</option>
-					<option value="Oral and Maxillofacial Surgery">Oral and Maxillofacial Surgery</option>
-					<option value="Oral Medicine">Oral Medicine</option>
-					<option value="Orthodontics">Orthodontics</option>
-					<option value="Pediatric Dentistry">Pediatric Dentistry</option>
-					<option value="Periodontics">Periodontics</option>
-					<option value="Restorative Dentistry">Restorative Dentistry</option>
-				</optgroup>
-			</select>			
-		</div>	
-			&nbsp;or&nbsp;	
-			<div id="livesearchdiv">
-				<input id='livesearch' class="form-control" type="search" placeholder="Enter a Name..." name="filter" />
-			</div>	
-		</div> <!-- filter -->
+                ?>
+
+            
+            
+		<div id="options">
+      	<ul id="filters" class="option-set clearfix" data-option-key="filter">
+        <li><a href="#filter" data-option-value="*" class="selected">show all</a></li>
+         <li><a href="#filter" data-option-value=".faculty">Faculty</a></li>
+          <li><a href="#filter" data-option-value=".staff">Staff</a></li>
+            <li><a href="#filter" data-option-value=".affiliate">Affiliate Faculty</a></li>
+  		<li><a href="#filter" data-option-value=".endo">Endodontics</a></li>
+  		<li><a href="#filter" data-option-value=".ohs">Oral Health Sciences</a></li>
+		<li><a href="#filter" data-option-value=".oms">Oral and Maxillofacial Surgery</a></li>
+		<li><a href="#filter" data-option-value=".oralmed">Oral Medicine</a></li>
+		<li><a href="#filter" data-option-value=".ortho">Orthodontics</a></li>
+        <li><a href="#filter" data-option-value=".pedo">Pediatric Dentistry</a></li>
+	    <li><a href="#filter" data-option-value=".perio">Periodontics</a></li>
+    	<li><a href="#filter" data-option-value=".restore">Restorative Dentistry</a></li>
+        <li><a href="#filter" data-option-value=".fp">Faculty Practice</a></li>
+      </ul>
+  	</div> <!-- #options -->
     <?php
     
 	   	    $teams = dont_group_by_team($people); 
@@ -79,14 +75,12 @@ include 'template_functions.php';
             foreach($teams as $team => $people):
                if (count($people) != 0): 	//just in case there are zero people in a manually specified team (or Team No-Team) 
 { ?>
-                   <div class='searchable-container'>
+                   <div id='isotope' class='searchable-container clearfix'>
                     <?php foreach ($people as $person):
                         $personID = $person->ID;
                         $name = $person->post_title;
                         $main_pic = get_post_meta($personID, 'main_pic', true);
                         $position = get_post_meta($personID, 'position', true);
-						$position2 = get_post_meta($personID, 'position2', true);
-						$research = get_post_meta($personID, 'research', true);
                         $phone = get_post_meta($personID, 'phone', true);
                         $email = get_post_meta($personID, 'email', true);
                         $person_teams_arr = get_the_terms($personID, 'teams');
@@ -129,6 +123,9 @@ include 'template_functions.php';
 								if ($person_teams_item->name == 'Orthodontics') {
 									$team_class .= ' ortho ';
 								}
+								if ($person_teams_item->name == 'Faculty Practice') {
+									$team_class .= ' fp ';
+								}
 								if($count == 0)
 								{	
                                		 $person_teams = $person_teams . ' ' . $person_teams_item->name;
@@ -140,31 +137,29 @@ include 'template_functions.php';
                             }
                         }
                         ?>
-                        <div class='profile-list searchable <?= $team_class ?> '>
-                                         					  
-						  
-						  <div class="info-wrapper">
-						   <img <?php if (empty($main_pic)) { ?> class='no-pic'<?php } ?> src='<?= $main_pic ?>' alt='<?= $name ?>' class='pic'/>
-								<div class='info'>
-									<?php if (($name_link)){
-										?><a href="<?= get_permalink($personID) ?>"><?php
-									} ?>
-									<h3 class='name search-this'><?= $name ?></h3></a>
-									
-									<p class='title search-this'><?= $position  ?><br /><?= $position2 ?></p>                                            
-									<p> <?= $phone ?> </p>
-									<?php if (($email)) 
-									{ ?>
-									<p><a href="mailto:<?= $email ?>"><?= $email ?></a></p> 
-									<?php } ?>
-								</div>
-								<?php if (!empty($research)){ ?>
-									<div class="research">
-									<h3 class="name research-header">Research Interests</h3> 
-										<p class="research-interests"> <?= $research ?> </p>
-									</div>
-								<?php } ?>
-						  </div>			
+                        <div class='profile-list searchable element <?= $team_class ?> '>
+                       
+                          <div class='pic'><img width='75' height='100' <?php if (empty($main_pic)) { ?> class='no-pic'<?php } ?> src='<?= $main_pic ?>' alt='<?= $name ?>' /></div>
+                            <div class='info'>
+                                <?php if (($name_link)){
+                                    ?><a href="<?= get_permalink($personID) ?>"><?php
+                                } ?>
+                                <p class='name search-this'><?= $name ?></p>
+                                <?php if (($name_link) & !empty($content)){
+                                    ?>
+                                    </a>
+                                    <?php
+                                }
+                                ?>
+                                <p class='title search-this'><?= $position  ?></p>
+                                                                              
+                                <p> <?= $phone ?></p>
+                                 <?php if (($email)){
+                                    ?><p> <a href="mailto:<?= $email ?> "><?= $email ?></a></p><?php
+                                } ?>
+                                
+                            </div>
+                             
                         </div>
                     <?php  endforeach; ?>
                        
