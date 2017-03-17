@@ -144,13 +144,8 @@ include 'template_functions.php';
                                 <?php if (($name_link)){
                                     ?><a href="<?= get_permalink($personID) ?>"><?php
                                 } ?>
-                                <p class='name search-this'><?= $name ?></p>
-                                <?php if (($name_link) & !empty($content)){
-                                    ?>
-                                    </a>
-                                    <?php
-                                }
-                                ?>
+								<p class='name search-this'><?= $name ?></p></a>
+                                
                                 <p class='title search-this'><?= $position  ?></p>
                                                                               
                                 <p> <?= $phone ?></p>
