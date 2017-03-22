@@ -57,6 +57,48 @@ function group_by_team_showall($people) {
 }
 endif;
 
+if ( ! function_exists('group_by_faculty_type') ):
+function group_by_faculty_type($people) {
+	$priority_team = 'Affiliate Faculty';	//this is the name of a team you want to float to the top
+	$team_priority = array($priority_team => array());
+	$team_groups = array();
+	$team_no_team = array();
+	foreach ($people as $person) {
+		$team = get_the_terms($person->ID, 'teams');
+		$assigned_team = null;
+		if (!$team) {
+			array_push($team_no_team, $person);
+		} 
+		else {
+			$teams = array_values($team);
+			foreach ($teams as $team) {
+				$teamname = $team->name;
+				if ($teamname == $priority_team) {
+					$assigned_team = $teamname;
+				}
+			}
+			if (empty($assigned_team)) {
+				$assigned_team = $teamname;
+			}
+			if (!array_key_exists($assigned_team, $team_groups)) {
+				$team_groups[$assigned_team] = array();
+			}
+			if ($assigned_team == $priority_team) {
+				array_push($team_groups[$assigned_team], $person); 
+			} else if ($assigned_team != "Staff") {
+				array_push($team_priority[$priority_team], $person);
+			}
+		}
+	}
+	ksort($team_groups);
+	$team_groups[''] = $team_no_team;
+	//$team_groups[$priority_team] = $team_priority[$priority_team];
+	array_unshift($team_groups, $team_priority[$priority_team]);
+	return $team_groups;
+	
+}
+endif;
+
 if ( ! function_exists('dont_group_by_team') ):
 function dont_group_by_team ($people) {
 	$priority_team = get_option('people_priority_team');	//this is the name of a team you want to float to the top
