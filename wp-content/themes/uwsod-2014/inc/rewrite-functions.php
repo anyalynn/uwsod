@@ -40,7 +40,7 @@ function my_insert_rewrite_rules( $wp_rewrite )
 'departments/ohs/oral-health-sciences.html'  => 'index.php?pagename=oral-health-sciences',
 'departments/oral-medicine/oral-medicine.html'  => 'index.php?pagename=oral-medicine',
 'departments/orthodontics/orthodontics.html'  => 'index.php?pagename=orthodontics',
-'departments/periodontics/periodontics.html'  => 'index.php?pagename=periodontics',
+'departments/periodontics/periodontics.html'  => 'index.php?pagename=dept-periodontics',
 'departments/oral-surgery/oral-and-maxillofacial-surgery.html'  => 'index.php?pagename=oralsurgery',
 'departments/pediatric/pediatric-dentistry.html'  => 'index.php?pagename=pediatric-dentistry',
 'departments/restorative/index.php'  => 'index.php?pagename=restorative-dentistry',
