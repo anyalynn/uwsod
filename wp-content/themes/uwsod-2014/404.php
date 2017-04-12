@@ -23,7 +23,7 @@
                    <li><a href="//dental.washington.edu/continuing-dental-education/">Continuing Dental Education</a></li>
                    <li><a href="//dental.washington.edu/about-us/location-directions/">Location and Directions</a></li>
                    <li><a href="//dental.washington.edu/oral-pathology/case-of-the-month/">Oral Pathology Case of the Month</a></li>
-                   <li><a href="//dental.washington.edu/oral-medicine/special-needs/patients-with-special-needs/">Special Needs Fact Sheets</a></li>
+                   <li><a href="//dental.washington.edu/dept-oral-med/special-needs/patients-with-special-needs/">Special Needs Fact Sheets</a></li>
                    <li><a href="//dental.washington.edu/about-us/news-events/">News &amp; Events</a></li>
              <li><a href="//dental.washington.edu/departments/">Departments</a></li>
                    <li><a href="https://dental.washington.edu/sitemap/">View our sitemap</a></li>
