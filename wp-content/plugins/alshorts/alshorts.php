@@ -572,7 +572,7 @@ if ( ! function_exists('htiles_shortcode') ):
 								<?php if(!empty($readmore_linktwo))
 								{ ?>
 									<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmore_linktwo ?>"><?= $readmore_texttwo ?></a></p>
-                                 <? } ?>
+                                 <?php } ?>
 								</div>
 								<div class="tile">
                                  <?php $hometilesone =  get_post($htile2);
@@ -592,7 +592,7 @@ if ( ! function_exists('htiles_shortcode') ):
 								<?php if(!empty($readmore_linkone))
 										{ ?>
 											<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmore_linkone ?>"><?= $readmore_textone ?></a></p>
-                                        <? } ?>
+                                        <?php } ?>
 								</div>
 								
 									<div class="tile"> 
@@ -615,7 +615,7 @@ if ( ! function_exists('htiles_shortcode') ):
 								<?php if(!empty($readmore_linkthree))
 								{ ?>
 								<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmore_linkthree ?>"><?= $readmore_textthree ?></a></p>
-                                 <? } ?>
+                                 <?php } ?>
 
 								</div>
 							</div>
