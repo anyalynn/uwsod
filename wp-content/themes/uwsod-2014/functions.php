@@ -76,4 +76,3 @@ if ( ! function_exists( 'dental_enqueue_default_scripts' ) ):
  
   }
 endif;
-require( get_stylesheet_directory() . '/inc/rewrite-functions.php' );

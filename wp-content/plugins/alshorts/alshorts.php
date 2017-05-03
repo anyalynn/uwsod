@@ -559,7 +559,8 @@ if ( ! function_exists('htiles_shortcode') ):
 								 $thecontenttwo = $hometilestwo->post_content; 
 								 $posttitletwo = $hometilestwo->post_title;
 								 $hometilestwo_pic = get_post_meta($hometilestwo->ID, 'hometile_pic', true);
-								 $readmoretwo = get_post_meta($hometilestwo->ID, 'readmore', true);
+								 $readmorelinktwo = get_post_meta($hometilestwo->ID, 'readmore_link', true);
+	  $readmoretexttwo = get_post_meta($hometilestwo->ID, 'readmore_text', true);
 								 $alttwo = get_post_meta($hometilestwo->ID, 'hometile_pic_alt', true);
  
 								 ?>
@@ -570,9 +571,9 @@ if ( ! function_exists('htiles_shortcode') ):
 										<?= $thecontenttwo ?></p>
 
 
-										<?php if(!empty($readmoretwo))
+										<?php if(!empty($readmorelinktwo))
 										{ ?>
-										<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmoretwo ?>">Read more</a></p>
+										<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmorelinktwo ?>" title="<?= $posttitletwo ?>"><?= $readmoretexttwo ?></a></p>
                                         <? } ?>
 
 									</div>
@@ -582,7 +583,8 @@ if ( ! function_exists('htiles_shortcode') ):
 								 $thecontentone = $hometilesone->post_content; 
 								 $posttitleone = $hometilesone->post_title;
 								 $hometilesone_pic = get_post_meta($hometilesone->ID, 'hometile_pic', true);
-								 $readmoreone = get_post_meta($hometilesone->ID, 'readmore', true);
+								$readmorelinkone = get_post_meta($hometilesone->ID, 'readmore_link', true);
+	  $readmoretextone = get_post_meta($hometilesone->ID, 'readmore_text', true);
 								  $altone = get_post_meta($hometilesone->ID, 'hometile_pic_alt', true);
  
 								 ?>
@@ -590,9 +592,9 @@ if ( ! function_exists('htiles_shortcode') ):
 								<h2><?= $posttitleone ?></h2>
 								<p class="null">
 								<?= $thecontentone ?></p>
-								<?php if(!empty($readmoreone))
+								<?php if(!empty($readmorelinkone))
 										{ ?>
-										<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmoreone ?>">Read more</a></p>
+										<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmorelinkone ?>" title="<?= $posttitleone ?>"><?= $readmoretextone ?></a></p>
                                         <? } ?>
 								</div>
 								
@@ -602,7 +604,8 @@ if ( ! function_exists('htiles_shortcode') ):
 								 $thecontentthree = $hometilesthree->post_content; 
 								 $posttitlethree = $hometilesthree->post_title;
 								 $hometilesthree_pic = get_post_meta($hometilesthree->ID, 'hometile_pic', true);
-								 $readmorethree = get_post_meta($hometilesthree->ID, 'readmore', true);
+								$readmorelinkthree = get_post_meta($hometilesthree->ID, 'readmore_link', true);
+	  $readmoretextthree = get_post_meta($hometilesthree->ID, 'readmore_text', true);
 								  $altthree = get_post_meta($hometilesthree->ID, 'hometile_pic_alt', true);
  
 								 ?>
@@ -612,9 +615,9 @@ if ( ! function_exists('htiles_shortcode') ):
 										<p class="null">
 										<?= $thecontentthree ?></p>
 
-										<?php if(!empty($readmorethree))
+										<?php if(!empty($readmorelinkthree))
 										{ ?>
-										<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmorethree ?>">Read more</a></p>
+										<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmorelinkthree ?>" title="<?= $posttitlethree ?>"><?= $readmoretextthree ?></a></p>
                                         <? } ?>
 
 									</div>
