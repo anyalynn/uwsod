@@ -574,7 +574,7 @@ if ( ! function_exists('htiles_shortcode') ):
 										<?php if(!empty($readmorelinktwo))
 										{ ?>
 										<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmorelinktwo ?>" title="<?= $posttitletwo ?>"><?= $readmoretexttwo ?></a></p>
-                                        <? } ?>
+                                        <?= } ?>
 
 									</div>
 								<div class="tile">
@@ -595,7 +595,7 @@ if ( ! function_exists('htiles_shortcode') ):
 								<?php if(!empty($readmorelinkone))
 										{ ?>
 										<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmorelinkone ?>" title="<?= $posttitleone ?>"><?= $readmoretextone ?></a></p>
-                                        <? } ?>
+                                        <?= } ?>
 								</div>
 								
 									<div class="tile"> 
@@ -618,7 +618,7 @@ if ( ! function_exists('htiles_shortcode') ):
 										<?php if(!empty($readmorelinkthree))
 										{ ?>
 										<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmorelinkthree ?>" title="<?= $posttitlethree ?>"><?= $readmoretextthree ?></a></p>
-                                        <? } ?>
+                                        <?= } ?>
 
 									</div>
 								</div>
