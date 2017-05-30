@@ -359,13 +359,149 @@ if (!taxonomy_exists('teams')):
 
 endif;
 
+function changeTaxonomyOrder( $args, $post_id)
+{
+	if ( isset( $args['taxonomy']))
+		$args['checked_ontop'] = false;
+	return $args;
+}
+
+add_filter('wp_terms_checklist_args','changeTaxonomyOrder', 10, 2);	
+
+
 // Creating the shortcode 
 
 if ( ! function_exists('deptfacultydir_shortcode') ):
   function deptfacultydir_shortcode( $atts  ) 
   {
 	  $a = shortcode_atts( array(
-        'dept' => 'Endodontics'
+        'dept' => 'Endodontics', 'role' => ''
+    ), $atts );
+                $args = array('post_type' => 'people', 'posts_per_page' => -1);
+                $query = new WP_Query($args);
+                $people = $query->get_posts();
+                usort($people, 'last_name_sort');
+                $people[0]->post_title;
+			    $name_link = true;
+        
+    	   	    $teams = group_by_faculty_type($people); 
+				$short_content .= "<div id='livesearchdiv'><label for='livesearch' hidden>Name:</label><input id='livesearch' class='form-control' type='search' placeholder='Enter a Name...' name='filter' /></div>";
+				$modified = false;
+				$modified2 = false;
+               foreach($teams as $team => $people):
+                  if (count($people) != 0): 	//just in case there are zero people in a manually specified team (or Team No-Team) 
+                  {
+     				$short_content .= "<div class='searchable-container'>";					
+
+                    foreach ($people as $person):   
+					   $thisPerson = false;
+                       $personID = $person->ID;
+                       $name = $person->post_title;
+                       $main_pic = get_post_meta($personID, 'main_pic', true);
+                       $position = get_post_meta($personID, 'position', true);
+					   $position2 = get_post_meta($personID, 'position2', true);
+					   $research = get_post_meta($personID, 'research', true);
+                       $phone = get_post_meta($personID, 'phone', true);
+                       $email = get_post_meta($personID, 'email', true);
+					   $content=$person->post_content;
+                       $person_teams_arr = get_the_terms($personID, 'teams');
+
+					   $person_teams = '';
+                        if (!empty($person_teams_arr)) {
+
+							$count = 0;
+							 foreach ($person_teams_arr as $person_teams_item) {
+								
+								if (empty($a['role']) === true) {
+									if($person_teams_item->name == $a['dept']) {	
+										$thisPerson = true;
+									}
+									if ($person_teams_item->name == 'Faculty' && $modified == false) {
+									/*	$short_content .= "<h2>Faculty</h2>";*/
+										$modified = true;								
+									}									
+								} else {
+									if ($person_teams_item->name == $a['role'] && $modified == false ) { // Add heading once && isset($a['role']) === true && empty($arr['ele1']) === false
+										//$short_content .= "<h2>" . $person_teams_item->name . "</h2>";
+										$thisPerson = true;
+										$modified = true;										
+									}																			
+								}
+    							if($count == 0)
+								{	
+                             		 $person_teams = $person_teams . ' ' . $person_teams_item->name;
+								}
+								else
+									$person_teams = $person_teams . ', ' . $person_teams_item->name;
+						
+								$count++;
+                           	 }
+						}
+                        if ($thisPerson == true) {
+
+							foreach ($person_teams_arr as $person_teams_item) {
+								if ($person_teams_item->name == 'Affiliate Faculty' && $modified2 == false && empty($a['role']) === true) {
+									$short_content .= "<h2>Affiliate/Adjunct Faculty</h2>";
+									$modified2 = true;																		
+
+								}								
+							}
+							
+                       		$short_content .= "<div class='profile-list searchable element'>" ;
+						    $short_content .= "<div class='info-wrapper'>";
+
+							//$key = array_search('<h2>Affiliate Faculty</h2>', $short_content);
+							//if ($key !== false) {
+							//		unset($short_content[$key]);
+							//}
+						
+					    	if(!empty($main_pic)) { 
+								$short_content .= "<div class='pic'><img width='140' height='180'  src='".$main_pic."' alt='".$name."' /></div>";
+							}
+									
+                                    $short_content .= "<div class='info'>";     
+                              	                                    
+                               		$short_content .= "<h3 class='name search-this'>";
+									
+									$short_content .= "<a href=" .get_permalink($personID).">" .$name;
+									
+									$short_content .= "</a></h3>";
+									
+									//$short_content .= "<p><a href=" .get_permalink($personID)."></a></p>";
+                                   
+                                    $short_content .= "<p class='title search-this'>" . $position . "\n" . $position2 . "</p>";
+									if(!empty($phone)) {                                	                                           
+		                                $short_content .= "<p>".$phone."</p>";
+									}
+									if(!empty($email)) {
+										$short_content .= "<p><a href='mailto:".$email."'>".$email."</a></p>";
+									}
+                           			$short_content .= "</div>";
+
+					    if (!empty($research)){
+							$short_content .= "<div class='research'>";
+							$short_content .= "<h3 class='name research-header'>Research Interests</h3><p class='research-interests'>" . $research . "</p></div>"; 	
+					    }
+					   $short_content .= "</div>";
+                       $short_content.= "</div>";
+                    }  endforeach;
+				$short_content.= "</div>";
+                } 
+				endif; 
+            endforeach;
+			wp_reset_postdata(); 
+			return $short_content;
+  }
+ 
+endif;
+
+// Creating the shortcode 
+
+if ( ! function_exists('deptfacultytypedir_shortcode') ):
+  function deptfacultytypedir_shortcode( $atts  ) 
+  {
+	  $a = shortcode_atts( array(
+        'dept' => 'Endodontics', 'role' => 'Core'
     ), $atts );
                 $args = array('post_type' => 'people', 'posts_per_page' => -1);
                 $query = new WP_Query($args);
@@ -402,37 +538,30 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
 
 							$count = 0;
 							 foreach ($person_teams_arr as $person_teams_item) {
-							
-								if($person_teams_item->name == $a['dept'])
-								{	$thisPerson = true;
+								if ($person_teams_item->name == $a['role'] && $modified == false) { // Add heading once
+									$short_content .= "<h2>" . $person_teams_item->name . "</h2>";
+									$thisPerson = true;
+									$modified = true;										
 								}
-								
-								if ($person_teams_item->name == 'Faculty' && $modified == false) {
-									$short_content .= "<h2>Core Faculty</h2>";
-									$modified = true;								
+								if($count == 0) {	
+									 $person_teams = $person_teams . ' ' . $person_teams_item_role->name;
 								}
-
-
-
-    							if($count == 0)
-								{	
-                             		 $person_teams = $person_teams . ' ' . $person_teams_item->name;
+								else {
+									
+									$person_teams = $person_teams . ', ' . $person_teams_item_role->name;
 								}
-								else
-									$person_teams = $person_teams . ', ' . $person_teams_item->name;
-						
-								$count++;
+								$count++;								 
                            	 }
 						}
                         if($thisPerson == true) {
 
-							foreach ($person_teams_arr as $person_teams_item) {
-								if ($person_teams_item->name == 'Affiliate Faculty' && $modified2 == false) {
-									$short_content .= "<h2>Affiliate Faculty</h2>";
-									$modified2 = true;																		
+							//foreach ($person_teams_arr as $person_teams_item) {
+							//	if ($person_teams_item->name == 'Affiliate Faculty' && $modified2 == false) {
+							//		$short_content .= "<h2>Affiliate Faculty</h2>";
+							//		$modified2 = true;																		
 
-								}								
-							}
+							//	}								
+							//}
 							
                        		$short_content .= "<div class='profile-list searchable element'>" ;
 						    $short_content .= "<div class='info-wrapper'>";
@@ -485,7 +614,9 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
   }
  
 endif;
+
 add_shortcode( 'deptfacultydir', 'deptfacultydir_shortcode' );
+add_shortcode( 'deptfacultytypedir', 'deptfacultytypedir_shortcode' );
 add_action('init', 'load_other_resources');
 
 function load_other_resources() {
