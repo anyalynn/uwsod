@@ -5,7 +5,7 @@
 	Plugin URI: http://www.washington.edu
 	Description: Makes a people content type and directory template
 	Version: 1.1b
-	Author: Jon Swanson - modified by anyal@uw.edu
+	Author: Jon Swanson - modified by anyal@uw.edu & Lachezar Dimov
 	Dependencies:  Isotype for directory display
 	*/
 
@@ -385,10 +385,8 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
 			    $name_link = true;
         
     	   	    $teams = group_by_faculty_type($people); 
-				$short_content .= "<div id='livesearchdiv'><label for='livesearch' hidden>Name:</label><input id='livesearch' class='form-control' type='search' placeholder='Enter a Name...' name='filter' /></div>";
-				$modified = false;
-				$modified2 = false;
-               foreach($teams as $team => $people):
+								
+                foreach($teams as $team => $people):
                   if (count($people) != 0): 	//just in case there are zero people in a manually specified team (or Team No-Team) 
                   {
      				$short_content .= "<div class='searchable-container'>";					
@@ -416,16 +414,12 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
 									if($person_teams_item->name == $a['dept']) {	
 										$thisPerson = true;
 									}
-									if ($person_teams_item->name == 'Faculty' && $modified == false) {
-									/*	$short_content .= "<h2>Faculty</h2>";*/
-										$modified = true;								
-									}									
+																	
 								} else {
-									if ($person_teams_item->name == $a['role'] && $modified == false ) { // Add heading once && isset($a['role']) === true && empty($arr['ele1']) === false
-										//$short_content .= "<h2>" . $person_teams_item->name . "</h2>";
+									if ($person_teams_item->name == $a['role'] && $modified == false ) {
 										$thisPerson = true;
-										$modified = true;										
-									}																			
+										
+									}
 								}
     							if($count == 0)
 								{	
@@ -439,23 +433,11 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
 						}
                         if ($thisPerson == true) {
 
-							foreach ($person_teams_arr as $person_teams_item) {
-								if ($person_teams_item->name == 'Affiliate Faculty' && $modified2 == false && empty($a['role']) === true) {
-									$short_content .= "<h2>Affiliate/Adjunct Faculty</h2>";
-									$modified2 = true;																		
-
-								}								
-							}
-							
+									
                        		$short_content .= "<div class='profile-list searchable element'>" ;
 						    $short_content .= "<div class='info-wrapper'>";
 
-							//$key = array_search('<h2>Affiliate Faculty</h2>', $short_content);
-							//if ($key !== false) {
-							//		unset($short_content[$key]);
-							//}
-						
-					    	if(!empty($main_pic)) { 
+							if(!empty($main_pic)) { 
 								$short_content .= "<div class='pic'><img width='140' height='180'  src='".$main_pic."' alt='".$name."' /></div>";
 							}
 									
@@ -495,7 +477,7 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
  
 endif;
 
-// Creating the shortcode 
+// Creating the shortcode NOT USED
 
 if ( ! function_exists('deptfacultytypedir_shortcode') ):
   function deptfacultytypedir_shortcode( $atts  ) 
