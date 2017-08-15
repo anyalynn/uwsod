@@ -9626,6 +9626,9 @@ a.more:after {
   overflow: hidden;
   margin-bottom: 0;
 }
+.home .uw-footer {
+  margin-top: -10px;
+}
 .uw-footer .footer-wordmark {
   background: url(assets/svg/uw-sprite.svg) no-repeat 0 -412px transparent;
   height: 44px;
