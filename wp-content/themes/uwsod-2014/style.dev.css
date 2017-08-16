@@ -9447,7 +9447,7 @@ display:inline-block;
     -webkit-transform: skew(170deg);
     -moz-transform: skew(170deg);
     -o-transform: skew(170deg);
-    background: #4b2e78;
+    background: #4b2e83;
     margin-left: -50px;
     font-style: normal;
     font-size: 1em;
@@ -10493,7 +10493,7 @@ a:hover.tooltips span {
   background-color: #E7E7E7;
 }
 .sm-blue a.current {
-  color: #4b2e78;
+  color: #4b2e83;
 }
 .sm-blue a.disabled {
   color: #a1d1e8;
@@ -10557,7 +10557,7 @@ a:hover.tooltips span {
 .sm-blue ul a:focus,
 .sm-blue ul a:active {
   background: transparent;
-  color: #4b2e78;
+  color: #4b2e83;
   font-size: 16px;
   text-shadow: none;
   border-left: 8px solid transparent;
@@ -10669,7 +10669,7 @@ a:hover.tooltips span {
     background: #fff;
   }
   .sm-blue a.current {
-    color: #4b2e78;
+    color: #4b2e83;
   }
   .sm-blue a.has-submenu:hover:before {
     background: url(assets/svg/uw-sprite.svg) no-repeat -203px -490px;
@@ -10828,7 +10828,7 @@ a:hover.tooltips span {
     margin-left: 0;
     right: 10px;
     border-style: dashed dashed dashed solid;
-    border-color: transparent transparent transparent #4b2e78;
+    border-color: transparent transparent transparent #4b2e83;
   }
   .sm-blue ul li {
     border: 0;
@@ -10888,7 +10888,7 @@ a:hover.tooltips span {
     right: auto;
     left: 10px;
     border-style: dashed solid dashed dashed;
-    border-color: transparent #4b2e78 transparent transparent;
+    border-color: transparent #4b2e83 transparent transparent;
   }
   .sm-blue.sm-vertical {
     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
@@ -10909,7 +10909,7 @@ a:hover.tooltips span {
     margin-left: 0;
     right: 10px;
     border-style: dashed dashed dashed solid;
-    border-color: transparent transparent transparent #4b2e78;
+    border-color: transparent transparent transparent #4b2e83;
   }
   .sm-blue.sm-vertical > li:first-child > a,
   .sm-blue.sm-vertical > li:first-child > :not(ul) a {
