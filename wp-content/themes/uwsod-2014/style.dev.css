@@ -9510,7 +9510,7 @@ a.more:after {
   }
   #soliloquy-container-14466 .soliloquy-caption.soliloquy-caption-left {
     width: 100%;
-    background: #4b2e78;
+    background: #4b2e78 !important;
   }
   #soliloquy-container-14466 .soliloquy-caption h2 {
     font-size: 22px;
