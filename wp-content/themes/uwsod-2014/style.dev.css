@@ -10275,6 +10275,11 @@ table.small td p {
   padding: 1px 0 1px 35px;
   background-image: url(assets/svg/widgets-sprite.svg);
 }
+.widget p.person-phone,
+.widget p.person-fax,
+.widget p a.person-email {
+  margin-top: 5px;
+}
 /**Tool Tips  **/
 a.tooltips {
   position: relative;
