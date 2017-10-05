@@ -10249,6 +10249,9 @@ table.small td p {
   margin: 0;
   font-size: 15px;
 }
+.contact-widget-inner {
+  margin-left: -20px;
+}
 .contact-widget-inner p.person-fax {
   padding: 1px 0 1px 35px;
   background-image: url(assets/svg/widgets-sprite.svg);
@@ -10256,30 +10259,31 @@ table.small td p {
 .contact-widget-inner p.person-fax {
   background-position: 0 -129px;
 }
-.widget p.person-fax {
+/*
+.widget p.person-fax
+ {
   padding: 1px 0 1px 35px;
   background-image: url(assets/svg/widgets-sprite.svg);
 }
 .widget p.person-fax {
   background-position: 0 -129px;
 }
+
 .widget p.person-phone {
-  background-position: 0 -30px;
+    background-position: 0 -30px;
 }
 .widget a.person-email {
-  color: inherit;
-  background-position: 0 1px;
+    color: inherit;
+    background-position: 0 1px;
 }
-.widget p.person-phone,
-.widget a.person-email {
-  padding: 1px 0 1px 35px;
-  background-image: url(assets/svg/widgets-sprite.svg);
+.widget p.person-phone, .widget a.person-email {
+    padding: 1px 0 1px 35px;
+    background-image: url(assets/svg/widgets-sprite.svg);
 }
-.widget p.person-phone,
-.widget p.person-fax,
-.widget p a.person-email {
-  margin-bottom: 10px;
+.widget p.person-phone, .widget p.person-fax, .widget p a.person-email {
+margin-bottom:10px;
 }
+*/
 /**Tool Tips  **/
 a.tooltips {
   position: relative;
