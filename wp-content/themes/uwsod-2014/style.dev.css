@@ -10249,7 +10249,8 @@ table.small td p {
   margin: 0;
   font-size: 15px;
 }
-.contact-widget-inner {
+.contact-widget-inner p,
+.contact-widget-inner h3 {
   margin-left: -5px;
 }
 .contact-widget-inner p.person-fax {
