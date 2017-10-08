@@ -62,6 +62,7 @@ class UW_Iframes
       'www.uwtv.org',
       'google.com',
       'docs.google.com',
+      'drive.google.com',
       'youtube.com',
       'excition.com',
       'uwregents.wufoo.com',
@@ -87,9 +88,17 @@ class UW_Iframes
       'embed.pac-12.com',
       'storify.com',
       'w.soundcloud.com',
-      'api.soundcloud.com', 
+      'api.soundcloud.com',
       'flickr.com',
-      'vimeo.com'
+      'vimeo.com',
+      'player.vimeo.com',
+      'www.facebook.com',
+      'form.jotform.com',
+      'oga-dev.s.uw.edu', //testing
+      'bitools.uw.edu', //testing
+      'tableau.washington.edu',
+      'www.iqmediacorp.com',
+      'fusiontables.google.com',
     );
   }
 

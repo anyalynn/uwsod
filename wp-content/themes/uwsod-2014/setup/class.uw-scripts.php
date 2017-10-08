@@ -14,33 +14,26 @@ class UW_Scripts
   function __construct()
   {
 
+    $multi = is_multisite();
+
     $this->SCRIPTS = array_merge( array(
 
       'jquery' => array (
         'id'      => 'jquery',
-        'url'     => 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js',
+        'url'     => get_bloginfo('template_directory') . '/js/libraries/jquery.min.js',
         'deps'    => array(),
-        'version' => '1.12.0',
+        'version' => '1.11.3',
         'admin'   => false
       ),
-	  
-	  'api' => array (
-        'id'      => 'api',
-        'url'     => 'https://www.google.com/recaptcha/api.js',
-        'deps'    => array(),
-        'version' => '1.0',
-        'admin'   => false
-      ),
-	 
-	  
+
       'site'   => array (
         'id'        => 'site',
         'url'       => get_bloginfo('template_directory') . '/js/site' . $this->dev_script() . '.js',
         'deps'      => array( 'backbone' ),
         'version'   => '1.0.3',
         'admin'     => false,
-        //'variables' => array( 'is_multisite' => ( is_multisite() ) ),
-		'style_dir' => site_url()
+        'style_dir' => site_url()
+        // 'variables' => array( 'is_multisite' =>  $multi ),
       ),
 
       'admin' => array (
@@ -57,7 +50,20 @@ class UW_Scripts
     add_action( 'wp_enqueue_scripts', array( $this, 'uw_localize_default_scripts' ) );
     add_action( 'wp_enqueue_scripts', array( $this, 'uw_enqueue_default_scripts' ) );
     add_action( 'admin_enqueue_scripts', array( $this, 'uw_enqueue_admin_scripts' ) );
+    add_action( 'customize_controls_init', array( $this, 'uw_customizer_preview' ) );
 
+  }
+
+  function uw_customizer_preview()
+  {
+    // wp_enqueue_script( 
+    //     'uw-themecustomizer',      //ID
+    //     get_bloginfo('template_directory') .'/js/uw.themecustomizer.js',//URL
+    //     array( 'jquery','customize-preview' ),  //dependencies
+    //     '',           //version (optional) 
+    //     true            //Put script in footer?
+    // );
+    wp_enqueue_script( 'uw-themecustomize', get_bloginfo('template_directory') .'/js/uw.themecustomizer.js', array( 'jquery', 'customize-controls' ), false, true );
   }
 
   function uw_register_default_scripts()
@@ -85,13 +91,12 @@ class UW_Scripts
     foreach ($this->SCRIPTS as $script )
     {
       $script = (object) $script;
-      //if (isset($script->variables)){
-      //  $uw_localization = array_merge($uw_localization, $script->variables);
-      //  wp_localize_script($script->id, 'uw', $uw_localization);
-      //}
+      // if (isset($script->variables)){
+      //   wp_localize_script($script->id, 'uw_ismultisite', $script->variables); //error line
+      // }
       if (isset($script->style_dir)){
         wp_localize_script($script->id, 'style_dir', $script->style_dir); //error line
-      }	  
+      }
     }
   }
 
