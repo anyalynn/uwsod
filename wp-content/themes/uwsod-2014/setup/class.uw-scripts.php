@@ -25,6 +25,13 @@ class UW_Scripts
         'version' => '1.11.3',
         'admin'   => false
       ),
+	   'api' => array (
+        'id'      => 'api',
+        'url'     => 'https://www.google.com/recaptcha/api.js',
+        'deps'    => array(),
+        'version' => '1.0',
+        'admin'   => false
+      ),
 
       'site'   => array (
         'id'        => 'site',
