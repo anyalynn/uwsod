@@ -29,6 +29,18 @@ function pops_post_type() {
 
 		$args = array(
 			'labels' => $labels,
+			'capability_type' => 'pops',
+			'capabilities' => array(
+				'publish_posts' => 'publish_popss',
+				'edit_posts' => 'edit_popss',
+				'edit_others_posts' => 'edit_others_popss',
+				'delete_posts' => 'delete_popss',
+				'delete_others_posts' => 'delete_others_popss',
+				'read_private_posts' => 'read_private_popss',
+				'edit_post' => 'edit_pops',
+				'delete_post' => 'delete_pops',
+				'read_post' => 'read_pops',
+			),
 			'public' => true,
 			'publicly_queryable' => true,
 			'show_ui' => true,
@@ -157,6 +169,49 @@ function location_callback() {
 		}
         return $template;
 	}
+	add_filter( 'map_meta_cap', 'my_map_meta_cap', 10, 4 );
+
+function my_map_meta_cap( $caps, $cap, $user_id, $args ) {
+
+	/* If editing, deleting, or reading a pops, get the post and post type object. */
+	if ( 'edit_pops' == $cap || 'delete_pops' == $cap || 'read_pops' == $cap ) {
+		$post = get_post( $args[0] );
+		$post_type = get_post_type_object( $post->post_type );
+
+		/* Set an empty array for the caps. */
+		$caps = array();
+	}
+
+	/* If editing a pops, assign the required capability. */
+	if ( 'edit_pops' == $cap ) {
+		if ( $user_id == $post->post_author )
+			$caps[] = $post_type->cap->edit_posts;
+		else
+			$caps[] = $post_type->cap->edit_others_posts;
+	}
+
+	/* If deleting a pops, assign the required capability. */
+	elseif ( 'delete_pops' == $cap ) {
+		if ( $user_id == $post->post_author )
+			$caps[] = $post_type->cap->delete_posts;
+		else
+			$caps[] = $post_type->cap->delete_others_posts;
+	}
+
+	/* If reading a private pops, assign the required capability. */
+	elseif ( 'read_pops' == $cap ) {
+
+		if ( 'private' != $post->post_status )
+			$caps[] = 'read';
+		elseif ( $user_id == $post->post_author )
+			$caps[] = 'read';
+		else
+			$caps[] = $post_type->cap->read_private_posts;
+	}
+
+	/* Return the capabilities required by the user. */
+	return $caps;
+}
    
   endif; 
   
