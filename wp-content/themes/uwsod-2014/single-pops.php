@@ -45,8 +45,7 @@
 				if ($location) { echo "<strong>Location</strong>: " . $location . "<br />"; }
 				if ($affiliation) { echo "<strong>Affiliation</strong>: " . $affiliation . "<br />"; }
 				if ($practiceName) { echo "<strong>Practice Name</strong>: " . $practiceName; }
-				
-				
+			
 	echo "</p><p><strong>Opportunity</strong>:</p>";
        			the_content();
    				endwhile;
