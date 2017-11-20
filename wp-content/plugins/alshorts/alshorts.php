@@ -35,6 +35,7 @@ add_shortcode( 'collast', 'collast_shortcode' );
 if ( !post_type_exists( 'condented' ) ):   
 add_action('init', 'condented_post_type');
 add_filter('single_template', 'add_single_condented_template');
+add_filter( 'map_meta_cap', 'my_map_meta_cap2', 10, 4 );
 
 function condented_post_type() {
 		$labels = array(
