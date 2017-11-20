@@ -56,6 +56,18 @@ function condented_post_type() {
 		$args = array(
 			'labels' => $labels,
 			'public' => true,
+			'capability_type' => 'condented',
+			'capabilities' => array(
+				'publish_posts' => 'publish_condenteds',
+				'edit_posts' => 'edit_condenteds',
+				'edit_others_posts' => 'edit_others_condenteds',
+				'delete_posts' => 'delete_condenteds',
+				'delete_others_posts' => 'delete_others_condenteds',
+				'read_private_posts' => 'read_private_condenteds',
+				'edit_post' => 'edit_condented',
+				'delete_post' => 'delete_condented',
+				'read_post' => 'read_condented',
+			),
 			'publicly_queryable' => true,
 			'show_ui' => true,
 			'show_in_menu' => true,
@@ -463,6 +475,49 @@ function coursetitle_sort($a, $b) {
 }
 */
 endif;
+
+function my_map_meta_cap2( $caps, $cap, $user_id, $args ) {
+
+	/* If editing, deleting, or reading a condented, get the post and post type object. */
+	if ( 'edit_condented' == $cap || 'delete_condented' == $cap || 'read_condented' == $cap ) {
+		$post = get_post( $args[0] );
+		$post_type = get_post_type_object( $post->post_type );
+
+		/* Set an empty array for the caps. */
+		$caps = array();
+	}
+
+	/* If editing a condented, assign the required capability. */
+	if ( 'edit_condented' == $cap ) {
+		if ( $user_id == $post->post_author )
+			$caps[] = $post_type->cap->edit_posts;
+		else
+			$caps[] = $post_type->cap->edit_others_posts;
+	}
+
+	/* If deleting a condented, assign the required capability. */
+	elseif ( 'delete_condented' == $cap ) {
+		if ( $user_id == $post->post_author )
+			$caps[] = $post_type->cap->delete_posts;
+		else
+			$caps[] = $post_type->cap->delete_others_posts;
+	}
+
+	/* If reading a private condented, assign the required capability. */
+	elseif ( 'read_condented' == $cap ) {
+
+		if ( 'private' != $post->post_status )
+			$caps[] = 'read';
+		elseif ( $user_id == $post->post_author )
+			$caps[] = 'read';
+		else
+			$caps[] = $post_type->cap->read_private_posts;
+	}
+
+	/* Return the capabilities required by the user. */
+	return $caps;
+}
+  
 
 //Comparison function for integers
 function intcmp($a, $b) {
