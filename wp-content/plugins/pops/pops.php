@@ -121,8 +121,8 @@ function location_callback() {
 	function type_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$type = $custom['pops-type'][0];	?>
-		 <select name="pops-type">
+		$type = $custom['type'][0];	?>
+		 <select name="type">
             <option value="DDS/DMD" <?php selected( $type, 'DDS/DMD' ); ?>>DDS/DMD</option>
             <option value="Support Staff" <?php selected( $type, 'Support Staff' ); ?>>Support Staff</option>
             <option value="Office Space" <?php selected( $type, 'Office Space' ); ?>>Office Space</option>
