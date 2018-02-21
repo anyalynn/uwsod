@@ -121,8 +121,8 @@ function location_callback() {
 	function type_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$type = $custom['type'];	?>
-		 <select name="type" id="type">
+		$type = $custom['pops-type'][0];	?>
+		 <select name="pops-type">
             <option value="DDS/DMD" <?php selected( $type, 'DDS/DMD' ); ?>>DDS/DMD</option>
             <option value="Support Staff" <?php selected( $type, 'Support Staff' ); ?>>Support Staff</option>
             <option value="Office Space" <?php selected( $type, 'Office Space' ); ?>>Office Space</option>
@@ -174,7 +174,7 @@ function location_callback() {
 function my_map_meta_cap( $caps, $cap, $user_id, $args ) {
 
 	/* If editing, deleting, or reading a pops, get the post and post type object. */
-	if ( 'edit_pops' == $cap || 'delete_pops' == $cap || 'read_pops' == $cap ) {
+	if ( 'edit_pops' == $cap || 'delete_pops' == $cap || 'read_pops' == $cap  || 'publish_popss' == $cap) {
 		$post = get_post( $args[0] );
 		$post_type = get_post_type_object( $post->post_type );
 
@@ -207,6 +207,10 @@ function my_map_meta_cap( $caps, $cap, $user_id, $args ) {
 			$caps[] = 'read';
 		else
 			$caps[] = $post_type->cap->read_private_posts;
+	}
+	elseif ( 'publish_popss' == $cap ) {
+
+			$caps[] = $post_type->cap->publish_posts;
 	}
 
 	/* Return the capabilities required by the user. */
