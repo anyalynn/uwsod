@@ -107,9 +107,9 @@ include 'template_functions.php';
 			 			<img <?php if (empty($main_pic)) { ?> class='no-pic'<?php } ?> src='<?= $main_pic ?>' alt='<?= $name ?>' class='pic'/>
 						<div class='info'>	
 							<?php if (($name_link)){
-							?><a href="<?= get_permalink($personID) ?>"><?php
+							?><h3 class='name search-this'><a href="<?= get_permalink($personID) ?>"><?php
 							} ?>
-							<h3 class='name search-this'><?= $name ?></h3></a>
+							<?= $name ?></a></h3>
 							<p class='title search-this'><?= $position  ?><br /><?= $position2 ?></p>                             <p> <?= $phone ?> </p>
 							<?php if (($email)) 
 							{ ?>
