@@ -5946,6 +5946,9 @@ span.next-page a:hover {
 .uw-body-copy a {
   text-decoration: underline;
 }
+.uw-body-copy a.share-icon {
+  text-decoration: none;
+}
 .info-box {
   width: 310px;
   float: left;
