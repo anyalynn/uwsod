@@ -8563,7 +8563,6 @@ label.screen-reader {
 .uw-body a:focus,
 .uw-body a:hover {
   color: #85754d;
-  border-bottom: 1px solid #BDBDBD;
 }
 .uw-body a:focus.uw-btn,
 .uw-body a:hover.uw-btn {

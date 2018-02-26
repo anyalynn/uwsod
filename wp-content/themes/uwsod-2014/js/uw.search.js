@@ -18,7 +18,7 @@ UW.Search = Backbone.View.extend({
 				 	'<form class="uw-search" action="<%= UW.baseUrl %>">'+
                     '<div class="search-form-wrapper">'+
                          '<label class="screen-reader" for="uw-search-bar">Enter search text</label>' +
-                         '<input id="uw-search-bar" type="search" name="s" value="" autocomplete="off" />'+
+                         '<input id="uw-search-bar" type="search" name="s" value="" autocomplete="off" placeholder="Search"/>'+
                      '</div>'+
                 	'<input type="submit" value="search" class="search" tabindex="0"/>'+
 					'</form>'+

@@ -32,7 +32,8 @@
     <!--[if gt IE 8]><!-->
     <body <?php body_class(); ?> >
     <!--<![endif]-->
-    <a id="main-content" href="#main_content" class='screen-reader-shortcut'>Skip to main content</a>
+   <!-- <a role="main" id="main-content" href="#main_content" class='screen-reader-shortcut'>Skip to main content</a>    -->
+<a role="banner" aria-label="main_content" id="main-content" href="#main_content" class='screen-reader-shortcut'>Skip to main content</a>
 
     <div id="uwsearcharea" aria-hidden="true" class="uw-search-bar-container"></div>
 

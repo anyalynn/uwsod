@@ -413,7 +413,7 @@ UW.QuickLinks = Backbone.View.extend({
     // todo: the default list and these elements could be put into the php templates
     container: 'div#uw-container',
     $little_list_header: $('<h3>Helpful Links</h3>'),
-    $drawer: $("<nav id='quicklinks' role='navigation' aria-label='quick links'></nav>"),
+    $drawer: $("<nav id='quicklinks' aria-label='quick links'></nav>"),
     $big_list: $('<ul id="big_links"></ul>'),
     $little_list: $('<ul id="little_list"></ul>'),
 
@@ -953,7 +953,8 @@ UW.Vimeo = Backbone.View.extend({
   templates : {
     video    : '<iframe id="test" src="http://player.vimeo.com/video/<%= video %>/?<%= $.param( defaults ) %>"' +
                ' width=<%= width %> height=<%= height %>'+
-               ' frameborder=0 webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
+   // ' frameborder=0 webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
+    'style="border:0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',	
 
     playlist : '' +
       '<div class="playlist">'+
