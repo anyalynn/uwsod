@@ -687,4 +687,19 @@ if ( ! function_exists('htiles_shortcode') ):
 endif;
 add_shortcode( 'htiles', 'htiles_shortcode' );
 
+if ( !function_exists('qw_date_filter_callback')):
+
+function qw_date_filter_callback($args, $filter){
+	$args['date_query'] = array(
+		array(
+			'after'     => '3 months ago',
+			
+			'inclusive' => true,
+		),
+	);
+
+	return $args;
+}
+endif;
+
 ?>
