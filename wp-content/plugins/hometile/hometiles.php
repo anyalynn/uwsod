@@ -98,10 +98,10 @@ function hometile_pic_alt_callback() {
 		global $post;
 		if (get_post_type($post) == 'hometiles') {
 			
-			update_post_meta($post->ID, 'readmore_link', filter_sanitize_url( $_POST['readmore_link'] ));
+			update_post_meta($post->ID, 'readmore_link', filter_var( $_POST['readmore_link'], FILTER_SANITIZE_URL ));
 			update_post_meta($post->ID, 'readmore_text', sanitize_text_field( $_POST['readmore_text'] ));
 			update_post_meta($post->ID, 'hometile_pic_alt', sanitize_text_field( $_POST['hometile_pic_alt'] ));
-			update_post_meta($post->ID, 'hometile_pic', filter_sanitize_url( $_POST['hometile_pic'] ));
+			update_post_meta($post->ID, 'hometile_pic', filter_var( $_POST['hometile_pic'], FILTER_SANITIZE_URL ));
 		}
 	}
 
