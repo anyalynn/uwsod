@@ -196,40 +196,40 @@ function people_admin_init(){
 	function position_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$position = $custom['position'][0];
+		$position = esc_html( $custom['position'][0] );
 		?><textarea rows="2" cols="50" name="position"><?= $position ?></textarea><?php
 	}
 	function position_secondary_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$position2 = $custom['position2'][0];
+		$position2 = esc_html( $custom['position2'][0] );
 		?><textarea rows="3" cols="50" name="position2"><?= $position2 ?></textarea><?php
 	}
 	
 	function research_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$research = $custom['research'][0];
+		$research = esc_html( $custom['research'][0] );
 		?><textarea rows="2" cols="50" name="research"><?= $research ?></textarea><?php
 	}
 	function degrees_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$degrees = $custom['degrees'][0];
+		$degrees = esc_html( $custom['degrees'][0] );
 		?><input name="degrees" value="<?= $degrees ?>" /><?php
 	}
 
 	function phone_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$phone = $custom['phone'][0];
+		$phone = esc_html( $custom['phone'][0] );
 		?><input name="phone" value="<?= $phone ?>" /><?php
 	}
 
 	function email_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$email = $custom['email'][0];
+		$email = esc_html( $custom['email'][0] );
 		?><input name="email" value="<?= $email ?>" /><?php
 	}
 
@@ -253,7 +253,7 @@ function people_admin_init(){
 	function main_pic_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$pic_url = $custom['main_pic'][0];
+		$pic_url = esc_url( $custom['main_pic'][0] );
 		?><p>Use the Add Media button above to the image upload or select from uploaded images. The field below accepts an image url, so enter the generated url here (or if you want to use an image not hosted here, just enter the url for that image).</p><?php
 		?><input style='width:99%' name="main_pic" value="<?= $pic_url ?>" /><?php
 		if (!empty($pic_url)) {
@@ -270,14 +270,14 @@ function people_admin_init(){
 		global $post;
 		if (get_post_type($post) == 'people') {
 			update_post_meta($post->ID, 'team', $_POST['team']);
-			update_post_meta($post->ID, 'position', $_POST['position']);
-			update_post_meta($post->ID, 'position2', $_POST['position2']);
-			update_post_meta($post->ID, 'research', $_POST['research']);
-			update_post_meta($post->ID, 'degrees', $_POST['degrees']);
-			update_post_meta($post->ID, 'phone', $_POST['phone']);
-			update_post_meta($post->ID, 'email', $_POST['email']);
-			update_post_meta($post->ID, 'main_pic', $_POST['main_pic']);
-			update_post_meta($post->ID, 'office_location', $_POST['office_location']);
+			update_post_meta($post->ID, 'position', sanitize_text_field( $_POST['position'] ));
+			update_post_meta($post->ID, 'position2', sanitize_text_field( $_POST['position2'] ));
+			update_post_meta($post->ID, 'research', sanitize_text_field( $_POST['research'] ));
+			update_post_meta($post->ID, 'degrees', sanitize_text_field( $_POST['degrees'] ));
+			update_post_meta($post->ID, 'phone', sanitize_text_field( $_POST['phone'] ));
+			update_post_meta($post->ID, 'email', sanitize_text_field( $_POST['email'] ));
+			update_post_meta($post->ID, 'main_pic', filter_var( $_POST['main_pic'], FILTER_SANITIZE_URL ));
+			update_post_meta($post->ID, 'office_location', sanitize_text_field( $_POST['office_location'] ));
 		
 		}
 	}
@@ -395,12 +395,12 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
 					   $thisPerson = false;
                        $personID = $person->ID;
                        $name = $person->post_title;
-                       $main_pic = get_post_meta($personID, 'main_pic', true);
-                       $position = get_post_meta($personID, 'position', true);
-					   $position2 = get_post_meta($personID, 'position2', true);
-					   $research = get_post_meta($personID, 'research', true);
-                       $phone = get_post_meta($personID, 'phone', true);
-                       $email = get_post_meta($personID, 'email', true);
+                       $main_pic = esc_url( get_post_meta($personID, 'main_pic', true ));
+                       $position = esc_html( get_post_meta($personID, 'position', true ));
+					   $position2 = esc_html( get_post_meta($personID, 'position2', true ));
+					   $research = esc_html( get_post_meta($personID, 'research', true ));
+                       $phone = esc_html( get_post_meta($personID, 'phone', true ));
+                       $email = esc_html( get_post_meta($personID, 'email', true ));
 					   $content=$person->post_content;
                        $person_teams_arr = get_the_terms($personID, 'teams');
 
@@ -505,12 +505,12 @@ if ( ! function_exists('deptfacultytypedir_shortcode') ):
 					   $thisPerson = false;
                        $personID = $person->ID;
                        $name = $person->post_title;
-                       $main_pic = get_post_meta($personID, 'main_pic', true);
-                       $position = get_post_meta($personID, 'position', true);
-					   $position2 = get_post_meta($personID, 'position2', true);
-					   $research = get_post_meta($personID, 'research', true);
-                       $phone = get_post_meta($personID, 'phone', true);
-                       $email = get_post_meta($personID, 'email', true);
+                       $main_pic = esc_url( get_post_meta($personID, 'main_pic', true ));
+                       $position = esc_html( get_post_meta($personID, 'position', true ));
+					   $position2 = esc_html( get_post_meta($personID, 'position2', true ));
+					   $research = esc_html( get_post_meta($personID, 'research', true ));
+                       $phone = esc_html( get_post_meta($personID, 'phone', true ));
+                       $email = esc_html( get_post_meta($personID, 'email', true ));
 					   $content=$person->post_content;
                        $person_teams_arr = get_the_terms($personID, 'teams');
 

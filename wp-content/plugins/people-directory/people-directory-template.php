@@ -46,12 +46,12 @@ include 'template_functions.php';
     				<?php foreach ($people as $person):
             		$personID = $person->ID;
 	 				$name = $person->post_title;
-				 	$main_pic = get_post_meta($personID, 'main_pic', true);
-				 	$position = get_post_meta($personID, 'position', true);
-					$position2 = get_post_meta($personID, 'position2', true);
-					$research = get_post_meta($personID, 'research', true);
-				 	$phone = get_post_meta($personID, 'phone', true);
-				 	$email = get_post_meta($personID, 'email', true);
+				 	$main_pic = esc_url( get_post_meta($personID, 'main_pic', true ));
+				 	$position = esc_html( get_post_meta($personID, 'position', true ));
+					$position2 = esc_html( get_post_meta($personID, 'position2', true ));
+					$research = esc_html( get_post_meta($personID, 'research', true ));
+				 	$phone = esc_html( get_post_meta($personID, 'phone', true ));
+				 	$email = esc_html( get_post_meta($personID, 'email', true ));
 				 	$person_teams_arr = get_the_terms($personID, 'teams');
 					$team_class = '';
             		$person_teams = '';

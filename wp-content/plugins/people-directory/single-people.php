@@ -31,12 +31,12 @@ include 'template_functions.php';
 							
 						<div class="entry-content">
                          <?php $title = get_the_title();
-						 	$degrees = $meta['degrees'][0];
-                             $main_pic = $meta['main_pic'][0];
+						 	$degrees = esc_html( $meta['degrees'][0] );
+                             $main_pic = esc_url( $meta['main_pic'][0] );
                             if (!empty($main_pic)) { ?>
 							    <img class='people-image' src=<?= $main_pic ?> alt=<?= $title ?> />
                             <?php }
-                            $office_location = $meta['office_location'][0];
+                            $office_location = esc_html( $meta['office_location'][0] );
                             
                             $location_present = false;
                             if (!empty($office_location)){
@@ -52,17 +52,17 @@ include 'template_functions.php';
 							
 					
                                 
-								<p class="title"><?= $meta['position'][0] ?>                            
+								<p class="title"><?= esc_html( $meta['position'][0] ) ?>                            
                                
 								<?php 
-								if (!empty($meta['position2'][0])){ ?>
+								if (!empty(esc_html( $meta['position2'][0] ))){ ?>
 									
 									<br /><?= $meta['position2'][0] ?> 
 									<?php
 								}?>
                                 </p><div class='contact<?php if ($location_present && $hours_present) { ?> big-contact<?php } ?>'>
-									<p><?= $meta['phone'][0] ?></p>
-									<?php $email = $meta['email'][0]; ?>
+									<p><?= esc_html( $meta['phone'][0] ) ?></p>
+									<?php $email = esc_html( $meta['email'][0] ); ?>
 									 <?php if (($email)){
                                     ?><p> <a href="mailto:<?= $email ?> "><?= $email ?></a></p><?php
                                 } ?>
