@@ -69,21 +69,21 @@ add_action('admin_init', 'pops_admin_init');
 	function contactName_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$contactName = $custom['contactName'][0];		
+		$contactName = esc_html($custom['contactName'][0]);		
 		?>
 		<textarea rows="2" cols="40" name="contactName"><?= $contactName ?></textarea><?php
 	}
 	function contactEmail_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$contactEmail = $custom['contactEmail'][0];		
+		$contactEmail = esc_html($custom['contactEmail'][0]);		
 		?>
 		<textarea rows="2" cols="40" name="contactEmail"><?= $contactEmail ?></textarea><?php
 	}
 	function contactPhone_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$contactPhone = $custom['contactPhone'][0];		
+		$contactPhone = esc_html($custom['contactPhone'][0]);		
 		?>
 		<textarea rows="2" cols="40" name="contactPhone"><?= $contactPhone ?></textarea><?php
 	}
@@ -91,7 +91,7 @@ add_action('admin_init', 'pops_admin_init');
 function website_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$website = $custom['website'][0];		
+		$website = esc_url($custom['website'][0]);		
 		?>
 		<textarea rows="2" cols="40" name="website"><?= $website ?></textarea><?php
 	}
@@ -99,7 +99,7 @@ function website_callback() {
 function location_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$location = $custom['location'][0];		
+		$location = esc_html($custom['location'][0]);		
 		?>
 		<textarea rows="2" cols="40" name="location"><?= $location ?></textarea><?php
 	}
@@ -107,14 +107,14 @@ function location_callback() {
 	function affiliation_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$affiliation = $custom['affiliation'][0];		
+		$affiliation = esc_html($custom['affiliation'][0]);		
 		?>
 		<textarea rows="2" cols="40" name="affiliation"><?= $affiliation ?></textarea><?php
 	}
 	function practiceName_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$practiceName = $custom['practiceName'][0];		
+		$practiceName = esc_html($custom['practiceName'][0]);		
 		?>
 		<textarea rows="2" cols="40" name="practiceName"><?= $practiceName ?></textarea><?php
 	}
@@ -141,13 +141,13 @@ function location_callback() {
 	function save_pops_details() {
 		global $post;
 		if (get_post_type($post) == 'pops') {
-			update_post_meta($post->ID, 'contactName', $_POST['contactName']);
-			update_post_meta($post->ID, 'contactEmail', $_POST['contactEmail']);
-			update_post_meta($post->ID, 'contactPhone', $_POST['contactPhone']);
-			update_post_meta($post->ID, 'website', $_POST['website']);
-			update_post_meta($post->ID, 'location', $_POST['location']);
-			update_post_meta($post->ID, 'affiliation', $_POST['affiliation']);
-			update_post_meta($post->ID, 'practiceName', $_POST['practiceName']);
+			update_post_meta($post->ID, 'contactName', sanitize_text_field($_POST['contactName']));
+			update_post_meta($post->ID, 'contactEmail', sanitize_text_field($_POST['contactEmail']));
+			update_post_meta($post->ID, 'contactPhone', sanitize_text_field($_POST['contactPhone']));
+			update_post_meta($post->ID, 'website', filter_var($_POST['website'],FILTER_SANITIZE_URL ));
+			update_post_meta($post->ID, 'location', sanitize_text_field($_POST['location']));
+			update_post_meta($post->ID, 'affiliation', sanitize_text_field($_POST['affiliation']));
+			update_post_meta($post->ID, 'practiceName', sanitize_text_field($_POST['practiceName']));
 			update_post_meta($post->ID, 'type', $_POST['type']);
 						
 		}
