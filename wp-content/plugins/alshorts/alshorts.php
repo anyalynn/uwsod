@@ -106,37 +106,37 @@ add_action('admin_init', 'condented_admin_init');
 	function cdeStartdate_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$cdeStartdate = $custom['cdeStartdate'][0];
+		$cdeStartdate = esc_html($custom['cdeStartdate'][0]);
 		?><textarea rows="2" cols="20" name="cdeStartdate"><?= $cdeStartdate ?></textarea><?php
 	}
 	function cdeEnddate_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$cdeEnddate = $custom['cdeEnddate'][0];
+		$cdeEnddate = esc_html($custom['cdeEnddate'][0]);
 		?><textarea rows="2" cols="20" name="cdeEnddate"><?= $cdeEnddate ?></textarea><?php
 	}
 	function cdeNumber_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$cdeNumber = $custom['cdeNumber'][0];
+		$cdeNumber = esc_html($custom['cdeNumber'][0]);
 		?><textarea rows="2" cols="50" name="cdeNumber"><?= $cdeNumber ?></textarea><?php
 	}
 	function cdeThumb_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$cdeThumb = $custom['cdeThumb'][0];
+		$cdeThumb = esc_url($custom['cdeThumb'][0]);
 		?><textarea rows="2" cols="50" name="cdeThumb"><?= $cdeThumb ?></textarea><?php
 	}
 	function cdeprimarytitle_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$cdeprimarytitle = $custom['cdeprimarytitle'][0];
+		$cdeprimarytitle = esc_html($custom['cdeprimarytitle'][0]);
 		?><textarea rows="2" cols="50" name="cdeprimarytitle"><?= $cdeprimarytitle ?></textarea><?php
 	}
 	function cdesecondarytitle_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$cdesecondarytitle = $custom['cdesecondarytitle'][0];
+		$cdesecondarytitle = esc_html($custom['cdesecondarytitle'][0]);
 		?><textarea rows="2" cols="50" name="cdesecondarytitle"><?= $cdesecondarytitle ?></textarea><?php
 	}
 	
@@ -144,19 +144,19 @@ add_action('admin_init', 'condented_admin_init');
 	function instructor_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$instructor = $custom['instructor'][0];
+		$instructor = esc_html($custom['instructor'][0]);
 		?><textarea rows="2" cols="50" name="instructor"><?= $instructor ?></textarea><?php
 	}
 	function cdenotes_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$cdenotes = $custom['cdenotes'][0];
+		$cdenotes = esc_html($custom['cdenotes'][0]);
 		?><textarea rows="2" cols="50" name="cdenotes"><?= $cdenotes ?></textarea><?php
 	}
 	function cdealert_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$cdealert = $custom['cdealert'][0];
+		$cdealert = esc_html($custom['cdealert'][0]);
 		?><textarea rows="2" cols="50" name="cdealert"><?= $cdealert ?></textarea><?php
 	}
 
@@ -166,16 +166,16 @@ add_action('admin_init', 'condented_admin_init');
 	function save_condented_details() {
 		global $post;
 		if (get_post_type($post) == 'condented') {
-			update_post_meta($post->ID, 'cdeStartdate', $_POST['cdeStartdate']);
-			update_post_meta($post->ID, 'cdeEnddate', $_POST['cdeEnddate']);
-			update_post_meta($post->ID, 'cdeNumber', $_POST['cdeNumber']);
-			update_post_meta($post->ID, 'cdeThumb', $_POST['cdeThumb']);
-			update_post_meta($post->ID, 'cdeprimarytitle', $_POST['cdeprimarytitle']);
-			update_post_meta($post->ID, 'cdesecondarytitle', $_POST['cdesecondarytitle']);
-			update_post_meta($post->ID, 'instructor', $_POST['instructor']);
-			update_post_meta($post->ID, 'cdenotes', $_POST['cdenotes']);
-			update_post_meta($post->ID, 'cdealert', $_POST['cdealert']);
-			update_post_meta($post->ID, 'rb_cdeInstructionType', $_POST['rb_cdeInstructionType']);			
+			update_post_meta($post->ID, 'cdeStartdate', sanitize_text_field($_POST['cdeStartdate']));
+			update_post_meta($post->ID, 'cdeEnddate', sanitize_text_field($_POST['cdeEnddate']));
+			update_post_meta($post->ID, 'cdeNumber', sanitize_text_field($_POST['cdeNumber']));
+			update_post_meta($post->ID, 'cdeThumb', filter_var($_POST['cdeThumb'], FILTER_SANITIZE_URL ));
+			update_post_meta($post->ID, 'cdeprimarytitle', sanitize_text_field($_POST['cdeprimarytitle']));
+			update_post_meta($post->ID, 'cdesecondarytitle', sanitize_text_field($_POST['cdesecondarytitle']));
+			update_post_meta($post->ID, 'instructor', sanitize_text_field($_POST['instructor']));
+			update_post_meta($post->ID, 'cdenotes', sanitize_text_field($_POST['cdenotes']));
+			update_post_meta($post->ID, 'cdealert', sanitize_text_field($_POST['cdealert']));
+			update_post_meta($post->ID, 'rb_cdeInstructionType', sanitize_text_field($_POST['rb_cdeInstructionType']));			
 		}
 	}
 	function add_single_condented_template($template) {
@@ -218,22 +218,22 @@ function checkIsAValidDate($myDateString){
 	    foreach ($courses as $course):
 			$courseID = $course->ID;
     		$title = $course->post_title;
-     		$cdeStartdate = get_post_meta($courseID, 'cdeStartdate', true);
-			$cdeEnddate = get_post_meta($courseID, 'cdeEnddate', true);
-			$cdeNumber = get_post_meta($courseID, 'cdeNumber', true);
+     		$cdeStartdate = esc_html(get_post_meta($courseID, 'cdeStartdate', true));
+			$cdeEnddate = esc_html(get_post_meta($courseID, 'cdeEnddate', true));
+			$cdeNumber = esc_html(get_post_meta($courseID, 'cdeNumber', true));
 			$cdeThumb='';
-			$cdeThumb = get_post_meta($courseID, 'cdeThumb', true);
+			$cdeThumb = esc_url(get_post_html($courseID, 'cdeThumb', true));
 			
-			$cdeprimarytitle = get_post_meta($courseID, 'cdeprimarytitle', true);
-			$cdesecondarytitle = get_post_meta($courseID, 'cdesecondarytitle', true);
-	   		$instructor = get_post_meta($courseID, 'instructor', true);
+			$cdeprimarytitle = esc_html(get_post_meta($courseID, 'cdeprimarytitle', true));
+			$cdesecondarytitle = esc_html(get_post_meta($courseID, 'cdesecondarytitle', true));
+	   		$instructor = esc_html(get_post_meta($courseID, 'instructor', true));
 	  		//$instructtype=get_field('instruction_type', $courseID);
-			$instructtype = get_post_meta($courseID, 'rb_cdeInstructionType', true);
+			$instructtype = esc_html(get_post_meta($courseID, 'rb_cdeInstructionType', true));
 	  		$lectureimg="//dental.washington.edu/wp-content/media/lecture.png";
 	   		$handsonimg="//dental.washington.edu/wp-content/media/tools.png";
 	   		$bothimg="//dental.washington.edu/wp-content/media/lecture-tools.png";
-			$cdenotes = get_post_meta($courseID, 'cdenotes', true);
-			$cdealert = get_post_meta($courseID, 'cdealert', true);
+			$cdenotes = esc_html(get_post_meta($courseID, 'cdenotes', true));
+			$cdealert = esc_html(get_post_meta($courseID, 'cdealert', true));
 			$permalink = rtrim(get_permalink($courseID));
 			$today = date('Y-m-d');
 			$todayPlusOne = date('Y-m-d', strtotime("+1 day"));
@@ -337,17 +337,17 @@ add_shortcode( 'cdecurrent', 'cdecurrent_shortcode' );
 	    foreach ($courses as $course):
 			$courseID = $course->ID;
     		$title = $course->post_title;
-     		$cdeStartdate = get_post_meta($courseID, 'cdeStartdate', true);
-			$cdeEnddate = get_post_meta($courseID, 'cdeEnddate', true);
-			$cdeNumber = get_post_meta($courseID, 'cdeNumber', true);
-			$cdeprimarytitle = get_post_meta($courseID, 'cdeprimarytitle', true);
-			$cdesecondarytitle = get_post_meta($courseID, 'cdesecondarytitle', true);
-	   		$instructor = get_post_meta($courseID, 'instructor', true);
+     		$cdeStartdate = esc_html(get_post_meta($courseID, 'cdeStartdate', true));
+			$cdeEnddate = esc_html(get_post_meta($courseID, 'cdeEnddate', true));
+			$cdeNumber = esc_html(get_post_meta($courseID, 'cdeNumber', true));
+			$cdeprimarytitle = esc_html(get_post_meta($courseID, 'cdeprimarytitle', true));
+			$cdesecondarytitle = esc_html(get_post_meta($courseID, 'cdesecondarytitle', true));
+	   		$instructor = esc_html(get_post_meta($courseID, 'instructor', true));
 
-			$instrtype = get_post_meta($courseID, 'rb_cdeInstructionType', true);
+			$instrtype = esc_html(get_post_meta($courseID, 'rb_cdeInstructionType', true));
 
-			$cdenotes = get_post_meta($courseID, 'cdenotes', true);
-			$cdealert = get_post_meta($courseID, 'cdealert', true);
+			$cdenotes = esc_html(get_post_meta($courseID, 'cdenotes', true));
+			$cdealert = esc_html(get_post_meta($courseID, 'cdealert', true));
 			$permalink = rtrim(get_permalink($courseID));
 			$today = date('Y-m-d');
 			
@@ -611,13 +611,13 @@ if ( ! function_exists('htiles_shortcode') ):
 					<div class="box three">
                          <div class="tile">
                           <?php $hometilestwo =  get_post($htile1);
-			    			 $metatwo = get_post_meta($hometilestwo->ID);
+			    			 $metatwo = esc_html(get_post_meta($hometilestwo->ID));
 							 $thecontenttwo = $hometilestwo->post_content; 
 							 $posttitletwo = $hometilestwo->post_title;
-							 $hometilestwo_pic = get_post_meta($hometilestwo->ID, 'hometile_pic', true);
-							 $readmore_texttwo = get_post_meta($hometilestwo->ID, 'readmore_text', true);
-	   						 $readmore_linktwo = get_post_meta($hometilestwo->ID, 'readmore_link', true);
-							 $alttwo = get_post_meta($hometilestwo->ID, 'hometile_pic_alt', true);
+							 $hometilestwo_pic = esc_url(get_post_meta($hometilestwo->ID, 'hometile_pic', true));
+							 $readmore_texttwo = esc_html(get_post_meta($hometilestwo->ID, 'readmore_text', true));
+	   						 $readmore_linktwo = esc_html(get_post_meta($hometilestwo->ID, 'readmore_link', true));
+							 $alttwo = esc_html(get_post_meta($hometilestwo->ID, 'hometile_pic_alt', true));
  
 								 ?>
                                    
@@ -632,13 +632,13 @@ if ( ! function_exists('htiles_shortcode') ):
 								</div>
 								<div class="tile">
                                  <?php $hometilesone =  get_post($htile2);
-								 $meta = get_post_meta($hometilesone->ID);
+								 $meta = esc_html(get_post_meta($hometilesone->ID));
 								 $thecontentone = $hometilesone->post_content; 
 								 $posttitleone = $hometilesone->post_title;
-								 $hometilesone_pic = get_post_meta($hometilesone->ID, 'hometile_pic', true);
-								 $readmore_textone = get_post_meta($hometilesone->ID, 'readmore_text', true);
-	   						     $readmore_linkone = get_post_meta($hometilesone->ID, 'readmore_link', true);
-								 $altone = get_post_meta($hometilesone->ID, 'hometile_pic_alt', true);
+								 $hometilesone_pic = esc_url(get_post_meta($hometilesone->ID, 'hometile_pic', true));
+								 $readmore_textone = esc_html(get_post_meta($hometilesone->ID, 'readmore_text', true));
+	   						     $readmore_linkone = esc_html(get_post_meta($hometilesone->ID, 'readmore_link', true));
+								 $altone = esc_html(get_post_meta($hometilesone->ID, 'hometile_pic_alt', true));
  
 								 ?>
 								<div><img class="attachment-homepage_tile wp-post-image" src='<?= $hometilesone_pic ?>' alt='<?= $altone ?>' width="379" height="160" /></div>
@@ -653,13 +653,13 @@ if ( ! function_exists('htiles_shortcode') ):
 								
 									<div class="tile"> 
  								 <?php $hometilesthree =  get_post($htile3);
-								 $metathree = get_post_meta($hometilesthree->ID); 
+								 $metathree = esc_html(get_post_meta($hometilesthree->ID)); 
 								 $thecontentthree = $hometilesthree->post_content; 
 								 $posttitlethree = $hometilesthree->post_title;
-								 $hometilesthree_pic = get_post_meta($hometilesthree->ID, 'hometile_pic', true);
-								 $readmore_textthree = get_post_meta($hometilesthree->ID, 'readmore_text', true);
-	   						      $readmore_linkthree = get_post_meta($hometilesthree->ID, 'readmore_link', true);
-								  $altthree = get_post_meta($hometilesthree->ID, 'hometile_pic_alt', true);
+								 $hometilesthree_pic = esc_url(get_post_meta($hometilesthree->ID, 'hometile_pic', true));
+								 $readmore_textthree = esc_html(get_post_meta($hometilesthree->ID, 'readmore_text', true));
+	   						      $readmore_linkthree = esc_html(get_post_meta($hometilesthree->ID, 'readmore_link', true));
+								  $altthree = esc_html(get_post_meta($hometilesthree->ID, 'hometile_pic_alt', true));
  
 								 ?>
                                    
