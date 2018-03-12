@@ -272,7 +272,14 @@ function checkIsAValidDate($myDateString){
 					}
 					
 					if($cdenotes != ' ') 
-					{	$content .= $cdenotes;
+					{	if($cdealert != ' ')
+						{
+							$content .= "<p>".$cdenotes."</p>";
+						}
+						else
+						{
+							$content .= $cdenotes;
+						}
 					}
 					
 					$content.="</td></tr>";
@@ -380,7 +387,14 @@ add_shortcode( 'cdecurrent', 'cdecurrent_shortcode' );
 					}
 					
 					if($cdenotes != ' ') 
-					{	$content .= $cdenotes;
+					{	if($cdealert != ' ')
+						{
+							$content .= "<p>".$cdenotes."</p>";
+						}
+						else
+						{
+							$content .= $cdenotes;
+						}
 					}
 					
 					$content.="</td></tr>";
