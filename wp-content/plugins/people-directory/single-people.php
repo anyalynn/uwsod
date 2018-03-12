@@ -61,8 +61,8 @@ include 'template_functions.php';
 									<?php
 								}?>
                                 </p><div class='contact<?php if ($location_present && $hours_present) { ?> big-contact<?php } ?>'>
-									<p><?= esc_html( $meta['phone'][0] ) ?></p>
-									<?php $email = esc_html( $meta['email'][0] ); ?>
+									<p><?=  $meta['phone'][0]  ?></p>
+									<?php $email =  $meta['email'][0] ; ?>
 									 <?php if (($email)){
                                     ?><p> <a href="mailto:<?= $email ?> "><?= $email ?></a></p><?php
                                 } ?>

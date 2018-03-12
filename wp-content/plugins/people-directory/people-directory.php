@@ -202,7 +202,7 @@ function people_admin_init(){
 	function position_secondary_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$position2 = esc_html( $custom['position2'][0] );
+		$position2 =  $custom['position2'][0] ;
 		?><textarea rows="3" cols="50" name="position2"><?= $position2 ?></textarea><?php
 	}
 	
@@ -222,14 +222,14 @@ function people_admin_init(){
 	function phone_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$phone = esc_html( $custom['phone'][0] );
+		$phone =  $custom['phone'][0] ;
 		?><input name="phone" value="<?= $phone ?>" /><?php
 	}
 
 	function email_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$email = esc_html( $custom['email'][0] );
+		$email =  $custom['email'][0] ;
 		?><input name="email" value="<?= $email ?>" /><?php
 	}
 
@@ -271,11 +271,11 @@ function people_admin_init(){
 		if (get_post_type($post) == 'people') {
 			update_post_meta($post->ID, 'team', $_POST['team']);
 			update_post_meta($post->ID, 'position', sanitize_text_field( $_POST['position'] ));
-			update_post_meta($post->ID, 'position2', sanitize_text_field( $_POST['position2'] ));
+			update_post_meta($post->ID, 'position2',  $_POST['position2'] );
 			update_post_meta($post->ID, 'research', sanitize_text_field( $_POST['research'] ));
 			update_post_meta($post->ID, 'degrees', sanitize_text_field( $_POST['degrees'] ));
-			update_post_meta($post->ID, 'phone', sanitize_text_field( $_POST['phone'] ));
-			update_post_meta($post->ID, 'email', sanitize_text_field( $_POST['email'] ));
+			update_post_meta($post->ID, 'phone',  $_POST['phone'] );
+			update_post_meta($post->ID, 'email',  $_POST['email'] );
 			update_post_meta($post->ID, 'main_pic', filter_var( $_POST['main_pic'], FILTER_SANITIZE_URL ));
 			update_post_meta($post->ID, 'office_location', sanitize_text_field( $_POST['office_location'] ));
 		
@@ -397,10 +397,10 @@ if ( ! function_exists('deptfacultydir_shortcode') ):
                        $name = $person->post_title;
                        $main_pic = esc_url( get_post_meta($personID, 'main_pic', true ));
                        $position = esc_html( get_post_meta($personID, 'position', true ));
-					   $position2 = esc_html( get_post_meta($personID, 'position2', true ));
+					   $position2 = get_post_meta($personID, 'position2', true );
 					   $research = esc_html( get_post_meta($personID, 'research', true ));
-                       $phone = esc_html( get_post_meta($personID, 'phone', true ));
-                       $email = esc_html( get_post_meta($personID, 'email', true ));
+                       $phone = get_post_meta($personID, 'phone', true );
+                       $email =  get_post_meta($personID, 'email', true );
 					   $content=$person->post_content;
                        $person_teams_arr = get_the_terms($personID, 'teams');
 
@@ -507,10 +507,10 @@ if ( ! function_exists('deptfacultytypedir_shortcode') ):
                        $name = $person->post_title;
                        $main_pic = esc_url( get_post_meta($personID, 'main_pic', true ));
                        $position = esc_html( get_post_meta($personID, 'position', true ));
-					   $position2 = esc_html( get_post_meta($personID, 'position2', true ));
+					   $position2 =  get_post_meta($personID, 'position2', true );
 					   $research = esc_html( get_post_meta($personID, 'research', true ));
-                       $phone = esc_html( get_post_meta($personID, 'phone', true ));
-                       $email = esc_html( get_post_meta($personID, 'email', true ));
+                       $phone =  get_post_meta($personID, 'phone', true );
+                       $email =  get_post_meta($personID, 'email', true );
 					   $content=$person->post_content;
                        $person_teams_arr = get_the_terms($personID, 'teams');
 
