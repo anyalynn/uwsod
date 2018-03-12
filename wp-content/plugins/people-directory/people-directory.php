@@ -277,7 +277,7 @@ function people_admin_init(){
 			update_post_meta($post->ID, 'phone',  $_POST['phone'] );
 			update_post_meta($post->ID, 'email',  $_POST['email'] );
 			update_post_meta($post->ID, 'main_pic', filter_var( $_POST['main_pic'], FILTER_SANITIZE_URL ));
-			update_post_meta($post->ID, 'office_location', sanitize_text_field( $_POST['office_location'] ));
+			update_post_meta($post->ID, 'office_location',  $_POST['office_location'] );
 		
 		}
 	}

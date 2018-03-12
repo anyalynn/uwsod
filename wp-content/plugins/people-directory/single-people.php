@@ -36,7 +36,7 @@ include 'template_functions.php';
                             if (!empty($main_pic)) { ?>
 							    <img class='people-image' src=<?= $main_pic ?> alt=<?= $title ?> />
                             <?php }
-                            $office_location = esc_html( $meta['office_location'][0] );
+                            $office_location =  $meta['office_location'][0] ;
                             
                             $location_present = false;
                             if (!empty($office_location)){
