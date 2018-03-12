@@ -222,7 +222,7 @@ function checkIsAValidDate($myDateString){
 			$cdeEnddate = esc_html(get_post_meta($courseID, 'cdeEnddate', true));
 			$cdeNumber = esc_html(get_post_meta($courseID, 'cdeNumber', true));
 			$cdeThumb='';
-			$cdeThumb = esc_url(get_post_html($courseID, 'cdeThumb', true));
+			$cdeThumb = esc_url(get_post_meta($courseID, 'cdeThumb', true));
 			
 			$cdeprimarytitle = esc_html(get_post_meta($courseID, 'cdeprimarytitle', true));
 			$cdesecondarytitle = esc_html(get_post_meta($courseID, 'cdesecondarytitle', true));
