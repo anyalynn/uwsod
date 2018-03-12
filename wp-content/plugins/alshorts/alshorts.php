@@ -233,7 +233,7 @@ function checkIsAValidDate($myDateString){
 	   		$handsonimg="//dental.washington.edu/wp-content/media/tools.png";
 	   		$bothimg="//dental.washington.edu/wp-content/media/lecture-tools.png";
 			$cdenotes = get_post_meta($courseID, 'cdenotes', true);
-			$cdealert = esc_html(get_post_meta($courseID, 'cdealert', true));
+			$cdealert = get_post_meta($courseID, 'cdealert', true);
 			$permalink = rtrim(get_permalink($courseID));
 			$today = date('Y-m-d');
 			$todayPlusOne = date('Y-m-d', strtotime("+1 day"));
@@ -354,7 +354,7 @@ add_shortcode( 'cdecurrent', 'cdecurrent_shortcode' );
 			$instrtype = esc_html(get_post_meta($courseID, 'rb_cdeInstructionType', true));
 
 			$cdenotes = get_post_meta($courseID, 'cdenotes', true);
-			$cdealert = esc_html(get_post_meta($courseID, 'cdealert', true));
+			$cdealert = get_post_meta($courseID, 'cdealert', true);
 			$permalink = rtrim(get_permalink($courseID));
 			$today = date('Y-m-d');
 			
