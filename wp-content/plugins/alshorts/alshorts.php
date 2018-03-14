@@ -150,13 +150,13 @@ add_action('admin_init', 'condented_admin_init');
 	function cdenotes_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$cdenotes = esc_html($custom['cdenotes'][0]);
+		$cdenotes = $custom['cdenotes'][0];
 		?><textarea rows="2" cols="50" name="cdenotes"><?= $cdenotes ?></textarea><?php
 	}
 	function cdealert_callback() {
 		global $post;
 		$custom = get_post_custom($post->ID);
-		$cdealert = esc_html($custom['cdealert'][0]);
+		$cdealert = $custom['cdealert'][0];
 		?><textarea rows="2" cols="50" name="cdealert"><?= $cdealert ?></textarea><?php
 	}
 
@@ -173,8 +173,8 @@ add_action('admin_init', 'condented_admin_init');
 			update_post_meta($post->ID, 'cdeprimarytitle', sanitize_text_field($_POST['cdeprimarytitle']));
 			update_post_meta($post->ID, 'cdesecondarytitle', sanitize_text_field($_POST['cdesecondarytitle']));
 			update_post_meta($post->ID, 'instructor', sanitize_text_field($_POST['instructor']));
-			update_post_meta($post->ID, 'cdenotes', sanitize_text_field($_POST['cdenotes']));
-			update_post_meta($post->ID, 'cdealert', sanitize_text_field($_POST['cdealert']));
+			update_post_meta($post->ID, 'cdenotes', $_POST['cdenotes']);
+			update_post_meta($post->ID, 'cdealert', $_POST['cdealert']);
 			update_post_meta($post->ID, 'rb_cdeInstructionType', sanitize_text_field($_POST['rb_cdeInstructionType']));			
 		}
 	}
