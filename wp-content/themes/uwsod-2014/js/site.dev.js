@@ -11906,6 +11906,7 @@ UW.YouTube.CollectionView = Backbone.View.extend({
     initialize: function () {
         _(this).bindAll('onReady', 'onDataReady', 'onStateChange', 'preview_clicked', 'resized');
         this.player_ready = false;
+
         this.data_ready = false;
         this.wrap();
         this.add_iFrame_api();
@@ -11938,7 +11939,7 @@ UW.YouTube.CollectionView = Backbone.View.extend({
     // if we don't have a copy of the youtube iframe api yet. add it
     add_iFrame_api: function () {
         if (UW.$body.find('script#iFrame').length === 0){
-            UW.$body.append('<script id="iFrame" src="//www.youtube.com/player_api" type="text/javascript"></script>');
+            UW.$body.append('<script id="iFrame" title="YouTube video player" src="//www.youtube.com/player_api" type="text/javascript"></script>');
             this.add_iFrame_function();
         }
     },
@@ -12136,8 +12137,7 @@ UW.YouTube.PlaylistItemView = Backbone.View.extend({
         var small_vid = _.template(this.template)( item );
         this.$el.append(small_vid);
     },
-});
-;// ### UW Vimeo
+});;// ### UW Vimeo
 
 // This function creates the UW Vimeo player
 // For usage please refer to the [UW Web Vimeo Player](http://uw.edu/brand/web/#vimeo)
@@ -13186,7 +13186,7 @@ UW.Select = Backbone.View.extend({
                     '<div></div>' +
                     '<div class="wrapper" style="width:<%= width %>px; margin-top:-<%= height/2 %>px; margin-left:-<%= width/2 %>px;">' +
                      '<span class="close"> Close</span>' +
-                     '<iframe width="<%= width %>" height="<%= height %>" src="<%= src %>" frameborder="0" allowfullscreen></iframe>' +
+                    '<iframe width="<%= width %>" height="<%= height %>" src="<%= src %>" style="border:0" allowfullscreen="" title="<%= caption %>"></iframe>' +
                      '<p><%= caption %></p>' +
                      '<p><%= credit %></p>' +
                    '</div>' +
