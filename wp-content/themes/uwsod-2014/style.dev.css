@@ -217,7 +217,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #0074bb;
+  color: #005b94;
   text-decoration: none;
 }
 a:hover,
@@ -2446,7 +2446,7 @@ fieldset[disabled] .btn-danger.active {
   background-color: #ffffff;
 }
 .btn-link {
-  color: #0074bb;
+  color: #005b94;
   font-weight: normal;
   cursor: pointer;
   border-radius: 0;
@@ -2952,7 +2952,7 @@ body {
   background-color: #ffffff;
 }
 a {
-  color: #0074bb;
+  color: #005b94;
   text-decoration: none;
   -o-transition: 0.25s;
   -webkit-transition: 0.25s;
@@ -5567,7 +5567,7 @@ table th[class*="col-"] {
   margin: 0 0 0 -5px;
 }
 .page-template-templatestemplate-no-hero-php .uw-body .uw-site-title {
-  color: #5a5a5a;
+  color: #545454;
 }
 .page-template-templatestemplate-no-title-php .uw-body .uw-site-title {
   display: none;
@@ -5902,7 +5902,7 @@ span.next-page a {
   text-transform: uppercase;
   background-color: #e8e3d3;
   font-family: "Encode Sans Compressed", sans-serif;
-  color: #5a5a5a;
+  color: #545454;
   display: inline-block;
   position: relative;
   background-image: none !important;
@@ -6594,7 +6594,7 @@ ul.uw-sidebar-menu li.pagenav ul li.current_page_ancestor ul.children li span,
 ul.uw-mobile-menu li.pagenav ul li.current_page_ancestor ul.children li span,
 ul.uw-sidebar-menu > div ul li.current_page_ancestor ul.children li span,
 ul.uw-mobile-menu > div ul li.current_page_ancestor ul.children li span {
-  color: #5a5a5a;
+  color: #545454;
   padding: 10px 30px 10px 30px;
   border-left: none;
 }
@@ -6661,7 +6661,7 @@ ul.uw-mobile-menu li.pagenav ul li.current_page_ancestor ul.children li.current_
 ul.uw-sidebar-menu > div ul li.current_page_ancestor ul.children li.current_page_item ul.children a,
 ul.uw-mobile-menu > div ul li.current_page_ancestor ul.children li.current_page_item ul.children a {
   background-color: white;
-  color: #5a5a5a;
+  color: #545454;
   border-left: none;
   padding-left: 25px;
 }
@@ -8224,7 +8224,7 @@ a.uw-btn {
   background-color: #e8e3d3;
   font-family: "Encode Sans Compressed", sans-serif;
   font-weight: 800;
-  color: #5a5a5a;
+  color: #545454;
   display: inline-block;
   position: relative;
   background-image: none !important;
@@ -8845,7 +8845,7 @@ div[id*='trumba'] iframe {
 [class*=" ic-"].gray:before,
 [class^="ic-"].gray a,
 [class*=" ic-"].gray a {
-  color: #5a5a5a;
+  color: #545454;
 }
 .sm:before {
   font-size: 35px;
@@ -9740,7 +9740,7 @@ display:inline-block;
 }
 .on-campus .tile p a {
   font-weight: 700;
-  color: #5a5a5a;
+  color: #545454;
   position: relative;
 }
 .on-campus .tile p a.uw-btn {
@@ -11007,7 +11007,7 @@ table.services a {
   .menu-give-now a {
     font-size: 18px;
     text-transform: none;
-    color: #5a5a5a;
+    color: #545454;
     font-weight: 600;
     position: absolute;
     top: 5px;
@@ -11738,7 +11738,7 @@ ul.shortcode-blogroll-mini {
 }
 .widget_nav_menu ul.menu li a,
 .widget_nav_menu ul.menu li span {
-  color: #5a5a5a;
+  color: #545454;
   padding: 6px 25px 6px 20px;
   border-bottom: 1px solid #FFF;
   display: block;

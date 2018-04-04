@@ -6847,7 +6847,8 @@ vjs.Flash = vjs.MediaTechController.extend({
         'scrolling': 'no',
         'marginWidth': 0,
         'marginHeight': 0,
-        'frameBorder': 0
+       // 'frameBorder': 0
+	   'style':'border: 0'
       });
 
       // Update ready function names in flash vars for iframe window
@@ -11289,7 +11290,7 @@ UW.QuickLinks = Backbone.View.extend({
     // todo: the default list and these elements could be put into the php templates
     container: '#uw-container',
 
-    template : '<nav id="quicklinks" role="navigation" aria-label="quick links" aria-hidden="true">' +
+    template : '<nav id="quicklinks" aria-label="quick links" aria-hidden="true">' +
                         '<ul id="big-links">' +
                             '<% _.each( links, function( link ) { %> ' +
                                 '<% if (link.classes) { %>' +
