@@ -10273,6 +10273,9 @@ table.small td p {
 .contact-widget-inner a {
   text-decoration: underline;
 }
+.contact-widget-inner a.uw-btn {
+  text-decoration: none;
+}
 .uw-sidebar .widget_text h2.widgettitle {
   display: none;
 }
