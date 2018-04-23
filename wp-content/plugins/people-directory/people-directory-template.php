@@ -34,6 +34,7 @@ include 'template_functions.php';
 					$name_link = true;
 				?>  
 				<div id="livesearchdiv">
+                  <label for="livesearch">Filter by name, department or role</label>
 					<input id='livesearch' class="form-control" type="search" placeholder="Name/Department/Role..." name="filter" />
 				</div>	
 	
