@@ -9860,6 +9860,14 @@ table.alum-giving td {
   right: 5px;
   padding: 10px 0 10px;
 }
+#top-story-text h2,
+#top-story-text h3 {
+  color: #FFFFFF;
+  font-weight: normal;
+  margin: 0 10px 5px;
+  line-height: 22px;
+  font-size: 20px;
+}
 #top-story-text p,
 .slideshow-description p {
   color: #FFFFFF;
@@ -10081,6 +10089,14 @@ a:hover.tooltips span {
 }
 @media only screen and (max-width: 767px) {
   .uw-body .uw-site-title {
+    /*   color: #4b2e83;
+    font-size: 25px;
+    line-height: 1.2;
+    font-weight: 900;
+    margin: -20px -20px 20px -20px;
+    padding: 15px 15px 15px 20px;
+    position: static;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
     display: none;
   }
 }
