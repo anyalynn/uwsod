@@ -2,9 +2,24 @@
 .fui-radio-checked:before {
   background: url(../img/uw-sprite.png) no-repeat 0 0 rgba(0, 0, 0, 0) !important;
 }
-
+/*
+The quick links would not be properly float.
 .uw-thinstrip nav {
 	display: inline;
+}*/
+
+.uw-thinstrip ul.uw-thin-links li a:after, .uw-thinstrip ul.uw-thin-links li button:after{
+	background-image: url(../img/uw-sprite.png) !important;
+	
+}
+
+.uw-thinstrip .uw-patch:focus,
+.uw-thinstrip .uw-patch:hover {
+  background: url(../img/uw-sprite-focus.png) no-repeat 0 0 transparent !important;
+}
+.uw-thinstrip .uw-patch:before {
+  content: url(../img/uw-sprite-focus.png) !important;
+  display: none;
 }
 
 .uw-thinstrip .uw-patch {
