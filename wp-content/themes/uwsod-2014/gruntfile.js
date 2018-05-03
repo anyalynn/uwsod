@@ -63,6 +63,7 @@ module.exports = function(grunt) {
         smarttabs: true,
         laxcomma: true,
         lastsemic: true,
+		reporterOutput: '',
         // options here to override JSHint defaults
         globals: {
           jQuery: true,
