@@ -8,6 +8,17 @@ The quick links would not be properly float.
 	display: inline;
 }*/
 
+.uw-footer .footer-wordmark{
+	background-image: url(../img/uw-sprite.png) !important;
+}
+.uw-footer .footer-wordmark:focus, .uw-footer .footer-wordmark:hover{
+	background-image: url(../img/uw-sprite-focus.png) !important;
+}
+.uw-footer UL.footer-social LI A{
+	background-image: url(../img/uw-sprite-focus.png) !important;
+}
+
+
 .uw-thinstrip ul.uw-thin-links li a:after, .uw-thinstrip ul.uw-thin-links li button:after{
 	background-image: url(../img/uw-sprite.png) !important;
 	
