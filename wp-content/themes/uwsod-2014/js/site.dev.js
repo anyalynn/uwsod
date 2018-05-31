@@ -6848,7 +6848,7 @@ vjs.Flash = vjs.MediaTechController.extend({
         'marginWidth': 0,
         'marginHeight': 0,
        // 'frameBorder': 0
-	   'style':'border: 0'
+        'style':'border: 0'
       });
 
       // Update ready function names in flash vars for iframe window
