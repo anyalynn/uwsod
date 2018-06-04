@@ -20,7 +20,7 @@
                   <li><a href="http://www.washington.edu/safety">Campus Safety</a></li>
                 <li><a href="https://uwnetid.sharepoint.com/sites/sod/">SOD Intranet</a></li>
                 <li><a href="http://www.washington.edu/rules/wac/">Rules Docket</a></li>
-                <li><a href="http://www.washington.edu/online/privacy/">Privacy</a></li>
+                <li><a href="https://dental.washington.edu/privacy/">Privacy</a></li>
                 <li><a href="http://www.washington.edu/online/terms/">Terms</a></li>
             </ul>
         </nav>
