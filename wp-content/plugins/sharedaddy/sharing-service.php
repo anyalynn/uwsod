@@ -299,13 +299,17 @@ class Sharing_Service_Total {
 	var $service	= '';
 	var $total 		= 0;
 	
-	public function Sharing_Service_Total( $id, $total ) {
+	public function __construct( $id, $total ) {
 		$services 		= new Sharing_Service();
 		$this->id 		= esc_html( $id );
 		$this->service 	= $services->get_service( $id );
 		$this->total 	= (int) $total;
 		
-		$this->name 	= $this->service->get_name();
+		$this->name 	= $this->service->get_name();		
+	}
+	
+	public function Sharing_Service_Total( $id, $total ) {
+		self::__construct( $id, $total );
 	}
 	
 	static function cmp( $a, $b ) {
@@ -321,11 +325,14 @@ class Sharing_Post_Total {
 	var $title 	= '';
 	var $url	= '';
 	
-	public function Sharing_Post_Total( $id, $total ) {
+	public function __construct( $id, $total ) {
 		$this->id 		= (int) $id;
 		$this->total 	= (int) $total;
 		$this->title	= get_the_title( $this->id );	
-		$this->url		= get_permalink( $this->id );	
+		$this->url		= get_permalink( $this->id );			
+	}
+	public function Sharing_Post_Total( $id, $total ) {
+		self::__construct( $id, $total );
 	}
 	
 	static function cmp( $a, $b ) {
