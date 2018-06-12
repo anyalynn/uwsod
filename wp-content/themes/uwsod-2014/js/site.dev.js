@@ -13396,32 +13396,32 @@ function formVal()
 	var bool=true;
 	if(document.getElementById("userMemType").value === "")
 		{
-			inval.style.display = 'block';
-			mtypetext.style.fontWeight = 'bold';
+			//inval.style.display = 'block';
+			//mtypetext.style.fontWeight = 'bold';
 			bool=false;
 		}
 	if(document.getElementById("userAlumMemName").value === "")
 		{
-			inval.style.display = 'block';
-			almemtxt.style.fontWeight = 'bold';
+			//inval.style.display = 'block';
+			//almemtxt.style.fontWeight = 'bold';
 			bool=false;
 		}
 	if(document.getElementById("userEmail").value === "")
 		{
-			inval.style.display = 'block';
-			emtxt.style.fontWeight = 'bold';
+		//	inval.style.display = 'block';
+		//	emtxt.style.fontWeight = 'bold';
 			bool=false;
 		}
 	if(document.getElementById("userGradYr").value === "")
 		{
-			inval.style.display = 'block';
-			gradyrtxt.style.fontWeight = 'bold';
+			//inval.style.display = 'block';
+		//	gradyrtxt.style.fontWeight = 'bold';
 			bool=false;
 		}
 	if(document.getElementById("ItemQty2").value === "")
 		{
-			inval.style.display = 'block';
-			annchgtxt.style.fontWeight = 'bold';
+		//	inval.style.display = 'block';
+		//	annchgtxt.style.fontWeight = 'bold';
 			bool=false;
 		}
 	return bool;
