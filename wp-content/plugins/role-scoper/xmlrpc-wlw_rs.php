@@ -3,7 +3,7 @@
 // Couldn't find a clean way to filter args into default methods, and this is much better than forking entire method
 //
 
-if ( isset(file_get_contents("php://input")) && $pos = strpos(file_get_contents("php://input"), '<string>') )
+if ( (null !== file_get_contents("php://input")) && ($pos = strpos(file_get_contents("php://input"), '<string>')) )
 	if ( $pos_end = strpos(file_get_contents("php://input"), '</string>', $pos) ) {
 		$post_id = substr(file_get_contents("php://input"), $pos + strlen('<string>'), $pos_end - ($pos + strlen('<string>')) ); 
 		
