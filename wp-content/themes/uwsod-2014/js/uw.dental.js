@@ -5,6 +5,7 @@ function getRadioBtnValue(name){
     	if(btns[i].checked){
         	btn_value = btns[i].value;
 		}
+	}
 	return btn_value
 }
    

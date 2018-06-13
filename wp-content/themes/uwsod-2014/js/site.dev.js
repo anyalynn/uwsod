@@ -13379,6 +13379,7 @@ jQuery( document ).ready( function($) {
     	if(btns[i].checked){
         	btn_value = btns[i].value;
 		}
+	}
 	return btn_value
 }
    
