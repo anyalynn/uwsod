@@ -1,4 +1,4 @@
-﻿//     UW.js 0.1
+//     UW.js 0.1
 //     uw.edu/marketing/web/
 //     A UW JavaScript library that implements various web components to any site
 //     Includes hard dependencies jQuery (v2.1.1), Backbone (1.1.2), and Underscore (1.6.0)
@@ -13372,56 +13372,67 @@ jQuery( document ).ready( function($) {
 
 	
 } );;}).call(this)
-;function Mem1(event){
-$("#ItemCost1").val("120.00");
-$("#userMemType").val("Regular Member");
-}
-function Mem2(event){
-$("#ItemCost1").val("50.00");
-$("#userMemType").val("New Member");
-}
-function Mem3(event){
-$("#ItemCost1").val("120.00");
-$("#userMemType").val("Associate Member");
-}
-
-function Ann(event){
-$("#ItemQty2").val(event);
+;function getRadioBtnValue(name){
+	var btns = document.getElementsByName(name);
+		var btn_value;
+	for(var i = 0; i < btns.length; i++){
+    	if(btns[i].checked){
+        	btn_value = btns[i].value;
+		}
+	return btn_value
 }
    
 function formVal()
 {
+	var memType = getRadioBtnValue("MemType");
+	$("#userMemType").val(memType);
+	switch (memType){
+		case "Regular Member":
+			$("#ItemCost1").val("120.00");
+		case "New Member":
+			$("#ItemCost1").val("50.00");
+		case "Associate Member":
+			$("#ItemCost1").val("120.00");
+	}
+	var recur =getRadioBtnValue("userAnnualRecur");
+	switch(recur){
+		case "Yes":
+			$("#ItemQty2").val(1);
+		case "No":
+			$("#ItemQty2").val(0);	
+	}
+
 	$("#ItemDesc1").val($("#userMemType").val() + "-" + $("#userAlumMemName").val() + "-" + $("#userGradYr").val());
 	$("#BillEmail").val($("#userEmail").val());
 	var bool=true;
 	if(document.getElementById("userMemType").value === "")
 		{
 			inval.style.display = 'block';
-			//mtypetext.style.fontWeight = 'bold';
+			memTypeLabel.style.border = '2px solid red';
 			bool=false;
 		}
 	if(document.getElementById("userAlumMemName").value === "")
 		{
 			inval.style.display = 'block';
-			//almemtxt.style.fontWeight = 'bold';
+			userAlumMemName.style.border = '2px solid red';
 			bool=false;
 		}
 	if(document.getElementById("userEmail").value === "")
 		{
 			inval.style.display = 'block';
-		//	emtxt.style.fontWeight = 'bold';
+			userEmail.style.border = '2px solid red';
 			bool=false;
 		}
 	if(document.getElementById("userGradYr").value === "")
 		{
 			inval.style.display = 'block';
-		//	gradyrtxt.style.fontWeight = 'bold';
+			userGradYr.style.border = '2px solid red';
 			bool=false;
 		}
 	if(document.getElementById("ItemQty2").value === "")
 		{
 			inval.style.display = 'block';
-		//	annchgtxt.style.fontWeight = 'bold';
+			recurLabel.style.border = '2px solid red';
 			bool=false;
 		}
 	return bool;

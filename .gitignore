@@ -123,3 +123,6 @@ wp-content/plugins/contact-form-7/*
 wp-content/plugins/capability-manager-enhanced/*
 wp-content/plugins/alshorts/*
 wp-content/plugins/akismet/*
+
+#node
+wp-content/themes/uwsod-2014/node_modules/*
