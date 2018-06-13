@@ -13402,12 +13402,14 @@ function formVal()
 			$("#ItemCost1").val("120.00");
 	}
 	var recur =getRadioBtnValue("userAnnualRecur");
-	switch(recur){
-		case "Yes":
-			$("#ItemQty2").val("1");
-		case "No":
-			$("#ItemQty2").val("0");	
-	}	
+	console.log(recur);
+	if(recur == "Yes"){
+		$("#ItemQty2").val("1");
+	}else{
+		$("#ItemQty2").val("0");
+	}
+	
+	console.log($("#ItemQty2"));
 
 	$("#ItemDesc1").val($("#userMemType").val() + "-" + $("#userAlumMemName").val() + "-" + $("#userGradYr").val());
 	$("#BillEmail").val($("#userEmail").val());
@@ -13465,6 +13467,7 @@ function formVal()
 		return bool;
 	
 }
+
 
 /*
  * SmartMenus jQuery v1.0.0
