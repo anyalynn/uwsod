@@ -1,4 +1,4 @@
-//     UW.js 0.1
+﻿//     UW.js 0.1
 //     uw.edu/marketing/web/
 //     A UW JavaScript library that implements various web components to any site
 //     Includes hard dependencies jQuery (v2.1.1), Backbone (1.1.2), and Underscore (1.6.0)
@@ -13396,31 +13396,31 @@ function formVal()
 	var bool=true;
 	if(document.getElementById("userMemType").value === "")
 		{
-			//inval.style.display = 'block';
+			inval.style.display = 'block';
 			//mtypetext.style.fontWeight = 'bold';
 			bool=false;
 		}
 	if(document.getElementById("userAlumMemName").value === "")
 		{
-			//inval.style.display = 'block';
+			inval.style.display = 'block';
 			//almemtxt.style.fontWeight = 'bold';
 			bool=false;
 		}
 	if(document.getElementById("userEmail").value === "")
 		{
-		//	inval.style.display = 'block';
+			inval.style.display = 'block';
 		//	emtxt.style.fontWeight = 'bold';
 			bool=false;
 		}
 	if(document.getElementById("userGradYr").value === "")
 		{
-			//inval.style.display = 'block';
+			inval.style.display = 'block';
 		//	gradyrtxt.style.fontWeight = 'bold';
 			bool=false;
 		}
 	if(document.getElementById("ItemQty2").value === "")
 		{
-		//	inval.style.display = 'block';
+			inval.style.display = 'block';
 		//	annchgtxt.style.fontWeight = 'bold';
 			bool=false;
 		}
