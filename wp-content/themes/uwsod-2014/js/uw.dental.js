@@ -9,8 +9,14 @@ function getRadioBtnValue(name){
 	return btn_value
 }
    
+
 function formVal()
 {
+	memTypeLabel.style.border = '';
+	userAlumMemName.style.border = '';
+	userEmail.style.border = '';
+	userGradYr.style.border = '';
+	recurLabel.style.border = '';
 	var memType = getRadioBtnValue("MemType");
 	$("#userMemType").val(memType);
 	switch (memType){
@@ -24,10 +30,10 @@ function formVal()
 	var recur =getRadioBtnValue("userAnnualRecur");
 	switch(recur){
 		case "Yes":
-			$("#ItemQty2").val(1);
+			$("#ItemQty2").val("1");
 		case "No":
-			$("#ItemQty2").val(0);	
-	}
+			$("#ItemQty2").val("0");	
+	}	
 
 	$("#ItemDesc1").val($("#userMemType").val() + "-" + $("#userAlumMemName").val() + "-" + $("#userGradYr").val());
 	$("#BillEmail").val($("#userEmail").val());
@@ -36,33 +42,54 @@ function formVal()
 		{
 			inval.style.display = 'block';
 			memTypeLabel.style.border = '2px solid red';
-			bool=false;
+			bool =  false;
 		}
 	if(document.getElementById("userAlumMemName").value === "")
 		{
 			inval.style.display = 'block';
 			userAlumMemName.style.border = '2px solid red';
-			bool=false;
+			bool =  false;
 		}
 	if(document.getElementById("userEmail").value === "")
 		{
 			inval.style.display = 'block';
 			userEmail.style.border = '2px solid red';
-			bool=false;
+			bool =  false;
 		}
 	if(document.getElementById("userGradYr").value === "")
 		{
 			inval.style.display = 'block';
 			userGradYr.style.border = '2px solid red';
-			bool=false;
+			bool =  false;
 		}
 	if(document.getElementById("ItemQty2").value === "")
 		{
 			inval.style.display = 'block';
 			recurLabel.style.border = '2px solid red';
-			bool=false;
+			bool =  false;
 		}
-	return bool;
+		/*
+		$.ajax({
+                    type: 'POST',
+					url: '../../../../wp-content/converge/converge_1.php',
+					data: $('#alum-renew').serialize(),
+					dataType: "json",
+					async:false,
+                    success: function(res) {
+						console.log("1");
+                        if (res != 'successful') {
+                            bool = false;
+							inval.style.display = 'block';
+							console.log(1);
+                        } else{
+							console.log(2);
+						}
+						
+                    }
+					
+                });*/
+		return bool;
+	
 }
 
 /*
