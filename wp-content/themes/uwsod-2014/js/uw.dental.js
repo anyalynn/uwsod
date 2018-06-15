@@ -10,6 +10,23 @@ function getRadioBtnValue(name){
 }
    
 
+$.fn.serializeObject = function()
+{
+   var o = {};
+   var a = this.serializeArray();
+   $.each(a, function() {
+       if (o[this.name]) {
+           if (!o[this.name].push) {
+               o[this.name] = [o[this.name]];
+           }
+           o[this.name].push(this.value || '');
+       } else {
+           o[this.name] = this.value || '';
+       }
+   });
+   return o;
+};
+   
 function formVal()
 {
 	memTypeLabel.style.border = '';
@@ -28,14 +45,13 @@ function formVal()
 			$("#ItemCost1").val("120.00");
 	}
 	var recur =getRadioBtnValue("userAnnualRecur");
-	console.log(recur);
 	if(recur == "Yes"){
 		$("#ItemQty2").val("1");
 	}else{
 		$("#ItemQty2").val("0");
 	}
 	
-	console.log($("#ItemQty2"));
+	
 
 	$("#ItemDesc1").val($("#userMemType").val() + "-" + $("#userAlumMemName").val() + "-" + $("#userGradYr").val());
 	$("#BillEmail").val($("#userEmail").val());
@@ -70,26 +86,25 @@ function formVal()
 			recurLabel.style.border = '2px solid red';
 			bool =  false;
 		}
-		/*
+		
 		$.ajax({
                     type: 'POST',
-					url: '../../../../wp-content/converge/converge_1.php',
-					data: $('#alum-renew').serialize(),
+					url: 'https://dental.washington.edu/wp-content/converge/converge_1.php',
+					data: $('#alum-renew').serializeObject(),
 					dataType: "json",
 					async:false,
                     success: function(res) {
-						console.log("1");
-                        if (res != 'successful') {
+                        if (res.status != 'successful') {
                             bool = false;
 							inval.style.display = 'block';
-							console.log(1);
+							inval_r.style.display="block";
                         } else{
-							console.log(2);
 						}
 						
-                    }
+                    },error: function(){
+					}
 					
-                });*/
+                });
 		return bool;
 	
 }
