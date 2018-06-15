@@ -1,4 +1,5 @@
 .sharing {
+	clear:both;
 	margin: 10px 0 40px;
 	padding-top: 10px;
 	border-top: 1px dotted #E2E2E2;
@@ -16,7 +17,7 @@
 	list-style: none outside none !important;
 	padding: 0 !important;
 	margin: 0 !important;
-	float: left;
+	clear:both;
 	text-indent: 0 !important;
 }
 
@@ -156,7 +157,7 @@
 }
 
 #sharing_email .sharing_cancel {
-	padding: 0 10px 0 10px;
+	padding: 0 0 0 10px;
 	font-size: 11px;
 }
 

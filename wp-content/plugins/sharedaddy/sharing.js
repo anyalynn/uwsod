@@ -153,7 +153,7 @@
 					$( '#sharing_email .response' ).remove();
 					$( '#sharing_email form' ).show();
 					$( '#sharing_email form input[type=submit]' ).removeAttr( 'disabled' );
-					$( '#sharing_email form button.sharing_cancel' ).show();
+					$( '#sharing_email form a.sharing_cancel' ).show();
 
 					// Show dialog
 					$( '#sharing_email' ).css( {
@@ -162,7 +162,7 @@
 					} ).slideDown( 200 );
 					
 					// Hook up other buttons
-					$( '#sharing_email button.sharing_cancel' ).unbind( 'click' ).click( function() {
+					$( '#sharing_email a.sharing_cancel' ).unbind( 'click' ).click( function() {
 						$( '#sharing_email .errors' ).hide();
 						$( '#sharing_email' ).slideUp( 200 );
 						$( '#sharing_background' ).fadeOut();
@@ -175,7 +175,7 @@
 						
 						// Disable buttons + enable loading icon
 						$( this ).attr( 'disabled', 'disabled' );
-						form.find( 'button.sharing_cancel' ).hide();
+						form.find( 'a.sharing_cancel' ).hide();
 						form.find( 'img.loading' ).show();
 						
 						$( '#sharing_email .errors' ).hide();
@@ -199,12 +199,12 @@
 									if ( response == '1' || response == '2' || response == '3' ) {
 										$( '#sharing_email .errors-' + response ).show();
 										form.find( 'input[type=submit]' ).removeAttr( 'disabled' );
-										form.find( 'button.sharing_cancel' ).show();
+										form.find( 'a.sharing_cancel' ).show();
 									}
 									else {
 										$( '#sharing_email form' ).hide();
 										$( '#sharing_email' ).append( response );
-										$( '#sharing_email button.sharing_cancel' ).click( function() {
+										$( '#sharing_email a.sharing_cancel' ).click( function() {
 											$( '#sharing_email' ).slideUp( 200 );
 											$( '#sharing_background' ).fadeOut();
 											return false;
@@ -218,7 +218,7 @@
 						
 						form.find( 'img.loading' ).hide();
 						form.find( 'input[type=submit]' ).removeAttr( 'disabled' );
-						form.find( 'button.sharing_cancel' ).show();
+						form.find( 'a.sharing_cancel' ).show();
 						$( '#sharing_email .errors-1' ).show();
 
 						return false;
