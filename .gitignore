@@ -123,27 +123,6 @@ wp-content/plugins/akismet/*
 *.avi
 *.log
 
-# plugins
-wp-content/plugins/wpengine-ready/*
-wp-content/plugins/wp-migrate-db-pro/*
-wp-content/plugins/wordpress-seo/*
-wp-content/plugins/sharedaddy/*
-wp-content/plugins/section-widget/*
-wp-content/plugins/role-scoper/*
-wp-content/plugins/revisionary/*
-wp-content/plugins/quick-pagepost-redirect-plugin/*
-wp-content/plugins/query-wrangler/*
-wp-content/plugins/portfolio-slideshow/*
-wp-content/plugins/ml-slider/*
-wp-content/plugins/jquery-ui-widgets/*
-wp-content/plugins/im8-exclude-pages/*
-wp-content/plugins/google-analytics-dashboard-for-wp/*
-wp-content/plugins/custom-upload-dir/*
-wp-content/plugins/contact-form-7-honeypot/*
-wp-content/plugins/contact-form-7/*
-wp-content/plugins/capability-manager-enhanced/*
-wp-content/plugins/alshorts/*
-wp-content/plugins/akismet/*
 
 #node
 wp-content/themes/uwsod-2014/node_modules/*
