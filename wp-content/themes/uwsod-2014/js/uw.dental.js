@@ -89,7 +89,7 @@ function formVal()
 		
 		$.ajax({
                     type: 'POST',
-					url: 'https://dental.washington.edu/wp-content/converge/converge_1.php',
+					url: 'https://dental.washington.edu/wp-content/converge/alumni.php',
 					data: $('#alum-renew').serializeObject(),
 					dataType: "json",
 					async:false,
