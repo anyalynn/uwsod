@@ -2,8 +2,8 @@
 // Clean up after xmlrpc clients (Windows Live Writer) that don't specify a post_type for mw_editPost
 // Couldn't find a clean way to filter args into default methods, and this is much better than forking entire method
 //
-
-if ( isset(file_get_contents("php://input")) && $pos = strpos(file_get_contents("php://input"), '<string>') )
+$input = file_get_contents("php://input");
+if( isset($input) && $pos = strpos($input, '<string>'))
 	if ( $pos_end = strpos(file_get_contents("php://input"), '</string>', $pos) ) {
 		$post_id = substr(file_get_contents("php://input"), $pos + strlen('<string>'), $pos_end - ($pos + strlen('<string>')) ); 
 		
@@ -17,14 +17,14 @@ if ( ! empty($post_id) ) {
 	$xmlrpc_post_id_rs = $post_id;
 	
 	$post_type = '';
-	if ( $pos = strpos(file_get_contents("php://input"), '<name>post_type</name>') )
-		if ( $pos = strpos(file_get_contents("php://input"), '<string>', $pos) )
-			if ( $pos_end = strpos(file_get_contents("php://input"), '</string>', $pos) )
-				$post_type = substr(file_get_contents("php://input"), $pos + strlen('<string>'), $pos_end - ($pos + strlen('<string>')) ); 
+	if ( $pos = strpos( $input, '<name>post_type</name>') )
+		if ( $pos = strpos( $input, '<string>', $pos) )
+			if ( $pos_end = strpos( $input, '</string>', $pos) )
+				$post_type = substr( $input, $pos + strlen('<string>'), $pos_end - ($pos + strlen('<string>')) ); 
 	
 	if ( empty($post_type) ) {
-		if ( $pos_member_end = strpos(file_get_contents("php://input"), '</member>') ) {
-			if ( $pos_member_end = strpos(file_get_contents("php://input"), '</member>', $pos_member_end + 1) ) {
+		if ( $pos_member_end = strpos( $input, '</member>') ) {
+			if ( $pos_member_end = strpos( $input, '</member>', $pos_member_end + 1) ) {
 				$pos_insert = $pos_member_end + strlen('</member>');
 	
 				global $wpdb;
@@ -41,8 +41,8 @@ if ( ! empty($post_id) ) {
               <string>$post_type</string>
             </value>
           </member>";
-          
-					file_get_contents("php://input") = substr(file_get_contents("php://input"), 0, $pos_insert + 1) . $insert_xml . substr(file_get_contents("php://input"), $pos_insert);
+          $input = file_get_contents("php://input");
+					 $input =substr( $input, 0, $pos_insert + 1) . $insert_xml . substr( $input, $pos_insert);
 					
 				} // endif parsed post type
 			} // endif found existing member markup
