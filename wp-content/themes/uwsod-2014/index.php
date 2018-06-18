@@ -13,6 +13,7 @@
       <div id='main_content' class="uw-body-copy" tabindex="-1">
 
   			<?php
+			  if ( have_posts() ) {
   				// Start the Loop.
   				while ( have_posts() ) : the_post();
 
@@ -29,6 +30,7 @@
   					}
 
   				endwhile;
+			  }
   			?>
 
             <span class="next-page"><?php next_posts_link( 'Next page', '' ); ?></span>
