@@ -258,7 +258,9 @@ class Share_Twitter extends Sharing_Advanced_Source {
 	}
 
 	public function get_display( $post ) {
-		
+		if ( $this->smart == 'smart' )
+			return '<div class="twitter_button"><iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.html?url=' . rawurlencode( apply_filters( 'sharing_permalink', get_permalink( $post->ID ), $post->ID, $this->id ) ) . '&amp;counturl=' . rawurlencode( str_replace( 'https://', 'http://', get_permalink( $post->ID ) ) ) . '&amp;count=horizontal&amp;text=' . rawurlencode( $post->post_title ) . ': " style="width:97px; height:20px;"></iframe></div>';
+		else
 			return $this->get_link( get_permalink( $post->ID ), _x( 'Twitter', 'share to', 'sharedaddy' ), __( 'Click to share on Twitter', 'sharedaddy' ), 'share=twitter' );
 	}	
 	
@@ -612,11 +614,21 @@ class Share_LinkedIn extends Sharing_Advanced_Source {
 		$permalink = get_permalink( $post->ID );
 		$display = '';
 		
-		
+		if( $this->smart ) {
+			
+			// So we don't spit out the linkedin js for each post on index pages
+			if( ! $added_linkedin_js ) {
+				$display .= sprintf( '<script type="text/javascript" src="%splatform.linkedin.com/in.js"></script>', $proto );
+				$added_linkedin_js = true;
+			}
+			
+			$display .= sprintf( '<div class="linkedin_button"><script type="in/share" data-url="%s" data-counter="right"></script></div>', esc_url( $permalink ) );
+			
+		} else {
 		
 			$display = $this->get_link( $permalink, _x( 'LinkedIn', 'share to', 'sharedaddy' ), __( 'Click to share on LinkedIn', 'sharedaddy' ), 'share=linkedin' );
 			
-		
+		}
 		return $display;
 	}
 	
