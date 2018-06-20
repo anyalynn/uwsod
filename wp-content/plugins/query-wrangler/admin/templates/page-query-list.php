@@ -394,33 +394,12 @@ class Query_Wrangler_List_Table extends WP_List_Table {
 		 * ---------------------------------------------------------------------
 		 **********************************************************************/
 		global $wpdb;
+		$orderby = ( ! empty( $_REQUEST['orderby'] ) ) ? $_REQUEST['orderby'] : 'name'; //If no sort, default to title
+		$order   = ( ! empty( $_REQUEST['order'] ) ) ? $_REQUEST['order'] : 'asc'; //If no order, default to asc
 
-		$sql = "SELECT `id` as `ID`, `type`, `name`, `slug`, `path` FROM {$wpdb->prefix}query_wrangler";
-		$args = array();
-
-		if ( !empty( $_REQUEST['s'] ) ){
-			$sql.= " WHERE `name` LIKE %s";
-			$args[] = '%' . $wpdb->esc_like( trim( $_REQUEST['s'] ) ) . '%';
-		}
-
-		// whitelist orderby
-		$orderby = 'name';
-		if ( ! empty( $_REQUEST['orderby'] ) &&
-		     in_array( $_REQUEST['orderby'], array('name', 'type') ) ){
-			$orderby = $_REQUEST['orderby'];
-		}
-
-		// whitelist order
-		$order = 'ASC';
-		if ( ! empty( $_REQUEST['order'] ) && strtolower( $_REQUEST['order'] ) == 'desc' ){
-			$order = 'DESC';
-		}
-
-        $sql.= " ORDER BY %s {$order}";
-		$args[] = $orderby;
-
-		$sql = $wpdb->prepare( $sql, $args );
-
+		$sql  = "SELECT id as ID, type, name, slug, path
+                FROM " . $wpdb->prefix . "query_wrangler
+                ORDER BY " . $orderby . " " . $order;
 		$data = $wpdb->get_results( $sql, ARRAY_A );
 
 
@@ -496,11 +475,6 @@ function qw_list_queries_form() {
 			<h2>Query Wrangler <a class="add-new-h2"
 			                      href="admin.php?page=qw-create">Add New</a>
 			</h2>
-
-			<form id="search-queries-filter" method="get">
-				<input type="hidden" name="page" value="<?php echo esc_attr($_REQUEST['page']); ?>"/>
-				<?php $ListTable->search_box( 'Search', 'post' ); ?>
-			</form>
 
 			<!-- Forms are NOT created automatically, so you need to wrap the table in one to use features like bulk actions -->
 			<form id="queries-filter" method="get">
