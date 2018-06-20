@@ -36,12 +36,13 @@ function formVal()
 	recurLabel.style.border = '';
 	var memType = getRadioBtnValue("MemType");
 	$("#userMemType").val(memType);
-	switch (memType){
-		case "Regular Member":
+	if (memType == "Regular Member"){
 			$("#ItemCost1").val("120.00");
-		case "New Member":
+	}
+	if (memType == "New Member"){
 			$("#ItemCost1").val("50.00");
-		case "Associate Member":
+	}
+	if (memType == "Associate Member"){
 			$("#ItemCost1").val("120.00");
 	}
 	var recur =getRadioBtnValue("userAnnualRecur");
@@ -105,6 +106,7 @@ function formVal()
 					}
 					
                 });
+		console.log($("#ItemCost1").val());
 		return bool;
 	
 }
