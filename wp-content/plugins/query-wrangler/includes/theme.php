@@ -364,7 +364,7 @@ function qw_make_fields_rows( &$qw_query, $options ) {
 				$row['is_empty']                        = FALSE;
 			}
 
-			// add token for initial replacement
+			// add token for replace
 			$tokens[ '{{' . $field_name . '}}' ] = $row['fields'][ $field_name ]['output'];
 
 			// look for rewrite output
@@ -401,9 +401,6 @@ function qw_make_fields_rows( &$qw_query, $options ) {
 				$row['fields'][ $field_name ]['output'] = do_shortcode( $row['fields'][ $field_name ]['output'] );
 			}
 
-			// update the token for replacement by later fields
-			$tokens[ '{{' . $field_name . '}}' ] = $row['fields'][ $field_name ]['output'];
-
 			// save a copy of the field output in case it is excluded, but we need it later
 			$row['fields'][ $field_name ]['content'] = $row['fields'][ $field_name ]['output'];
 
@@ -420,16 +417,8 @@ function qw_make_fields_rows( &$qw_query, $options ) {
 		$group_hash = md5( $i );
 
 		// if set, hash the output of the group_by_field
-		if ( $group_by_field_name && isset( $row['fields'][ $group_by_field_name ] ) )
-		{
-			// strip tags from group by field
-			if ( !empty( $display['field_settings']['strip_group_by_field'] ) ) {
-				$row['fields'][ $group_by_field_name ]['content'] = strip_tags( $row['fields'][ $group_by_field_name ]['content'] );
-			}
-
-			$group_by_field_content = $row['fields'][ $group_by_field_name ]['content'];
-
-			$group_hash = md5( $group_by_field_content );
+		if ( $group_by_field_name && isset( $row['fields'][ $group_by_field_name ] ) ) {
+			$group_hash = md5( $row['fields'][ $group_by_field_name ]['content'] );
 		}
 
 		$groups[ $group_hash ][ $i ] = $row;

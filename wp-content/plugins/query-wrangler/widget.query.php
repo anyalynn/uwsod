@@ -90,12 +90,11 @@ class Query_Wrangler_Widget extends WP_Widget {
 	 * Update the widget settings.
 	 */
 	function update( $new_instance, $old_instance ) {
-	    $instance = array_replace( array(
-            'title' => '',
-		    'qw-widget' => '',
-		    'qw-shortcode-args' => '',
-		    'qw-show-widget-title' => '',
-        ), $old_instance, $new_instance );
+		$instance                         = $old_instance;
+		$instance['title']                = $new_instance['title'];
+		$instance['qw-widget']            = $new_instance['qw-widget'];
+		$instance['qw-shortcode-args']    = $new_instance['qw-shortcode-args'];
+		$instance['qw-show-widget-title'] = $new_instance['qw-show-widget-title'];
 
 		return $instance;
 	}

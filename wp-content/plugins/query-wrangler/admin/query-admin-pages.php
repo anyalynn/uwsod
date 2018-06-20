@@ -83,7 +83,7 @@ function qw_edit_query_form() {
 	if ( $query_id = qw_admin_get_current_query_id() ) {
 		$row = qw_get_query_by_id( $query_id );
 	}
-	if ( empty( $row ) ) {
+	if ( ! $row ) {
 		return;
 	}
 
@@ -194,14 +194,14 @@ function qw_edit_query_form() {
 	// admin wrapper arguments
 	$admin_args = array(
 		'title'       => 'Edit query <em>' . $edit_args['query_name'] . '</em>',
-		'description' => '<code>[query slug="' . $row->slug . '"]</code> -or- <code>[query id="'.$query_id.'"]</code>',
+		'description' => '[query slug="' . $row->slug . '"]',
 		// content is the query_edit page
 		'content'     => theme( 'query_edit_wrapper', $edit_wrapper_args )
 	);
 
 	// shortcode compatibility
 	if ( $settings->get('shortcode_compat') ){
-		$admin_args['description'] = '<code>[qw_query slug="' . $row->slug . '"]</code> -or- <code>[qw_query id="'.$query_id.'"]</code>';
+		$admin_args['description'] = '[qw_query slug="' . $row->slug . '"]';
 	}
 
 	// add view link for pages

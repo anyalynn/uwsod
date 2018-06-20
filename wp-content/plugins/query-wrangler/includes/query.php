@@ -75,7 +75,7 @@ function qw_generate_query_options(
 		$options = $options_override;
 	} else {
 		// combine options
-		$options = array_replace_recursive( (array) $options, $options_override );
+		$options = array_merge_recursive( (array) $options, $options_override );
 	}
 
 	// build query_details
@@ -373,42 +373,15 @@ function qw_serialize( $array ) {
  * Custom: Fix unserialize problem with quotation marks
  */
 function qw_unserialize( $serial_str ) {
-	$data = maybe_unserialize( $serial_str );
+	$array = maybe_unserialize( $serial_str );
 
-	// if the string failed to unserialize, we may have a quotation problem
-	if ( !is_array( $data ) ) {
-		$serial_str = preg_replace_callback('!s:(\d+):"(.*?)";!s', 'qw_unserialize_extra_fix_callback', $serial_str);
-		$data = maybe_unserialize( $serial_str );
-	}
-
-	if ( is_array( $data ) ) {
+	if ( is_array( $array ) ) {
 		// stripslashes twice for science
-		$data = array_map( 'stripslashes_deep', $data );
-		$data = array_map( 'stripslashes_deep', $data );
+		$array = array_map( 'stripslashes_deep', $array );
+		$array = array_map( 'stripslashes_deep', $array );
 
-		return $data;
+		return $array;
 	}
-
-	// if we're here the data wasn't unserialized properly.
-	// return a modified version of the default query to prevent major failures.
-	$default = qw_default_query_data();
-	$default['display']['title'] = 'error unserializing query data';
-	$default['args']['posts_per_page'] = 1;
-
-	return $default;
-}
-
-/**
- * Attempt to fix issues with quotation marks in a serialized string.
- * This is a replacement for the previous preg_replace approach that used the
- * 'e' flag. The 'e' flag was removed in php 7.
- *
- * @param $matches
- *
- * @return string
- */
-function qw_unserialize_extra_fix_callback($matches) {
-	return 's:' . strlen($matches[2]) . ':"' . $matches[2] . '";';
 }
 
 /*
