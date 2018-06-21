@@ -223,8 +223,8 @@ class Share_Email extends Sharing_Source {
 			<?php do_action( 'sharing_email_dialog', 'sharedaddy' ); ?>
 
 			<img style="float: right; display: none" class="loading" src="<?php echo plugin_dir_url( __FILE__ ); ?>images/loading.gif" alt="loading" width="16" height="16" />
-			<input type="submit" value="<?php _e( 'Send Email', 'sharedaddy' ); ?>" class="sharing_send" />
-			<a href="#cancel" class="sharing_cancel"><?php _e( 'Cancel', 'sharedaddy' ); ?></a>
+			<input type="submit" value="<?php _e( 'Send Email', 'sharedaddy' ); ?>" class="sharing_send btn btn-primary" />
+			<a href="#cancel" class="sharing_cancel btn btn-info"><?php _e( 'Cancel', 'sharedaddy' ); ?></a>
 			
 			<div class="errors errors-1" style="display: none;">
 				<?php _e( 'Post was not sent - check your email addresses!', 'sharedaddy' ); ?>
