@@ -3,10 +3,12 @@
 Plugin Name: Sharedaddy
 Description: Future upgrades to Sharedaddy plugin will only be available in <a href="http://jetpack.me/" target="_blank">Jetpack</a>. Jetpack connects your blog to the WordPress.com cloud, <a href="http://jetpack.me/support/" target="_blank">enabling awesome features</a>.
 Version: 0.2.13
-Author: Automattic, Inc.
-Author URI: http://automattic.com/
+Author: Automattic, Inc. modified by Ramon Qu
+Author URI: http://dental.uw.edu
 Plugin URI: http://en.blog.wordpress.com/2010/08/24/more-ways-to-share/
 */
+
+//To compatible with PHP7
 
 
 if ( ! class_exists( 'Automattic_Deprecated_Notice' ) ) {
