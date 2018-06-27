@@ -7,8 +7,8 @@ Contributors:      daggerhart
 Plugin Name:       Query Wrangler
 Plugin URI:        http://daggerhart.com
 Description:       Query Wrangler provides an intuitive interface for creating complex WP queries as pages or widgets. Based on Drupal Views.
-Author:            Jonathan Daggerhart
-Author URI:        http://daggerhart.com
+Author:            Jonathan Daggerhart, Modifyed by Ramon Qu
+Author URI:        http://dental.uw.edu
 Version:           1.5.41
 
 ******************************************************************
