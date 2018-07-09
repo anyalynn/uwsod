@@ -168,7 +168,7 @@ class Share_Email extends Sharing_Source {
 <div class="response">
 	<div class="response-title"><?php _e( 'This post has been shared!', 'sharedaddy' ); ?></div> 
  	<div class="response-sub"><?php printf( __( 'You have shared this post with %s', 'sharedaddy' ), esc_html( $target_email ) ); ?></div> 
- 	<div class="response-close"><a href="#" class="sharing_cancel"><?php _e( 'Close', 'sharedaddy' ); ?></a></div> 
+ 	<div class="response-close"><button class="sharing_cancel btn btn-info btn-secondary btn-sm"><?php _e( 'Close', 'sharedaddy' ); ?></button></div> 
 </div>
 <?php
 				}
@@ -224,7 +224,7 @@ class Share_Email extends Sharing_Source {
 
 			<img style="float: right; display: none" class="loading" src="<?php echo plugin_dir_url( __FILE__ ); ?>images/loading.gif" alt="loading" width="16" height="16" />
 			<input type="submit" value="<?php _e( 'Send Email', 'sharedaddy' ); ?>" class="sharing_send btn btn-primary" />
-			<a href="#cancel" class="sharing_cancel btn btn-info"><?php _e( 'Cancel', 'sharedaddy' ); ?></a>
+			<button class="sharing_cancel btn btn-info btn-secondary btn-sm" type="button" ><?php _e( 'Cancel', 'sharedaddy' ); ?></button>
 			
 			<div class="errors errors-1" style="display: none;">
 				<?php _e( 'Post was not sent - check your email addresses!', 'sharedaddy' ); ?>
@@ -957,7 +957,7 @@ class Share_Custom extends Sharing_Advanced_Source {
 				<th scope="row"></th>
 				<td>
 					<input class="button-secondary" type="submit"value="<?php _e( 'Save', 'sharedaddy' ); ?>" />
-					<a href="#" class="remove"><small><?php _e( 'Remove Service', 'sharedaddy' ); ?></small></a>
+					<button class="remove btn "><small><?php _e( 'Remove Service', 'sharedaddy' ); ?></small></button>
 				</td>
 			</tr>
 		</tbody>
