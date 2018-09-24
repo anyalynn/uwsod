@@ -25,6 +25,7 @@ Class TileBox
 
         add_shortcode( 'box', array( $this, 'box_handler' ) );
         add_shortcode( 'tile', array( $this, 'tile_handler' ) );
+		add_shortcode( 'tile_empty', array( $this, 'tile_empty_handler' ) );
     }
 
     function box_handler( $atts, $content ){
@@ -88,6 +89,22 @@ Class TileBox
         }
 
         return sprintf( '<div class="%s">%s</div>', $classes, apply_filters( 'the_content', $content ) );
+    }
+	
+	 function tile_empty_handler( $atts, $content ) {
+        $this->count++;
+        $tile_atts = shortcode_atts( array(
+          'empty' => 'false',
+        ), $atts);
+
+        $classes = 'tile';
+
+        if ( $this->count > self::MAXTILES) {
+          $content = 'Too many [tile]s.  Only up 12 are supported)';
+        }
+
+
+        return sprintf( '<div class="%s" style="box-shadow:none !important;">%s</div>', $classes, apply_filters( 'the_content', $content ) );
     }
 
 }
