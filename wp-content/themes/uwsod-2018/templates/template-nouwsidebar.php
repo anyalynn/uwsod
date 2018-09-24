@@ -3,8 +3,7 @@
  * Template Name: No UW-Sidebar Menu
  */
 ?>
-<?php get_header(); 
-   $sidebar = get_post_meta($post->ID, "sidebar"); ?>
+<?php get_header(); ?>
 
 <?php get_template_part( 'header', 'image' ); ?>
 
@@ -12,14 +11,17 @@
 
   <div class="row">
 
-    <div class="col-md-<?php echo ((!isset($sidebar[0]) || $sidebar[0]!="on") ? "8" : "12" ) ?> uw-content" role='main'>
+    <div class="col-md-8 uw-content" role='main'>
 
-      
+      <?php uw_site_title(); ?>
+
+      <?php if (is_front_page()) { get_template_part( 'menu', 'mobile' ); }?>
+
       <?php get_template_part( 'breadcrumbs' ); ?>
 
-
       <div id='main_content' class="uw-body-copy" tabindex="-1">
-              <?php
+
+        <?php
           // Start the Loop.
           while ( have_posts() ) : the_post();
 
@@ -41,14 +43,7 @@
       </div>
 
     </div>
-<?php if ( uw_has_sidebar() ) :  ?>
-
-  <div class="col-md-4 uw-sidebar">
-   
-    <?php dynamic_sidebar( UW_Sidebar::ID ); ?>
-  </div>
-
-<?php endif; ?>
+<?php get_template_part( 'nouwsidebar' ); ?>
    
 
   </div>
