@@ -1,4 +1,4 @@
-//     UW.js 0.1
+﻿//     UW.js 0.1
 //     uw.edu/marketing/web/
 //     A UW JavaScript library that implements various web components to any site
 //     Includes hard dependencies jQuery (v2.1.1), Backbone (1.1.2), and Underscore (1.6.0)
@@ -10962,7 +10962,6 @@ UW.elements = {
   checkbox      : ':checkbox',
   search        : '#uwsearcharea',
   select        : '.uw-select',
-  quicklinks    : '.uw-quicklinks',
   slideshow     : '.uw-slideshow',
   social        : '.uw-social',
   vimeo         : '.uw-vimeo',
@@ -10995,7 +10994,7 @@ UW.wpinstance = function(){
 
 UW.sources = {
   // Note: style_dir is a variable created by the Wordpress' wp_localize_script in class.uw-scripts.php
-  quicklinks : typeof(style_dir) !== 'undefined' ? style_dir + '/wp-admin/admin-ajax.php?action=quicklinks' : UW.getBaseUrl() + 'wp-admin/admin-ajax.php?action=quicklinks',
+ 
   search     : UW.getBaseUrl() + 'wp-admin/admin-ajax.php'
 }
 
@@ -11010,7 +11009,7 @@ UW.initialize = function( $ )
   // UW Utilities
   UW.dropdowns  = _.map( $( UW.elements.dropdowns ),     function( element ) { return new UW.Dropdowns({ el : element }) } )
   UW.mobilemenu = _.map( $( UW.elements.mobilemenu ),     function( element ) { return new UW.MobileMenu({ el : element }) } )
-  UW.quicklinks = _.map( $( UW.elements.quicklinks ),    function( element ) { return new UW.QuickLinks( { el : element, url : UW.sources.quicklinks }) } )
+  
   UW.search     = _.map( $( UW.elements.search ),    function( element ) { return new UW.Search( { el : element } ) } )
   UW.images     = _.map( $( UW.elements.images ),    function( element ) { return new UW.Image({ el : element }) } )
 
@@ -14748,3 +14747,20 @@ function formVal()
 
 	return $;
 }));
+
+ function toggle(id, id2) {
+    var n = document.getElementById(id);
+    var b =  document.getElementById(id2);
+	if (b.getAttribute('aria-expanded') != 'false') 
+	  {
+	  n.setAttribute('aria-hidden','true');
+      document.getElementById(id2).setAttribute('aria-expanded', 'false');
+ document.getElementById("uw-container").setAttribute("class","");
+  }
+  else
+  {
+  n.setAttribute('aria-hidden','false');
+  document.getElementById(id2).setAttribute('aria-expanded', 'true');
+  document.getElementById("uw-container").setAttribute("class","open");
+	  }
+  }

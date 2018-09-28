@@ -2,7 +2,7 @@
 
 UW.QuickLinks = Backbone.View.extend({
 
-    DELAY : 500,
+    DELAY : 5000,
 
     settings : {},
 
