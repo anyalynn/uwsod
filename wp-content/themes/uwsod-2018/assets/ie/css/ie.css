@@ -1,18 +1,44 @@
 .fui-radio-unchecked:before,
 .fui-radio-checked:before {
-  background: url(../img/uw-sprite.png) no-repeat 0 0 rgba(0, 0, 0, 0);
+  background: url(../img/uw-sprite.png) no-repeat 0 0 rgba(0, 0, 0, 0) !important;
 }
-
+/*
+The quick links would not be properly float.
 .uw-thinstrip nav {
 	display: inline;
+}*/
+
+.uw-footer .footer-wordmark{
+	background-image: url(../img/uw-sprite.png) !important;
+}
+.uw-footer .footer-wordmark:focus, .uw-footer .footer-wordmark:hover{
+	background-image: url(../img/uw-sprite-focus.png) !important;
+}
+.uw-footer UL.footer-social LI A{
+	background-image: url(../img/uw-sprite-focus.png) !important;
+}
+
+
+.uw-thinstrip ul.uw-thin-links li a:after, .uw-thinstrip ul.uw-thin-links li button:after{
+	background-image: url(../img/uw-sprite.png) !important;
+	
+}
+
+.uw-thinstrip .uw-patch:focus,
+.uw-thinstrip .uw-patch:hover {
+  background: url(../img/uw-sprite-focus.png) no-repeat 0 0 transparent !important;
+}
+.uw-thinstrip .uw-patch:before {
+  content: url(../img/uw-sprite-focus.png) !important;
+  display: none;
 }
 
 .uw-thinstrip .uw-patch {
-	background-image: url(../img/uw-sprite.png);
+	background-image: url(../img/uw-sprite.png) !important;
 }
 
 .uw-thinstrip .uw-wordmark {
-	background-image: url(../img/uw-sprite.png);
+	background-image: url(../img/uw-sprite.png) !important;
 }
 
 button.uw-search  {
@@ -31,14 +57,14 @@ button.uw-search  {
 
 .uw-thinstrip ul.uw-thin-links li a:after,
 .uw-thinstrip ul.uw-thin-links li button:after {
-	background-image: url(../img/uw-sprite.png);
+	background-image: url(../img/uw-sprite.png) !important;
 }
 
 .uw-search-bar-container a.search {
-	background-image: url(../img/search.png);
+	background-image: url(../img/search.png) !important;
 }
 #uw-container #quicklinks ul#big-links li span {
-	background-image: url(../img/uw-sprite.png);
+	background-image: url(../img/uw-sprite.png) !important;
 }
 body.search-open #uw-container {
     margin-top: 192px;
