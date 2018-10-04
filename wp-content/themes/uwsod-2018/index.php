@@ -8,10 +8,6 @@
 
     <div <?php if(function_exists('uw_content_class')){uw_content_class();} ?> role='main'>
 
-     
-
-      <?php get_template_part('menu', 'mobile'); ?>
-
       <?php get_template_part( 'breadcrumbs' ); ?>
 
       <div id='main_content' class="uw-body-copy" tabindex="-1">
