@@ -45,8 +45,7 @@
 
     <div class="hero-content col-md-<?php echo (($sidebar[0]!="on") ? "8" : "12" ) ?> uw-content" role='main'>
 
-      <?php uw_site_title(); ?>
-      <?php get_template_part( 'menu', 'mobile' ); ?>
+     
       <?php get_template_part( 'breadcrumbs' ); ?>
 
       <div id='main_content' class="uw-body-copy" tabindex="-1">
