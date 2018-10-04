@@ -1,3 +1,22 @@
+//For quicklinks button
+function toggle(id, id2) {
+    var n = document.getElementById(id);
+	if (n.getAttribute('aria-hidden')=="false") 
+	  {
+	  n.setAttribute('aria-hidden',"true");
+      n.setAttribute('class',"");
+      document.getElementById(id2).setAttribute('aria-expanded', 'false');
+	  document.getElementById("uw-container").setAttribute("class","");
+  }
+  else
+  {
+  n.setAttribute('aria-hidden',"false");
+n.setAttribute('class',"open");
+  document.getElementById(id2).setAttribute('aria-expanded', 'true');
+document.getElementById("uw-container").setAttribute("class","open");
+	  }
+  }
+  
 function getRadioBtnValue(name){
 	var btns = document.getElementsByName(name);
 		var btn_value;
