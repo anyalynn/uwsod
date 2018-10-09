@@ -14,7 +14,6 @@
     <div class="col-md-8 uw-content" role='main'>
 
     
-      <?php if (is_front_page()) { get_template_part( 'menu', 'mobile' ); }?>
 
       <?php get_template_part( 'breadcrumbs' ); ?>
 
