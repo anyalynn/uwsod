@@ -7,9 +7,7 @@
 
     <div class="col-md-8 uw-content" role='main'>
 
-      <?php uw_site_title(); ?>
-
-      <div class="uw-body-copy">
+        <div class="uw-body-copy">
 
         <?php
           // Start the Loop.
