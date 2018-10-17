@@ -13,7 +13,7 @@
     <div role='main' class="uw-content" >
    
       <div class="uw-hero-image hero-blank no-title">
-  <h1 class="container uw-site-title-blank"><?php the_title(); ?></h1>
+ 
 </div>
                          
       <div id='main_content' class="uw-body-copy" tabindex="-1">
@@ -26,14 +26,15 @@
       
             <?php
           // Start the Loop.
-          while ( have_posts() ) : the_post();
+          while ( have_posts() ) : the_post();?>
 
             /*
              * Include the post format-specific template for the content. If you want to
              * use this in a child theme, then include a file called called content-___.php
              * (where ___ is the post format) and that will be used instead.
              */
-      	 the_content(); 
+			  <h1 class="container uw-site-title-blank"><?php the_title(); ?></h1>
+      	<?php the_content(); 
 
             // If comments are open or we have at least one comment, load up the comment template.
             if ( comments_open() || get_comments_number() ) {
