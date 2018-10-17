@@ -12,8 +12,8 @@
 
         <div id='main_content' class="uw-body-copy" tabindex="-1">
            
-            <h3>Not what you were expecting?</h3>
-              
+            <h1>Not what you were expecting?</h1>
+              <p>Please try one of the following links:</p>
                 <ul>
                    <li><a href="//dental.washington.edu">UW School of Dentistry home page</a></li>
                    <li><a href="//dental.washington.edu/patient/">Patient Care</a></li>
