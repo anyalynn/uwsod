@@ -8,8 +8,7 @@
    
   
         <div class="col-md-8 uw-content" role='main'>
-        <?php uw_site_title(); ?>
-        <?php get_template_part( 'breadcrumbs' ); ?>
+          <?php get_template_part( 'breadcrumbs' ); ?>
 
         <div id='main_content' class="uw-body-copy" tabindex="-1">
            
