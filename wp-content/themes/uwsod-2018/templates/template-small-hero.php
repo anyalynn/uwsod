@@ -43,8 +43,7 @@
 <div class="container uw-body">
   <div class="row">
     <div class="hero-content col-md-<?php echo (($sidebar[0]!="on") ? "8" : "12" ) ?> uw-content" role='main'>
-
-      <?php uw_site_title(); ?>
+   
 
       <?php get_template_part( 'breadcrumbs' ); ?>
 
@@ -86,4 +85,4 @@
 
 <?php get_footer(); ?>
 
-<?php
+

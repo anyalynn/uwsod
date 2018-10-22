@@ -30,8 +30,7 @@
       <?php if(!empty($banner) && $banner[0]){ ?>
         <div id="hashtag"><span><span><?php echo $banner[0] ? $banner[0] : ''; ?></span></span></div>
       <?php } ?>
-        <h1 class="uw-site-title"><?php the_title(); ?></h1>
-        <span class="udub-slant"><span></span></span>
+             <span class="udub-slant"><span></span></span>
       <?php if(!empty($buttontext) && $buttontext[0]){ ?>
         <a class="uw-btn btn-sm btn-none" href="<?php echo $buttonlink[0] ? $buttonlink[0] : ''; ?>"><?php echo $buttontext[0] ? $buttontext[0] : ''; ?></a>
       <?php } ?>
