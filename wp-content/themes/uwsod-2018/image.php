@@ -8,8 +8,7 @@
 
     <div class="col-md-12 uw-content center-block" role='main'>
 
-      <a href="<?php echo home_url('/'); ?>" title="<?php echo esc_attr( get_bloginfo() ) ?>"><h2 class="uw-site-title"><?php bloginfo(); ?></h2></a>
-
+     
       <?php get_template_part( 'breadcrumbs' ); ?>
 
       <div class="uw-body-copy">
