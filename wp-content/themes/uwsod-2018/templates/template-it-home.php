@@ -32,7 +32,7 @@
         <div id="hashtag"><span><span><?php echo $banner[0] ? $banner[0] : ''; ?></span></span></div>
         <?php } ?>
         
-        <h1 class="uw-site-title2"><?php the_title(); ?></h1>
+        <h1 class="uw-site-title2">Information Technology</h1>
         <span class="udub-slant"><span></span></span>
         <?php if(!empty($buttontext) && $buttontext[0]){ ?>
         <a class="uw-btn btn-sm btn-none" href="<?php echo $buttonlink[0] ? $buttonlink[0] : ''; ?>"><?php echo $buttontext[0] ? $buttontext[0] : ''; ?></a> 
@@ -42,9 +42,10 @@
 
 
 <div class="row">
-			
+	<div class="it">
 <?php get_template_part( 'itquicklinks' ); ?>
-            </div>
+	</div>
+</div>
 <div class="container uw-body">
   <div class="row">
     <div class="hero-content col-md-<?php echo (($sidebar[0]!="on") ? "8" : "12" ) ?> uw-content" role='main'>

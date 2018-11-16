@@ -9811,6 +9811,12 @@ display:inline-block;
     padding-right: 5px;
     text-decoration: none;
   }
+  .it .uw-links ul li a {
+    width: 25%;
+  }
+  .it .uw-links ul {
+    margin-left: 125px;
+  }
   .uw-links {
     margin-bottom: 60px;
     -webkit-box-shadow: 0 0 4px rgba(164, 164, 164, 0.5);
