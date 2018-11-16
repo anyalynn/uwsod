@@ -32,21 +32,21 @@
 	 width="49.5px" height="37.9px" viewBox="0 0 49.5 37.9" enable-background="new 0 0 49.5 37.9" xml:space="preserve">
 <g>
 	<g>
-		<path fill="#FFFFFF" stroke="#666666" stroke-width="2" stroke-miterlimit="10" d="M48.2,36.9h-47c-0.1,0-0.3-0.1-0.3-0.3v-1.8
+		<path fill="#FFFFFF" stroke="#a3a2a3" stroke-width="2" stroke-miterlimit="10" d="M48.2,36.9h-47c-0.1,0-0.3-0.1-0.3-0.3v-1.8
 			h47.2c0.1,0,0.3,0.1,0.3,0.3v1.5C48.5,36.8,48.4,36.9,48.2,36.9z"/>
 	</g>
 	<g>
-		<path fill="#FFFFFF" stroke="#666666" stroke-width="2" stroke-miterlimit="10" d="M42,24.6H8.2c-0.8,0-1.5-0.7-1.5-1.5V2.5
+		<path fill="#FFFFFF" stroke="#a3a2a3" stroke-width="2" stroke-miterlimit="10" d="M42,24.6H8.2c-0.8,0-1.5-0.7-1.5-1.5V2.5
 			C6.7,1.7,7.4,1,8.2,1H42c0.8,0,1.5,0.7,1.5,1.5v20.6C43.5,24,42.8,24.6,42,24.6z"/>
-		<rect x="9.5" y="3.8" fill="#FFFFFF" stroke="#666666" stroke-width="2" stroke-miterlimit="10" width="31.1" height="17.6"/>
+		<rect x="9.5" y="3.8" fill="#FFFFFF" stroke="#a3a2a3" stroke-width="2" stroke-miterlimit="10" width="31.1" height="17.6"/>
 	</g>
 	
-		<polygon fill="#FFFFFF" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		<polygon fill="#FFFFFF" stroke="#a3a2a3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
 		48.5,34.5 1,34.5 6.7,24.6 43.5,24.6 	"/>
 	
-		<line fill="none" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="8.6" y1="27.5" x2="41.6" y2="27.5"/>
+		<line fill="none" stroke="#a3a2a3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="8.6" y1="27.5" x2="41.6" y2="27.5"/>
 	
-		<polygon fill="none" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		<polygon fill="none" stroke="#a3a2a3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
 		28.9,32.2 19.8,32.2 21.1,30.2 27.9,30.2 	"/>
 </g>
 </svg><span>Computing</span></a> </li>

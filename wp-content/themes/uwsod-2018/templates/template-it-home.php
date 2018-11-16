@@ -40,18 +40,17 @@
       </div>
 </div>
 
-<div class="container uw-body">
+
 <div class="row">
 			
 <?php get_template_part( 'itquicklinks' ); ?>
             </div>
+<div class="container uw-body">
   <div class="row">
     <div class="hero-content col-md-<?php echo (($sidebar[0]!="on") ? "8" : "12" ) ?> uw-content" role='main'>
    
 
-      <?php get_template_part( 'breadcrumbs' ); ?>
-
-      <div id='main_content' class="uw-body-copy" tabindex="-1">
+         <div id='main_content' class="uw-body-copy" tabindex="-1">
 
 
     
