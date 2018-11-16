@@ -9825,8 +9825,8 @@ display:inline-block;
   .uw-links ul {
     margin-left: 25px;
   }
-  .it .center-block {
-    width: 900px;
+  .it .uw-links {
+    width: 75%;
   }
   h2.uw-site-title {
     display: none;
