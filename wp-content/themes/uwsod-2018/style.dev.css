@@ -9815,9 +9815,6 @@ display:inline-block;
     width: 25%;
   }
   /*.it .uw-links ul {margin-left:125px;}*/
-  .it .uw-links ul .center-block {
-    width: 700px;
-  }
   .uw-links {
     margin-bottom: 60px;
     -webkit-box-shadow: 0 0 4px rgba(164, 164, 164, 0.5);
@@ -9827,6 +9824,9 @@ display:inline-block;
   }
   .uw-links ul {
     margin-left: 25px;
+  }
+  .it .uw-links ul .center-block {
+    width: 900px;
   }
   h2.uw-site-title {
     display: none;
