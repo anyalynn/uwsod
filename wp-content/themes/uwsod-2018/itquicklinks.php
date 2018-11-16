@@ -28,7 +28,7 @@
 </svg>
 				<span>Training</span></a> </li>
               
-				<li><a href="http://dental.washington.edu/it/computing/" title="Computing"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				<li><a href="http://dental.washington.edu/it/" title="Computing"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="60px" height="50px" viewBox="0 0 60 50" enable-background="new 0 0 60 50" xml:space="preserve">
 <g>
 	<g>
@@ -50,7 +50,7 @@
 		33.8,39 24.8,39 26.1,36.9 32.9,36.9 	"/>
 </g>
 </svg><span>Computing</span></a> </li>
-                <li><a href="http://dental.washington.edu/it/email/" title="Email">
+                <li><a href="http://dental.washington.edu/it/" title="Email">
 				
 				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="60.087px" height="50.329px" viewBox="0 0 60.087 50.329" enable-background="new 0 0 60.087 50.329" xml:space="preserve">
@@ -64,7 +64,7 @@
 </g>
 </svg>
 				<span>Email</span></a> </li>
-                 <li><a href="http://dental.washington.edu/it/security/" title="Security">
+                 <li><a href="http://dental.washington.edu/it/" title="Security">
 
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="60px" height="50.4px" viewBox="0 0 60 50.4" enable-background="new 0 0 60 50.4" xml:space="preserve">
