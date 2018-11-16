@@ -9814,8 +9814,9 @@ display:inline-block;
   .it .uw-links ul li a {
     width: 25%;
   }
-  .it .uw-links ul {
-    margin-left: 125px;
+  /*.it .uw-links ul {margin-left:125px;}*/
+  .it .uw-links ul .center-block {
+    width: 900px;
   }
   .uw-links {
     margin-bottom: 60px;
