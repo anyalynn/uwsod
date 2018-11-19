@@ -25,7 +25,12 @@
 	<div class="row">
 		<div class="uw-hero-image hero-height2 <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
          
-	      	
+	      	<div class="container">
+           
+			  	<h1 >Information Technology</h1>
+	        	<span class="udub-slant"><span></span></span>
+        
+			</div>
 	 	</div>
   		<div class="row">
             
