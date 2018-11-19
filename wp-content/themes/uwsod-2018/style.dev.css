@@ -9303,9 +9303,10 @@ a.uw-btn {
 .uw-hero-image.hero-height2 {
   position: relative;
 }
-.hero-height2 h1 {
+.uw-hero-image.hero-height2 h1 {
   margin-top: 20px;
   display: block;
+  position: relative;
 }
 @media only screen and (max-width: 767px) {
   .uw-hero-image.hero-height2 {
@@ -9313,13 +9314,13 @@ a.uw-btn {
     display: block;
     height: auto;
   }
-  .hero-height2 h1 {
+  .uw-hero-image.hero-height2 h1 {
     font-size: 25px;
   }
 }
 @media only screen and (min-width: 768px) {
-  .hero-height2 h1 {
-    font-size: 40px;
+  .uw-hero-image.hero-height2 h1 {
+    font-size: 35px;
   }
 }
 #uw-accordion-shortcode > h3 {
