@@ -23,23 +23,17 @@
 
 <div class="container uw-body">
 	<div class="row">
-		<div id='main_content' class="uw-body-copy" tabindex="-1">
-			<div class="uw-hero-image hero-height2 <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
+		<div class="uw-hero-image hero-height2 <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
          
-		      	<div class="container">
-             
-				  	<h1 class="uw-site-title2">Information Technology</h1>
-		        	<span class="udub-slant"><span></span></span>
-          
-				</div>
-		 	</div>
-  			<div class="row">
+	      	
+	 	</div>
+  		<div class="row">
             
-				<div class="it">
+			<div class="it">
 					<?php get_template_part( 'itquicklinks' ); ?>
-				</div>
-	   		</div>
-
+			</div>
+   		</div>
+		<div id='main_content' class="uw-body-copy" tabindex="-1">
   			<div class="col-md-12">
    
 		        <?php
