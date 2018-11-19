@@ -4,7 +4,8 @@
  */
 ?>
 
-<?php get_header(); 
+<?php get_header();
+ 	
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       if(!$url){
         $url = "https://dental.washington.edu/wp-content/media/cyber-18.jpg";
@@ -21,48 +22,54 @@
       $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
 
 
-<div class="uw-body">
-	<div class="row">
-		<div class="uw-hero-image hero-height2 <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
+<div class="uw-hero-image hero-height2 <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
          
-	      	<div class="container">
+	<div class="container">
            
-			  	<h1 >Information Technology</h1>
-	        	<span class="udub-slant"><span></span></span>
-        
-			</div>
-	 	</div>
-	    <div class="col-md-<?php echo (($sidebar[0]!="on") ? "8" : "12" ) ?> uw-content" role='main'>
-   	
-		<?php get_template_part( 'breadcrumbs' ); ?>
+	  	<h1 >Information Technology</h1>
+	   	<span class="udub-slant"><span></span></span>
+       
+	</div>
+</div>
+<div class="container uw-body">
+
+	<div class="row">
+
+		<div class="col-md-<?php echo ((!isset($sidebar[0]) || $sidebar[0]!="on") ? "8" : "12" ) ?> uw-content" role='main'>
+      
+      <?php get_template_part( 'breadcrumbs' ); ?>
 
 			<div id='main_content' class="uw-body-copy" tabindex="-1">
 
-			<?php
-    	      while ( have_posts() ) : the_post(); 
+        <?php
+          // Start the Loop.
+          while ( have_posts() ) : the_post();
 
-        	    //the_content();
-            	get_template_part( 'content', 'page-header' );
+            /*
+             * Include the post format-specific template for the content. If you want to
+             * use this in a child theme, then include a file called called content-___.php
+             * (where ___ is the post format) and that will be used instead.
+             */
+            get_template_part( 'content', 'page' );
 
-	            // If comments are open or we have at least one comment, load up the comment template.
-    	        if ( comments_open() || get_comments_number() ) {
-        	      comments_template();
-            	}
+            // If comments are open or we have at least one comment, load up the comment template.
+            if ( comments_open() || get_comments_number() ) {
+              comments_template();
+            }
 
-		        endwhile;
-          
-        	?>
+          endwhile;
+        ?>
 
-	      </div>
-	    </div>
-	    <div id="sidebar"><?php 
-    	  if($sidebar[0]!="on"){
-        	get_sidebar();
-	      }
-    	?></div>
+			</div>
+		</div>
+
+        <div id="sidebar"><?php 
+      if(!isset($sidebar[0]) || $sidebar[0]!="on"){
+        get_sidebar();
+      }
+	  ?></div>
   </div>
 </div>
-
 <?php get_footer(); ?>
 
 
