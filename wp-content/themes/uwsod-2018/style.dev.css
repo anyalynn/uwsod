@@ -8993,6 +8993,11 @@ label.screen-reader {
   .hero-content .uw-site-title {
     display: block;
   }
+  .uw-hero-image.hero-height2 h1 {
+	  display:block;
+	  margin-top:20px;
+	  position:relative;
+  }
   #hero-container #hashtag {
     margin-top: -50px;
     font-size: 18px;
