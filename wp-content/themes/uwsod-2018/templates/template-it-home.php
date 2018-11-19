@@ -20,43 +20,33 @@
       $buttontext = get_post_meta($post->ID, "buttontext");
       $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
 
+<div class="home uw-body">
 
-<div class="uw-hero-image hero-height2 <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
-     <?php if( !empty($mobileimage) ) { ?>
-    <div class="mobile-image" style="background-image: url(<?php echo $mobileimage ?>);"></div>
-    <?php } ?>
-     
-      <div class="container">
-        <div id="hashtag" class="mask"><span><span><?php echo $banner[0] ? $banner[0] : ''; ?></span></span></div>
-        <?php if(!empty($banner) && $banner[0]){ ?>
-        <div id="hashtag"><span><span><?php echo $banner[0] ? $banner[0] : ''; ?></span></span></div>
-        <?php } ?>
-        
-        <h1 class="uw-site-title2">Information Technology</h1>
-        <span class="udub-slant"><span></span></span>
-        <?php if(!empty($buttontext) && $buttontext[0]){ ?>
-        <a class="uw-btn btn-sm btn-none" href="<?php echo $buttonlink[0] ? $buttonlink[0] : ''; ?>"><?php echo $buttontext[0] ? $buttontext[0] : ''; ?></a> 
-        <?php } ?>     
-      </div>
-</div>
-
-
-<div class="row">
-	<div class="it">
-<?php get_template_part( 'itquicklinks' ); ?>
-	</div>
-</div>
-<div class="container uw-body">
   <div class="row">
-    <div class="hero-content col-md-<?php echo (($sidebar[0]!="on") ? "8" : "12" ) ?> uw-content" role='main'>
+
+    <div role='main' class="uw-content" >
    
+		<div class="uw-hero-image hero-height2 <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
+         
+      		<div class="container">
+               
+        	<h1 class="uw-site-title2">Information Technology</h1>
+        	<span class="udub-slant"><span></span></span>
+           
+ 			</div>
+     	</div>
 
-         <div id='main_content' class="uw-body-copy" tabindex="-1">
 
+  		<div id='main_content' class="uw-body-copy" tabindex="-1">
+  			<div class="row">
+				<div class="it">
+					<?php get_template_part( 'itquicklinks' ); ?>
+				</div>
+    		</div>
 
-    
-
-
+  			<div class="row">
+    			<div class="hero-content col-md-12 uw-content">
+   
 
         <?php
           while ( have_posts() ) : the_post(); 
@@ -73,18 +63,10 @@
           
         ?>
 
-      </div>
-
+      		</div>
+    	</div>
     </div>
-
-    <div id="sidebar"><?php 
-      if($sidebar[0]!="on"){
-        get_sidebar();
-      }
-    ?></div>
-
   </div>
-
 </div>
 
 <?php get_footer(); ?>
