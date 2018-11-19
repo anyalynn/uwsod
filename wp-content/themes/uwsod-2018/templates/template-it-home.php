@@ -21,18 +21,18 @@
       $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
 
 
-
+<div class="container uw-body">
 	<div class="row">
 		<div id='main_content' class="uw-body-copy" tabindex="-1">
-         <div class="uw-hero-image hero-height2 <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
+			<div class="uw-hero-image hero-height2 <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
          
-      	<div class="container">
+		      	<div class="container">
              
-		  	<h1 class="uw-site-title2">Information Technology</h1>
-        	<span class="udub-slant"><span></span></span>
+				  	<h1 class="uw-site-title2">Information Technology</h1>
+		        	<span class="udub-slant"><span></span></span>
           
-		</div>
- 	</div>
+				</div>
+		 	</div>
   			<div class="row">
             
 				<div class="it">
@@ -40,7 +40,7 @@
 				</div>
 	   		</div>
 
-  			<div class="col-md-12 uw-content">
+  			<div class="col-md-12">
    
 		        <?php
 		          while ( have_posts() ) : the_post(); 
