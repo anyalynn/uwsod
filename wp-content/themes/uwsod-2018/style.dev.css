@@ -5636,7 +5636,7 @@ a.uw-custom-link:hover {
   }
   .uw-hero-image.hero-mobile-image.hero-height .container,
   .uw-hero-image.hero-mobile-image.hero-height2 .container {
-    position: absolute;
+    position: relative;
     top: 0;
   }
   .uw-hero-image.hero-height {
@@ -8890,7 +8890,7 @@ label.screen-reader {
   display: none;
 }
 .hero-height2 {
-  height: 245px;
+  height: 175px;
 }
 .hero-height2 .container #hashtag.mask {
   position: inherit;
@@ -8939,7 +8939,7 @@ label.screen-reader {
   text-transform: uppercase;
   color: #FFF !important;
   font-weight: 900;
-  font-size: 60px;
+  font-size: 40px;
   margin: 0;
   line-height: 1;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
