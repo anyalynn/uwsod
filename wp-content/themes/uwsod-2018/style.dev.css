@@ -5606,15 +5606,15 @@ a.uw-custom-link:hover {
   }
   .uw-hero-image.hero-mobile-image.hero-height,
   .uw-hero-image.hero-mobile-image.hero-height2 {
-    height: 480px;
+    height: 200px;
   }
   .uw-hero-image.hero-mobile-image.hero-height .mobile-image,
   .uw-hero-image.hero-mobile-image.hero-height2 .mobile-image {
     display: block;
     top: 0;
     left: 0;
-    height: 480px;
-    position: absolute;
+    height: 200px;
+    position: relative;
     right: 0;
     background-position: center bottom;
     -webkit-background-size: cover;
@@ -5670,7 +5670,7 @@ a.uw-custom-link:hover {
     min-height: auto;
   }
   .uw-hero-image.hero-height2 h1 {
-    font-size: 35px;
+    font-size: 25px;
     padding: 0;
   }
   .uw-hero-image.hero-height2 h1:after {
@@ -8954,7 +8954,7 @@ label.screen-reader {
   height: 360px;
   left: -140px;
   opacity: .3;
-  width: 600px;
+  width: 400px;
   background: url(assets/svg/slashes-light.svg) no-repeat 0 0;
   z-index: 0;
 }
