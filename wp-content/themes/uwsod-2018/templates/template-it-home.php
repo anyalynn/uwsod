@@ -19,21 +19,22 @@
       $banner = get_post_meta($post->ID, "banner");
       $buttontext = get_post_meta($post->ID, "buttontext");
       $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
- <div class="uw-body">
-<div class="uw-hero-image hero-height2 style="background-image: url(<?php echo $url ?>);">
-         
-   	<div class="container">
-             
-	  	<h1 class="uw-site-title2">Information Technology</h1>
-       	<span class="udub-slant"><span>
-        
-	</div>
-</div>
+
 
 
 	<div class="row">
 		<div id='main_content' class="uw-body-copy" tabindex="-1">
+         <div class="uw-hero-image hero-height2 <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
+         
+      	<div class="container">
+             
+		  	<h1 class="uw-site-title2">Information Technology</h1>
+        	<span class="udub-slant"><span></span></span>
+          
+		</div>
+ 	</div>
   			<div class="row">
+            
 				<div class="it">
 					<?php get_template_part( 'itquicklinks' ); ?>
 				</div>
