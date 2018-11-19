@@ -20,53 +20,52 @@
       $buttontext = get_post_meta($post->ID, "buttontext");
       $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
 
-<div class="home uw-body">
+<div class="uw-body">
 
-  <div class="row">
+	<div class="row">
 
-    <div role='main' class="uw-content" >
+		<div role='main' class="uw-content" >
    
-		<div class="uw-hero-image hero-height2 <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
+			<div class="uw-hero-image hero-height2 <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
          
-      		<div class="container">
+      			<div class="container">
                
-        	<h1 class="uw-site-title2">Information Technology</h1>
-        	<span class="udub-slant"><span></span></span>
+		        	<h1 class="uw-site-title2">Information Technology</h1>
+        			<span class="udub-slant"><span></span></span>
            
- 			</div>
-     	</div>
+	 			</div>
+    	 	</div>
 
+	  		<div id='main_content' class="uw-body-copy" tabindex="-1">
+  				<div class="row">
+					<div class="it">
+						<?php get_template_part( 'itquicklinks' ); ?>
+					</div>
+	    		</div>
 
-  		<div id='main_content' class="uw-body-copy" tabindex="-1">
-  			<div class="row">
-				<div class="it">
-					<?php get_template_part( 'itquicklinks' ); ?>
-				</div>
-    		</div>
-
-  			<div class="row">
-    			<div class="hero-content col-md-12 uw-content">
+  				<div class="row">
+    				<div class="hero-content col-md-12 uw-content">
    
+			        <?php
+			          while ( have_posts() ) : the_post(); 
 
-        <?php
-          while ( have_posts() ) : the_post(); 
+            			//the_content();
+			            get_template_part( 'content', 'page-noheader' );
 
-            //the_content();
-            get_template_part( 'content', 'page-noheader' );
+            			// If comments are open or we have at least one comment, load up the comment template.
+			            if ( comments_open() || get_comments_number() ) {
+            			  comments_template();
+			            }
 
-            // If comments are open or we have at least one comment, load up the comment template.
-            if ( comments_open() || get_comments_number() ) {
-              comments_template();
-            }
-
-          endwhile;
+			          endwhile;
           
-        ?>
+				     ?>
 
-      		</div>
-    	</div>
+					</div>
+				</div>
+			</div>
+	  	</div>
     </div>
-  </div>
 </div>
 
 <?php get_footer(); ?>
