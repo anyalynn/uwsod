@@ -6846,7 +6846,7 @@ body.home .uw-sidebar-menu {
 /* Custom, iPhone Retina */
 @media only screen and (max-width: 768px) {
   #sidebar #desktop-relative {
-    display: none;
+   /* display: none;*/
   }
   .uw-mobile-menu li {
     background-color: #eee;
