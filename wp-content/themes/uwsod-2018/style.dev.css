@@ -10241,7 +10241,10 @@ table.small td p {
 }
 .contact-widget-inner a.uw-btn {
   text-decoration: none;
+  background:#ffffff;
 }
+
+
 .uw-sidebar .widget_text h2.widgettitle {
   display: none;
 }
