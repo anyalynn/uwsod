@@ -550,14 +550,14 @@ function intcmp($a, $b) {
 if ( ! function_exists('sodtoc_shortcode') ):
 
 function sodtoc_shortcode( $atts  ) 
-  {
+    {
 	  $a = shortcode_atts( array(
         'title' => 'tocentry'
     ), $atts );
 	
 	$title=$a['title'];
 
-return "<div id='" .$title. "'><\/div>";
+	return '<div id="' .$title. '"></div>';
 
 
  }
