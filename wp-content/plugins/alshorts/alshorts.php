@@ -547,9 +547,9 @@ function intcmp($a, $b) {
 
 // Creating the shortcode 
 
-if ( ! function_exists('toc_shortcode') ):
+if ( ! function_exists('sodtoc_shortcode') ):
 
-function toc_shortcode( $atts  ) 
+function sodtoc_shortcode( $atts  ) 
   {
 	  $a = shortcode_atts( array(
         'title' => 'tocentry'
@@ -563,7 +563,7 @@ function toc_shortcode( $atts  )
  }
 	
 endif;
-add_shortcode( 'toc', 'toc_shortcode' );
+add_shortcode( 'sodtoc', 'sodtoc_shortcode' );
 
 
 // Creating the shortcode 
