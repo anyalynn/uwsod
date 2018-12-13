@@ -547,6 +547,27 @@ function intcmp($a, $b) {
 
 // Creating the shortcode 
 
+if ( ! function_exists('toc_shortcode') ):
+
+function toc_shortcode( $atts  ) 
+  {
+	  $a = shortcode_atts( array(
+        'title' => 'tocentry'
+    ), $atts );
+	
+	$title=$a['title'];
+?>
+<div id=" <?php $title ?> "></div>
+
+ <?php
+ }
+	
+endif;
+add_shortcode( 'toc', 'toc_shortcode' );
+
+
+// Creating the shortcode 
+
 if ( ! function_exists('coursedept_shortcode') ):
   function coursedept_shortcode( $atts  ) 
   {
