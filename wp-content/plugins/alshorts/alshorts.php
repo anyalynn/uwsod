@@ -557,7 +557,7 @@ function sodtoc_shortcode( $atts  )
 	
 	$title=$a['title'];
 
-return "<div id='" .$title. "'</div>";
+return "<div id='" .$title. "'><//div>";
 
 
  }
