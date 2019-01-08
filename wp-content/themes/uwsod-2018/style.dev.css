@@ -6489,7 +6489,7 @@ ul.uw-sidebar-menu li.pagenav ul li.current_page_parent > span,
 ul.uw-mobile-menu li.pagenav ul li.current_page_parent > span,
 ul.uw-sidebar-menu > div ul li.current_page_parent > span,
 ul.uw-mobile-menu > div ul li.current_page_parent > span {
-  font-weight: bold;
+  font-weight: medium;
   padding-left: 19px;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -6774,7 +6774,7 @@ ul.uw-mobile-menu ul.children {
 }
 .uw-sidebar .widgettitle {
   clear: left;
-  font-weight: 900;
+  font-weight: 600;
   font-size: 22px;
   text-transform: uppercase;
   position: relative;
@@ -9387,30 +9387,32 @@ table td p {
 h1,
 .h1 {
   font-size: 32px;
+  font-weight: 600;
 }
 h2,
 .h2 {
   font-size: 27px;
+  font-weight: 600;
 }
 h3,
 .h3 {
   font-size: 23px;
-  font-weight: 700;
+  font-weight: 600;
 }
 h4,
 .h4 {
   font-size: 19px;
-  font-weight: 700;
+  font-weight: 600;
 }
 h5,
 .h5 {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
 }
 h6,
 .h6 {
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 600;
 }
 .uw-body h2.cdesecondtitle {
   font-size: 23px;
@@ -9428,7 +9430,7 @@ hr {
 .info-box h4 {
   font-size: 18px;
   font-family: "Encode Sans Compressed", sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
   color: inherit;
 }
