@@ -9289,7 +9289,7 @@ a.uw-btn {
 }
 .uw-body blockquote p {
   font-size: 19px;
-  font-weight: 600;
+  font-weight: normal;
 }
 .uw-hero-image.hero-blank .uw-breadcrumbs {
   display: block;
