@@ -9,7 +9,7 @@
         <nav aria-label="social networking">
             <ul class="footer-social">
                 <li><a class="facebook" href="https://www.facebook.com/pages/The-University-of-Washington-School-of-Dentistry/160752227303910">Facebook</a></li>          
-                <li><a class="google" href="https://plus.google.com/b/108816227097181482651/108816227097181482651/about?cfem=1">Google+</a></li>
+               
             </ul>
         </nav>
 
