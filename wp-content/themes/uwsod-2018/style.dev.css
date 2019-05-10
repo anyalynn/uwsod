@@ -11349,6 +11349,21 @@ table.services a {
 .col-land-style {
   padding: 3px 0px 0px 8px;
 }
+@media only screen and (min-width: 1200px) {
+  .uw-hero-image.hero-height #hero-container h1 {
+    padding: 160px 20% 0 0;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .uw-hero-image.hero-height #hero-container h1 {
+    padding: 80px 20% 0 0;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .uw-hero-image.hero-height #hero-container h1 {
+    padding: 0;
+  }
+}
 /*==========  Non-Mobile First Method  ==========*/
 /* Large Devices, Wide Screens */
 /* Medium Devices, Desktops */
