@@ -10175,6 +10175,20 @@ img.faculty {
     font-size: 33px;
   }
 }
+@media (max-width: 767px) {
+  .uw-site-title-blank {
+    font-size: 30px;
+    padding-top: 0px;
+    color: #4b2e83;
+    margin-top: 5px;
+  }
+  .uw-hero-image.hero-blank h1.uw-site-title-blank {
+    margin-top: 0px;
+    margin-left: 15px;
+    margin-right: 10px;
+    clear: right;
+  }
+}
 @media (min-width: 768px) {
   .fltRight {
     float: right;
@@ -11207,6 +11221,133 @@ table.services a {
   #sidebar #desktop-relative {
     display: block;
   }
+}
+/*UW Dentistry/CDC Styles */
+.uw-body .overCont {
+  position: relative;
+  margin: 0 auto;
+  /* Center it */
+}
+.uw-body .overCont .content a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.uw-body .overCont .imgFull {
+  width: 100%;
+}
+.providerGutters {
+  padding: 5px 5px 5px 2px;
+}
+.uw-body .col-xs-4 .providerGutters,
+.uw-body .col-sm-2 .providerGutters,
+.uw-body .col-md-2 .providerGutters {
+  padding: 5px 5px 5px 2px;
+}
+.uw-body .overCont .content {
+  position: absolute;
+  /* Position the background text */
+  background: #000000;
+  /* Fallback color */
+  background: rgba(0, 0, 0, 0.5);
+  /* Black background with 0.5 opacity */
+  color: #ffffff;
+  /* Grey text */
+  padding: 5px;
+  /* Some padding */
+  bottom: 0;
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .uw-body .overCont .content {
+    top: 80%;
+    /* At the bottom. Use top:0 to append it to the top */
+    font-size: 16px;
+    line-height: 1.2;
+  }
+  .uw-body .overCont .content a {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .uw-body .overCont .content {
+    top: 75%;
+    /* At the bottom. Use top:0 to append it to the top */
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  .uw-body .overCont .content a {
+    font-size: 14px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  img.hideImgSmall {
+    display: block;
+    padding: 5px 5px;
+  }
+  img.showImgSmall {
+    display: none;
+  }
+  .showLarge {
+    display: block;
+  }
+  .btn-land-width {
+    margin-top: -5px;
+    width: 320px;
+    margin-bottom: 0px;
+    padding: 10px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .btn-land-width {
+    margin-top: 0px;
+    width: 300px;
+    margin-bottom: 0px;
+    padding: 10px;
+  }
+  img.hideImgSmall {
+    display: none;
+  }
+  img.showImgSmall {
+    margin-top: 5px;
+    margin-bottom: -28px;
+    display: block;
+  }
+  .showLarge {
+    display: none;
+  }
+}
+.btn-land-uwdent {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #cfb889;
+  text-transform: upper;
+}
+.btn-land-cdc {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 21px;
+  color: #ffffff;
+  text-transform: none;
+}
+.btn-land-tag {
+  font-family: 'Uni Sans', sans-serif;
+  font-size: 12px;
+  color: #cfb889;
+  text-transform: upper;
+}
+.btn-land-osfirst {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #cfb889;
+  text-transform: none;
+}
+.para-land-style {
+  margin-top: -5px;
+  margin-bottom: -20px;
+  line-height: 1.1;
+}
+.col-land-style {
+  padding: 3px 0px 0px 8px;
 }
 /*==========  Non-Mobile First Method  ==========*/
 /* Large Devices, Wide Screens */
