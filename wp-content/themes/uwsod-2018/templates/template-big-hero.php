@@ -47,9 +47,7 @@
 
         <?php uw_site_title(); ?>
       <?php get_template_part( 'breadcrumbs' ); ?>
-              <h1 class="uw-site-title">The Title</h1>
-
-
+          
       <div id='main_content' class="uw-body-copy" tabindex="-1">
 
 
