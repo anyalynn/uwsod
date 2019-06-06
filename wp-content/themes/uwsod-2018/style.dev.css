@@ -13101,6 +13101,16 @@ table.services a {
     margin-left: auto !important;
   }
 }
+.table-striped .no-striped > tbody > tr:nth-child(odd) > td,
+.table-striped .no-striped > tbody > tr:nth-child(odd) > th {
+  background-color: #ffffff;
+}
+.table-striped .no-striped > tbody > tr .coda > td {
+  background: #fff2cc;
+}
+.table-striped .no-striped > tbody > tr .nocoda > td {
+  background: #e2efd9;
+}
 /*==========  Non-Mobile First Method  ==========*/
 /* Large Devices, Wide Screens */
 /* Medium Devices, Desktops */
