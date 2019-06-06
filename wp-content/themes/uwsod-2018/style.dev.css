@@ -13101,15 +13101,15 @@ table.services a {
     margin-left: auto !important;
   }
 }
-.table-striped .no-striped > tbody > tr:nth-child(odd) > td,
-.table-striped .no-striped > tbody > tr:nth-child(odd) > th {
+.no-stripe .table-striped > tbody > tr:nth-child(odd) > td,
+.no-stripe .table-striped > tbody > tr:nth-child(odd) > th {
   background-color: #ffffff;
 }
-.table-striped .no-striped > tbody > tr .coda > td {
-  background: #fff2cc;
+.no-stripe .table-striped > tbody > tr .coda > td {
+  background-color: #fff2cc;
 }
-.table-striped .no-striped > tbody > tr .nocoda > td {
-  background: #e2efd9;
+.no-stripe .table-striped > tbody > tr .nocoda > td {
+  background-color: #e2efd9;
 }
 /*==========  Non-Mobile First Method  ==========*/
 /* Large Devices, Wide Screens */
