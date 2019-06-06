@@ -11028,7 +11028,7 @@ UW.initialize = function( $ )
 
   // todo: add to separate file
   $('table').addClass('table table-striped')
-   $('table no-stripe table-striped').removeClass('table table-striped')  
+  
 
   $('pre').addClass('prettyprint')
 

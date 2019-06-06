@@ -3359,24 +3359,57 @@ padding:3px 0px 0px 8px;
   .mx-xl-auto {
     margin-left: auto !important; } }
 
-.no-stripe  > tbody > tr > td,
-.no-stripe  > tbody > tr > th {
+.no-stripe .table .table-striped  > tbody > tr > td,
+.no-stripe .table .table-striped  > tbody > tr > th {
   background-color: #ffffff;
 }
 
-.no-stripe   > tbody > tr .coda > td {
+.no-stripe .table .table-striped   > tbody > tr .coda > td {
     background-color: #fff2cc;
 }
-.no-stripe   > tbody > tr .nocoda > td {
+.no-stripe .table .table-striped  > tbody > tr .nocoda > td {
    background-color: #e2efd9;
 }
-.no-stripe > tbody > tr .coda:nth-child(odd) > td {
+.no-stripe .table .table-striped > tbody > tr .coda:nth-child(odd) > td {
   background-color: #fff2cc;  
 }
-.nostripe > tbody > tr .nocoda:nth-child(odd) > td {
+.no-stripe .table .table-striped > tbody > tr .nocoda:nth-child(odd) > td {
   background-color:#e2efd9;  
 }
 
-.nostripe > tbody > tr:nth-child(odd) > th {
+.no-stripe .table .table-striped > tbody > tr:nth-child(odd) > th {
   background-color: #ffffff;
+}
+
+.no-stripe .table .table-striped {
+  tr:nth-child(odd) {
+    > td,
+    > th {
+      background-color: #ffffff
+    }
+  }
+}
+.no-stripe .table .table-striped {
+  tr {
+    > td,
+    > th {
+      background-color: #ffffff;
+    }
+  }
+}
+.no-stripe .table .table-striped {
+  tr.coda:nth-child(odd) {
+    
+    > td {
+      background-color: #fff2cc;
+    }
+  }
+}
+.no-stripe .table .table-striped {
+  tr.coda {
+    
+    > td {
+      background-color: #fff2cc;
+    }
+  }
 }
