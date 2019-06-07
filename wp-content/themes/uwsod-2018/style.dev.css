@@ -4280,6 +4280,12 @@ th {
 .table-striped > tbody > tr:nth-child(odd) > th {
   background-color: #e2e2e2;
 }
+.no-stripe > tbody > tr.coda > td {
+  background-color: #fff2cc;
+}
+.no-stripe > tbody > tr.nocoda > td {
+  background-color: #d8f6d8;
+}
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
   background-color: #f5f5f5;
@@ -13101,39 +13107,34 @@ table.services a {
     margin-left: auto !important;
   }
 }
-.no-stripe .table .table-striped > tbody > tr > td,
-.no-stripe .table .table-striped > tbody > tr > th {
-  background-color: #ffffff;
+/*
+.no-striped {
+  > tbody > tr:nth-child(odd) {
+    > td,
+    > th {
+      background-color: #ffffff;
+    }
+  }
 }
-.no-stripe .table .table-striped > tbody > tr .coda > td {
-  background-color: #fff2cc;
+
+.no-stripe .table .table-striped > tbody > tr.nocoda:nth-child(odd) > td {
+  background-color:#e2efd9;  
 }
-.no-stripe .table .table-striped > tbody > tr .nocoda > td {
-  background-color: #e2efd9;
+
+.no-stripe    > tbody > tr.coda > td {
+    background-color: #fff2cc;
 }
-.no-stripe .table .table-striped > tbody > tr .coda:nth-child(odd) > td {
-  background-color: #fff2cc;
+.no-stripe   > tbody > tr.nocoda > td {
+   background-color: #e2efd9;
 }
-.no-stripe .table .table-striped > tbody > tr .nocoda:nth-child(odd) > td {
-  background-color: #e2efd9;
+.no-stripe  > tbody > tr.coda:nth-child(odd) > td {
+  background-color: #fff2cc;  
 }
-.no-stripe .table .table-striped > tbody > tr:nth-child(odd) > th {
-  background-color: #ffffff;
+.no-stripe > tbody > tr.nocoda:nth-child(odd) > td {
+  background-color:#e2efd9;  
 }
-.no-stripe .table .table-striped tr:nth-child(odd) > td,
-.no-stripe .table .table-striped tr:nth-child(odd) > th {
-  background-color: #ffffff;
-}
-.no-stripe .table .table-striped tr > td,
-.no-stripe .table .table-striped tr > th {
-  background-color: #ffffff;
-}
-.no-stripe .table .table-striped tr.coda:nth-child(odd) > td {
-  background-color: #fff2cc;
-}
-.no-stripe .table .table-striped tr.coda > td {
-  background-color: #fff2cc;
-}
+
+*/
 /*==========  Non-Mobile First Method  ==========*/
 /* Large Devices, Wide Screens */
 /* Medium Devices, Desktops */
