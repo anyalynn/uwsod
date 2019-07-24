@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-    grunt.initConfig({
+  grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
       options: {
@@ -14,14 +14,13 @@ module.exports = function(grunt) {
           "js/libraries/imagesloaded.pkgd.js",
           "js/libraries/jetpack.carousel.js",
           "js/libraries/prettify.js",
-		 
         ],
-		theme : [
-		  "js/uw.core.js",
+        theme : [
+          "js/uw.core.js",
           "js/uw.init.js",
           "js/uw.alert.js",
+          "js/uw.searchtoggle.js",
           "js/uw.search.js",
-		   "js/uw.searchtoggle.js",
           "js/uw.quicklinks.js",
           "js/uw.slideshow.js",
           "js/uw.youtube.js",
@@ -29,19 +28,18 @@ module.exports = function(grunt) {
           "js/uw.radio-checkbox.js",
           "js/uw.dropdowns.js",
           "js/uw.mobile-menu.js",
-		  "js/uw.mobile-sidebar-menu.js",
+          "js/uw.mobile-sidebar-menu.js",
           "js/uw.accordion.js",
-		  "js/uw.select.js",
+          "js/uw.select.js",
           "js/uw.images.js",
           "js/uw.player.js",
           "js/uw.social.js",
-		  "js/uw.custom-link.js"
-		
+          "js/uw.custom-link.js"
         ],
         components : [
           // todo: put just external components here for the uw.js we will give out
         ],
-        src: [ 'js/uw.intro.js', '<%= concat.dist.libraries %>', '<%= concat.dist.theme %>', 'js/uw.outro.js', 'js/uw.dental.js' ],
+        src: [ 'js/uw.intro.js', '<%= concat.dist.libraries %>', '<%= concat.dist.theme %>', 'js/uw.outro.js','js/uw.dental.js' ],
         dest: 'js/site.dev.js'
       }
     },
@@ -63,7 +61,6 @@ module.exports = function(grunt) {
         smarttabs: true,
         laxcomma: true,
         lastsemic: true,
-		reporterOutput: '',
         // options here to override JSHint defaults
         globals: {
           jQuery: true,
@@ -76,7 +73,7 @@ module.exports = function(grunt) {
     notify: {
       watch: {
         options: {
-          title: 'Dun\' Grunted',
+          title: 'Task complete.',
           message: 'All is good'
         }
       }
@@ -84,11 +81,13 @@ module.exports = function(grunt) {
     less: {
         production: {
 	        options: {
-		        cleancss: true
+            cleancss: true,
+            compress: true,
+
 			},
 			files: {
-				'style.css': 'less/style.less',
-                        'uw.css': 'less/style.less'
+				'style.css' : 'less/style.less',
+        'uw.css'    : 'less/style.less'
 			}
 		},
 		development: {
