@@ -13,20 +13,19 @@
     <div role='main' class="uw-content" >
    
       <div class="uw-hero-image hero-blank no-title">
-  <h1 class="container uw-site-title-blank">Home</h1>
-</div>
+          <h1 class="container uw-site-title-blank">Home</h1>
+      </div>
                          
       <div id='main_content' class="uw-body-copy" tabindex="-1">
    <?php  if ( function_exists( 'soliloquy' ) ) { soliloquy( '14466' ); }  ?>    
          
          <div class="row">
-			
-<?php get_template_part( 'quicklinks' ); ?>
-            </div>
+		       <?php get_template_part( 'quicklinks' ); ?>
+         </div>
       
-            <?php
+         <?php
           // Start the Loop.
-          while ( have_posts() ) : the_post();
+         while ( have_posts() ) : the_post();
 
             /*
              * Include the post format-specific template for the content. If you want to
@@ -43,12 +42,8 @@
           endwhile;
         ?>
        </div>
-        
-             
-
-		
-	    </div>
+     </div>
   </div>
-
+</div>
 
 <?php get_footer(); ?>
