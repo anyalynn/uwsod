@@ -38,4 +38,5 @@
     <?php get_template_part('thinstrip'); ?>
 
     <?php require( get_template_directory() . '/inc/template-functions.php' );
+	<?php echo do_shortcode( '[query id=70]' ); ?>
           uw_dropdowns(); ?>
