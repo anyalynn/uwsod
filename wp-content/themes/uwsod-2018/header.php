@@ -36,6 +36,14 @@
 
 
     <?php get_template_part('thinstrip'); ?>
-
+<div id="uwalert-alert-message" class="orange-alert">
+<div class="container">
+<h1>Questions and answers about the sterilization incident</h1>
+<p></p>
+<p>On July 16, 2019, clinical leadership at the University of Washington School of Dentistry received a report from a dental assistant that a dental student was not following standard sterilization procedures for dental burs. </p>
+<a href="https://dental.washington.edu/patient/qa-sterilization-incident/">More info</a>
+<p></p>
+</div>
+</div>
     <?php require( get_template_directory() . '/inc/template-functions.php' );
           uw_dropdowns(); ?>
