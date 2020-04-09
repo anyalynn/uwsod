@@ -1,6 +1,6 @@
 {
-  "name": "uw",
-  "repository": "github:uweb/uw-2014",
+  "name": "uwsod",
+  "repository": "github:anyalynn/uwsod-2018",
   "version": "0.1.0",
   "devDependencies": {
     "clean-css": "^4.2.1",
@@ -9,7 +9,7 @@
     "grunt-contrib-jshint": "^2.1.0",
     "grunt-contrib-less": "^2.0.0",
     "grunt-contrib-uglify": "^4.0.1",
-    "grunt-contrib-watch": "^1.1.0",
+    "grunt-contrib-watch": "*",
     "grunt-notify": "*"
   }
 }

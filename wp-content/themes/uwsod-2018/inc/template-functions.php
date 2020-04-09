@@ -33,7 +33,9 @@ if ( ! function_exists( 'uw_has_sidebar' ) ) :
 
     if ( is_404() ) return false;
 
-    return get_post_format( $post->ID ) != 'gallery' || is_archive() || is_search() || is_404();
+    $post_format = isset( $post->ID ) ? get_post_format( $post->ID ) : false;
+
+    return $post_format != 'gallery' || is_archive() || is_search() || is_404();
   }
 endif;
 
@@ -407,7 +409,22 @@ if ( !function_exists('uw_meta_tags') ):
     global $post;
     // Get the current site's URL
     $url = network_site_url();
-    if($url = "http://localhost/cms/" || $url = "http://cmsdev.u.washington.edu/" || $url = "https://www.washington.edu/cms/"){
+    $site_url = home_url();
+    $has_post_thumbnail = isset( $post->ID ) ? has_post_thumbnail( $post->ID ) : false;
+    if($url = "http://localhost/cms/" || $url = "http://cms.local/" || $url = "http://cmsdev.uw.edu/" || $url = "https://www.washington.edu/cms/"){
+      if ($site_url === "https://www.washington.edu/cms/uwclimatesurvey") {
+        $og_img = "https://s3-us-west-2.amazonaws.com/uw-s3-cdn/wp-content/uploads/sites/164/2019/10/16193323/Campus-Climate-Survey-Social-Facebook-1200x630.jpg";
+
+        echo '<meta property="og:image" content="' . $og_img . '" />' . PHP_EOL;
+      }
+      else if( !$has_post_thumbnail ) { //the post does not have featured image, use a default image
+          $default_image = "http://s3-us-west-2.amazonaws.com/uw-s3-cdn/wp-content/uploads/sites/10/2019/06/21094817/Univ-of-Washington_Memorial-Way.jpg"; //replace this with a default image on your server or an image in your media library
+          echo '<meta property="og:image" content="' . $default_image . '" />' . PHP_EOL;
+      }
+      else{
+        $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
+        echo '<meta property="og:image" content="' . esc_attr( $thumbnail_src[0] ) . '" />' . PHP_EOL;
+      }
 
       echo '<meta name="twitter:card" content="summary" />' . PHP_EOL;
       echo '<meta name="twitter:site" content="@uw" />' . PHP_EOL;
@@ -415,7 +432,8 @@ if ( !function_exists('uw_meta_tags') ):
       echo '<meta name="twitter:card" content="summary_large_image" />' . PHP_EOL;
       echo '<meta property="og:title" content="' . html_entity_decode(get_the_title()) . '" />' . PHP_EOL;
       // echo '<meta property="og:type" content="article"/>' . PHP_EOL;
-      echo '<meta property="og:url" content="' . get_permalink() . '" />' . PHP_EOL;
+      $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+      echo '<meta property="og:url" content="' . $actual_link . '" />' . PHP_EOL;
       echo '<meta property="og:site_name" content="' . get_bloginfo( 'name' ) . '" />' . PHP_EOL;
 
       if ( !is_singular()) //if it is not a post or a page

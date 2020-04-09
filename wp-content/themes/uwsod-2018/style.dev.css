@@ -1,11 +1,12 @@
 /*!
-Theme Name: UWSOD 2018
-Theme URI: uwsod.staging.wpengine.com
-Description: The 2014 UW theme modifed for SOD
-Author: UW Web Team + Anya LevySmith
-Author URI: http://uwsod.staging.wpengine.com/
-Version: 0.2
- */
+Theme Name: UWSOD-2018
+Theme URI: https://github.com/anyalynn/uwsod-2018
+Description: The uwsod-2018 theme
+Author: Anyal
+Author URI: https://dental.uw.edu/
+Version: 1.1
+GitHub Theme URI: https://github.com/anyalynn/uwsod-2018
+     */
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -13325,6 +13326,7 @@ table.services a {
 .widget_recent_entries ul,
 .recent-posts-widget ul,
 .uw-recent ul,
+.uw-recent-widget ul,
 .uw-top-posts ul,
 .uw-widget-related-posts ul,
 .uw-widget-rss ul {
@@ -13334,6 +13336,7 @@ table.services a {
 .widget_recent_entries li,
 .recent-posts-widget li,
 .uw-recent li,
+.uw-recent-widget li,
 .uw-top-posts li,
 .uw-widget-related-posts li,
 .uw-widget-rss li {
@@ -13346,6 +13349,7 @@ table.services a {
 .widget_recent_entries li:last-child p:after,
 .recent-posts-widget li:last-child p:after,
 .uw-recent li:last-child p:after,
+.uw-recent-widget li:last-child p:after,
 .uw-top-posts li:last-child p:after,
 .uw-widget-related-posts li:last-child p:after,
 .uw-widget-rss li:last-child p:after {
@@ -13355,6 +13359,7 @@ table.services a {
 .widget_recent_entries p,
 .recent-posts-widget p,
 .uw-recent p,
+.uw-recent-widget p,
 .uw-top-posts p,
 .uw-widget-related-posts p,
 .uw-widget-rss p,
@@ -13362,6 +13367,7 @@ table.services a {
 .widget_recent_entries span,
 .recent-posts-widget span,
 .uw-recent span,
+.uw-recent-widget span,
 .uw-top-posts span,
 .uw-widget-related-posts span,
 .uw-widget-rss span {
@@ -13373,6 +13379,7 @@ table.services a {
 .widget_recent_entries p:after,
 .recent-posts-widget p:after,
 .uw-recent p:after,
+.uw-recent-widget p:after,
 .uw-top-posts p:after,
 .uw-widget-related-posts p:after,
 .uw-widget-rss p:after,
@@ -13380,6 +13387,7 @@ table.services a {
 .widget_recent_entries span:after,
 .recent-posts-widget span:after,
 .uw-recent span:after,
+.uw-recent-widget span:after,
 .uw-top-posts span:after,
 .uw-widget-related-posts span:after,
 .uw-widget-rss span:after {
@@ -13395,6 +13403,7 @@ table.services a {
 .widget_recent_entries img,
 .recent-posts-widget img,
 .uw-recent img,
+.uw-recent-widget img,
 .uw-top-posts img,
 .uw-widget-related-posts img,
 .uw-widget-rss img {
@@ -13415,6 +13424,7 @@ table.services a {
 .widget_recent_entries a.widget-link,
 .recent-posts-widget a.widget-link,
 .uw-recent a.widget-link,
+.uw-recent-widget a.widget-link,
 .uw-top-posts a.widget-link,
 .uw-widget-related-posts a.widget-link,
 .uw-widget-rss a.widget-link {
@@ -13430,6 +13440,7 @@ table.services a {
 .widget_recent_entries a.widget-link span,
 .recent-posts-widget a.widget-link span,
 .uw-recent a.widget-link span,
+.uw-recent-widget a.widget-link span,
 .uw-top-posts a.widget-link span,
 .uw-widget-related-posts a.widget-link span,
 .uw-widget-rss a.widget-link span {
@@ -13442,6 +13453,7 @@ table.services a {
 .widget_recent_entries a.widget-link:hover,
 .recent-posts-widget a.widget-link:hover,
 .uw-recent a.widget-link:hover,
+.uw-recent-widget a.widget-link:hover,
 .uw-top-posts a.widget-link:hover,
 .uw-widget-related-posts a.widget-link:hover,
 .uw-widget-rss a.widget-link:hover {
@@ -13452,6 +13464,7 @@ table.services a {
 .widget_recent_entries .more,
 .recent-posts-widget .more,
 .uw-recent .more,
+.uw-recent-widget .more,
 .uw-top-posts .more,
 .uw-widget-related-posts .more,
 .uw-widget-rss .more {
@@ -13461,6 +13474,7 @@ table.services a {
 .widget_recent_entries small,
 .recent-posts-widget small,
 .uw-recent small,
+.uw-recent-widget small,
 .uw-top-posts small,
 .uw-widget-related-posts small,
 .uw-widget-rss small {
@@ -13472,6 +13486,7 @@ table.services a {
 .widget_recent_entries span,
 .recent-posts-widget span,
 .uw-recent span,
+.uw-recent-widget span,
 .uw-top-posts span,
 .uw-widget-related-posts span,
 .uw-widget-rss span {
@@ -13482,6 +13497,7 @@ table.services a {
 .widget_recent_entries svg,
 .recent-posts-widget svg,
 .uw-recent svg,
+.uw-recent-widget svg,
 .uw-top-posts svg,
 .uw-widget-related-posts svg,
 .uw-widget-rss svg {
