@@ -113,7 +113,7 @@ UW.Search = Backbone.View.extend({
   submitSearch : function( e )
   {
 	this.$el.find('#uw-search-bar' ).attr( 'name', 'q' )
-	this.$el.find('form').attr('action','https://dental.washington.edu/wp-content/themes/uwsod-2014/search.php/')
+	this.$el.find('form').attr('action','https://dental.washington.edu/wp-content/themes/uwsod-2018/search.php/')
 	return true;
   },
 
