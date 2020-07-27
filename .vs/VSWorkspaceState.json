@@ -2,9 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\wp-content",
-    "\\wp-content\\themes",
+    "\\wp-content\\plugins",
+    "\\wp-content\\plugins\\sharedaddy",
     "\\wp-content\\themes\\uwsod-2018"
   ],
-  "SelectedNode": "\\wp-content\\themes\\uwsod-2018\\gruntfile.js",
+  "SelectedNode": "\\wp-content\\plugins\\sharedaddy\\sharing-sources.php",
   "PreviewInSolutionExplorer": false
 }
