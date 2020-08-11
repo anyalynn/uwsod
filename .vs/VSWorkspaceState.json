@@ -3,8 +3,7 @@
     "",
     "\\wp-content",
     "\\wp-content\\plugins",
-    "\\wp-content\\plugins\\sharedaddy",
-    "\\wp-content\\themes\\uwsod-2018"
+    "\\wp-content\\plugins\\sharedaddy"
   ],
   "SelectedNode": "\\wp-content\\plugins\\sharedaddy\\sharing-sources.php",
   "PreviewInSolutionExplorer": false
