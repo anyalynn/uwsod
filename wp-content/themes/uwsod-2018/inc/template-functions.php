@@ -42,7 +42,7 @@ endif;
 if ( ! function_exists( 'uw_dropdowns') ) :
   function uw_dropdowns()
   {
-	   echo '<nav id="main-nav" aria-label="Main menu"><div class="container" role="application">';
+	   echo '<nav id="main-nav" aria-label="Main menu"><div class="container">';
 echo '<input id="main-menu-state" type="checkbox" />
 <label class="main-menu-btn" for="main-menu-state">
   <span class="main-menu-btn-icon"></span> Toggle main menu visibility

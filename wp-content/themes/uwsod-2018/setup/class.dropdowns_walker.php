@@ -24,7 +24,7 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu
   function start_lvl( &$output, $depth = 0, $args = array() )
   {
     
-	$output .= "<ul role=\"group\" id=\"menu-{$this->CURRENT}\" aria-labelledby='{$this->CURRENT}' aria-expanded=\"false\" class=\"\">\n";
+	$output .= "<ul role=\"group\" id=\"menu-{$this->CURRENT}\" aria-labelledby='{$this->CURRENT}' class=\"\">\n";
 	}
 
   function end_lvl( &$output, $depth = 0, $args = array() )
