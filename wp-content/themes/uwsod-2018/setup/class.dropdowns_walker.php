@@ -23,11 +23,8 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu
 
   function start_lvl( &$output, $depth = 0, $args = array() )
   {
-    $indent = str_repeat("\t", $depth);
-    $output .= "\n$indent<button data-toggle=\"dropdown\" aria-controls=\"menu-{$this->CURRENT}\" aria-labelledby=\"{$this->CURRENT}\"><i class=\"icon-chevron-down\"></i></button>\n";
-	if ( $depth > 0 ) return;
-		$output .= "<ul role=\"group\" id=\"menu-{$this->CURRENT}\" aria-labelledby='{$this->CURRENT}' class=\"dawgdrops-menu\">\n";
-	
+    
+	$output .= "<ul role=\"group\" id=\"menu-{$this->CURRENT}\" aria-labelledby='{$this->CURRENT}' aria-expanded=\"false\" class=\"\">\n";
 	}
 
   function end_lvl( &$output, $depth = 0, $args = array() )
@@ -49,7 +46,7 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu
     $this->CURRENT = $item->post_name;
     $title = ! empty( $item->title ) ? $item->title : $item->post_title;
 
-    //$controls =  '';
+    $controls =  '';
 
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
@@ -71,7 +68,7 @@ class UW_Dropdowns_Walker_Menu extends Walker_Nav_Menu
 
 		$attributes .= $depth == 1                ? ' tabindex="-1" '                                : '';
 		$attributes .= ' title="'. $title .'" ';
-  //      $attributes .= $controls;
+        $attributes .= $controls;
 
         $attributes .= ' id="' . $this->CURRENT . '"';
 

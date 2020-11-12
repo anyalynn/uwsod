@@ -2,12 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\wp-content",
-    "\\wp-content\\themes",
-    "\\wp-content\\themes\\uwsod-2018",
-    "\\wp-content\\themes\\uwsod-2018\\js",
-    "\\wp-content\\themes\\uwsod-2018\\less",
-    "\\wp-content\\themes\\uwsod-2018\\setup"
+    "\\wp-content\\plugins",
+    "\\wp-content\\plugins\\sharedaddy"
   ],
-  "SelectedNode": "\\wp-content\\themes\\uwsod-2018\\js\\uw.dropdowns.js",
+  "SelectedNode": "\\wp-content\\plugins\\sharedaddy\\sharing-sources.php",
   "PreviewInSolutionExplorer": false
 }
