@@ -111,6 +111,17 @@ class UW_Iframes
       'app.modelo.io',
       'webcasts.weforum.org',
       'weforum.org',
+      'storymaps.arcgis.com',
+      'h5p.org',
+      'app.powerbi.com',
+      'powerbi.com',
+      'www.powerbi.com',
+      'acuityscheduling.com',
+      'app.acuityscheduling.com',
+      'video.ibm.com',
+      'ibm.com',
+      'www.ustream.tv',
+      'ustream.tv',
     );
   }
 
