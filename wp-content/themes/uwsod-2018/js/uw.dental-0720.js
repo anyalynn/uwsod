@@ -127,7 +127,7 @@ function formVal()
 
 
 /*
- * SmartMenus jQuery v1.1.1
+ * SmartMenus jQuery v1.0.0
  * http://www.smartmenus.org/
  *
  * Copyright Vasil Dinkov, Vadikom Web Ltd.
@@ -151,12 +151,12 @@ function formVal()
 } (function($) {
 
 	var menuTrees = [],
+		IE = !!window.createPopup, // detect it for the iframe shim
 		mouse = false, // optimize for touch by default - we will detect for mouse input
 		touchEvents = 'ontouchstart' in window, // we use this just to choose between toucn and pointer events, not for touch screen detection
 		mouseDetectionEnabled = false,
 		requestAnimationFrame = window.requestAnimationFrame || function(callback) { return setTimeout(callback, 1000 / 60); },
-		cancelAnimationFrame = window.cancelAnimationFrame || function(id) { clearTimeout(id); },
-		canAnimate = !!$.fn.animate;
+		cancelAnimationFrame = window.cancelAnimationFrame || function(id) { clearTimeout(id); };
 
 	// Handle detection for mouse input (i.e. desktop browsers, tablets with a mouse, etc.)
 	function initMouseDetection(disable) {
@@ -165,42 +165,41 @@ function formVal()
 			// if we get two consecutive mousemoves within 2 pixels from each other and within 300ms, we assume a real mouse/cursor is present
 			// in practice, this seems like impossible to trick unintentianally with a real mouse and a pretty safe detection on touch devices (even with older browsers that do not support touch events)
 			var firstTime = true,
-				lastMove = null,
-				events = {
-					'mousemove': function(e) {
-						var thisMove = { x: e.pageX, y: e.pageY, timeStamp: new Date().getTime() };
-						if (lastMove) {
-							var deltaX = Math.abs(lastMove.x - thisMove.x),
-								deltaY = Math.abs(lastMove.y - thisMove.y);
-		 					if ((deltaX > 0 || deltaY > 0) && deltaX <= 4 && deltaY <= 4 && thisMove.timeStamp - lastMove.timeStamp <= 300) {
-								mouse = true;
-								// if this is the first check after page load, check if we are not over some item by chance and call the mouseenter handler if yes
-								if (firstTime) {
-									var $a = $(e.target).closest('a');
-									if ($a.is('a')) {
-										$.each(menuTrees, function() {
-											if ($.contains(this.$root[0], $a[0])) {
-												this.itemEnter({ currentTarget: $a[0] });
-												return false;
-											}
-										});
-									}
-									firstTime = false;
+				lastMove = null;
+			$(document).bind(getEventsNS([
+				['mousemove', function(e) {
+					var thisMove = { x: e.pageX, y: e.pageY, timeStamp: new Date().getTime() };
+					if (lastMove) {
+						var deltaX = Math.abs(lastMove.x - thisMove.x),
+							deltaY = Math.abs(lastMove.y - thisMove.y);
+	 					if ((deltaX > 0 || deltaY > 0) && deltaX <= 2 && deltaY <= 2 && thisMove.timeStamp - lastMove.timeStamp <= 300) {
+							mouse = true;
+							// if this is the first check after page load, check if we are not over some item by chance and call the mouseenter handler if yes
+							if (firstTime) {
+								var $a = $(e.target).closest('a');
+								if ($a.is('a')) {
+									$.each(menuTrees, function() {
+										if ($.contains(this.$root[0], $a[0])) {
+											this.itemEnter({ currentTarget: $a[0] });
+											return false;
+										}
+									});
 								}
+								firstTime = false;
 							}
 						}
-						lastMove = thisMove;
 					}
-				};
-			events[touchEvents ? 'touchstart' : 'pointerover pointermove pointerout MSPointerOver MSPointerMove MSPointerOut'] = function(e) {
-				if (isTouchEvent(e.originalEvent)) {
-					mouse = false;
-				}
-			};
-			$(document).on(getEventsNS(events, eNS));
+					lastMove = thisMove;
+				}],
+				[touchEvents ? 'touchstart' : 'pointerover pointermove pointerout MSPointerOver MSPointerMove MSPointerOut', function(e) {
+					if (isTouchEvent(e.originalEvent)) {
+						mouse = false;
+					}
+				}]
+			], eNS));
 			mouseDetectionEnabled = true;
 		} else if (mouseDetectionEnabled && disable) {
-			$(document).off(eNS);
+			$(document).unbind(eNS);
 			mouseDetectionEnabled = false;
 		}
 	}
@@ -209,16 +208,16 @@ function formVal()
 		return !/^(4|mouse)$/.test(e.pointerType);
 	}
 
-	// returns a jQuery on() ready object
-	function getEventsNS(events, eNS) {
+	// returns a jQuery bind() ready object
+	function getEventsNS(defArr, eNS) {
 		if (!eNS) {
 			eNS = '';
 		}
-		var eventsNS = {};
-		for (var i in events) {
-			eventsNS[i.split(' ').join(eNS + ' ') + eNS] = events[i];
-		}
-		return eventsNS;
+		var obj = {};
+		$.each(defArr, function(index, value) {
+			obj[value[0].split(' ').join(eNS + ' ') + eNS] = value[1];
+		});
+		return obj;
 	}
 
 	$.SmartMenus = function(elm, options) {
@@ -278,33 +277,33 @@ function formVal()
 						.data('smartmenus', this)
 						.attr('data-smartmenus-id', this.rootId)
 						.dataSM('level', 1)
-						.on(getEventsNS({
-							'mouseover focusin': $.proxy(this.rootOver, this),
-							'mouseout focusout': $.proxy(this.rootOut, this),
-							'keydown': $.proxy(this.rootKeyDown, this)
-						}, eNS))
-						.on(getEventsNS({
-							'mouseenter': $.proxy(this.itemEnter, this),
-							'mouseleave': $.proxy(this.itemLeave, this),
-							'mousedown': $.proxy(this.itemDown, this),
-							'focus': $.proxy(this.itemFocus, this),
-							'blur': $.proxy(this.itemBlur, this),
-							'click': $.proxy(this.itemClick, this)
-						}, eNS), 'a');
+						.bind(getEventsNS([
+							['mouseover focusin', $.proxy(this.rootOver, this)],
+							['mouseout focusout', $.proxy(this.rootOut, this)],
+							['keydown', $.proxy(this.rootKeyDown, this)]
+						], eNS))
+						.delegate('a', getEventsNS([
+							['mouseenter', $.proxy(this.itemEnter, this)],
+							['mouseleave', $.proxy(this.itemLeave, this)],
+							['mousedown', $.proxy(this.itemDown, this)],
+							['focus', $.proxy(this.itemFocus, this)],
+							['blur', $.proxy(this.itemBlur, this)],
+							['click', $.proxy(this.itemClick, this)]
+						], eNS));
 
 					// hide menus on tap or click outside the root UL
 					eNS += this.rootId;
 					if (this.opts.hideOnClick) {
-						$(document).on(getEventsNS({
-							'touchstart': $.proxy(this.docTouchStart, this),
-							'touchmove': $.proxy(this.docTouchMove, this),
-							'touchend': $.proxy(this.docTouchEnd, this),
+						$(document).bind(getEventsNS([
+							['touchstart', $.proxy(this.docTouchStart, this)],
+							['touchmove', $.proxy(this.docTouchMove, this)],
+							['touchend', $.proxy(this.docTouchEnd, this)],
 							// for Opera Mobile < 11.5, webOS browser, etc. we'll check click too
-							'click': $.proxy(this.docClick, this)
-						}, eNS));
+							['click', $.proxy(this.docClick, this)]
+						], eNS));
 					}
 					// hide sub menus on resize
-					$(window).on(getEventsNS({ 'resize orientationchange': $.proxy(this.winResize, this) }, eNS));
+					$(window).bind(getEventsNS([['resize orientationchange', $.proxy(this.winResize, this)]], eNS));
 
 					if (this.opts.subIndicators) {
 						this.$subArrow = $('<span/>').addClass('sub-arrow');
@@ -328,7 +327,7 @@ function formVal()
 						reHash = /#.*/,
 						locHref = window.location.href.replace(reDefaultDoc, ''),
 						locHrefNoHash = locHref.replace(reHash, '');
-					this.$root.find('a:not(.mega-menu a)').each(function() {
+					this.$root.find('a').each(function() {
 						var href = this.href.replace(reDefaultDoc, ''),
 							$this = $(this);
 						if (href == locHref || href == locHrefNoHash) {
@@ -352,10 +351,11 @@ function formVal()
 						.removeData('smartmenus')
 						.removeAttr('data-smartmenus-id')
 						.removeDataSM('level')
-						.off(eNS);
+						.unbind(eNS)
+						.undelegate(eNS);
 					eNS += this.rootId;
-					$(document).off(eNS);
-					$(window).off(eNS);
+					$(document).unbind(eNS);
+					$(window).unbind(eNS);
 					if (this.opts.subIndicators) {
 						this.$subArrow = null;
 					}
@@ -382,6 +382,7 @@ function formVal()
 					})
 					.removeDataSM('in-mega')
 					.removeDataSM('shown-before')
+					.removeDataSM('ie-shim')
 					.removeDataSM('scroll-arrows')
 					.removeDataSM('parent-a')
 					.removeDataSM('level')
@@ -444,7 +445,7 @@ function formVal()
 					return;
 				}
 				// hide on any click outside the menu or on a menu link
-				if (this.visibleSubMenus.length && !$.contains(this.$root[0], e.target) || $(e.target).closest('a').length) {
+				if (this.visibleSubMenus.length && !$.contains(this.$root[0], e.target) || $(e.target).is('a')) {
 					this.menuHideAll();
 				}
 			},
@@ -483,6 +484,9 @@ function formVal()
 					}
 					this.disabled = false;
 				}
+
+
+
 			},
 			getClosestMenu: function(elm) {
 				var $closestMenu = $(elm).closest('ul');
@@ -549,7 +553,7 @@ function formVal()
 				return this.$firstSub.css('position') == 'static';
 			},
 			isCSSOn: function() {
-				return this.$firstLink.css('display') != 'inline';
+				return this.$firstLink.css('display') == 'block';
 			},
 			isFixed: function() {
 				var isFixed = this.$root.css('position') == 'fixed';
@@ -569,7 +573,7 @@ function formVal()
 			isTouchMode: function() {
 				return !mouse || this.opts.noMouseOver || this.isCollapsible();
 			},
-			itemActivate: function($a, hideDeeperSubs) {
+			itemActivate: function($a, focus) {
 				var $ul = $a.closest('ul'),
 					level = $ul.dataSM('level');
 				// if for some reason the parent item is not activated (e.g. this is an API call to activate the item), activate all parent items first
@@ -580,7 +584,7 @@ function formVal()
 					});
 				}
 				// hide any visible deeper level sub menus
-				if (!this.isCollapsible() || hideDeeperSubs) {
+				if (!this.isCollapsible() || focus) {
 					this.menuHideSubMenus(!this.activatedItems[level - 1] || this.activatedItems[level - 1][0] != $a[0] ? level - 1 : level);
 				}
 				// save new active item for this level
@@ -614,43 +618,28 @@ function formVal()
 				if (this.$root.triggerHandler('click.smapi', $a[0]) === false) {
 					return false;
 				}
-				var $sub = $a.dataSM('sub'),
+				var subArrowClicked = $(e.target).is('span.sub-arrow'),
+					$sub = $a.dataSM('sub'),
 					firstLevelSub = $sub ? $sub.dataSM('level') == 2 : false;
-				if ($sub) {
-					var subArrowClicked = $(e.target).is('.sub-arrow'),
-						collapsible = this.isCollapsible(),
-						behaviorToggle = /toggle$/.test(this.opts.collapsibleBehavior),
-						behaviorLink = /link$/.test(this.opts.collapsibleBehavior),
-						behaviorAccordion = /^accordion/.test(this.opts.collapsibleBehavior);
-					// if the sub is hidden, try to show it
-					if (!$sub.is(':visible')) {
-						if (!behaviorLink || !collapsible || subArrowClicked) {
-							if (!collapsible && this.opts.showOnClick && firstLevelSub) {
-								this.clickActivated = true;
-							}
-							// try to activate the item and show the sub
-							this.itemActivate($a, behaviorAccordion);
-							// if "itemActivate" showed the sub, prevent the click so that the link is not loaded
-							// if it couldn't show it, then the sub menus are disabled with an !important declaration (e.g. via mobile styles) so let the link get loaded
-							if ($sub.is(':visible')) {
-								this.focusActivated = true;
-								return false;
-							}
-						}
-					// if the sub is visible and showOnClick: true, hide the sub
-					} else if (!collapsible && this.opts.showOnClick && firstLevelSub) {
-						this.menuHide($sub);
-						this.clickActivated = false;
-						this.focusActivated = false;
-						return false;
-					// if the sub is visible and we are in collapsible mode
-					} else if (collapsible && (behaviorToggle || subArrowClicked)) {
-						this.itemActivate($a, behaviorAccordion);
-						this.menuHide($sub);
+				// if the sub is not visible
+				if ($sub && !$sub.is(':visible')) {
+					if (this.opts.showOnClick && firstLevelSub) {
+						this.clickActivated = true;
+					}
+					// try to activate the item and show the sub
+					this.itemActivate($a);
+					// if "itemActivate" showed the sub, prevent the click so that the link is not loaded
+					// if it couldn't show it, then the sub menus are disabled with an !important declaration (e.g. via mobile styles) so let the link get loaded
+					if ($sub.is(':visible')) {
+						this.focusActivated = true;
 						return false;
 					}
+				} else if (this.isCollapsible() && subArrowClicked) {
+					this.itemActivate($a);
+					this.menuHide($sub);
+					return false;
 				}
-				if (!collapsible && this.opts.showOnClick && firstLevelSub || $a.hasClass('disabled') || this.$root.triggerHandler('select.smapi', $a[0]) === false) {
+				if (this.opts.showOnClick && firstLevelSub || $a.hasClass('disabled') || this.$root.triggerHandler('select.smapi', $a[0]) === false) {
 					return false;
 				}
 			},
@@ -706,9 +695,7 @@ function formVal()
 				if (this.$root.triggerHandler('beforehide.smapi', $sub[0]) === false) {
 					return;
 				}
-				if (canAnimate) {
-					$sub.stop(true, true);
-				}
+				$sub.stop(true, true);
 				if ($sub.css('display') != 'none') {
 					var complete = function() {
 						// unset z-index
@@ -716,23 +703,27 @@ function formVal()
 					};
 					// if sub is collapsible (mobile view)
 					if (this.isCollapsible()) {
-						if (canAnimate && this.opts.collapsibleHideFunction) {
+						if (this.opts.collapsibleHideFunction) {
 							this.opts.collapsibleHideFunction.call(this, $sub, complete);
 						} else {
 							$sub.hide(this.opts.collapsibleHideDuration, complete);
 						}
 					} else {
-						if (canAnimate && this.opts.hideFunction) {
+						if (this.opts.hideFunction) {
 							this.opts.hideFunction.call(this, $sub, complete);
 						} else {
 							$sub.hide(this.opts.hideDuration, complete);
 						}
 					}
+					// remove IE iframe shim
+					if ($sub.dataSM('ie-shim')) {
+						$sub.dataSM('ie-shim').remove().css({ '-webkit-transform': '', transform: '' });
+					}
 					// deactivate scrolling if it is activated for this sub
 					if ($sub.dataSM('scroll')) {
 						this.menuScrollStop($sub);
 						$sub.css({ 'touch-action': '', '-ms-touch-action': '', '-webkit-transform': '', transform: '' })
-							.off('.smartmenus_scroll').removeDataSM('scroll').dataSM('scroll-arrows').hide();
+							.unbind('.smartmenus_scroll').removeDataSM('scroll').dataSM('scroll-arrows').hide();
 					}
 					// unhighlight parent item + accessibility
 					$sub.dataSM('parent-a').removeClass('highlighted').attr('aria-expanded', 'false');
@@ -759,14 +750,16 @@ function formVal()
 				}
 				// hide root if it's popup
 				if (this.opts.isPopup) {
-					if (canAnimate) {
-						this.$root.stop(true, true);
-					}
+					this.$root.stop(true, true);
 					if (this.$root.is(':visible')) {
-						if (canAnimate && this.opts.hideFunction) {
+						if (this.opts.hideFunction) {
 							this.opts.hideFunction.call(this, this.$root);
 						} else {
 							this.$root.hide(this.opts.hideDuration);
+						}
+						// remove IE iframe shim
+						if (this.$root.dataSM('ie-shim')) {
+							this.$root.dataSM('ie-shim').remove();
 						}
 					}
 				}
@@ -784,6 +777,14 @@ function formVal()
 					if ($sub) {
 						this.menuHide($sub);
 					}
+				}
+			},
+			menuIframeShim: function($ul) {
+				// create iframe shim for the menu
+				if (IE && this.opts.overlapControlsInIE && !$ul.dataSM('ie-shim')) {
+					$ul.dataSM('ie-shim', $('<iframe/>').attr({ src: 'javascript:0', tabindex: -9 })
+						.css({ position: 'absolute', top: 'auto', left: '0', opacity: 0, border: '0' })
+					);
 				}
 			},
 			menuInit: function($ul) {
@@ -880,7 +881,7 @@ function formVal()
 						var self = this;
 						if (!$sub.dataSM('scroll-arrows')) {
 							$sub.dataSM('scroll-arrows', $([$('<span class="scroll-up"><span class="scroll-up-arrow"></span></span>')[0], $('<span class="scroll-down"><span class="scroll-down-arrow"></span></span>')[0]])
-								.on({
+								.bind({
 									mouseenter: function() {
 										$sub.dataSM('scroll').up = $(this).hasClass('scroll-up');
 										self.menuScroll($sub);
@@ -904,25 +905,31 @@ function formVal()
 								subH: subH,
 								arrowDownH: this.getHeight($sub.dataSM('scroll-arrows').eq(1))
 							})
-							.on(getEventsNS({
-								'mouseover': function(e) { self.menuScrollOver($sub, e); },
-								'mouseout': function(e) { self.menuScrollOut($sub, e); },
-								'mousewheel DOMMouseScroll': function(e) { self.menuScrollMousewheel($sub, e); }
-							}, eNS))
+							.bind(getEventsNS([
+								['mouseover', function(e) { self.menuScrollOver($sub, e); }],
+								['mouseout', function(e) { self.menuScrollOut($sub, e); }],
+								['mousewheel DOMMouseScroll', function(e) { self.menuScrollMousewheel($sub, e); }]
+							], eNS))
 							.dataSM('scroll-arrows').css({ top: 'auto', left: '0', marginLeft: x + (parseInt($sub.css('border-left-width')) || 0), width: subW - (parseInt($sub.css('border-left-width')) || 0) - (parseInt($sub.css('border-right-width')) || 0), zIndex: $sub.css('z-index') })
 								.eq(horizontalParent && this.opts.bottomToTopSubMenus ? 0 : 1).show();
 						// when a menu tree is fixed positioned we allow scrolling via touch too
 						// since there is no other way to access such long sub menus if no mouse is present
 						if (this.isFixed()) {
-							var events = {};
-							events[touchEvents ? 'touchstart touchmove touchend' : 'pointerdown pointermove pointerup MSPointerDown MSPointerMove MSPointerUp'] = function(e) {
-								self.menuScrollTouch($sub, e);
-							};
-							$sub.css({ 'touch-action': 'none', '-ms-touch-action': 'none' }).on(getEventsNS(events, eNS));
+							$sub.css({ 'touch-action': 'none', '-ms-touch-action': 'none' })
+								.bind(getEventsNS([
+									[touchEvents ? 'touchstart touchmove touchend' : 'pointerdown pointermove pointerup MSPointerDown MSPointerMove MSPointerUp', function(e) {
+										self.menuScrollTouch($sub, e);
+									}]
+								], eNS));
 						}
 					}
 				}
 				$sub.css({ top: 'auto', left: '0', marginLeft: x, marginTop: y - itemH });
+				// IE iframe shim
+				this.menuIframeShim($sub);
+				if ($sub.dataSM('ie-shim')) {
+					$sub.dataSM('ie-shim').css({ zIndex: $sub.css('z-index'), width: subW, height: subH, marginLeft: x, marginTop: y - itemH });
+				}
 			},
 			menuScroll: function($sub, once, step) {
 				var data = $sub.dataSM('scroll'),
@@ -945,7 +952,7 @@ function formVal()
 					this.menuHideSubMenus(level - 1);
 				}
 				data.y = data.up && end <= data.y || !data.up && end >= data.y ? data.y : (Math.abs(end - data.y) > diff ? data.y + (data.up ? diff : -diff) : end);
-				$sub.css(this.cssTransforms3d ? { '-webkit-transform': 'translate3d(0, ' + data.y + 'px, 0)', transform: 'translate3d(0, ' + data.y + 'px, 0)' } : { marginTop: data.y });
+				$sub.add($sub.dataSM('ie-shim')).css(this.cssTransforms3d ? { '-webkit-transform': 'translate3d(0, ' + data.y + 'px, 0)', transform: 'translate3d(0, ' + data.y + 'px, 0)' } : { marginTop: data.y });
 				// show opposite arrow if appropriate
 				if (mouse && (data.up && data.y > data.downEnd || !data.up && data.y < data.upEnd)) {
 					$arrows.eq(data.up ? 1 : 0).show();
@@ -1077,18 +1084,15 @@ function formVal()
 				if (this.$root.triggerHandler('beforeshow.smapi', $sub[0]) === false) {
 					return;
 				}
-				$sub.dataSM('shown-before', true);
-				if (canAnimate) {
-					$sub.stop(true, true);
-				}
+				$sub.dataSM('shown-before', true)
+					.stop(true, true);
 				if (!$sub.is(':visible')) {
 					// highlight parent item
-					var $a = $sub.dataSM('parent-a'),
-						collapsible = this.isCollapsible();
-					if (this.opts.keepHighlighted || collapsible) {
+					var $a = $sub.dataSM('parent-a');
+					if (this.opts.keepHighlighted || this.isCollapsible()) {
 						$a.addClass('highlighted');
 					}
-					if (collapsible) {
+					if (this.isCollapsible()) {
 						$sub.removeClass('sm-nowrap').css({ zIndex: '', width: 'auto', minWidth: '', maxWidth: '', top: '', left: '', marginLeft: '', marginTop: '' });
 					} else {
 						// set z-index
@@ -1108,20 +1112,24 @@ function formVal()
 							}
 						}
 						this.menuPosition($sub);
+						// insert IE iframe shim
+						if ($sub.dataSM('ie-shim')) {
+							$sub.dataSM('ie-shim').insertBefore($sub);
+						}
 					}
 					var complete = function() {
 						// fix: "overflow: hidden;" is not reset on animation complete in jQuery < 1.9.0 in Chrome when global "box-sizing: border-box;" is used
 						$sub.css('overflow', '');
 					};
 					// if sub is collapsible (mobile view)
-					if (collapsible) {
-						if (canAnimate && this.opts.collapsibleShowFunction) {
+					if (this.isCollapsible()) {
+						if (this.opts.collapsibleShowFunction) {
 							this.opts.collapsibleShowFunction.call(this, $sub, complete);
 						} else {
 							$sub.show(this.opts.collapsibleShowDuration, complete);
 						}
 					} else {
-						if (canAnimate && this.opts.showFunction) {
+						if (this.opts.showFunction) {
 							this.opts.showFunction.call(this, $sub, complete);
 						} else {
 							$sub.show(this.opts.showDuration, complete);
@@ -1157,18 +1165,21 @@ function formVal()
 					clearTimeout(this.hideTimeout);
 					this.hideTimeout = 0;
 				}
-				this.$root.dataSM('shown-before', true);
-				if (canAnimate) {
-					this.$root.stop(true, true);
-				}
+				this.$root.dataSM('shown-before', true)
+					.stop(true, true);
 				if (!this.$root.is(':visible')) {
 					this.$root.css({ left: left, top: top });
+					// IE iframe shim
+					this.menuIframeShim(this.$root);
+					if (this.$root.dataSM('ie-shim')) {
+						this.$root.dataSM('ie-shim').css({ zIndex: this.$root.css('z-index'), width: this.getWidth(this.$root), height: this.getHeight(this.$root), left: left, top: top }).insertBefore(this.$root);
+					}
 					// show menu
 					var self = this,
 						complete = function() {
 							self.$root.css('overflow', '');
 						};
-					if (canAnimate && this.opts.showFunction) {
+					if (this.opts.showFunction) {
 						this.opts.showFunction.call(this, this.$root, complete);
 					} else {
 						this.$root.show(this.opts.showDuration, complete);
@@ -1246,15 +1257,15 @@ function formVal()
 				}
 				// hide sub menus on resize - on mobile do it only on orientation change
 				if (!('onorientationchange' in window) || e.type == 'orientationchange') {
-					var collapsible = this.isCollapsible();
+					var isCollapsible = this.isCollapsible();
 					// if it was collapsible before resize and still is, don't do it
-					if (!(this.wasCollapsible && collapsible)) { 
+					if (!(this.wasCollapsible && isCollapsible)) { 
 						if (this.activatedItems.length) {
 							this.activatedItems[this.activatedItems.length - 1][0].blur();
 						}
 						this.menuHideAll();
 					}
-					this.wasCollapsible = collapsible;
+					this.wasCollapsible = isCollapsible;
 				}
 			}
 		}
@@ -1265,11 +1276,11 @@ function formVal()
 			return this.data(key + '_smartmenus', val);
 		}
 		return this.data(key + '_smartmenus');
-	};
+	}
 
 	$.fn.removeDataSM = function(key) {
 		return this.removeData(key + '_smartmenus');
-	};
+	}
 
 	$.fn.smartmenus = function(options) {
 		if (typeof options == 'string') {
@@ -1283,33 +1294,24 @@ function formVal()
 				}
 			});
 		}
+		var opts = $.extend({}, $.fn.smartmenus.defaults, options);
 		return this.each(function() {
-			// [data-sm-options] attribute on the root UL
-			var dataOpts = $(this).data('sm-options') || null;
-			if (dataOpts && typeof dataOpts !== 'object') {
-				try {
-					dataOpts = eval('(' + dataOpts + ')');
-				} catch(e) {
-					dataOpts = null;
-					alert('ERROR\n\nSmartMenus jQuery init:\nInvalid "data-sm-options" attribute value syntax.');
-				};
-			}
-			new $.SmartMenus(this, $.extend({}, $.fn.smartmenus.defaults, options, dataOpts));
+			new $.SmartMenus(this, opts);
 		});
-	};
+	}
 
 	// default settings
 	$.fn.smartmenus.defaults = {
 		isPopup:		false,		// is this a popup menu (can be shown via the popupShow/popupHide methods) or a permanent menu bar
-		mainMenuSubOffsetX:	0,		// pixels offset from default position
+		mainMenuSubOffsetX:	20,		// pixels offset from default position
 		mainMenuSubOffsetY:	0,		// pixels offset from default position
 		subMenusSubOffsetX:	0,		// pixels offset from default position
 		subMenusSubOffsetY:	0,		// pixels offset from default position
 		subMenusMinWidth:	'10em',		// min-width for the sub menus (any CSS unit) - if set, the fixed width set in CSS will be ignored
 		subMenusMaxWidth:	'20em',		// max-width for the sub menus (any CSS unit) - if set, the fixed width set in CSS will be ignored
 		subIndicators: 		true,		// create sub menu indicators - creates a SPAN and inserts it in the A
-		subIndicatorsPos: 	'append',	// position of the SPAN relative to the menu item content ('append', 'prepend')
-		subIndicatorsText:	'',		// [optionally] add text in the SPAN (e.g. '+') (you may want to check the CSS for the sub indicators too)
+		subIndicatorsPos: 	'prepend',	// position of the SPAN relative to the menu item content ('prepend', 'append')
+		subIndicatorsText:	'+',		// [optionally] add text in the SPAN (e.g. '+') (you may want to check the CSS for the sub indicators too)
 		scrollStep: 		30,		// pixels step when scrolling long sub menus that do not fit in the viewport height
 		scrollAccelerate:	true,		// accelerate scrolling or use a fixed step
 		showTimeout:		250,		// timeout before showing the sub menus
@@ -1337,33 +1339,26 @@ function formVal()
 		markCurrentTree:	true,		// add the 'current' class also to the A elements of all ancestor items of the current item
 		rightToLeftSubMenus:	false,		// right to left display of the sub menus (check the CSS for the sub indicators' position)
 		bottomToTopSubMenus:	false,		// bottom to top display of the sub menus
-		collapsibleBehavior:	'default'	// parent items behavior in collapsible (mobile) view ('default', 'toggle', 'link', 'accordion', 'accordion-toggle', 'accordion-link')
-							// 'default' - first tap on parent item expands sub, second tap loads its link
-							// 'toggle' - the whole parent item acts just as a toggle button for its sub menu (expands/collapses on each tap)
-							// 'link' - the parent item acts as a regular item (first tap loads its link), the sub menu can be expanded only via the +/- button
-							// 'accordion' - like 'default' but on expand also resets any visible sub menus from deeper levels or other branches
-							// 'accordion-toggle' - like 'toggle' but on expand also resets any visible sub menus from deeper levels or other branches
-							// 'accordion-link' - like 'link' but on expand also resets any visible sub menus from deeper levels or other branches
+		overlapControlsInIE:	true		// make sure sub menus appear on top of special OS controls in IE (i.e. SELECT, OBJECT, EMBED, etc.)
 	};
 
 	return $;
 }));
 
-/*
- * SmartMenus jQuery Bootstrap Addon - v0.4.1
+/*!
+ * SmartMenus jQuery Plugin Keyboard Addon - v0.3.1 - November 1, 2016
  * http://www.smartmenus.org/
  *
  * Copyright Vasil Dinkov, Vadikom Web Ltd.
- * http://vadikom.com/
+ * http://vadikom.com
  *
- * Released under the MIT license:
- * http://www.opensource.org/licenses/MIT
+ * Licensed MIT
  */
 
-(function (factory) {
+(function(factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD
-		define(['jquery', 'smartmenus'], factory);
+		define(['jquery', 'jquery.smartmenus'], factory);
 	} else if (typeof module === 'object' && typeof module.exports === 'object') {
 		// CommonJS
 		module.exports = factory(require('jquery'));
@@ -1371,141 +1366,197 @@ function formVal()
 		// Global jQuery
 		factory(jQuery);
 	}
-}(function ($) {
+} (function($) {
 
-	$.extend($.SmartMenus.Bootstrap = {}, {
-		keydownFix: false,
-		init: function () {
-			// init all navbars that don't have the "data-sm-skip" attribute set
-			var $navbars = $('ul.navbar-nav:not([data-sm-skip])');
-			$navbars.each(function () {
-				var $this = $(this),
-					obj = $this.data('smartmenus');
-				// if this navbar is not initialized
-				if (!obj) {
-					$this.smartmenus({
-						// these are some good default options that should work for all
-						subMenusSubOffsetX: 2,
-						subMenusSubOffsetY: -6,
-						subIndicators: false,
-						collapsibleShowFunction: null,
-						collapsibleHideFunction: null,
-						rightToLeftSubMenus: $this.hasClass('navbar-right'),
-						bottomToTopSubMenus: $this.closest('.navbar').hasClass('navbar-fixed-bottom')
-					})
-						.on({
-							// set/unset proper Bootstrap classes for some menu elements
-							'show.smapi': function (e, menu) {
-								var $menu = $(menu),
-									$scrollArrows = $menu.dataSM('scroll-arrows');
-								if ($scrollArrows) {
-									// they inherit border-color from body, so we can use its background-color too
-									$scrollArrows.css('background-color', $(document.body).css('background-color'));
+	function getFirstItemLink($ul) {
+		// make sure we also allow the link to be nested deeper inside the LI's (e.g. in a heading)
+		return $ul.find('> li > a:not(.disabled), > li > :not(ul) a:not(.disabled)').eq(0);
+	}
+	function getLastItemLink($ul) {
+		return $ul.find('> li > a:not(.disabled), > li > :not(ul) a:not(.disabled)').eq(-1);
+	}
+	function getNextItemLink($li, noLoop) {
+		var $a = $li.nextAll('li').find('> a:not(.disabled), > :not(ul) a:not(.disabled)').eq(0);
+		return noLoop || $a.length ? $a : getFirstItemLink($li.parent());
+	}
+	function getPreviousItemLink($li, noLoop) {
+		// bug workaround: elements are returned in reverse order just in jQuery 1.8.x
+		var $a = $li.prevAll('li').find('> a:not(.disabled), > :not(ul) a:not(.disabled)').eq(/^1\.8\./.test($.fn.jquery) ? 0 : -1);
+		return noLoop || $a.length ? $a : getLastItemLink($li.parent());
+	}
+
+	// jQuery's .focus() is unreliable in some versions, so we're going to call the links' native JS focus method
+	$.fn.focusSM = function() {
+		if (this.length && this[0].focus) {
+			this[0].focus();
+		}
+		return this;
+	};
+
+	$.extend($.SmartMenus.Keyboard = {}, {
+		docKeydown: function(e) {
+			var keyCode = e.keyCode;
+			if (!/^(37|38|39|40)$/.test(keyCode)) {
+				return;
+			}
+			var $root = $(this),
+				obj = $root.data('smartmenus'),
+				$target = $(e.target);
+			// exit if this is an A inside a mega drop-down
+			if (!obj || !$target.is('a') || !obj.handleItemEvents($target)) {
+				return;
+			}
+			var $li = $target.closest('li'),
+				$ul = $li.parent(),
+				level = $ul.dataSM('level');
+			// swap left & right keys
+			if ($root.hasClass('sm-rtl')) {
+				if (keyCode == 37) {
+					keyCode = 39;
+				} else if (keyCode == 39) {
+					keyCode = 37;
+				}
+			}
+			switch (keyCode) {
+				case 37: // Left
+					if (obj.isCollapsible()) {
+						break;
+					}
+					if (level > 2 || level == 2 && $root.hasClass('sm-vertical')) {
+						obj.activatedItems[level - 2].focusSM();
+					// move to previous non-disabled parent item (make sure we cycle so it might be the last item)
+					} else if (!$root.hasClass('sm-vertical')) {
+						getPreviousItemLink((obj.activatedItems[0] || $target).closest('li')).focusSM();
+					}
+					break;
+				case 38: // Up
+					if (obj.isCollapsible()) {
+						var $firstItem;
+						// if this is the first item of a sub menu, move to the parent item
+						if (level > 1 && ($firstItem = getFirstItemLink($ul)).length && $target[0] == $firstItem[0]) {
+							obj.activatedItems[level - 2].focusSM();
+						} else {
+							getPreviousItemLink($li).focusSM();
+						}
+					} else {
+						if (level == 1 && !$root.hasClass('sm-vertical') && obj.opts.bottomToTopSubMenus) {
+							if (!obj.activatedItems[0] && $target.dataSM('sub')) {
+								if (obj.opts.showOnClick) {
+									obj.clickActivated = true;
 								}
-								$menu.parent().addClass('open');
-							},
-							'hide.smapi': function (e, menu) {
-								$(menu).parent().removeClass('open');
-							}
-						});
-
-					function onInit() {
-						// set Bootstrap's "active" class to SmartMenus "current" items (should someone decide to enable markCurrentItem: true)
-						$this.find('a.current').parent().addClass('active');
-						// remove any Bootstrap required attributes that might cause conflicting issues with the SmartMenus script
-						$this.find('a.has-submenu').each(function () {
-							var $this = $(this);
-							if ($this.is('[data-toggle="dropdown"]')) {
-								$this.dataSM('bs-data-toggle-dropdown', true).removeAttr('data-toggle');
-							}
-							if ($this.is('[role="button"]')) {
-								$this.dataSM('bs-role-button', true).removeAttr('role');
-							}
-						});
-					}
-
-					onInit();
-
-					function onBeforeDestroy() {
-						$this.find('a.current').parent().removeClass('active');
-						$this.find('a.has-submenu').each(function () {
-							var $this = $(this);
-							if ($this.dataSM('bs-data-toggle-dropdown')) {
-								$this.attr('data-toggle', 'dropdown').removeDataSM('bs-data-toggle-dropdown');
-							}
-							if ($this.dataSM('bs-role-button')) {
-								$this.attr('role', 'button').removeDataSM('bs-role-button');
-							}
-						});
-					}
-
-					obj = $this.data('smartmenus');
-
-					// custom "isCollapsible" method for Bootstrap
-					obj.isCollapsible = function () {
-						return !/^(left|right)$/.test(this.$firstLink.parent().css('float')) && this.$root.css('display') == 'block';
-					};
-
-					// custom "refresh" method for Bootstrap
-					obj.refresh = function () {
-						$.SmartMenus.prototype.refresh.call(this);
-						onInit();
-						// update collapsible detection
-						detectCollapsible(true);
-					};
-
-					// custom "destroy" method for Bootstrap
-					obj.destroy = function (refresh) {
-						onBeforeDestroy();
-						$.SmartMenus.prototype.destroy.call(this, refresh);
-					};
-
-					// keep Bootstrap's default behavior for parent items when the "data-sm-skip-collapsible-behavior" attribute is set to the ul.navbar-nav
-					// i.e. use the whole item area just as a sub menu toggle and don't customize the carets
-					if ($this.is('[data-sm-skip-collapsible-behavior]')) {
-						obj.opts.collapsibleBehavior = 'toggle';
-					}
-
-					// onresize detect when the navbar becomes collapsible and add it the "sm-collapsible" class
-					var winW;
-					function detectCollapsible(force) {
-						var newW = obj.getViewportWidth();
-						if (newW != winW || force) {
-							var $carets = $this.find('.caret');
-							if (obj.isCollapsible()) {
-								$this.addClass('sm-collapsible');
-								// set "navbar-toggle" class to carets (so they look like a button) if the "data-sm-skip-collapsible-behavior" attribute is not set to the ul.navbar-nav
-								if (!$this.is('[data-sm-skip-collapsible-behavior]')) {
-									$carets.addClass('navbar-toggle sub-arrow');
-								}
-							} else {
-								$this.removeClass('sm-collapsible');
-								if (!$this.is('[data-sm-skip-collapsible-behavior]')) {
-									$carets.removeClass('navbar-toggle sub-arrow');
+								obj.itemActivate($target);
+								if ($target.dataSM('sub').is(':visible')) {
+									obj.focusActivated = true;
 								}
 							}
-							winW = newW;
+							if (obj.activatedItems[0] && obj.activatedItems[0].dataSM('sub') && obj.activatedItems[0].dataSM('sub').is(':visible') && !obj.activatedItems[0].dataSM('sub').hasClass('mega-menu')) {
+								getLastItemLink(obj.activatedItems[0].dataSM('sub')).focusSM();
+							}
+						} else if (level > 1 || $root.hasClass('sm-vertical')) {
+							getPreviousItemLink($li).focusSM();
 						}
 					}
-					detectCollapsible();
-					$(window).on('resize.smartmenus' + obj.rootId, detectCollapsible);
-				}
-			});
-			// keydown fix for Bootstrap 3.3.5+ conflict
-			if ($navbars.length && !$.SmartMenus.Bootstrap.keydownFix) {
-				// unhook BS keydown handler for all dropdowns
-				$(document).off('keydown.bs.dropdown.data-api', '.dropdown-menu');
-				// restore BS keydown handler for dropdowns that are not inside SmartMenus navbars
-				if ($.fn.dropdown && $.fn.dropdown.Constructor) {
-					$(document).on('keydown.bs.dropdown.data-api', '.dropdown-menu:not([id^="sm-"])', $.fn.dropdown.Constructor.prototype.keydown);
-				}
-				$.SmartMenus.Bootstrap.keydownFix = true;
+					break;
+				case 39: // Right
+					if (obj.isCollapsible()) {
+						break;
+					}
+					if (level == 1 && $root.hasClass('sm-vertical')) {
+						if (!obj.activatedItems[0] && $target.dataSM('sub')) {
+							if (obj.opts.showOnClick) {
+								obj.clickActivated = true;
+							}
+							obj.itemActivate($target);
+							if ($target.dataSM('sub').is(':visible')) {
+								obj.focusActivated = true;
+							}
+						}
+						if (obj.activatedItems[0] && obj.activatedItems[0].dataSM('sub') && obj.activatedItems[0].dataSM('sub').is(':visible') && !obj.activatedItems[0].dataSM('sub').hasClass('mega-menu')) {
+							getFirstItemLink(obj.activatedItems[0].dataSM('sub')).focusSM();
+						}
+					// move to next non-disabled parent item (make sure we cycle so it might be the last item)
+					} else if ((level == 1 || obj.activatedItems[level - 1] && (!obj.activatedItems[level - 1].dataSM('sub') || !obj.activatedItems[level - 1].dataSM('sub').is(':visible') || obj.activatedItems[level - 1].dataSM('sub').hasClass('mega-menu'))) && !$root.hasClass('sm-vertical')) {
+						getNextItemLink((obj.activatedItems[0] || $target).closest('li')).focusSM();
+					} else if (obj.activatedItems[level - 1] && obj.activatedItems[level - 1].dataSM('sub') && obj.activatedItems[level - 1].dataSM('sub').is(':visible') && !obj.activatedItems[level - 1].dataSM('sub').hasClass('mega-menu')) {
+						getFirstItemLink(obj.activatedItems[level - 1].dataSM('sub')).focusSM();
+					}
+					break;
+				case 40: // Down
+					if (obj.isCollapsible()) {
+						var $firstSubItem,
+							$lastItem;
+						// move to sub menu if appropriate
+						if (obj.activatedItems[level - 1] && obj.activatedItems[level - 1].dataSM('sub') && obj.activatedItems[level - 1].dataSM('sub').is(':visible') && !obj.activatedItems[level - 1].dataSM('sub').hasClass('mega-menu') && ($firstSubItem = getFirstItemLink(obj.activatedItems[level - 1].dataSM('sub'))).length) {
+							$firstSubItem.focusSM();
+						// if this is the last item of a sub menu, move to the next parent item
+						} else if (level > 1 && ($lastItem = getLastItemLink($ul)).length && $target[0] == $lastItem[0]) {
+							var $parentItem = obj.activatedItems[level - 2].closest('li'),
+								$nextParentItem = null;
+							while ($parentItem.is('li') && !($nextParentItem = getNextItemLink($parentItem, true)).length) {
+								$parentItem = $parentItem.parent().parent();
+							}
+							if ($nextParentItem.length) {
+								$nextParentItem.focusSM();
+							} else {
+								getFirstItemLink($root).focusSM();
+							}
+						} else {
+							getNextItemLink($li).focusSM();
+						}
+					} else {
+						if (level == 1 && !$root.hasClass('sm-vertical') && !obj.opts.bottomToTopSubMenus) {
+							if (!obj.activatedItems[0] && $target.dataSM('sub')) {
+								if (obj.opts.showOnClick) {
+									obj.clickActivated = true;
+								}
+								obj.itemActivate($target);
+								if ($target.dataSM('sub').is(':visible')) {
+									obj.focusActivated = true;
+								}
+							}
+							if (obj.activatedItems[0] && obj.activatedItems[0].dataSM('sub') && obj.activatedItems[0].dataSM('sub').is(':visible') && !obj.activatedItems[0].dataSM('sub').hasClass('mega-menu')) {
+								getFirstItemLink(obj.activatedItems[0].dataSM('sub')).focusSM();
+							}
+						} else if (level > 1 || $root.hasClass('sm-vertical')) {
+							getNextItemLink($li).focusSM();
+						}
+					}
+					break;
 			}
+			e.stopPropagation();
+			e.preventDefault();
 		}
 	});
 
-	// init ondomready
-	$($.SmartMenus.Bootstrap.init);
+	// hook it
+	$(document).delegate('ul.sm, ul.navbar-nav:not([data-sm-skip])', 'keydown.smartmenus', $.SmartMenus.Keyboard.docKeydown);
+
+	$.extend($.SmartMenus.prototype, {
+		keyboardSetHotkey: function(keyCode, modifiers) {
+			var self = this;
+			$(document).bind('keydown.smartmenus' + this.rootId, function(e) {
+				if (keyCode == e.keyCode) {
+					var procede = true;
+					if (modifiers) {
+						if (typeof modifiers == 'string') {
+							modifiers = [modifiers];
+						}
+						$.each(['ctrlKey', 'shiftKey', 'altKey', 'metaKey'], function(index, value) {
+							if ($.inArray(value, modifiers) >= 0 && !e[value] || $.inArray(value, modifiers) < 0 && e[value]) {
+								procede = false;
+								return false;
+							}
+						});
+					}
+					if (procede) {
+						getFirstItemLink(self.$root).focusSM();
+						e.stopPropagation();
+						e.preventDefault();
+					}
+				}
+			});
+		}
+	});
 
 	return $;
 }));
