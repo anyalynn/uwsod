@@ -120,97 +120,103 @@
 /* Small Devices, Tablets */
 @media only screen and (max-width : 767px) {
 	.uw-hero-image {
-		display: none;
+		display: block;
+		height: 300px;
 
-		&.hero-mobile-image.hero-height ,
+		&.hero-mobile-image.hero-height,
 		&.hero-mobile-image.hero-height2 {
 			height: 480px;
 
 			.mobile-image {
-		      display: block;
-		      top: 0;
-		      left: 0;
-		      height: 480px;
-		      position: absolute;
-		      right: 0;
-		      background-position: center bottom;
-		      -webkit-background-size: cover;
-		      -moz-background-size: cover;
-		      -o-background-size: cover;
-		      background-size: cover;
-		    }
+				display: block;
+				top: 0;
+				left: 0;
+				height: 480px;
+				position: absolute;
+				right: 0;
+				background-position: center bottom;
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+			}
 
-		    #hero-bg #hero-container h1.uw-site-title ,
-		    div.container h1.uw-site-title2 {
+			#hero-bg #hero-container h1.uw-site-title,
+			div.container h1.uw-site-title2 {
 				padding-top: 40px;
-			    &:after{
-			    	background: none;
-			    }
+
+				&:after {
+					background: none;
+				}
 			}
 
 			.container {
 				position: absolute;
-    			top: 0;
+				top: 0;
 			}
 		}
-
-          
-        
-
 		// Larger hero
 		&.hero-height {
 			padding: 50px 20px 20px;
 			display: block;
-		  	height: auto;
-		  	#hero-container {
-		  		h1 {
-		  			font-size: 35px;
-		  			padding: 0;
-		  			&:after {
-		  				background-size: 80%;
-		  				-moz-background-size: 80%;
-		  				-webkit-background-size: 80%;
+			height: auto;
+
+			#hero-container {
+				h1 {
+					font-size: 35px;
+					padding: 0;
+
+					&:after {
+						background-size: 80%;
+						-moz-background-size: 80%;
+						-webkit-background-size: 80%;
 						top: -60px;
 						left: -270px;
-		  			}
-		  		}
-		  	}
+					}
+				}
+			}
 		}
-
 		// Smaller hero
 		&.hero-height2 {
 			padding: 5px;
 			display: block;
-		  	height: auto;
-		  	.container { 
-		  		#hashtag {
-			  		font-size: 16px;
-			  		span {
-			  		    padding: 2px 5px 3px 18px;
-			  		}
-			  		&.mask {
-			  			min-height: auto;
-			  		}
-			  	}
-		  	}
-		  	h1 {
-		  		font-size: 35px;
-		  		padding: 0;
-		  		&:after {
-		  			background-size: 80%;
-		  			-moz-background-size: 80%;
-		  			-webkit-background-size: 80%;
+			height: auto;
+
+			.container {
+				#hashtag {
+					font-size: 16px;
+
+					span {
+						padding: 2px 5px 3px 18px;
+					}
+
+					&.mask {
+						min-height: auto;
+					}
+				}
+			}
+
+			h1 {
+				font-size: 35px;
+				padding: 0;
+
+				&:after {
+					background-size: 80%;
+					-moz-background-size: 80%;
+					-webkit-background-size: 80%;
 					top: -60px;
 					left: -270px;
-		  		}
-		  	}
+				}
+			}
 		}
+
 		&.hero-blank {
 			display: block;
+
 			.uw-site-title-blank {
-    			font-size: 30px;
-  			    margin: 5px 0 20px 5px;
-    		}
+				font-size: 30px;
+				margin: 5px 0 20px 5px;
+			}
 		}
 	}
     .udub-slant {

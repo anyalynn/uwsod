@@ -5850,7 +5850,8 @@ a.uw-custom-link:hover {
 /* Small Devices, Tablets */
 @media only screen and (max-width: 767px) {
   .uw-hero-image {
-    display: none;
+    display: block;
+    height: 300px;
   }
   .uw-hero-image.hero-mobile-image.hero-height,
   .uw-hero-image.hero-mobile-image.hero-height2 {
