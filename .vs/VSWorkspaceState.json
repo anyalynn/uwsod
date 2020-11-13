@@ -4,9 +4,8 @@
     "\\wp-content",
     "\\wp-content\\themes",
     "\\wp-content\\themes\\uwsod-2018",
-    "\\wp-content\\themes\\uwsod-2018\\inc",
     "\\wp-content\\themes\\uwsod-2018\\less"
   ],
-  "SelectedNode": "\\wp-content\\themes\\uwsod-2018\\less\\style.less",
+  "SelectedNode": "\\wp-content\\themes\\uwsod-2018\\less\\uw.dental.less",
   "PreviewInSolutionExplorer": false
 }

@@ -9564,7 +9564,7 @@ a.uw-btn {
   margin-top: -10px;
 }
 .hero-height2 {
-  height: 175px;
+  height: 300px;
 }
 .uw-hero-image,
 .uw-hero-image.hero-height2 {
@@ -9599,7 +9599,7 @@ a.uw-btn {
 }
 #uw-accordion h3 {
   font-size: 19px;
-  font-weight: 600px;
+  font-weight: 600;
 }
 .uw-accordion h3 {
   margin-top: 10px;
