@@ -1,3 +1,8 @@
+<?php
+/**
+  * Template Name: Featured Image Hero
+  */
+?>
 <?php get_header(); 
    $sidebar = get_post_meta($post->ID, "sidebar"); ?>
 <?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
