@@ -5737,7 +5737,7 @@ a.uw-custom-link:hover {
 }
 .uw-hero-image,
 .no-uw-hero-image {
-  height: 300px;
+  height: 245px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -5851,7 +5851,7 @@ a.uw-custom-link:hover {
 @media only screen and (max-width: 767px) {
   .uw-hero-image {
     display: block;
-    height: 300px;
+    height: 245x;
   }
   .uw-hero-image.hero-mobile-image.hero-height,
   .uw-hero-image.hero-mobile-image.hero-height2 {
