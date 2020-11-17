@@ -128,8 +128,7 @@ class UW_Page_Attributes_Meta_Box
     }
     echo "</div>";
     if ($default === "templates/template-big-hero.php" || $default === "templates/template-small-hero.php"
-    || $default === "templates/template-big-hero-no-bread.php" || $default === "templates/template-custom-hero1.php"
-    || $default === "templates/template-big-hero-low.php") {
+    || $default === "templates/template-big-hero-no-bread.php" || $default === "templates/template-custom-hero1.php") {
       if (current_user_can('administrator') || current_user_can('editor')) {
         $banner = get_post_meta($post->ID, "banner", true);
         wp_nonce_field( 'banner_nonce' , 'banner_name' );
