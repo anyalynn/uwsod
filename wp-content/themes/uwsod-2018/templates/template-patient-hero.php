@@ -1,40 +1,23 @@
 <?php
 /**
-  * Template Name: Big Hero
+  * Template Name: Patient Hero
   */
 ?>
 
 <?php get_header();
-      $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-      if(!$url){
-        $url = get_site_url() . "/wp-content/media/patient/uw-covid-response8.jpg";
-      }
-      $mobileimagesrc = get_post_meta($post->ID, "mobileimage");
-      $hasmobileimage = '';
-      if( !empty($mobileimagesrc) && $mobileimagesrc[0] !== "") {
-        $mobileimage = $mobileimagesrc[0];
-        $hasmobileimage = 'hero-mobile-image';
-      }
+     
+      $url = get_site_url() . "/wp-content/media/patient/uw-covid-response8.jpg";            
       $sidebar = get_post_meta($post->ID, "sidebar");
-      $banner = get_post_meta($post->ID, "banner");
-      $buttontext = get_post_meta($post->ID, "buttontext");
-      $buttonlink = get_post_meta($post->ID, "buttonlink");   ?>
+?>
 
 
-<div class="uw-hero-image hero-height <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
-    <?php if( isset($mobileimage)) { ?>
-      <div class="mobile-image" style="background-image: url(<?php echo $mobileimage ?>);"></div>
-    <?php } ?>
+<div class="uw-hero-image hero-height" style="background-image: url(<?php echo $url ?>);">    
     <div id="hero-bg">
       <div id="hero-container" class="container">
-      <?php if(!empty($banner) && $banner[0]){ ?>
-        <div id="hashtag"><span><span><?php echo $banner[0] ? $banner[0] : ''; ?></span></span></div>
-      <?php } ?>
+      
         <h1 class="uw-site-title"><?php the_title(); ?></h1>
         <span class="udub-slant"><span></span></span>
-      <?php if(!empty($buttontext) && $buttontext[0]){ ?>
-        <a class="uw-btn btn-sm btn-none" href="<?php echo $buttonlink[0] ? $buttonlink[0] : ''; ?>"><?php echo $buttontext[0] ? $buttontext[0] : ''; ?></a>
-      <?php } ?>
+     
       </div>
     </div>
 </div>
