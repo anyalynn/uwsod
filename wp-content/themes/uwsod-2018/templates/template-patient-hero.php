@@ -6,7 +6,7 @@
 
 <?php get_header();
      
-      $url = get_site_url() . "/wp-content/media/uw-covid-response8.jpg";            
+      $url = "https://dental.washington.edu/wp-content/media/patient/uw-covid-response8.jpg";            
       $sidebar = get_post_meta($post->ID, "sidebar");
 ?>
 
