@@ -1,12 +1,12 @@
 <?php
 /**
-  * Template Name: COVID Response Hero
+  * Template Name: Student Fees Hero
   */
 ?>
 
 <?php get_header();
      
-      $url = "https://dental.washington.edu/wp-content/media/patient/uw-covid-response8.jpg";            
+      $url = "https://dental.washington.edu/wp-content/media/Dental_School-SIM7-1.jpg";            
       $sidebar = get_post_meta($post->ID, "sidebar");
 ?>
 
