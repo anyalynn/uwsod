@@ -7,7 +7,7 @@
 <?php get_header(); 
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       if(!$url){
-        $url = get_site_url() . "/wp-content/themes/uw-2014/assets/headers/suzzallo.jpg";
+        $url = "https://dental.washington.edu/wp-content/media/Arboretum-Fall-1282.jpg";
       }
       $mobileimage = get_post_meta($post->ID, "mobileimage");
       $hasmobileimage = '';

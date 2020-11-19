@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\wp-content",
-    "\\wp-content\\themes"
+    "\\wp-content\\themes",
+    "\\wp-content\\themes\\uwsod-2018"
   ],
-  "SelectedNode": "\\wp-content\\themes\\uwsod-2018",
+  "SelectedNode": "\\wp-content\\themes\\uwsod-2018\\templates",
   "PreviewInSolutionExplorer": false
 }
