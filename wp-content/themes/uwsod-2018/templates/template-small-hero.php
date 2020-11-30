@@ -4,15 +4,15 @@
  */
 ?>
 
-<?php get_header(); 
+<?php get_header();
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       if(!$url){
-        $url = "https://dental.washington.edu/wp-content/media/Arboretum-Fall-1282.jpg";
+        $url = "https://dental.washington.edu/wp-content/media/Campus_Drone_Shots0042Crop-scaled.jpg";
       }
-      $mobileimage = get_post_meta($post->ID, "mobileimage");
+      $mobileimagesrc = get_post_meta($post->ID, "mobileimage");
       $hasmobileimage = '';
-      if( !empty($mobileimage) && $mobileimage[0] !== "") {
-        $mobileimage = $mobileimage[0];
+      if( !empty($mobileimagesrc) && $mobileimagesrc[0] !== "") {
+        $mobileimage = $mobileimagesrc[0];
         $hasmobileimage = 'hero-mobile-image';
       }
       $sidebar = get_post_meta($post->ID, "sidebar");
@@ -22,9 +22,9 @@
 
 
 <div class="uw-hero-image hero-height2 <?php echo $hasmobileimage ?>" style="background-image: url(<?php echo $url ?>);">
-     <?php if( !empty($mobileimage) ) { ?>
-    <div class="mobile-image" style="background-image: url(<?php echo $mobileimage ?>);"></div>
-    <?php } ?>
+    <?php if( isset($mobileimage)) { ?>
+        <div class="mobile-image" style="background-image: url(<?php echo $mobileimage ?>);"></div>
+      <?php } ?>
      
       <div class="container">
         <div id="hashtag" class="mask"><span><span><?php echo $banner[0] ? $banner[0] : ''; ?></span></span></div>
