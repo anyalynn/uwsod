@@ -9692,6 +9692,9 @@ hr {
   border-top: 1px solid #b7a57a;
   clear: both;
 }
+.uw-body h3.purple {
+  color: #4b2e83;
+}
 .info-box h1,
 .info-box h2 {
   font-size: 23px;
@@ -9715,6 +9718,12 @@ hr {
 }
 .box-outer .box.two .tile div {
   margin: 0 -21px;
+}
+.box-outer .box-lightgray .tile {
+  background-color: #fdfaf7;
+}
+.box-outer .box-gray .tile {
+  background-color: #ece9e6;
 }
 .button {
   text-align: center;
