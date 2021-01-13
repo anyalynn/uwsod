@@ -9550,6 +9550,9 @@ p {
   color: #2d2d2d;
   font-weight: 300;
 }
+p.admissionsFront {
+  margin: 60px 20px 20px 0px;
+}
 a.uw-btn {
   z-index: 0;
 }
