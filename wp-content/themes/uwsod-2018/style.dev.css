@@ -9725,6 +9725,12 @@ hr {
 .box-outer .box-gray .tile {
   background-color: #ece9e6;
 }
+.box-outer .box .tile .offwhite {
+  background-color: #fdfaf7;
+}
+.box-outer .box .tile .gray {
+  background-color: #ece9e6;
+}
 .button {
   text-align: center;
   background-color: #048ac2;
@@ -9944,10 +9950,10 @@ display:inline-block;
     margin-right: -10px;
     margin-left: 20px;
     margin-top: 10px;
-    padding: 25px ;
+    padding: 25px;
   }
   .uw-thinstrip {
-    -webkit-box-shadow: none ;
+    -webkit-box-shadow: none;
     box-shadow: none;
   }
   .uw-thinstrip ul.uw-thin-links {
@@ -10066,7 +10072,7 @@ display:inline-block;
   }
 }
 .uw-thinstrip {
-  -webkit-box-shadow: none ;
+  -webkit-box-shadow: none;
   box-shadow: none;
 }
 @media screen and (max-width: 767px) {
@@ -10190,7 +10196,7 @@ display:inline-block;
   font-weight: 800;
   text-align: center;
   display: block;
-  padding: 20px 0 ;
+  padding: 20px 0;
   margin: 15px 0 0px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
