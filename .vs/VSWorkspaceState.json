@@ -2,10 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\wp-content",
-    "\\wp-content\\converge",
     "\\wp-content\\plugins",
-    "\\wp-content\\themes"
+    "\\wp-content\\themes",
+    "\\wp-content\\themes\\uwsod-2018",
+    "\\wp-content\\themes\\uwsod-2018\\less"
   ],
-  "SelectedNode": "\\wp-content\\themes\\uwsod-2018",
+  "SelectedNode": "\\wp-content\\themes\\uwsod-2018\\less\\uw.dental.less",
   "PreviewInSolutionExplorer": false
 }
