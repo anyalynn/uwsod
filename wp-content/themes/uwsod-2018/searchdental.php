@@ -78,7 +78,7 @@ padding-left: 0px !important;
             text-indent: -99999px;
             outline: 1px solid #4b2e83;
             overflow: hidden;
-            background: url(../assets/svg/search.svg) no-repeat center center #4b2e83 !important;
+            background: url(https://dental.uw.edu/wp-content/themes/uwsod-2018/assets/svg/search.svg) no-repeat center center #4b2e83 !important;
             position: relative;
             border: none !important;
             -webkit-background-size: 10px;
