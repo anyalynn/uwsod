@@ -234,8 +234,6 @@ padding-left: 0px !important;
     </div>       
 
 
-  </div>
-
 </div>
 </div>
 
