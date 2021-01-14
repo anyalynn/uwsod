@@ -6,6 +6,7 @@
   <div class="row">
 
     <div class="col-md-<?php echo ((!isset($sidebar[0]) || $sidebar[0]!="on") ? "8" : "12" ) ?> uw-content" role='main'>
+ 
 
       
       <?php get_template_part( 'breadcrumbs' ); ?>
