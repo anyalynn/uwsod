@@ -222,16 +222,36 @@ padding-left: 0px !important;
 	<?php echo do_shortcode( '[query id=72]' ); ?>
     <?php require( get_template_directory() . '/inc/template-functions.php' );
           uw_dropdowns(); ?>
-<?php get_template_part( 'header', 'image' ); ?>
+<div class="uw-hero-image" <?php if ( get_header_image() !== '' )  { ?> style="background-image:url('<?php echo set_url_scheme( get_header_image() ); ?>');"<?php } ?> ></div>
 
 <div class="container uw-body">
 
   <div class="row">
-
+   <?php get_template_part( 'breadcrumbs' ); ?>
     <div class="col-md-10 uw-content" role='main'>      
+     
+         <?php
+          // Start the Loop.
+          while ( have_posts() ) : the_post();
 
-       
-  <h1 class="search-title">  Search results: </h1>
+            /*
+             * Include the post format-specific template for the content. If you want to
+             * use this in a child theme, then include a file called called content-___.php
+             * (where ___ is the post format) and that will be used instead.
+             */
+            get_template_part( 'content', 'page' );
+
+
+
+
+            // If comments are open or we have at least one comment, load up the comment template.
+            if ( comments_open() || get_comments_number() ) {
+              comments_template();
+            }
+
+          endwhile;
+        ?>
+  <h2>  Search results: </h2>
   <gcse:search></gcse:search>
 
     </div>
