@@ -239,7 +239,6 @@ padding-left: 0px !important;
     </div>       
 </div>
 
-</div>
-</div>
+
 
 <?php get_footer(); ?>
