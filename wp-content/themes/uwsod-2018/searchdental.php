@@ -217,7 +217,7 @@ padding-left: 0px !important;
 	<?php echo do_shortcode( '[query id=72]' ); ?>
     <?php require( get_template_directory() . '/inc/template-functions.php' );
           uw_dropdowns(); ?>
-
+<?php get_template_part( 'header', 'image' ); ?>
 
 <div class="container uw-body">
 
