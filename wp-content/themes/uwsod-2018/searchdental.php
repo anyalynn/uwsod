@@ -1,7 +1,5 @@
-<?php get_header(); 
+<?php get_template_part( 'header', 'search' );  
    $sidebar = get_post_meta($post->ID, "sidebar"); ?>
-
-<?php get_template_part( 'header', 'search' ); ?>
 
 <div class="container uw-body">
 
