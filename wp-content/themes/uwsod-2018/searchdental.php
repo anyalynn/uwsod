@@ -227,9 +227,10 @@ padding-left: 0px !important;
 <div class="container uw-body">
 
   <div class="row">
-   <?php get_template_part( 'breadcrumbs' ); ?>
+   
     <div class="col-md-10 uw-content" role='main'>      
-     
+     <?php get_template_part( 'breadcrumbs' ); ?>
+      <div id='main_content' class="uw-body-copy" tabindex="-1">
          <?php
           // Start the Loop.
           while ( have_posts() ) : the_post();
@@ -251,14 +252,13 @@ padding-left: 0px !important;
 
           endwhile;
         ?>
-  <h2>  Search results: </h2>
+  
   <gcse:search></gcse:search>
 
     </div>
 
     </div>       
+    </div>
+
 </div>
-
-
-
 <?php get_footer(); ?>
