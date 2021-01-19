@@ -9977,7 +9977,7 @@ display:inline-block;
   }
   #soliloquy-container-14466 {
     top: -10px;
-    background: #4b2378;
+    background: #4b2e78 !important;
   }
   #soliloquy-container-14466 .soliloquy-caption .udub-slant span {
     -webkit-transform: skew(-25deg, 0);
@@ -10046,7 +10046,7 @@ display:inline-block;
   #soliloquy-container-14466 .soliloquy-caption .udub-slant span {
     display: none;
   }
-  #soliloquy-container-14466 .soliloquy-caption p {
+  #soliloquy-container-14466 .soliloquy-caption p.soliloquy-fc-caption {
     font-size: 14px;
     margin-bottom: 20px;
     margin-left: 5px;
