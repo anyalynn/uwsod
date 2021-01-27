@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="vKhEC9RKuK2uDDRXT3uxT5IhbTmuI7J8K_Sr1_oWFwg" />
+
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <?php wp_head(); ?>
@@ -19,6 +20,16 @@
         echo get_post_meta( get_the_ID() , 'javascript' , 'true' );
         echo get_post_meta( get_the_ID() , 'css' , 'true' );
         ?>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-25627765-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-25627765-1');
+</script>
+
 
     </head>
     <!--[if lt IE 9]> <body <?php body_class('lt-ie9'); ?>> <![endif]-->
