@@ -170,23 +170,22 @@ padding-left: 0px !important;
 
         }
     </style>
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+   <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KC3TVQJ');</script>
+<!-- End Google Tag Manager -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G23S47FHYX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-        ga('create', 'UA-25627765-1', 'auto');
-        ga('send', 'pageview');
-		
-    </script>
+  gtag('config', 'G-G23S47FHYX');
+</script>
     <script>
         (function () {
             var cx = '013161175624235233741:pwunvv-3nuo';
@@ -210,7 +209,10 @@ padding-left: 0px !important;
     <!--[if gt IE 8]><!-->
     <body <?php body_class(); ?> >
     <!--<![endif]-->
- 
+ <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KC3TVQJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
     <div id="uwsearcharea" aria-hidden="true" class="uw-search-bar-container"></div>
    <a id="main-content" href="#main_content" class="screen-reader-shortcut">Skip to main content</a>
