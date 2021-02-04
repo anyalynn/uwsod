@@ -20,7 +20,15 @@
         echo get_post_meta( get_the_ID() , 'javascript' , 'true' );
         echo get_post_meta( get_the_ID() , 'css' , 'true' );
         ?>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G23S47FHYX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-G23S47FHYX');
+</script>
     </head>
     <!--[if lt IE 9]> <body <?php body_class('lt-ie9'); ?>> <![endif]-->
     <!--[if gt IE 8]><!-->
