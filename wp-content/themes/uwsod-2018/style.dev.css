@@ -11653,6 +11653,10 @@ table.services a {
     padding: 0;
   }
 }
+#uwalert-alert-message h2 {
+  color: white;
+  font-size: 25px;
+}
 /** bootstrap 4 **/
 .align-baseline {
   vertical-align: baseline !important;
