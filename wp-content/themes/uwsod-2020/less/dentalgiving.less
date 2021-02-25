@@ -1,0 +1,73 @@
+@media only screen and (min-width: 768px) {
+    .uw-thinstrip ul.uw-thin-links li.menu-myuw-giving a, .uw-thinstrip ul.uw-thin-links li.menu-give-now a {
+        font-size: 17px;
+        text-transform: none;
+        color: #4a4a4a;
+        font-weight: 600;
+        top: -17px;
+        padding: 26px 20px 0px 36px;
+        z-index: 0;
+    }
+
+    .uw-thinstrip ul.uw-thin-links li.menu-give-now a {
+        color: #fff;
+        padding-left: 35px;
+    }
+
+    .uw-thinstrip ul.uw-thin-links li.menu-myuw-giving a {
+        color: #85754d;
+        padding-left: 35px;
+    }
+
+    .menu-give-now a:before {
+        width: 172px;
+        height: 45px;
+        left: -35px;
+        top: -1px;
+        background-color: #85754d;
+        -webkit-transform: skew(-15deg,0);
+        -ms-transform: skewX(-15deg) skewY(0);
+        transform: skew(-15deg,0);
+    }
+
+    .menu-myuw-giving a:before {
+        width: 149px;
+        height: 45px;
+        left: -6px;
+        top: -1px;
+        background-color: #fff;
+        -webkit-transform: skew(-15deg,0);
+        -ms-transform: skewX(-15deg) skewY(0);
+        transform: skew(-15deg,0);
+    }
+
+    .menu-myuw-giving a:before, .menu-give-now a:before {
+        z-index: -1;
+        box-shadow: 0 1px 3px rgba(0,0,0,.4);
+    }
+
+    .uw-thinstrip ul.uw-thin-links li.menu-myuw-giving a:after, .uw-thinstrip ul.uw-thin-links li.menu-give-now a:after, .menu-myuw-giving a:before, .menu-give-now a:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 17px;
+    }
+
+    .uw-thinstrip ul.uw-thin-links li.menu-myuw-giving:last-child a:after {
+        display: block;
+    }
+
+    .uw-thinstrip ul.uw-thin-links li.menu-myuw-giving a:after {
+        width: 40px;
+        height: 36px;
+        left: 3px;
+        background: url(assets/svg/widgets-sprite.svg) no-repeat 0 -188px;
+    }
+
+    .uw-thinstrip ul.uw-thin-links li.menu-give-now a:after {
+        width: 40px;
+        height: 33px;
+        left: 3px;
+        background: url(assets/svg/widgets-sprite.svg) no-repeat 0 -160px;
+    }
+}
