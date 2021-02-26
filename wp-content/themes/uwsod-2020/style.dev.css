@@ -10893,6 +10893,9 @@ img.faculty {
     line-height: 1px;
     margin: 0;
   }
+  .uw-hero-image.hero-blank h1.uw-site-title-blank {
+    margin-top: -10px;
+  }
 }
 .home .uw-body {
   overflow: hidden;
@@ -10909,9 +10912,6 @@ img.faculty {
 .uw-hero-image.hero-blank .uw-breadcrumbs {
   display: block;
   margin-top: 5px;
-}
-.uw-hero-image.hero-blank h1.uw-site-title-blank {
-  margin-top: -10px;
 }
 .hero-height2 {
   height: 175px;
