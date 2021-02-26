@@ -10879,6 +10879,9 @@ img.faculty {
     position: static;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
+  .uw-breadcrumbs ul {
+    margin-top: 10px;
+  }
 }
 @media screen and (min-width: 768px) {
   .uw-site-title-blank {
