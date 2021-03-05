@@ -8134,6 +8134,12 @@ legend {
   border-bottom: #cccc 1px solid;
   padding-bottom: 15px;
 }
+.publications ul li,
+.publications ol li {
+  margin-bottom: 25px;
+  border-bottom: #cccc 1px solid;
+  padding-bottom: 15px;
+}
 /** bootstrap 4 **/
 .align-baseline {
   vertical-align: baseline !important;
