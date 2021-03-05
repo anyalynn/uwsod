@@ -8130,8 +8130,9 @@ legend {
   line-height: 21px;
 }
 .perio-research ul li {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   border-bottom: #cccc 1px solid;
+  padding-bottom: 15px;
 }
 /** bootstrap 4 **/
 .align-baseline {
