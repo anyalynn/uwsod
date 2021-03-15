@@ -59,5 +59,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="uw-container-inner">
     <?php get_template_part('thinstrip'); ?>
 	<?php echo do_shortcode( '[query id=72]' ); ?>
+    <?php echo do_shortcode( '[query id=73]' ); ?>
+    <?php echo do_shortcode( '[query id=74]' ); ?>
+    <?php echo do_shortcode( '[query id=75]' ); ?>
+    <?php echo do_shortcode( '[query id=76]' ); ?>
+    <?php echo do_shortcode( '[query id=77]' ); ?>
     <?php require( get_template_directory() . '/inc/template-functions.php' );
           uw_dropdowns(); ?>
