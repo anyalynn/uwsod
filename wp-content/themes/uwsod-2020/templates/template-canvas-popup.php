@@ -3,8 +3,8 @@
  * Template Name: Canvas Popup
  */
 ?>
+ <?php get_template_part( 'header-popup' ); 
 
-<?php get_header-popup();
       $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
       if(!$url){
         $url = "https://dental.washington.edu/wp-content/media/Campus_Drone_Shots0042Crop-scaled.jpg";
