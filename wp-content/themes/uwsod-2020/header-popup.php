@@ -78,7 +78,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   text-decoration: none;
   cursor: pointer;
 }
-</styel>
+</style>
 <script>
 var modal = document.getElementById("myModal");
 
