@@ -10101,7 +10101,7 @@ a.uw-btn {
 }
 .news_left {
   float: left;
-  margin-right: 15px;
+  margin: 5px 30px 30px 0px;
 }
 .news_left img {
   padding: 2px;
