@@ -11602,7 +11602,7 @@ table.services a {
 @media screen and (max-width: 767px) {
   .uw-links {
     padding: 3% 0 4% 0;
-    width: 70%;
+    width: 85%;
     background: #fff;
     border: none;
     -webkit-box-shadow: 0 0 4px rgba(164, 164, 164, 0.5);
@@ -11642,7 +11642,7 @@ table.services a {
     margin-bottom: 60px;
     -webkit-box-shadow: 0 0 4px rgb(164 164 3.28%);
     box-shadow: 0 0 4px rgb(164 164 3.28%);
-    width: 90%;
+    width: 75%;
     padding-bottom: 20px;
     margin-top: -15px;
   }
