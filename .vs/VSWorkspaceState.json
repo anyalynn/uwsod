@@ -2,9 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\wp-content",
+    "\\wp-content\\canvas",
     "\\wp-content\\plugins",
+    "\\wp-content\\themes",
     "\\wp-content\\themes\\uwsod-2020"
   ],
-  "SelectedNode": "\\wp-content\\themes",
+  "SelectedNode": "\\wp-content\\canvas\\canvastest2.cs",
   "PreviewInSolutionExplorer": false
 }
