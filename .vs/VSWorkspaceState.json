@@ -5,12 +5,8 @@
     "\\wp-content\\plugins",
     "\\wp-content\\themes",
     "\\wp-content\\themes\\uwsod-2020",
-    "\\wp-content\\themes\\uwsod-2020\\assets",
-    "\\wp-content\\themes\\uwsod-2020\\assets\\admin",
-    "\\wp-content\\themes\\uwsod-2020\\assets\\admin\\js",
-    "\\wp-content\\themes\\uwsod-2020\\assets\\admin\\js\\widgets",
-    "\\wp-content\\themes\\uwsod-2020\\widgets"
+    "\\wp-content\\themes\\uwsod-2020\\js"
   ],
-  "SelectedNode": "\\wp-content\\themes\\uwsod-2020\\assets\\admin\\js\\widgets\\uw.single-image-widget.js",
+  "SelectedNode": "\\wp-content\\themes\\uwsod-2020\\js\\uw.search.js",
   "PreviewInSolutionExplorer": false
 }

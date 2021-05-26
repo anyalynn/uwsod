@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Alshorts
+Plugin Name: Alshorts2
 Description: Anya's shortcodes
 Version: 1.0
 Author: Anya
@@ -240,6 +240,46 @@ function checkIsAValidDate($myDateString){
 		    if(checkIsAValidDate($cdeStartdate)) 
 			{  
 				$courseStartdate = date_create($cdeStartdate);
+				if($cdeStartdate == '') { 
+					$content.="<tr><td>Online ";
+					
+					if($cdeThumb != '')
+					{	$content .= '<img src="'.$cdeThumb.'" height="100" width="100" alt="course thumbnail" />';
+					}
+					$content .="</td><td><a style='padding-left:0' ";
+					if($cdeNumber) { $content.='id="'.$cdeNumber.'" '; }
+					 $content.='href="'.$permalink.'">';
+					
+					if($cdeNumber) { $content.=$cdeNumber.": "; }
+					$content.= $cdeprimarytitle." ".$cdesecondarytitle."</a><br />";
+					if($instructtype=='lecture')
+					{ 	$content .='<img src="'.$lectureimg.'" height="25"  alt="lecture icon"  />';
+					}
+					if($instructtype=='handson')
+					{ $content .='<img src="'.$handsonimg.'" height="25"  alt="tools icon"  />';
+					}
+					if($instructtype=='both')
+					{ $content .='<img src="'.$bothimg.'" height="25" alt="lecture & tools icon"   />';
+					}
+					$content .="<p><strong>".$instructor."</strong></p>";
+					
+					if($cdealert != ' ') 
+					{	$content .= "<span class='wronganswer'>".$cdealert."</span>";
+					}
+					
+					if($cdenotes != ' ') 
+					{	if($cdealert != ' ')
+						{
+							$content .= "<p>".$cdenotes."</p>";
+						}
+						else
+						{
+							$content .= $cdenotes;
+						}
+					}
+					
+					$content.="</td></tr>";
+				}
 				if($cdeStartdate >= $today) { 
 					$content.="<tr><td>".date_format($courseStartdate,'D, M j, Y');
 					if(($cdeEnddate != '') && (checkIsAValidDate($cdeEnddate)) && ($cdeEnddate > $todayPlusOne))
@@ -324,6 +364,49 @@ function checkIsAValidDate($myDateString){
 					
 					$content.="</td></tr>";					
 
+				}
+			}
+			else {
+
+			if($cdeStartdate == '') { 
+					$content.="<tr><td><strong>Recorded Online</strong> ";
+					
+					if($cdeThumb != '')
+					{	$content .= '<img src="'.$cdeThumb.'" height="100" width="100" alt="course thumbnail" />';
+					}
+					$content .="</td><td><a style='padding-left:0' ";
+					if($cdeNumber) { $content.='id="'.$cdeNumber.'" '; }
+					 $content.='href="'.$permalink.'">';
+					
+					if($cdeNumber) { $content.=$cdeNumber.": "; }
+					$content.= $cdeprimarytitle." ".$cdesecondarytitle."</a><br />";
+					if($instructtype=='lecture')
+					{ 	$content .='<img src="'.$lectureimg.'" height="25"  alt="lecture icon"  />';
+					}
+					if($instructtype=='handson')
+					{ $content .='<img src="'.$handsonimg.'" height="25"  alt="tools icon"  />';
+					}
+					if($instructtype=='both')
+					{ $content .='<img src="'.$bothimg.'" height="25" alt="lecture & tools icon"   />';
+					}
+					$content .="<p><strong>".$instructor."</strong></p>";
+					
+					if($cdealert != ' ') 
+					{	$content .= "<span class='wronganswer'>".$cdealert."</span>";
+					}
+					
+					if($cdenotes != ' ') 
+					{	if($cdealert != ' ')
+						{
+							$content .= "<p>".$cdenotes."</p>";
+						}
+						else
+						{
+							$content .= $cdenotes;
+						}
+					}
+					
+					$content.="</td></tr>";
 				}
 			}
 		 endforeach; 
