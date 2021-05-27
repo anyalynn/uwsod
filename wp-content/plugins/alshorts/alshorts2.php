@@ -376,7 +376,7 @@ function checkIsAValidDate($myDateString){
 					{	$contentrec .= '<img src="'.$cdeThumb.'" height="100" width="100" alt="course thumbnail" />';
 					}
 					$contentrec .="</td><td><a style='padding-left:0' ";
-					if($cdeNumber) { $content.='id="'.$cdeNumber.'" '; }
+					if($cdeNumber) { $contentrec.='id="'.$cdeNumber.'" '; }
 					 $contentrec.='href="'.$permalink.'">';
 					
 					if($cdeNumber) { $content.=$cdeNumber.": "; }
