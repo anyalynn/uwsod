@@ -413,7 +413,7 @@ function checkIsAValidDate($myDateString){
 		 endforeach; 
 		  $contentrec .=  "</tbody></table>";
   	  	  $content .=  "</tbody></table>";
-		 $contentrec .= "<div id='live'>Live </div>";
+		// $contentrec .= "<div id='live'>Live </div>";
 		  $contentrec .= $content;
       	 return $contentrec;
   }
