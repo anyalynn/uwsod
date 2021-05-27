@@ -215,6 +215,7 @@ function checkIsAValidDate($myDateString){
    		$courses = $query->get_posts();
 		usort($courses,'date_compare');
 		$content= '<table><thead><tr><th style="width:150px">Date</th><th>Course</th></tr></thead><tbody>';
+		$contentrec= '<table><thead><tr><th style="width:150px">Date</th><th>Course</th></tr></thead><tbody>';
 	    foreach ($courses as $course):
 			$courseID = $course->ID;
     		$title = $course->post_title;
@@ -369,49 +370,51 @@ function checkIsAValidDate($myDateString){
 			else {
 
 			if($cdeStartdate == '') { 
-					$content.="<tr><td><strong>Recorded Online</strong> ";
+					$contentrec.="<tr><td><strong>Recorded Online</strong> ";
 					
 					if($cdeThumb != '')
-					{	$content .= '<img src="'.$cdeThumb.'" height="100" width="100" alt="course thumbnail" />';
+					{	$contentrec .= '<img src="'.$cdeThumb.'" height="100" width="100" alt="course thumbnail" />';
 					}
-					$content .="</td><td><a style='padding-left:0' ";
+					$contentrec .="</td><td><a style='padding-left:0' ";
 					if($cdeNumber) { $content.='id="'.$cdeNumber.'" '; }
-					 $content.='href="'.$permalink.'">';
+					 $contentrec.='href="'.$permalink.'">';
 					
 					if($cdeNumber) { $content.=$cdeNumber.": "; }
-					$content.= $cdeprimarytitle." ".$cdesecondarytitle."</a><br />";
+					$contentrec.= $cdeprimarytitle." ".$cdesecondarytitle."</a><br />";
 					if($instructtype=='lecture')
-					{ 	$content .='<img src="'.$lectureimg.'" height="25"  alt="lecture icon"  />';
+					{ 	$contentrec .='<img src="'.$lectureimg.'" height="25"  alt="lecture icon"  />';
 					}
 					if($instructtype=='handson')
-					{ $content .='<img src="'.$handsonimg.'" height="25"  alt="tools icon"  />';
+					{ $contentrec .='<img src="'.$handsonimg.'" height="25"  alt="tools icon"  />';
 					}
 					if($instructtype=='both')
-					{ $content .='<img src="'.$bothimg.'" height="25" alt="lecture & tools icon"   />';
+					{ $contentrec .='<img src="'.$bothimg.'" height="25" alt="lecture & tools icon"   />';
 					}
-					$content .="<p><strong>".$instructor."</strong></p>";
+					$contentrec .="<p><strong>".$instructor."</strong></p>";
 					
 					if($cdealert != ' ') 
-					{	$content .= "<span class='wronganswer'>".$cdealert."</span>";
+					{	$contentrec .= "<span class='wronganswer'>".$cdealert."</span>";
 					}
 					
 					if($cdenotes != ' ') 
 					{	if($cdealert != ' ')
 						{
-							$content .= "<p>".$cdenotes."</p>";
+							$contentrec .= "<p>".$cdenotes."</p>";
 						}
 						else
 						{
-							$content .= $cdenotes;
+							$contentrec .= $cdenotes;
 						}
 					}
 					
-					$content.="</td></tr>";
+					$contentrec.="</td></tr>";
 				}
 			}
 		 endforeach; 
+		  $contentrec .=  "</tbody></table>";
   	  	 $content .=  "</tbody></table>";
-      	 return $content;
+			 $contentrec .= '<div id="live"></div>' . $content;
+      	 return $contentrec;
   }
 endif;
 add_shortcode( 'cdecurrent', 'cdecurrent_shortcode' );
