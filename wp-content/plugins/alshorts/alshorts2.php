@@ -379,7 +379,7 @@ function checkIsAValidDate($myDateString){
 					if($cdeNumber) { $contentrec.='id="'.$cdeNumber.'" '; }
 					 $contentrec.='href="'.$permalink.'">';
 					
-					if($cdeNumber) { $content.=$cdeNumber.": "; }
+					if($cdeNumber) { $contentrec.=$cdeNumber.": "; }
 					$contentrec.= $cdeprimarytitle." ".$cdesecondarytitle."</a><br />";
 					if($instructtype=='lecture')
 					{ 	$contentrec .='<img src="'.$lectureimg.'" height="25"  alt="lecture icon"  />';
