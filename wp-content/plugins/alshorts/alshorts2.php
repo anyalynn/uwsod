@@ -215,7 +215,7 @@ function checkIsAValidDate($myDateString){
    		$courses = $query->get_posts();
 		usort($courses,'date_compare');
 		$content= '<table><thead><tr><th style="width:150px">Date</th><th>Course</th></tr></thead><tbody>';
-		$contentrec= '<table><thead><tr><th style="width:150px">Date</th><th>Course</th></tr></thead><tbody>';
+		$contentrec= '<table><thead><tr><th style="width:150px"></th><th>Course</th></tr></thead><tbody>';
 	    foreach ($courses as $course):
 			$courseID = $course->ID;
     		$title = $course->post_title;
@@ -413,7 +413,7 @@ function checkIsAValidDate($myDateString){
 		 endforeach; 
 		  $contentrec .=  "</tbody></table>";
   	  	  $content .=  "</tbody></table>";
-		 $contentrec .= "<div id='live'>Live Courses & Webinars </div>";
+		 $contentrec .= "<h3 id='live'>Live Courses & Webinars </h3>";
 		  $contentrec .= $content;
       	 return $contentrec;
   }
