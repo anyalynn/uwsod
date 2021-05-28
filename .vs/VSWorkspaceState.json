@@ -3,10 +3,11 @@
     "",
     "\\wp-content",
     "\\wp-content\\plugins",
+    "\\wp-content\\plugins\\alshorts",
     "\\wp-content\\themes",
     "\\wp-content\\themes\\uwsod-2020",
     "\\wp-content\\themes\\uwsod-2020\\js"
   ],
-  "SelectedNode": "\\wp-content\\themes\\uwsod-2020\\js\\uw.search.js",
+  "SelectedNode": "\\wp-content\\plugins\\alshorts\\alshorts2.php",
   "PreviewInSolutionExplorer": false
 }
