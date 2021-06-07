@@ -811,6 +811,121 @@ if ( ! function_exists('htiles_shortcode') ):
 endif;
 add_shortcode( 'htiles', 'htiles_shortcode' );
 
+if ( ! function_exists('htiles2_shortcode') ):
+  function htiles2_shortcode( $atts  ) 
+  {
+	  $a = shortcode_atts( array(
+        'htile1' => 0,
+		 'htile2' =>0,
+		  'htile3' =>0
+    ), $atts );
+	$htile1=$a['htile1'];
+	$htile2=$a['htile2'];
+	$htile3=$a['htile3'];
+	
+?>
+<div class="on-campus" >
+	<div class="uw-on-campus"><h2>At the Dental School</h2></div>
+		<div class="container"> 
+			<div class="row">
+				<div class="box-outer">
+					<div class="box three">
+                         <div class="tile">
+                          <?php $hometile1 =  get_post($htile1);
+			    			 $meta1 = esc_html(get_post_meta($hometile1->ID));
+							 $thecontent1 = $hometile1->post_excerpt; 
+							 $posttitle1 = $hometile1->post_title;
+							 $date1=get_the_date( 'F j, Y', $hometile1->ID );
+							 $image1 = get_the_post_thumbnail( $hometile1->ID, 'large' );	
+							 $categories1 = get_the_category( $hometile1->ID );	
+							 foreach($categories1 as $category){
+								if($category->name != "News")
+								{
+									$cat1 = $category->name;
+								}		
+							 }
+							 $readmore_text1 = esc_html(get_post_meta($hometile1->ID, 'more_text', true));
+	   						 $readmore_link1 = get_permalink($hometile1->ID);					
+ 							 ?>
+							  <div><?= $image1 ?></div>
+                             <h2><?php if ( ! empty( $cat1 ) ) {
+								echo esc_html( $cat1 );
+}								?></h2>
+								<h3><?= $posttitle1 ?></h3>
+								<p class="null"><strong><?= $date1 ?></strong> - <?= $thecontent1 ?></p>
+								<?php if(!empty($readmore_link1))
+								{ ?>
+									<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmore_link1 ?>"><?= $readmore_text1 ?></a></p>
+                                 <?php } ?>
+								</div>
+							<div class="tile">
+                          <?php $hometile2 =  get_post($htile2);
+			    			 $meta2 = esc_html(get_post_meta($hometile2->ID));
+							 $thecontent2 = $hometile2->post_excerpt; 
+							 $posttitle2 = $hometile2->post_title;
+							 $date2=get_the_date( 'F j, Y', $hometile2->ID );							
+							 $image2 = get_the_post_thumbnail( $hometile2->ID, 'large' );	
+							 $categories2 = get_the_category( $hometile2->ID );	
+							 foreach($categories2 as $category){
+								if($category->name != "News")
+								{
+									$cat2 = $category->name;
+								}		
+							 }
+							 $readmore_text2 = esc_html(get_post_meta($hometile2->ID, 'more_text', true));
+	   						 $readmore_link2 = get_permalink($hometile2->ID);						
+ 							 ?>
+                             	<div><?= $image2 ?></div>
+								<h2><?php if ( ! empty( $cat2 ) ) {
+								echo esc_html( $cat2 );
+}								?></h2>
+								<h3><?= $posttitle2 ?></h3>
+								<p class="null"><strong><?= $date2 ?></strong> - <?= $thecontent2 ?></p>
+								<?php if(!empty($readmore_link2))
+								{ ?>
+									<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmore_link2 ?>"><?= $readmore_text2 ?></a></p>
+                                 <?php } ?>
+							</div>
+							<div class="tile">
+                          <?php $hometile3 =  get_post($htile3);
+			    			 $meta3 = esc_html(get_post_meta($hometile3->ID));
+							 $thecontent3 = $hometile3->post_excerpt; 
+							 $posttitle3 = $hometile3->post_title;
+							 $date3=get_the_date( 'F j, Y', $hometile3->ID );							
+							 $image3 = get_the_post_thumbnail( $hometile3->ID, 'large' );	
+							 $categories3 = get_the_category( $hometile3->ID );	
+							 foreach($categories3 as $category){
+								if($category->name != "News")
+								{
+									$cat3 = $category->name;
+								}		
+							 }
+							 $readmore_text3 = esc_html(get_post_meta($hometile3->ID, 'more_text', true));
+	   						 $readmore_link3 = get_permalink($hometile3->ID);						
+ 							 ?>
+                             	<div><?= $image3 ?></div>
+								 <h2><?php if ( ! empty( $cat3 ) ) {
+								echo esc_html( $cat3 );
+}								?></h2>
+								<h3><?= $posttitle3 ?></h3>
+								<p class="null"><strong><?= $date3 ?></strong> - <?= $thecontent3 ?></p>
+								<?php if(!empty($readmore_link3))
+								{ ?>
+									<p class="null"><a class="uw-btn btn-sm btn-none" href="<?= $readmore_link3 ?>"><?= $readmore_text3 ?></a></p>
+                                 <?php } ?>
+							</div>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  <?php
+  }
+	
+endif;
+add_shortcode( 'htiles2', 'htiles2_shortcode' );
+
+
 if ( !function_exists('qw_date_filter_callback')):
 
 function qw_date_filter_callback($args, $filter){

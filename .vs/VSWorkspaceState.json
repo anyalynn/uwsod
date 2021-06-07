@@ -4,9 +4,10 @@
     "\\wp-content",
     "\\wp-content\\plugins",
     "\\wp-content\\plugins\\alshorts",
+    "\\wp-content\\plugins\\hometile",
     "\\wp-content\\themes",
     "\\wp-content\\themes\\uwsod-2020",
-    "\\wp-content\\themes\\uwsod-2020\\js"
+    "\\wp-content\\themes\\uwsod-2020\\templates"
   ],
   "SelectedNode": "\\wp-content\\plugins\\alshorts\\alshorts2.php",
   "PreviewInSolutionExplorer": false
