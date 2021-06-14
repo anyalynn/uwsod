@@ -8042,6 +8042,40 @@ div[id*='trumba'] iframe {
   margin-bottom: 10px;
   padding-left: 10px;
 }
+/***Alumni styles *****/
+.bpbanner-purple {
+  background-color: #4b2378;
+  padding: 10px;
+  color: #ffffff;
+}
+.bpbanner-gold {
+  background-color: #85754d;
+  padding: 10px;
+  color: #ffffff;
+}
+.bpbanner-grey {
+  background-color: #777777;
+  padding: 10px;
+  color: #ffffff;
+}
+.uwpurple {
+  color: #4b2378;
+}
+.bottommargin40 {
+  margin-bottom: 40px;
+}
+.bottommargin30 {
+  margin-bottom: 30px;
+}
+.bottommargin10 {
+  margin-bottom: 10px;
+}
+.bottommargin0 {
+  margin-bottom: 0px;
+}
+.topmargin20 {
+  margin-top: 20px;
+}
 body {
   font-size: 16px;
 }
