@@ -8076,6 +8076,10 @@ div[id*='trumba'] iframe {
 .topmargin20 {
   margin-top: 20px;
 }
+.bpparastyle {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
 body {
   font-size: 16px;
 }
